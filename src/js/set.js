@@ -824,7 +824,7 @@ define(function() {
             name: "Français",
             value: "fr"
         }, {
-            name: " русский язык ",
+            name: "Русский",
             value: "rus"
         }, {
             name: "Español",
