@@ -30,6 +30,7 @@ define(function() {
         }],
         HAS_SMS: true,
         HAS_PHONEBOOK: true,
+        HAS_USSD: true,
         AUTH_MODES_ALL: [{
             name: "NO ENCRYPTION",
             value: "OPEN"
