@@ -464,3 +464,23 @@ jQuery.validator.addMethod("ttl_check", function(c, b, e) {
     }
     return this.optional(b) || a
 });
+jQuery.validator.addMethod("earfcn_check", function(c, b, e) {
+    var d = /^[0-9]+$/.test(c);
+    var a = false;
+    if (d) {
+        if (parseInt(c) >= 0 && parseInt(c) <= 65535) {
+            return true
+        }
+    }
+    return this.optional(b) || a
+});
+jQuery.validator.addMethod("pci_check", function(c, b, e) {
+    var d = /^[0-9]+$/.test(c);
+    var a = false;
+    if (d) {
+        if (parseInt(c) >= 0 && parseInt(c) <= 503) {
+            return true
+        }
+    }
+    return this.optional(b) || a
+});

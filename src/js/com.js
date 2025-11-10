@@ -5824,7 +5824,7 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
 
         function db(df, dd) {
             var de = {};
-            de.cmd = "lte_band,cell_id,ping_google";
+            de.cmd = "lte_band,cell_id,ping_google,lockcell";
             de.multi_data = 1;
             return de
         }
@@ -5835,6 +5835,7 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
                 dd.lte_band = de.lte_band;
                 dd.cell_id = de.cell_id;
                 dd.ping_google = de.ping_google;
+                dd.lockcell = de.lockcell;
                 return dd
             } else {
                 return unknownErrorObject
@@ -5882,6 +5883,26 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
             }
         }
     }
+
+    function setPciLock() {
+        return bz(arguments, {}, db, dc, null, false);
+
+        function db(df, dd) {
+            var de = {};
+            de.goformId = "MOD_LOCK_CELL";
+            de.lockcell = df.lockcell;
+            return de
+        }
+
+        function dc(dd) {
+            if (dd) {
+                return dd
+            } else {
+                return unknownErrorObject
+            }
+        }
+    }
+
 
     function d() {
         return bz(arguments, {}, db, dc, null, false);
@@ -6535,6 +6556,7 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
         getNetInfo: cy,
         getNetBandInfo: q,
         setselectedband: R,
+        setPciLock: setPciLock,
         getVpnSettings: bY,
         setVpnSettings: co,
         getVpnSettings_l2tp: c9,

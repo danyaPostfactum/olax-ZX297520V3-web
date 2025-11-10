@@ -1865,6 +1865,126 @@ define("net_info", "underscore jquery knockout set service".split(" "), function
                 restartDevice(e)
             })
         }
+
+
+        //AT+ZLOCKCELL=<action>[,<NTdCellNum>[,<TDCellId>,<TDarfcn>]s[,<NLteCellNum>[,<Pci>,<Earfcn>]s[,<NGsmCellNum>[,<Band>,<Bsic>,<Arfcn>]s[,<NWCellNum>[,<PrimSc>,<Warfcn>]s]]]]
+        function parseLockcell(str) {
+            var values, tdCellNum, tdCellsValues, lteCellNum, lteCellsValues, gsmCellNum, gsmCellsValues, wCellNum, wCellsValues;
+            var tdCells = [], lteCells = [], gsmCells = [], wCells = [], action = 0;
+
+            if (str) {
+                values = str.split(',');
+                action = parseInt(values.shift());
+                if (values.length > 0) {
+                    tdCellNum = values.shift();
+                    if (tdCellNum) {
+                        tdCellsValues = values.splice(0, tdCellNum * 2);
+                        for (var i = 0; i < tdCellNum; i++) {
+                            tdCells[i] = {
+                                tdCellId: parseInt(tdCellsValues[i*2] || 0),
+                                tdArfcn: parseInt(tdCellsValues[i*2 + 1] || 0)
+                            };
+                        }
+                    }
+                    lteCellNum = values.shift();
+                    if (lteCellNum) {
+                        lteCellsValues = values.splice(0, lteCellNum * 2);
+                        for (var i = 0; i < lteCellNum; i++) {
+                            lteCells[i] = {
+                                pci: parseInt(lteCellsValues[i*2] || 0),
+                                earfcn: parseInt(lteCellsValues[i*2 + 1] || 0)
+                            };
+                        }
+                    }
+                    gsmCellNum = values.shift();
+                    if (gsmCellNum) {
+                        gsmCellsValues = values.splice(0, gsmCellNum * 3);
+                        for (var i = 0; i < gsmCellNum; i++) {
+                            gsmCells[i] = {
+                                band: parseInt(gsmCellsValues[i*3] || 0),
+                                bsic: parseInt(gsmCellsValues[i*3 + 1] || 0),
+                                arfcn: parseInt(gsmCellsValues[i*3 + 2] || 0),
+                            };
+                        }
+                    }
+                    wCellNum = values.shift();
+                    if (wCellNum) {
+                        wCellsValues = values.splice(0, wCellNum * 2);
+                        for (var i = 0; i < wCellNum; i++) {
+                            wCells[i] = {
+                                primSc: parseInt(wCellsValues[i*2] || 0),
+                                warfcn: parseInt(wCellsValues[i*2 + 1] || 0)
+                            };
+                        }
+                    }
+                }
+            }
+
+            return {
+                action: action,
+                tdCells: tdCells,
+                lteCells: lteCells,
+                gsmCells: gsmCells,
+                wCells: wCells,
+            };
+        }
+
+        function buildLockcell(action, tdCells, lteCells, gsmCells, wCells) {
+            var values = [];
+            values.push(action);
+            if (action == 1) {
+                values.push(tdCells.length);
+                for (var i = 0; i < tdCells.length; i++) {
+                    values.push(tdCells[i].tdCellId, tdCells[i].tdArfcn);
+                }
+                values.push(lteCells.length);
+                for (var i = 0; i < lteCells.length; i++) {
+                    values.push(lteCells[i].pci, lteCells[i].earfcn);
+                }
+                values.push(gsmCells.length);
+                for (var i = 0; i < gsmCells.length; i++) {
+                    values.push(gsmCells[i].band, gsmCells[i].bsic, gsmCells[i].arfcn);
+                }
+                values.push(wCells.length);
+                for (var i = 0; i < wCells.length; i++) {
+                    values.push(wCells[i].primSc, wCells[i].warfcn);
+                }
+            }
+            return values.join(',');
+        }
+
+        var lockcell = parseLockcell(m.lockcell);
+
+        x.action = k.observable(lockcell.action.toString());
+        x.lteCells = k.observableArray(lockcell.lteCells);
+
+        x.addCell = function(item) {
+            x.lteCells.splice(x.lteCells.indexOf(item) + 1, 0, {pci: '', earfcn: ''});
+        };
+        x.removeCell = function(item) {
+            x.lteCells.remove(item);
+        };
+
+        x.applyPciLock = function() {
+            showLoading();
+            var z = {};
+
+            z.lockcell = buildLockcell(x.action(), [], x.lteCells(), [], []);
+
+            e.setPciLock(z, function(A) {
+                if (A.result == "success") {
+                    showConfirm("restart_confirm", function() {
+                        restartDevice(e)
+                    })
+                } else {
+                    errorOverlay()
+                }
+            })
+        };
+
+        if (x.lteCells().length < 1) {
+            x.lteCells.push({pci: '', earfcn: ''});
+        }
     }
 
     function l() {
@@ -1961,6 +2081,21 @@ define("net_info", "underscore jquery knockout set service".split(" "), function
         var n = new f();
         k.applyBindings(n, m[0]);
         addInterval(n.checkEnable, 1000)
+
+
+        // input names must be unique, so we use css classes to bind rules
+        d.validator.addClassRules('earfcn-input', {
+            earfcn_check: 'true'
+        });
+        d.validator.addClassRules('pci-input', {
+            pci_check: 'true'
+        });
+
+        d("#pciLockForm").validate({
+            submitHandler: function() {
+                n.applyPciLock();
+            }
+        });
     }
     return {
         init: i
