@@ -107,35 +107,32 @@ define(function() {
             value: "921600"
         }],
         BAND_FREQ: [{
-            name: "1",
-            value: "10"
+            name: "B1 (FDD 2100MHz)",
+            value: 1
         }, {
-            name: "3",
-            value: "9"
+            name: "B3 (FDD 1800MHz)",
+            value: 3
         }, {
-            name: "5",
-            value: "8"
+            name: "B5 (FDD 850MHz)",
+            value: 5
         }, {
-            name: "7",
-            value: "7"
+            name: "B7 (FDD 2600MHz)",
+            value: 7
         }, {
-            name: "20",
-            value: "6"
+            name: "B20 (FDD 800MHz)",
+            value: 20
         }, {
-            name: "28",
-            value: "5"
+            name: "B28 (FDD 700MHz)",
+            value: 28
         }, {
-            name: "38",
-            value: "4"
+            name: "B38 (TDD 2600MHz)",
+            value: 38
         }, {
-            name: "40",
-            value: "3"
+            name: "B40 (TDD 2300MHz)",
+            value: 40
         }, {
-            name: "41",
-            value: "2"
-        }, {
-            name: "1/3/5/7/20/28/38/40/41",
-            value: "1"
+            name: "B41 (TDD 2500MHz)",
+            value: 41
         }],
         FORWARDING_MODES: [{
             name: "Unconditional forwarding",

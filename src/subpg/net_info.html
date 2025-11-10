@@ -34,7 +34,14 @@
                         <div class="row form-group"><label class="col-xs-4 side-right" data-trans='SetBand'></label>
                             <div class="col-xs-8">
                                 <div class="row">
-                                    <div class="col-xs-6"><select data-transid='frequency_band_type' id="type1" class="form-control" data-bind="options: typesBAND, value: selectedBand, optionsText: transOption('frequency_band_type'), optionsValue: 'value'"></select></div>
+                                    <div class="col-xs-6">
+                                        <div data-bind="foreach: bandCheckList">
+                                            <div class="form-row">
+                                                <input type="checkbox" name="band[]" data-bind="checked: checked, attr: {id: 'band-' + value}" />
+                                                <label data-bind="text: name, attr: {for: 'band-' + value}"></label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-buttons"><input type="button" class="btn btn-primary" data-bind='click: save' data-trans='apply' /></div>
                             </div>

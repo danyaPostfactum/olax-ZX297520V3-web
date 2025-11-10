@@ -1792,37 +1792,55 @@ define("net_info", "underscore jquery knockout set service".split(" "), function
     var g = h.map(a.BAND_INDICATOR, function(m) {
         return new Option(m.name, m.value)
     });
-    var j = h.map(a.BAND_FREQ, function(m) {
-        return new Option(m.name, m.value)
-    });
 
     function f() {
         var x = this;
         x.enableFlag = k.observable(true);
-        x.typesBAND = k.observableArray(j);
         x.isSupportVpnsetting = k.observable(a.HAS_VPN_SETTING);
-        x.selectedBand = k.observable();
         var v = l();
         x.CellIDName = k.observable(v.cell_id);
         x.selectedIndicator = k.observable(v.lte_band);
         var o = e.getNetBandInfo();
-        var n = o.work_lte_band.split(",");
-        var w = [];
-        for (var t = 0; t < 8; t++) {
-            var r = n[t];
-            var p = parseInt(n[t], 10);
-            var s = parseInt(n[t], 10).toString(2);
-            var u = s.toString().length;
-            for (var q = 0; q < 8; q++) {
-                if (q < u) {
-                    w[w.length] = s.charAt(u - 1 - q)
-                } else {
-                    w[w.length] = "0"
+
+        function parseMaskBytes(str) {
+            var values = str.split(',');
+            var bandList = [];
+            var bits = '';
+            for (var i = 0; i < 8; i++) {
+                var byte = values[i] ? parseInt(values[i]) : 0;
+                for (var j = 0; j < 8; j++) {
+                    if (byte & (1 << j)) {
+                        bandList.push(i*8 + j + 1);
+                    }
                 }
             }
+            return bandList;
         }
-        x.bandSelectdList = w;
-        x.selectedBand(b(w));
+
+        function buildMaskBytes(bandList) {
+            var bytes = [];
+            for (var i = 0; i < 8; i++) {
+                var byte = 0;
+                for (var j = 0; j < 8; j++) {
+                    if (bandList.includes(i*8 + j + 1)) {
+                        byte = byte | (1 << j);
+                    }
+                }
+                bytes.push(byte);
+            }
+            return bytes.join(',');
+        }
+
+        var selectedBands = parseMaskBytes(o.work_lte_band);
+        var bandCheckList = h.map(a.BAND_FREQ, function(m) {
+            return {
+                name: m.name,
+                value: m.value,
+                checked: selectedBands.includes(m.value)
+            };
+        });
+        x.bandCheckList = k.observableArray(bandCheckList);
+
         x.ping_google = k.observable(v.ping_google);
         if (v.ping_google == "no") {
             x.enableFlag(false)
@@ -1832,8 +1850,14 @@ define("net_info", "underscore jquery knockout set service".split(" "), function
         x.save = function() {
             showLoading();
             var z = {};
-            var y = c(x.selectedBand());
-            z.work_lte_band = c(x.selectedBand());
+
+            var bandCheckList = x.bandCheckList();
+            var selectedBands = [];
+            for (var i = 0; i < bandCheckList.length; i++) {
+                if (bandCheckList[i].checked)
+                    selectedBands.push(parseInt(bandCheckList[i].value));
+            }
+            z.work_lte_band = buildMaskBytes(selectedBands);
             if (x.ping_google() == "yes") {
                 z.ping_google = "yes"
             } else {
@@ -1869,90 +1893,6 @@ define("net_info", "underscore jquery knockout set service".split(" "), function
 
     function l() {
         return e.getNetInfo()
-    }
-
-    function c(m) {
-        if (m == 10) {
-            return "1,0,0,0,0,0,0,0"
-        } else {
-            if (m == 9) {
-                return "4,0,0,0,0,0,0,0"
-            } else {
-                if (m == 8) {
-                    return "16,0,0,0,0,0,0,0"
-                } else {
-                    if (m == 7) {
-                        return "64,0,0,0,0,0,0,0"
-                    } else {
-                        if (m == 6) {
-                            return "0,0,8,0,0,0,0,0"
-                        } else {
-                            if (m == 5) {
-                                return "0,0,0,8,0,0,0,0"
-                            } else {
-                                if (m == 4) {
-                                    return "0,0,0,0,32,0,0,0"
-                                } else {
-                                    if (m == 3) {
-                                        return "0,0,0,0,128,0,0,0"
-                                    } else {
-                                        if (m == 2) {
-                                            return "0,0,0,0,0,1,0,0"
-                                        } else {
-                                            return "85,0,8,8,160,1,0,0"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    function b(m) {
-        if (m[0] == "1" && m[2] == "1" && m[4] == "1" && m[6] == "1" && m[19] == "1" && m[27] == "1" && m[37] == "1" && m[39] == "1" && m[40] == "1") {
-            return 1
-        } else {
-            if (m[0] == "0" && m[2] == "0" && m[4] == "0" && m[6] == "0" && m[19] == "0" && m[27] == "0" && m[37] == "0" && m[39] == "0" && m[40] == "1") {
-                return 2
-            } else {
-                if (m[0] == "0" && m[2] == "0" && m[4] == "0" && m[6] == "0" && m[19] == "0" && m[27] == "0" && m[37] == "0" && m[39] == "1" && m[40] == "0") {
-                    return 3
-                } else {
-                    if (m[0] == "0" && m[2] == "0" && m[4] == "0" && m[6] == "0" && m[19] == "0" && m[27] == "0" && m[37] == "1" && m[39] == "0" && m[40] == "0") {
-                        return 4
-                    } else {
-                        if (m[0] == "0" && m[2] == "0" && m[4] == "0" && m[6] == "0" && m[19] == "0" && m[27] == "1" && m[37] == "0" && m[39] == "0" && m[40] == "0") {
-                            return 5
-                        } else {
-                            if (m[0] == "0" && m[2] == "0" && m[4] == "0" && m[6] == "0" && m[19] == "1" && m[27] == "0" && m[37] == "0" && m[39] == "0" && m[40] == "0") {
-                                return 6
-                            } else {
-                                if (m[0] == "0" && m[2] == "0" && m[4] == "0" && m[6] == "1" && m[19] == "0" && m[27] == "0" && m[37] == "0" && m[39] == "0" && m[40] == "0") {
-                                    return 7
-                                } else {
-                                    if (m[0] == "0" && m[2] == "0" && m[4] == "1" && m[6] == "0" && m[19] == "0" && m[27] == "0" && m[37] == "0" && m[39] == "0" && m[40] == "0") {
-                                        return 8
-                                    } else {
-                                        if (m[0] == "0" && m[2] == "1" && m[4] == "0" && m[6] == "0" && m[19] == "0" && m[27] == "0" && m[37] == "0" && m[39] == "0" && m[40] == "0") {
-                                            return 9
-                                        } else {
-                                            if (m[0] == "1" && m[2] == "0" && m[4] == "0" && m[6] == "0" && m[19] == "0" && m[27] == "0" && m[37] == "0" && m[39] == "0" && m[40] == "0") {
-                                                return 10
-                                            } else {
-                                                return 1
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
 
     function i() {
