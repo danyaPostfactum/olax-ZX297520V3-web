@@ -1841,9 +1841,7 @@ define("net_info", "underscore jquery knockout set service".split(" "), function
             }
             e.setselectedband(z, function(A) {
                 if (A.result == "success") {
-                    showConfirm("restart_confirm", function() {
-                        restartDevice(e)
-                    })
+                    successOverlay()
                 } else {
                     errorOverlay()
                 }
@@ -1973,9 +1971,7 @@ define("net_info", "underscore jquery knockout set service".split(" "), function
 
             e.setPciLock(z, function(A) {
                 if (A.result == "success") {
-                    showConfirm("restart_confirm", function() {
-                        restartDevice(e)
-                    })
+                    successOverlay()
                 } else {
                     errorOverlay()
                 }
