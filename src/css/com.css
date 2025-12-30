@@ -2565,10 +2565,9 @@ input[type='file']:focus {
     -moz-transition: all ease-in .3s;
     -ms-transition: all ease-in .3s;
     transition: all ease-in .3s;
-    border-left: 1px solid
+    border-right: 1px solid
 }
 
-.type_items a,
 .nav_right a:hover {
     -webkit-box-shadow: 0 2px 4px rgba(172, 172, 172, 0.5);
     -moz-box-shadow: 0 2px 4px rgba(172, 172, 172, 0.5);
