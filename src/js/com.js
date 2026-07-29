@@ -8678,6 +8678,7 @@ define("main", "set service knockout underscore jquery statusBar echarts".split(
         u.down_Speed = e.observable(transUnit(0, true));
         u.isLoggedIn = e.observable(false);
         u.enableFlag = e.observable(true);
+        u.simSerialNumber = e.observable("");
         u.iccid = e.observable("");
         u.imei = e.observable("");
         u.imsi = e.observable("");
@@ -8720,6 +8721,7 @@ define("main", "set service knockout underscore jquery statusBar echarts".split(
 
         function q() {
             var x = f.getDeviceInfo();
+            u.simSerialNumber(verifyDeviceInfo(x.simSerialNumber));
             u.imei(verifyDeviceInfo(x.imei));
             u.imsi(verifyDeviceInfo(x.imsi));
             u.ssid(verifyDeviceInfo(x.ssid));
