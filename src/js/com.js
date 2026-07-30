@@ -2335,7 +2335,11 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
 
         function db(dd, de) {
             var df = {};
-            df.cmd = "wifi_wps_index,WscModeOption,AuthMode,wifi_cur_state,EncrypType,wps_mode,WPS_SSID,m_ssid_enable,SSID1,m_SSID,m_EncrypType,m_AuthMode,wifi_sta_connection";
+            if (aH.WIFI_HAS_5G) {
+                df.cmd = "wifi_wps_index,WscModeOption,AuthMode,wifi_cur_state,EncrypType,wps_mode,WPS_SSID,m_ssid_enable,SSID1,m_SSID,m_EncrypType,m_AuthMode,wifi_sta_connection,AuthMode_5g,EncrypType_5g,SSID1_5g,m_SSID_5g,m_EncrypType_5g,m_AuthMode_5g,wifi_band"
+            } else {
+                df.cmd = "wifi_wps_index,WscModeOption,AuthMode,wifi_cur_state,EncrypType,wps_mode,WPS_SSID,m_ssid_enable,SSID1,m_SSID,m_EncrypType,m_AuthMode,wifi_sta_connection"
+            }
             df.multi_data = 1;
             return df
         }
@@ -2357,6 +2361,14 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
                 dd.AuthMode = de.AuthMode;
                 dd.m_AuthMode = de.m_AuthMode;
                 dd.ap_station_enable = de.wifi_sta_connection;
+                if (aH.WIFI_HAS_5G && de.wifi_band == "a") {
+                    dd.AuthMode = de.AuthMode_5g;
+                    dd.ssid = de.SSID1_5g;
+                    dd.encrypType = de.EncrypType_5g;
+                    dd.multiSSID = de.m_SSID_5g;
+                    dd.m_AuthMode = de.m_AuthMode_5g;
+                    dd.m_encrypType = de.m_EncrypType_5g
+                }
                 return dd
             } else {
                 return V
@@ -2645,8 +2657,13 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
 
         function db(de, df) {
             var dg = {};
-            var dd = aH.PASSWORD_ENCODE ? ",WPAPSK1_encode" : ",imei,rnum_js,WPAPSK1_enaes";
-            dg.cmd = "pdp_type,ipv6_pdp_type,wifi_cur_state,SSID1,HideSSID,AuthMode,WscModeOption,ppp_status,apn_index,ipv6_apn_index,ipv6_APN_index,m_profile_name,apn_mode,EncrypType,DefaultKeyID,Key1Str1,Key2Str1,Key3Str1,Key4Str1" + dd + ",APN_configtmp0,APN_configtmp1,APN_configtmp2,APN_configtmp3,APN_configtmp4,APN_configtmp5,APN_configtmp6,APN_configtmp7,APN_configtmp8,APN_configtmp9,APN_configtmp10,APN_configtmp11,APN_configtmp12,APN_configtmp13,APN_configtmp14,APN_configtmp15,APN_configtmp16,APN_configtmp17,APN_configtmp18,APN_configtmp19,ipv6_APN_configtmp0,ipv6_APN_configtmp1,ipv6_APN_configtmp2,ipv6_APN_configtmp3,ipv6_APN_configtmp4,ipv6_APN_configtmp5,ipv6_APN_configtmp6,ipv6_APN_configtmp7,ipv6_APN_configtmp8,ipv6_APN_configtmp9,ipv6_APN_configtmp10,ipv6_APN_configtmp11,ipv6_APN_configtmp12,ipv6_APN_configtmp13,ipv6_APN_configtmp14,ipv6_APN_configtmp15,ipv6_APN_configtmp16,ipv6_APN_configtmp17,ipv6_APN_configtmp18,ipv6_APN_configtmp19";
+            if (aH.WIFI_HAS_5G) {
+                var dd = aH.PASSWORD_ENCODE ? ",WPAPSK1_encode,WPAPSK1_encode_5g" : ",imei,rnum_js,WPAPSK1_enaes,WPAPSK1_enaes_5g";
+                dg.cmd = "pdp_type,ipv6_pdp_type,wifi_cur_state,SSID1,HideSSID,AuthMode,WscModeOption,ppp_status,apn_index,ipv6_apn_index,ipv6_APN_index,m_profile_name,apn_mode,EncrypType,DefaultKeyID,Key1Str1,Key2Str1,Key3Str1,Key4Str1" + dd + ",APN_configtmp0,APN_configtmp1,APN_configtmp2,APN_configtmp3,APN_configtmp4,APN_configtmp5,APN_configtmp6,APN_configtmp7,APN_configtmp8,APN_configtmp9,APN_configtmp10,APN_configtmp11,APN_configtmp12,APN_configtmp13,APN_configtmp14,APN_configtmp15,APN_configtmp16,APN_configtmp17,APN_configtmp18,APN_configtmp19,ipv6_APN_configtmp0,ipv6_APN_configtmp1,ipv6_APN_configtmp2,ipv6_APN_configtmp3,ipv6_APN_configtmp4,ipv6_APN_configtmp5,ipv6_APN_configtmp6,ipv6_APN_configtmp7,ipv6_APN_configtmp8,ipv6_APN_configtmp9,ipv6_APN_configtmp10,ipv6_APN_configtmp11,ipv6_APN_configtmp12,ipv6_APN_configtmp13,ipv6_APN_configtmp14,ipv6_APN_configtmp15,ipv6_APN_configtmp16,ipv6_APN_configtmp17,ipv6_APN_configtmp18,ipv6_APN_configtmp19,SSID1_5g,HideSSID_5g,AuthMode_5g,EncrypType_5g,DefaultKeyID_5g,Key1Str1_5g,Key2Str1_5g,Key3Str1_5g,Key4Str1_5g,wifi_band"
+            } else {
+                var dd = aH.PASSWORD_ENCODE ? ",WPAPSK1_encode" : ",imei,rnum_js,WPAPSK1_enaes";
+                dg.cmd = "pdp_type,ipv6_pdp_type,wifi_cur_state,SSID1,HideSSID,AuthMode,WscModeOption,ppp_status,apn_index,ipv6_apn_index,ipv6_APN_index,m_profile_name,apn_mode,EncrypType,DefaultKeyID,Key1Str1,Key2Str1,Key3Str1,Key4Str1" + dd + ",APN_configtmp0,APN_configtmp1,APN_configtmp2,APN_configtmp3,APN_configtmp4,APN_configtmp5,APN_configtmp6,APN_configtmp7,APN_configtmp8,APN_configtmp9,APN_configtmp10,APN_configtmp11,APN_configtmp12,APN_configtmp13,APN_configtmp14,APN_configtmp15,APN_configtmp16,APN_configtmp17,APN_configtmp18,APN_configtmp19,ipv6_APN_configtmp0,ipv6_APN_configtmp1,ipv6_APN_configtmp2,ipv6_APN_configtmp3,ipv6_APN_configtmp4,ipv6_APN_configtmp5,ipv6_APN_configtmp6,ipv6_APN_configtmp7,ipv6_APN_configtmp8,ipv6_APN_configtmp9,ipv6_APN_configtmp10,ipv6_APN_configtmp11,ipv6_APN_configtmp12,ipv6_APN_configtmp13,ipv6_APN_configtmp14,ipv6_APN_configtmp15,ipv6_APN_configtmp16,ipv6_APN_configtmp17,ipv6_APN_configtmp18,ipv6_APN_configtmp19"
+            }
             dg.multi_data = 1;
             return dg
         }
@@ -2657,6 +2674,22 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
                     dd.WPAPSK1 = Base64.decode(dd.WPAPSK1_encode)
                 } else {
                     dd.WPAPSK1 = c(dd.rnum_js, dd.imei, dd.WPAPSK1_enaes)
+                }
+                if (aH.WIFI_HAS_5G && dd.wifi_band == "a") {
+                    if (aH.PASSWORD_ENCODE) {
+                        dd.WPAPSK1 = Base64.decode(dd.WPAPSK1_encode_5g)
+                    } else {
+                        dd.WPAPSK1 = c(dd.rnum_js, dd.imei, dd.WPAPSK1_enaes_5g)
+                    }
+                    dd.SSID1 = dd.SSID1_5g;
+                    dd.HideSSID = dd.HideSSID_5g;
+                    dd.AuthMode = dd.AuthMode_5g;
+                    dd.EncrypType = dd.EncrypType_5g;
+                    dd.DefaultKeyID = dd.DefaultKeyID_5g;
+                    dd.Key1Str1 = dd.Key1Str1_5g;
+                    dd.Key2Str1 = dd.Key2Str1_5g;
+                    dd.Key3Str1 = dd.Key3Str1_5g;
+                    dd.Key4Str1 = dd.Key4Str1_5g
                 }
                 return dd
             } else {
@@ -3295,7 +3328,7 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
 
         function db(dd, de) {
             var df = {};
-            df.cmd = "WirelessMode,CountryCode,Channel,HT_MCS,wifi_band,wifi_11n_cap,MAX_Access_num,m_MAX_Access_num,MAX_Station_num,wifi_sta_connection";
+            df.cmd = "WirelessMode,WirelessMode_5g,CountryCode,Channel,Channel_5g,HT_MCS,wifi_band,wifi_11n_cap,wifi_11n_cap_5g,MAX_Access_num,m_MAX_Access_num,MAX_Station_num,wifi_sta_connection";
             df.multi_data = 1;
             return df
         }
@@ -3303,12 +3336,12 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
         function dc(de) {
             if (de) {
                 var dd = {
-                    mode: de.WirelessMode,
+                    mode: de.wifi_band == "a" ? de.WirelessMode_5g : de.WirelessMode,
                     countryCode: de.CountryCode,
-                    channel: de.Channel,
+                    channel: de.wifi_band == "a" ? de.Channel_5g : de.Channel,
                     rate: de.HT_MCS,
                     wifiBand: de.wifi_band == "a" ? "a" : "b",
-                    bandwidth: de.wifi_11n_cap,
+                    bandwidth: de.wifi_band == "a" ? de.wifi_11n_cap_5g : de.wifi_11n_cap,
                     MAX_Station_num: cP.isNumeric(de.MAX_Station_num) ? de.MAX_Station_num : aH.MAX_STATION_NUMBER,
                     MAX_Access_num: de.MAX_Access_num,
                     m_MAX_Access_num: de.m_MAX_Access_num,
@@ -3335,10 +3368,8 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
             if (aH.WIFI_BAND_SUPPORT) {
                 de.wifi_band = dd.wifiBand
             }
-            if (aH.WIFI_BAND_SUPPORT && dd.wifiBand == "a") {
-                de.selectedChannel = "auto"
-            } else {
-                de.selectedChannel = dd.channel;
+            de.selectedChannel = dd.channel;
+            if (!aH.WIFI_BAND_SUPPORT) {
                 de.abg_rate = dd.rate
             }
             if (aH.WIFI_BANDWIDTH_SUPPORT) {
@@ -3360,16 +3391,61 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
         return bz(arguments, {}, db, dc, null, false);
 
         function db(de, df) {
-            var dd = aH.PASSWORD_ENCODE ? "WPAPSK1_encode,m_WPAPSK1_encode," : "rnum_js,WPAPSK1_enaes,m_WPAPSK1_enaes,";
-            var dg = {
-                cmd: "wifi_coverage,m_ssid_enable,imei,network_type,sub_network_type,rssi,rscp,lte_rsrp,imsi,sim_imsi,cr_version,hw_version,MAX_Access_num," + dd + "SSID1,AuthMode,m_SSID,m_AuthMode,m_HideSSID,m_MAX_Access_num,lan_ipaddr,mac_address,msisdn,LocalDomain,wan_ipaddr,static_wan_ipaddr,ipv6_wan_ipaddr,ipv6_pdp_type,pdp_type,ppp_status,sta_ip_status,rj45_state,ethwan_mode,ziccid,lte_band,rssi,nv_sinr,nv_rsrq,nv_pci,cell_id,lte_sinr,lte_rsrp",
-                multi_data: 1
-            };
+            var dg;
+            if (aH.WIFI_HAS_5G) {
+                var dd = aH.PASSWORD_ENCODE ? "WPAPSK1_encode,m_WPAPSK1_encode,WPAPSK1_encode_5g,m_WPAPSK1_encode_5g," : "rnum_js,WPAPSK1_enaes,m_WPAPSK1_enaes,WPAPSK1_enaes_5g,m_WPAPSK1_enaes_5g,";
+                dg = {
+                    cmd: "wifi_coverage,m_ssid_enable,imei,network_type,sub_network_type,rssi,rscp,lte_rsrp,imsi,sim_imsi,cr_version,hw_version,MAX_Access_num," + dd + "SSID1,AuthMode,m_SSID,m_AuthMode,m_HideSSID,m_MAX_Access_num,lan_ipaddr,mac_address,msisdn,LocalDomain,wan_ipaddr,static_wan_ipaddr,ipv6_wan_ipaddr,ipv6_pdp_type,pdp_type,ppp_status,sta_ip_status,rj45_state,ethwan_mode,MAX_Access_num_5g,SSID1_5g,AuthMode_5g,m_SSID_5g,m_AuthMode_5g,m_MAX_Access_num_5g,wifi_band,ziccid,lte_band,rssi,nv_sinr,nv_rsrq,nv_pci,cell_id,lte_sinr,lte_rsrp",
+                    multi_data: 1
+                }
+            } else {
+                var dd = aH.PASSWORD_ENCODE ? "WPAPSK1_encode,m_WPAPSK1_encode," : "rnum_js,WPAPSK1_enaes,m_WPAPSK1_enaes,";
+                dg = {
+                    cmd: "wifi_coverage,m_ssid_enable,imei,network_type,sub_network_type,rssi,rscp,lte_rsrp,imsi,sim_imsi,cr_version,hw_version,MAX_Access_num," + dd + "SSID1,AuthMode,m_SSID,m_AuthMode,m_HideSSID,m_MAX_Access_num,lan_ipaddr,mac_address,msisdn,LocalDomain,wan_ipaddr,static_wan_ipaddr,ipv6_wan_ipaddr,ipv6_pdp_type,pdp_type,ppp_status,sta_ip_status,rj45_state,ethwan_mode,ziccid,lte_band,rssi,nv_sinr,nv_rsrq,nv_pci,cell_id,lte_sinr,lte_rsrp",
+                    multi_data: 1
+                }
+            }
             return dg
         }
 
         function dc(dd) {
             if (dd) {
+                if (aH.WIFI_HAS_5G && dd.wifi_band == "a") {
+                    return {
+                        ssid: dd.SSID1_5g,
+                        authMode: dd.AuthMode_5g,
+                        passPhrase: aH.PASSWORD_ENCODE ? Base64.decode(dd.WPAPSK1_encode_5g) : c(dd.rnum_js, dd.imei, dd.WPAPSK1_enaes_5g),
+                        m_ssid: dd.m_SSID_5g,
+                        m_AuthMode: dd.m_AuthMode_5g,
+                        m_passPhrase: aH.PASSWORD_ENCODE ? Base64.decode(dd.m_WPAPSK1_encode_5g) : c(dd.rnum_js, dd.imei, dd.m_WPAPSK1_enaes_5g),
+                        m_max_access_num: dd.m_MAX_Access_num_5g,
+                        multi_ssid_enable: dd.m_ssid_enable,
+                        ipAddress: dd.lan_ipaddr,
+                        wanIpAddress: dd.wan_ipaddr,
+                        staticWanIpAddress: dd.static_wan_ipaddr,
+                        ipv6WanIpAddress: dd.ipv6_wan_ipaddr,
+                        ipv6PdpType: dd.ipv6_pdp_type,
+                        macAddress: dd.mac_address,
+                        simSerialNumber: dd.msisdn,
+                        lanDomain: dd.LocalDomain,
+                        imei: dd.imei,
+                        signal: convertSignal(dd),
+                        imsi: dd.imsi || dd.sim_imsi,
+                        sw_version: dd.cr_version,
+                        hw_version: dd.hw_version,
+                        max_access_num: dd.MAX_Access_num_5g,
+                        wifiRange: dd.wifi_coverage,
+                        pdpType: dd.pdp_type,
+                        rj45ConnectStatus: (typeof dd.rj45_state == "undefined" || dd.rj45_state == "") ? "dead" : dd.rj45_state,
+                        blc_wan_mode: bu.blc_wan_mode,
+                        connectStatus: dd.ppp_status,
+                        wifiConStatus: dd.sta_ip_status,
+                        ethwan_mode: dd.ethwan_mode.toUpperCase(),
+                        iccid: dd.ziccid,
+                        pci: dd.nv_pci,
+                        arfcn: dd.lte_band
+                    }
+                }
                 return {
                     ssid: dd.SSID1,
                     authMode: dd.AuthMode,
@@ -5888,8 +5964,13 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
 
         function db(dd, df) {
             var dg = {};
-            var de = aH.PASSWORD_ENCODE ? "WPAPSK1_encode,m_WPAPSK1_encode," : "imei,rnum_js,WPAPSK1_enaes,m_WPAPSK1_enaes,";
-            dg.cmd = "m_ssid_enable,wifi_cur_state,NoForwarding,m_NoForwarding," + de + "MAX_Station_num,SSID1,AuthMode,HideSSID,MAX_Access_num,show_qrcode_flag,EncrypType,Key1Str1,Key2Str1,Key3Str1,Key4Str1,DefaultKeyID,m_SSID,m_AuthMode,m_HideSSID,m_MAX_Access_num,m_EncrypType,m_show_qrcode_flag,m_DefaultKeyID,m_Key1Str1,m_Key2Str1,m_Key3Str1,m_Key4Str1,rotationFlag,wifi_sta_connection";
+            if (aH.WIFI_HAS_5G) {
+                var de = aH.PASSWORD_ENCODE ? "WPAPSK1_encode,m_WPAPSK1_encode,WPAPSK1_encode_5g,m_WPAPSK1_encode_5g," : "imei,rnum_js,WPAPSK1_enaes,m_WPAPSK1_enaes,WPAPSK1_enaes_5g,m_WPAPSK1_enaes_5g,";
+                dg.cmd = "m_ssid_enable,wifi_cur_state,NoForwarding,m_NoForwarding,NoForwarding_5g,m_NoForwarding_5g," + de + "MAX_Station_num,SSID1,AuthMode,HideSSID,MAX_Access_num,show_qrcode_flag,EncrypType,Key1Str1,Key2Str1,Key3Str1,Key4Str1,DefaultKeyID,m_SSID,m_AuthMode,m_HideSSID,m_MAX_Access_num,m_EncrypType,m_show_qrcode_flag,m_DefaultKeyID,m_Key1Str1,m_Key2Str1,m_Key3Str1,m_Key4Str1,rotationFlag,wifi_sta_connection,SSID1_5g,AuthMode_5g,HideSSID_5g,MAX_Access_num_5g,show_qrcode_flag_5g,EncrypType_5g,Key1Str1_5g,Key2Str1_5g,Key3Str1_5g,Key4Str1_5g,DefaultKeyID_5g,m_SSID_5g,m_AuthMode_5g,m_HideSSID_5g,m_MAX_Access_num_5g,m_EncrypType_5g,m_show_qrcode_flag_5g,m_DefaultKeyID_5g,m_Key1Str1_5g,m_Key2Str1_5g,m_Key3Str1_5g,m_Key4Str1_5g,wifi_band"
+            } else {
+                var de = aH.PASSWORD_ENCODE ? "WPAPSK1_encode,m_WPAPSK1_encode," : "imei,rnum_js,WPAPSK1_enaes,m_WPAPSK1_enaes,";
+                dg.cmd = "m_ssid_enable,wifi_cur_state,NoForwarding,m_NoForwarding," + de + "MAX_Station_num,SSID1,AuthMode,HideSSID,MAX_Access_num,show_qrcode_flag,EncrypType,Key1Str1,Key2Str1,Key3Str1,Key4Str1,DefaultKeyID,m_SSID,m_AuthMode,m_HideSSID,m_MAX_Access_num,m_EncrypType,m_show_qrcode_flag,m_DefaultKeyID,m_Key1Str1,m_Key2Str1,m_Key3Str1,m_Key4Str1,rotationFlag,wifi_sta_connection"
+            }
             dg.multi_data = 1;
             return dg
         }
@@ -5931,6 +6012,43 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
                     rotationFlag: de.rotationFlag,
                     ap_station_enable: de.wifi_sta_connection
                 };
+                if (aH.WIFI_HAS_5G && de.wifi_band == "a") {
+                    dd = {
+                        wifi_enable: de.wifi_cur_state == "1" ? "1" : "0",
+                        multi_ssid_enable: de.m_ssid_enable,
+                        MAX_Station_num: cP.isNumeric(de.MAX_Station_num) ? de.MAX_Station_num : aH.MAX_STATION_NUMBER,
+                        AuthMode: de.AuthMode_5g,
+                        SSID: de.SSID1_5g,
+                        broadcast: de.HideSSID_5g,
+                        apIsolation: de.NoForwarding_5g,
+                        passPhrase: aH.PASSWORD_ENCODE ? Base64.decode(de.WPAPSK1_encode_5g) : c(de.rnum_js, de.imei, de.WPAPSK1_enaes_5g),
+                        MAX_Access_num: de.MAX_Access_num_5g,
+                        cipher: de.EncrypType_5g == "TKIP" ? "0" : de.EncrypType_5g == "AES" ? 1 : 2,
+                        encryptType: de.EncrypType_5g,
+                        show_qrcode_flag: de.show_qrcode_flag_5g == "1" ? true : false,
+                        keyID: de.DefaultKeyID_5g,
+                        Key1Str1: de.Key1Str1_5g,
+                        Key2Str1: de.Key2Str1_5g,
+                        Key3Str1: de.Key3Str1_5g,
+                        Key4Str1: de.Key4Str1_5g,
+                        m_SSID: de.m_SSID_5g,
+                        m_broadcast: de.m_HideSSID_5g,
+                        m_apIsolation: de.m_NoForwarding_5g,
+                        m_MAX_Access_num: de.m_MAX_Access_num_5g,
+                        m_AuthMode: de.m_AuthMode_5g,
+                        m_passPhrase: aH.PASSWORD_ENCODE ? Base64.decode(de.m_WPAPSK1_encode_5g) : c(de.rnum_js, de.imei, de.m_WPAPSK1_enaes_5g),
+                        m_cipher: de.m_EncrypType_5g == "TKIP" ? "0" : de.m_EncrypType_5g == "AES" ? 1 : 2,
+                        m_show_qrcode_flag: de.m_show_qrcode_flag_5g == "1" ? true : false,
+                        m_encryptType: de.m_EncrypType_5g,
+                        m_keyID: de.m_DefaultKeyID_5g,
+                        m_Key1Str1: de.m_Key1Str1_5g,
+                        m_Key2Str1: de.m_Key2Str1_5g,
+                        m_Key3Str1: de.m_Key3Str1_5g,
+                        m_Key4Str1: de.m_Key4Str1_5g,
+                        rotationFlag: de.rotationFlag,
+                        ap_station_enable: de.wifi_sta_connection
+                    }
+                }
                 return dd
             } else {
                 return V
@@ -8687,6 +8805,7 @@ define("main", "set service knockout underscore jquery statusBar echarts".split(
         u.SINR = e.observable("");
         u.RSRP = e.observable("");
         u.RSRQ = e.observable("");
+        u.PCI = e.observable("");
         u.hasWifi = k.HAS_WIFI;
         u.showMultiSsid = e.observable(k.HAS_MULTI_SSID && s.multi_ssid_enable == "1");
         u.trafficAlertEnable = e.observable(false);
@@ -8724,6 +8843,7 @@ define("main", "set service knockout underscore jquery statusBar echarts".split(
             u.imsi(verifyDeviceInfo(x.imsi));
             u.ssid(verifyDeviceInfo(x.ssid));
             u.iccid(verifyDeviceInfo(x.iccid));
+            u.PCI(verifyDeviceInfo(x.pci));
             u.CurrentBand(verifyDeviceInfo(x.arfcn));
             u.showMultiSsid(k.HAS_MULTI_SSID && x.multi_ssid_enable == "1");
             return x
