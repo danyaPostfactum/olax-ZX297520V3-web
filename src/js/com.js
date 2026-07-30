@@ -6279,6 +6279,12 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
             url: df ? "/reqproc/proc_post" : de.cmd ? "/reqproc/proc_get" : "/reqproc/proc_post",
             data: de,
             dataType: "json",
+            dataFilter: function(data, type) {
+                if (de.cmd === "sms_data_total") {
+                    data = data.replace(/[\u0000-\u001F\u007F-\u009F]/g, " ");
+                }
+                return data;
+            },
             async: !!dg,
             cache: false,
             error: function(dh) {
