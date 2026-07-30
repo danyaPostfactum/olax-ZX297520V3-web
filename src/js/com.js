@@ -3362,7 +3362,7 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
         function db(de, df) {
             var dd = aH.PASSWORD_ENCODE ? "WPAPSK1_encode,m_WPAPSK1_encode," : "rnum_js,WPAPSK1_enaes,m_WPAPSK1_enaes,";
             var dg = {
-                cmd: "wifi_coverage,m_ssid_enable,imei,network_type,sub_network_type,rssi,rscp,lte_rsrp,imsi,sim_imsi,cr_version,hw_version,MAX_Access_num," + dd + "SSID1,AuthMode,m_SSID,m_AuthMode,m_HideSSID,m_MAX_Access_num,lan_ipaddr,mac_address,msisdn,LocalDomain,wan_ipaddr,static_wan_ipaddr,ipv6_wan_ipaddr,ipv6_pdp_type,pdp_type,ppp_status,sta_ip_status,rj45_state,ethwan_mode,ziccid,lte_band,rssi,nv_sinr,nv_rsrq,nv_pci,cell_id,lte_sinr,lte_rsrp",
+                cmd: "wifi_coverage,m_ssid_enable,imei,network_type,sub_network_type,rssi,rscp,lte_rsrp,imsi,sim_imsi,cr_version,hw_version,MAX_Access_num," + dd + "SSID1,AuthMode,m_SSID,m_AuthMode,m_HideSSID,m_MAX_Access_num,lan_ipaddr,mac_address,msisdn,LocalDomain,wan_ipaddr,static_wan_ipaddr,ipv6_wan_ipaddr,ipv6_pdp_type,pdp_type,ppp_status,sta_ip_status,rj45_state,ethwan_mode,ziccid,lte_band,rssi,nv_sinr,nv_rsrq,nv_pci,nv_arfcn,cell_id,lte_sinr,lte_rsrp",
                 multi_data: 1
             };
             return dg
@@ -3402,7 +3402,8 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
                     wifiConStatus: dd.sta_ip_status,
                     CellID: dd.cell_id,
                     pci: dd.nv_pci,
-                    arfcn: dd.lte_band,
+                    arfcn: dd.nv_arfcn,
+                    lte_band: dd.lte_band,
                     ethwan_mode: dd.ethwan_mode.toUpperCase(),
                     rssi: dd.rssi,
                     SINR: dd.nv_sinr,
@@ -8726,7 +8727,7 @@ define("main", "set service knockout underscore jquery statusBar echarts".split(
             u.imsi(verifyDeviceInfo(x.imsi));
             u.ssid(verifyDeviceInfo(x.ssid));
             u.iccid(verifyDeviceInfo(x.iccid));
-            u.CurrentBand(verifyDeviceInfo(x.arfcn));
+            u.CurrentBand(verifyDeviceInfo(x.lte_band));
             u.showMultiSsid(k.HAS_MULTI_SSID && x.multi_ssid_enable == "1");
             return x
         }
@@ -8766,7 +8767,7 @@ define("main", "set service knockout underscore jquery statusBar echarts".split(
                 RSRQ: verifyRSRQ(z.network_type, z.nv_rsrq),
                 RSRP: rssi_format(z.network_type, z.rssi),
                 pci: z.pci,
-                arfcn: z.lte_band,
+                arfcn: z.arfcn,
                 rssi: rssi_format(z.rssi)
             });
             return h(y).translate()
@@ -8835,7 +8836,7 @@ define("main", "set service knockout underscore jquery statusBar echarts".split(
                     h("#popoverSINR").text(z);
                     h("#popoverRSRP").text(x);
                     h("#popoverRSRQ").text(B);
-                    h("#popoverArfcn").text(A.lte_band);
+                    h("#popoverArfcn").text(A.nv_arfcn);
                     h("#popoverCellID").text(verifyDeviceInfo(A.cell_id))
                 }
             });
