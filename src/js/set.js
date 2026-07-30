@@ -15,7 +15,7 @@ define(function() {
         maxApnNumber: 10,
         RJ45_SUPPORT: false,
         TSW_SUPPORT: false,
-        WIFI_SLEEP_SUPPORT: false,
+        WIFI_SLEEP_SUPPORT: true,
         HAS_BATTERY: false,
         FAST_BOOT_SUPPORT: true,
         TURN_OFF_SUPPORT: false,
@@ -40,7 +40,7 @@ define(function() {
         NETWORK_UNLOCK_SUPPORT: false,
         SHOW_MAC_ADDRESS: false,
         PASSWORD_ENCODE: true,
-        AP_STATION_SUPPORT: true,
+        AP_STATION_SUPPORT: false,
         AP_STATION_LIST_LENGTH: 10,
         WIFI_WEP_SUPPORT: false,
         WIFI_WAP3_SUPPORT: true,
@@ -49,7 +49,7 @@ define(function() {
         WIFI_BAND_SUPPORT: false,
         WIFI_BANDWIDTH_SUPPORT: false,
         WIFI_BANDWIDTH_SUPPORT_40MHZ: false,
-        WIFI_SUPPORT_QR_CODE: true,
+        WIFI_SUPPORT_QR_CODE: false,
         WIFI_SUPPORT_QR_SWITCH: false,
         WIFI_SWITCH_SUPPORT: true,
         MAX_STATION_NUMBER: 32,
@@ -72,7 +72,7 @@ define(function() {
         HAS_FOTA: true,
         HAS_UPDATE_CHECK: true,
         HAS_PHONEBOOK: true,
-        HAS_SMS: false,
+        HAS_SMS: true,
         HAS_PARENTAL_CONTROL: false,
         HAS_MULTI_SSID: false,
         HAS_WIFI: true,
@@ -486,11 +486,14 @@ define(function() {
         },
         countries_5g: {
             NONE: "NONE",
+            AL: "SHQIPERI",
+            DZ: "الجزائر",
             AR: "ARGENTIA",
             AM: "ՀԱՅԱՍՏԱՆ",
-            AU: "AUSTRILIA",
+            AU: "AUSTRALIA",
             AT: "ÖSTERREICH",
             AZ: "AZƏRBAYCAN",
+            BD: "বাংলাদেশ",
             BH: "البحرين",
             BY: "БЕЛАРУСЬ",
             BE: "BELGIË",
@@ -514,35 +517,45 @@ define(function() {
             GE: "საქართველო",
             DE: "DEUTSCHLAND",
             GR: "ΕΛΛΆΔΑ",
+            HN: "HONDURAS",
             HK: "香港",
             HU: "MAGYARORSZÁG",
             IS: "ÍSLAND",
             IN: "INDIA",
             ID: "INDONESIA",
-            IR: "ایران",
             IE: "ÉIRE",
             IL: "إسرائيل",
             IT: "ITALIA",
             JM: "JAMAICA",
             JO: "الأردن",
+            KZ: "КАЗАХСТАН",
+            KE: "KENYA",
             KP: "조선민주주의인민공화국",
             KR: "한국 ROK",
+            KW: "الكويت",
             LV: "LATVIJA",
+            LB: "لبنان",
             LI: "LIECHTENSTEIN",
             LT: "LIETUVA",
             LU: "LUXEMBOURG",
             MO: "澳門",
+            MK: "МАКЕДОНИЈА",
             MY: "MALAYSIA",
             MT: "MALTA",
             MC: "MONACO",
+            MA: "المغرب",
             NL: "NEDERLAND",
-            AN: "Netherlands Antilles",
+            AN: "NETHERLANDS ANTILLES",
             NO: "NORGE",
             OM: "سلطنة عمان",
+            PK: "PAKISTAN",
             PE: "PERÚ",
             PH: "PHILIPPINES",
             PL: "POLSKA",
             PT: "PORTUGAL",
+            QA: "قطر",
+            RO: "ROMÂNIA",
+            RU: "Российская Федерация",
             SA: "السعودية",
             SG: "SINGAPORE",
             SK: "SLOVENSKÁ REPUBLIKA",
@@ -552,16 +565,21 @@ define(function() {
             LK: "SRILANKA",
             SE: "SVERIGE",
             CH: "SCHWEIZ",
+            TH: "ประเทศไทย",
             TT: "TRINIDAD AND TOBAGO",
             TN: "تونس",
             TR: "TÜRKİYE",
+            UA: "Україна",
+            AE: "الإمارات العربية المتحدة",
             GB: "UNITED KINGDOM",
             UY: "URUGUAY",
+            VN: "VIỆT NAM",
+            ZW: "ZIMBABWE",
             JP: "日本",
             BZ: "BELIZE",
             BO: "BOLIVIA",
             NZ: "NEW ZEALAND",
-            VE: "VENEZUELA",
+            VE: "REPÚBLICA BOLIVARIANA DE VENEZUELA",
             CA: "CANADA",
             CO: "COLOMBIA",
             DO: "REPÚBLICA DOMINICANA",
@@ -685,24 +703,72 @@ define(function() {
         },
         countryCode_5g: {
             one: {
-                codes: ["AL", "AI", "AW", "AT", "BY", "BM", "BA", "BW", "IO", "BG", "CV", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "GF", "PF", "TF", "GI", "DE", "GR", "GP", "GG", "HU", "IS", "IE", "IT", "KE", "LA", "LV", "LS", "LI", "LT", "LU", "MK", "MT", "IM", "MQ", "MR", "MU", "YT", "MC", "MS", "NL", "AN", "NO", "OM", "PL", "PT", "RE", "RO", "SM", "SN", "RS", "SK", "SI", "ZA", "ES", "SE", "CH", "TC", "UG", "GB", "VG", "WF", "ZM", "AF", "JO", "MA", "EH", "EU", "DZ", "IL", "MX", "PM", "TN", "TR", "JP"],
-                channels: [36, 40, 44, 48]
-            },
-            two: {
-                codes: ["AS", "AG", "AZ", "BR", "KH", "KY", "CO", "CR", "DM", "DO", "EC", "GH", "GD", "HK", "KZ", "KI", "FM", "MZ", "NA", "NZ", "NI", "NE", "PW", "PE", "PH", "PR", "VC", "TH", "TT", "UY", "ZW", "AU", "BH", "BB", "CA", "CL", "CX", "EG", "SV", "GT", "HT", "IN", "MY", "NF", "PA", "PG", "SG", "US", "VN"],
-                channels: [36, 40, 44, 48, 149, 153, 157, 161, 165]
-            },
-            three: {
-                codes: ["CU", "IR", "KR", "SY", "LB", "MW", "MO", "QA"],
-                channels: [149, 153, 157, 161]
-            },
-            four: {
-                codes: ["BD", "BF", "CN", "HN", "JM", "PK", "PY", "KN", "AR", "TW", "NG"],
+                codes: ["BZ", "HN", "PK", "BD"],
                 channels: [149, 153, 157, 161, 165]
             },
+            two: {
+                codes: ["AZ", "UZ", "AM", "IL", "KW", "MA", "TN", "EG", "GE"],
+                channels: [36, 40, 44, 48, 52, 56, 60, 64]
+            },
+            three: {
+                codes: ["BO"],
+                channels: [52, 56, 60, 64, 149, 153, 157, 161, 165]
+            },
+            four: {
+                codes: ["JO"],
+                channels: [36, 40, 44, 48, 149, 153, 157, 161, 165]
+            },
             five: {
-                codes: ["SA"],
-                channels: [36, 40, 44, 48, 149, 153, 157, 161]
+                codes: ["KE"],
+                channels: [36, 40, 44, 48, 100, 104, 108, 112, 149, 153]
+            },
+            six: {
+                codes: ["BY"],
+                channels: [36, 40, 44, 48, 52, 56, 60, 64, 132, 136, 140]
+            },
+            seven: {
+                codes: ["ID"],
+                channels: [36, 40, 44, 48, 52, 56, 60, 64, 149, 153, 157, 161]
+            },
+            eight: {
+                codes: ["CN", "BN", "CL", "SV", "GT", "IN", "VE", "DO", "UY", "BH"],
+                channels: [36, 40, 44, 48, 52, 56, 60, 64, 149, 153, 157, 161, 165]
+            },
+            nine: {
+                codes: ["RU"],
+                channels: [36, 40, 44, 48, 52, 56, 60, 64, 132, 136, 140, 149, 153, 157, 161, 165]
+            },
+            ten: {
+                codes: ["DZ"],
+                channels: [36, 40, 44, 48, 52, 56, 60, 64, 100, 104, 108, 112, 116, 120, 124, 128, 132]
+            },
+            eleven: {
+                codes: ["AN", "ZA", "TR", "ZW", "KZ", "MK", "SA", "OM", "JP"],
+                channels: [36, 40, 44, 48, 52, 56, 60, 64, 100, 104, 108, 112, 116, 120, 124, 128, 132, 136, 140]
+            },
+            twelve: {
+                codes: ["KP"],
+                channels: [36, 40, 44, 48, 52, 56, 60, 64, 100, 104, 108, 112, 116, 120, 124, 149, 153, 157, 161]
+            },
+            thirteen: {
+                codes: ["AR", "MY", "MX"],
+                channels: [36, 40, 44, 48, 52, 56, 60, 64, 100, 104, 108, 112, 116, 132, 136, 140, 149, 153, 157, 161, 165]
+            },
+            fourteen: {
+                codes: ["AU", "CA", "NZ"],
+                channels: [36, 40, 44, 48, 52, 56, 60, 64, 100, 104, 108, 112, 116, 132, 136, 140, 144, 149, 153, 157, 161, 165]
+            },
+            fifteen: {
+                codes: ["UA"],
+                channels: [36, 40, 44, 48, 52, 56, 60, 64, 100, 104, 108, 112, 116, 120, 124, 128, 132, 149, 153, 157, 161, 165]
+            },
+            sixteen: {
+                codes: ["BE", "BR", "DK", "DE", "EE", "ES", "FR", "HR", "IT", "LV", "LI", "LT", "LU", "HU", "MT", "MC", "NL", "NO", "PA", "PH", "PL", "PT", "RO", "CH", "AL", "SG", "SI", "SK", "LK", "FI", "SE", "GB", "VN", "IE", "IS", "AT", "CZ", "GR", "CY", "BA", "BG", "AE", "QA", "LB", "MO", "HK", "KR"],
+                channels: [36, 40, 44, 48, 52, 56, 60, 64, 100, 104, 108, 112, 116, 120, 124, 128, 132, 136, 140, 149, 153, 157, 161, 165]
+            },
+            seventeen: {
+                codes: ["CO", "CR", "EC", "JM", "PE", "PR", "TT", "US", "TH", "TW"],
+                channels: [36, 40, 44, 48, 52, 56, 60, 64, 100, 104, 108, 112, 116, 120, 124, 128, 132, 136, 140, 144, 149, 153, 157, 161, 165]
             }
         },
         countryCode: {
@@ -740,6 +806,16 @@ define(function() {
         }, {
             name: "Disable",
             value: "0"
+        }],
+        SIM_SELECTS: [{
+            name: "ESIM1",
+            value: "2"
+        }, {
+            name: "ESIM2",
+            value: "3"
+        }, {
+            name: "ESIM3",
+            value: "1"
         }],
         NetSetMode: [{
             name: "Enable",
@@ -814,6 +890,22 @@ define(function() {
             name: "L2TP",
             value: "l2tp"
         }],
+        SPEED_LIMIT_TYPES: [{
+            name: "none",
+            value: "0"
+        }, {
+            name: "5mbps",
+            value: "1"
+        }, {
+            name: "10mbps",
+            value: "2"
+        }, {
+            name: "20mbps",
+            value: "3"
+        }, {
+            name: "30mbps",
+            value: "4"
+        }],
         LANGUAGES: [{
             name: "English",
             value: "en"
@@ -832,9 +924,6 @@ define(function() {
         }, {
             name: "بالعربية",
             value: "arab"
-        }, {
-            name: "Українсьска",
-            value: "ua"
         }],
         AUTH_MODES: [{
             name: "NO ENCRYPTION",
@@ -898,14 +987,14 @@ define(function() {
             value: "2"
         }],
         NETWORK_MODES_BAND: [{
-            name: "802.11 a only",
-            value: "5"
-        }, {
-            name: "802.11 n only",
-            value: "2"
-        }, {
             name: "802.11 a/n",
             value: "4"
+        }, {
+            name: "802.11 a/n/ac",
+            value: "5"
+        }, {
+            name: "802.11 a/n/ac/ax",
+            value: "6"
         }],
         resetContentModifyValue: function() {
             this.CONTENT_MODIFIED.checkChangMethod = function() {

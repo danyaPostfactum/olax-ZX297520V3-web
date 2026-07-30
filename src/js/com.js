@@ -1,188 +1,188 @@
-define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, aH, bv) {
-    function bb(dc, db) {
-        if (cg.isArray(dc)) {
-            for (var dd = 0; dd < dc.length; dd++) {
-                c2(dc[dd])
+define("service", "underscore jquery set CryptoJS".split(" "), function(cj, cT, aJ, bx) {
+    function bd(dh, dg) {
+        if (cj.isArray(dh)) {
+            for (var di = 0; di < dh.length; di++) {
+                c6(dh[di])
             }
         } else {
-            c2(dc)
+            c6(dh)
         }
-        cQ(db)
+        cU(dg)
     }
 
-    function m(dc, db) {
-        if (cg.isArray(dc)) {
-            for (var dd = 0; dd < dc.length; dd++) {
-                bp(dc[dd])
+    function m(dh, dg) {
+        if (cj.isArray(dh)) {
+            for (var di = 0; di < dh.length; di++) {
+                br(dh[di])
             }
         } else {
-            bp(dc)
+            br(dh)
         }
-        C(db)
+        C(dg)
     }
 
-    function aR() {
-        return a1({}).get_user_mac_addr
+    function aT() {
+        return a3({}).get_user_mac_addr
     }
 
-    function bT(db, de) {
-        return bz(arguments, {}, dc, dd, null, false);
+    function bV(dg, dj) {
+        return bB(arguments, {}, dh, di, null, false);
 
-        function dc(df, dg) {
+        function dh(dk, dl) {
             return {
                 multi_data: 1,
                 cmd: "DDNS_Enable,DDNS_Mode,DDNSProvider,DDNSAccount,DDNSPassword,DDNS,DDNS_Hash_Value"
             }
         }
 
-        function dd(df) {
-            if (df) {
+        function di(dk) {
+            if (dk) {
                 return {
-                    DDNS_Enable: df.DDNS_Enable,
-                    DDNS_Mode: df.DDNS_Mode,
-                    DDNSProvider: df.DDNSProvider,
-                    DDNSAccount: df.DDNSAccount,
-                    DDNSPassword: df.DDNSPassword,
-                    DDNS: df.DDNS,
-                    DDNS_Hash_Value: df.DDNS_Hash_Value
+                    DDNS_Enable: dk.DDNS_Enable,
+                    DDNS_Mode: dk.DDNS_Mode,
+                    DDNSProvider: dk.DDNSProvider,
+                    DDNSAccount: dk.DDNSAccount,
+                    DDNSPassword: dk.DDNSPassword,
+                    DDNS: dk.DDNS,
+                    DDNS_Hash_Value: dk.DDNS_Hash_Value
                 }
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function aS() {
-        return bz(arguments, {}, db, dc, null, true);
+    function aU() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = cP.extend({}, dd);
-            return df
+        function dg(di, dj) {
+            var dk = cT.extend({}, di);
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function ci() {
-        return bz(arguments, {}, db, dc, null, false);
+    function cm() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "modem_main_state,puknumber,pinnumber,blc_wan_mode,blc_wan_auto_mode,psw_fail_num_str,login_lock_time,psw_changed";
-            df.multi_data = 1;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "modem_main_state,puknumber,pinnumber,blc_wan_mode,blc_wan_auto_mode,psw_fail_num_str,login_lock_time,psw_changed";
+            dk.multi_data = 1;
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                if (dd.blc_wan_mode == "AUTO") {
-                    dd.blc_wan_mode = dd.blc_wan_auto_mode ? dd.blc_wan_auto_mode : "AUTO_PPP"
+        function dh(di) {
+            if (di) {
+                if (di.blc_wan_mode == "AUTO") {
+                    di.blc_wan_mode = di.blc_wan_auto_mode ? di.blc_wan_auto_mode : "AUTO_PPP"
                 } else {
-                    dd.blc_wan_mode = dd.blc_wan_mode ? dd.blc_wan_mode : "PPP"
+                    di.blc_wan_mode = di.blc_wan_mode ? di.blc_wan_mode : "PPP"
                 }
-                dd.psw_fail_num_str = dd.psw_fail_num_str == "" ? aH.MAX_LOGIN_COUNT : dd.psw_fail_num_str;
-                dd.login_lock_time = dd.login_lock_time == "" ? "300" : dd.login_lock_time;
-                return dd
+                di.psw_fail_num_str = di.psw_fail_num_str == "" ? aJ.MAX_LOGIN_COUNT : di.psw_fail_num_str;
+                di.login_lock_time = di.login_lock_time == "" ? "300" : di.login_lock_time;
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function aO() {
-        return bz(arguments, {}, db, dc, {
+    function aQ() {
+        return bB(arguments, {}, dg, dh, {
             errorType: "badPassword"
         }, true);
 
-        function db(dd, de) {
-            var df = {
+        function dg(di, dj) {
+            var dk = {
                 goformId: "LOGIN",
-                password: aH.PASSWORD_ENCODE ? Base64.encode(dd.password) : dd.password
+                password: aJ.PASSWORD_ENCODE ? Base64.encode(di.password) : di.password
             };
-            return df
+            return dk
         }
 
-        function dc(dd) {
-            if (dd && (dd.result == "0" || dd.result == "4")) {
-                bu.isLoggedIn = true;
+        function dh(di) {
+            if (di && (di.result == "0" || di.result == "4")) {
+                bw.isLoggedIn = true;
                 return {
                     result: true
                 }
             } else {
-                var de = {};
-                switch (dd.result) {
+                var dj = {};
+                switch (di.result) {
                     case "1":
-                        de = {
+                        dj = {
                             errorType: "Login Fail"
                         };
                         break;
                     case "2":
-                        de = {
+                        dj = {
                             errorType: "duplicateUser"
                         };
                         break;
                     case "3":
-                        de = {
+                        dj = {
                             errorType: "badPassword"
                         };
                         break;
                     default:
-                        de = {
+                        dj = {
                             errorType: "Login Fail"
                         };
                         break
                 }
-                bu.isLoggedIn = false;
-                return cP.extend(V, de)
+                bw.isLoggedIn = false;
+                return cT.extend(X, dj)
             }
         }
     }
 
-    function bd() {
-        if (bu.isLoggedIn != undefined) {
-            return bz(arguments, {
-                status: bu.isLoggedIn ? "loggedIn" : "loggedOut"
+    function bf() {
+        if (bw.isLoggedIn != undefined) {
+            return bB(arguments, {
+                status: bw.isLoggedIn ? "loggedIn" : "loggedOut"
             })
         } else {
-            var dd = {};
-            if (!aH.HAS_LOGIN) {
-                dd.status = "loggedIn";
-                dd.errorType = "no_login";
-                bu.isLoggedIn = true
+            var di = {};
+            if (!aJ.HAS_LOGIN) {
+                di.status = "loggedIn";
+                di.errorType = "no_login";
+                bw.isLoggedIn = true
             }
-            return bz(arguments, dd, db, dc, null, false)
+            return bB(arguments, di, dg, dh, null, false)
         }
 
-        function db(de, df) {
-            var dg = {};
-            dg.cmd = "loginfo";
-            dg.multi_data = 1;
-            return dg
+        function dg(dj, dk) {
+            var dl = {};
+            dl.cmd = "loginfo";
+            dl.multi_data = 1;
+            return dl
         }
 
-        function dc(df) {
-            if (df && df.loginfo || df.loginfo == "") {
-                var de = {};
-                switch (df.loginfo) {
+        function dh(dk) {
+            if (dk && dk.loginfo || dk.loginfo == "") {
+                var dj = {};
+                switch (dk.loginfo) {
                     case "ok":
-                        bu.isLoggedIn = true;
-                        de.status = "loggedIn";
+                        bw.isLoggedIn = true;
+                        dj.status = "loggedIn";
                         break;
                     default:
-                        bu.isLoggedIn = false;
-                        de.status = "loggedOut";
+                        bw.isLoggedIn = false;
+                        dj.status = "loggedOut";
                         break
                 }
-                return de
+                return dj
             } else {
-                bu.isLoggedIn = undefined;
-                return cP.extend(V, {
+                bw.isLoggedIn = undefined;
+                return cT.extend(X, {
                     errorType: "LoginStatusError"
                 })
             }
@@ -190,17 +190,17 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
     }
 
     function J() {
-        return bz(arguments, {}, db, dc, {}, true);
+        return bB(arguments, {}, dg, dh, {}, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "ENTER_PIN";
-            df.PinNumber = dd.PinNumber;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "ENTER_PIN";
+            dk.PinNumber = di.PinNumber;
+            return dk
         }
 
-        function dc(dd) {
-            if (dd && dd.result === "success") {
+        function dh(di) {
+            if (di && di.result === "success") {
                 return {
                     result: true
                 }
@@ -212,19 +212,19 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
         }
     }
 
-    function T() {
-        return bz(arguments, {}, db, dc, {}, true);
+    function V() {
+        return bB(arguments, {}, dg, dh, {}, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "ENTER_PUK";
-            df.PUKNumber = dd.PUKNumber;
-            df.PinNumber = dd.PinNumber;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "ENTER_PUK";
+            dk.PUKNumber = di.PUKNumber;
+            dk.PinNumber = di.PinNumber;
+            return dk
         }
 
-        function dc(dd) {
-            if (dd && dd.result === "success") {
+        function dh(di) {
+            if (di && di.result === "success") {
                 return {
                     result: true
                 }
@@ -237,204 +237,204 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
     }
 
     function e() {
-        if (bu.isLoggedIn === undefined) {
-            var db = bd();
+        if (bw.isLoggedIn === undefined) {
+            var dg = bf();
             return {
-                networkType: bu.networkType,
-                signalImg: bu.signalImg,
-                networkOperator: bu.networkOperator,
-                spn_b1_flag: bu.spn_b1_flag,
-                spn_name_data: bu.spn_name_data,
-                spn_b2_flag: bu.spn_b2_flag,
-                connectStatus: bu.connectStatus,
-                rj45ConnectStatus: bu.rj45ConnectStatus,
-                ssid1AttachedNum: bu.ssid1AttachedNum,
-                ssid2AttachedNum: bu.ssid2AttachedNum,
-                wirelessDeviceNum: bu.ssid1AttachedNum + bu.ssid2AttachedNum,
-                roamingStatus: bu.roamingStatus,
-                wifiStatus: bu.wifiStatus,
-                simStatus: bu.simStatus,
-                pinStatus: bu.pinStatus,
-                batteryStatus: bu.batteryStatus,
-                batteryLevel: bu.batteryLevel,
-                batteryPers: bu.batteryPers,
-                batteryTime: bu.batteryTime,
-                ssid: bu.ssid,
-                authMode: bu.authMode,
-                data_counter: bu.data_counter,
-                isLoggedIn: db.status == "loggedIn",
-                newSmsReceived: bu.newSmsReceived,
-                smsReportReceived: bu.smsReportReceived,
-                smsUnreadCount: bu.smsUnreadCount,
-                limitVolumeEnable: bu.limitVolumeEnable,
-                limitVolumeType: bu.limitVolumeType,
-                limitVolumePercent: bu.limitVolumePercent,
-                limitVolumeSize: bu.limitVolumeSize,
-                connectWifiProfile: bu.connectWifiProfile,
-                connectWifiSSID: bu.connectWifiSSID,
-                connectWifiStatus: bu.connectWifiStatus,
-                multi_ssid_enable: bu.multi_ssid_enable,
-                roamMode: bu.roamMode,
-                blc_wan_mode: bu.blc_wan_mode,
-                current_upgrade_state: bu.current_upgrade_state,
-                is_mandatory: bu.is_mandatory,
-                new_version_state: bu.new_version_state,
-                allowRoamingUpdate: bu.allowRoamingUpdate,
-                ap_station_enable: bu.ap_station_enable,
-                ap_station_mode: bu.ap_station_mode,
-                dialMode: bu.dialMode,
-                fota_package_already_download: bu.fota_package_already_download,
-                ethWanMode: bu.ethWanMode,
-                fota_user_selector: bu.fota_user_selector,
-                defaultWanName: bu.defaultWanName
+                networkType: bw.networkType,
+                signalImg: bw.signalImg,
+                networkOperator: bw.networkOperator,
+                spn_b1_flag: bw.spn_b1_flag,
+                spn_name_data: bw.spn_name_data,
+                spn_b2_flag: bw.spn_b2_flag,
+                connectStatus: bw.connectStatus,
+                rj45ConnectStatus: bw.rj45ConnectStatus,
+                ssid1AttachedNum: bw.ssid1AttachedNum,
+                ssid2AttachedNum: bw.ssid2AttachedNum,
+                wirelessDeviceNum: bw.ssid1AttachedNum + bw.ssid2AttachedNum,
+                roamingStatus: bw.roamingStatus,
+                wifiStatus: bw.wifiStatus,
+                simStatus: bw.simStatus,
+                pinStatus: bw.pinStatus,
+                batteryStatus: bw.batteryStatus,
+                batteryLevel: bw.batteryLevel,
+                batteryPers: bw.batteryPers,
+                batteryTime: bw.batteryTime,
+                ssid: bw.ssid,
+                authMode: bw.authMode,
+                data_counter: bw.data_counter,
+                isLoggedIn: dg.status == "loggedIn",
+                newSmsReceived: bw.newSmsReceived,
+                smsReportReceived: bw.smsReportReceived,
+                smsUnreadCount: bw.smsUnreadCount,
+                limitVolumeEnable: bw.limitVolumeEnable,
+                limitVolumeType: bw.limitVolumeType,
+                limitVolumePercent: bw.limitVolumePercent,
+                limitVolumeSize: bw.limitVolumeSize,
+                connectWifiProfile: bw.connectWifiProfile,
+                connectWifiSSID: bw.connectWifiSSID,
+                connectWifiStatus: bw.connectWifiStatus,
+                multi_ssid_enable: bw.multi_ssid_enable,
+                roamMode: bw.roamMode,
+                blc_wan_mode: bw.blc_wan_mode,
+                current_upgrade_state: bw.current_upgrade_state,
+                is_mandatory: bw.is_mandatory,
+                new_version_state: bw.new_version_state,
+                allowRoamingUpdate: bw.allowRoamingUpdate,
+                ap_station_enable: bw.ap_station_enable,
+                ap_station_mode: bw.ap_station_mode,
+                dialMode: bw.dialMode,
+                fota_package_already_download: bw.fota_package_already_download,
+                ethWanMode: bw.ethWanMode,
+                fota_user_selector: bw.fota_user_selector,
+                defaultWanName: bw.defaultWanName
             }
         }
         return {
-            networkType: bu.networkType,
-            signalImg: bu.signalImg,
-            networkOperator: bu.networkOperator,
-            spn_b1_flag: bu.spn_b1_flag,
-            spn_name_data: bu.spn_name_data,
-            spn_b2_flag: bu.spn_b2_flag,
-            connectStatus: bu.connectStatus,
-            rj45ConnectStatus: bu.rj45ConnectStatus,
-            ssid1AttachedNum: bu.ssid1AttachedNum,
-            ssid2AttachedNum: bu.ssid2AttachedNum,
-            wirelessDeviceNum: bu.ssid1AttachedNum + bu.ssid2AttachedNum,
-            roamingStatus: bu.roamingStatus,
-            wifiStatus: bu.wifiStatus,
-            simStatus: bu.simStatus,
-            pinStatus: bu.pinStatus,
-            batteryStatus: bu.batteryStatus,
-            batteryLevel: bu.batteryLevel,
-            batteryPers: bu.batteryPers,
-            batteryTime: bu.batteryTime,
-            ssid: bu.ssid,
-            authMode: bu.authMode,
-            data_counter: bu.data_counter,
-            isLoggedIn: bu.isLoggedIn,
-            newSmsReceived: bu.newSmsReceived,
-            smsReportReceived: bu.smsReportReceived,
-            smsUnreadCount: bu.smsUnreadCount,
-            limitVolumeEnable: bu.limitVolumeEnable,
-            limitVolumeType: bu.limitVolumeType,
-            limitVolumePercent: bu.limitVolumePercent,
-            limitVolumeSize: bu.limitVolumeSize,
-            connectWifiProfile: bu.connectWifiProfile,
-            connectWifiSSID: bu.connectWifiSSID,
-            connectWifiStatus: bu.connectWifiStatus,
-            multi_ssid_enable: bu.multi_ssid_enable,
-            blc_wan_mode: bu.blc_wan_mode,
-            roamMode: bu.roamMode,
-            current_upgrade_state: bu.current_upgrade_state,
-            is_mandatory: bu.is_mandatory,
-            new_version_state: bu.new_version_state,
-            allowRoamingUpdate: bu.allowRoamingUpdate,
-            ap_station_enable: bu.ap_station_enable,
-            ap_station_mode: bu.ap_station_mode,
-            dialMode: bu.dialMode,
-            fota_package_already_download: bu.fota_package_already_download,
-            ethWanMode: bu.ethWanMode,
-            fota_user_selector: bu.fota_user_selector,
-            defaultWanName: bu.defaultWanName
+            networkType: bw.networkType,
+            signalImg: bw.signalImg,
+            networkOperator: bw.networkOperator,
+            spn_b1_flag: bw.spn_b1_flag,
+            spn_name_data: bw.spn_name_data,
+            spn_b2_flag: bw.spn_b2_flag,
+            connectStatus: bw.connectStatus,
+            rj45ConnectStatus: bw.rj45ConnectStatus,
+            ssid1AttachedNum: bw.ssid1AttachedNum,
+            ssid2AttachedNum: bw.ssid2AttachedNum,
+            wirelessDeviceNum: bw.ssid1AttachedNum + bw.ssid2AttachedNum,
+            roamingStatus: bw.roamingStatus,
+            wifiStatus: bw.wifiStatus,
+            simStatus: bw.simStatus,
+            pinStatus: bw.pinStatus,
+            batteryStatus: bw.batteryStatus,
+            batteryLevel: bw.batteryLevel,
+            batteryPers: bw.batteryPers,
+            batteryTime: bw.batteryTime,
+            ssid: bw.ssid,
+            authMode: bw.authMode,
+            data_counter: bw.data_counter,
+            isLoggedIn: bw.isLoggedIn,
+            newSmsReceived: bw.newSmsReceived,
+            smsReportReceived: bw.smsReportReceived,
+            smsUnreadCount: bw.smsUnreadCount,
+            limitVolumeEnable: bw.limitVolumeEnable,
+            limitVolumeType: bw.limitVolumeType,
+            limitVolumePercent: bw.limitVolumePercent,
+            limitVolumeSize: bw.limitVolumeSize,
+            connectWifiProfile: bw.connectWifiProfile,
+            connectWifiSSID: bw.connectWifiSSID,
+            connectWifiStatus: bw.connectWifiStatus,
+            multi_ssid_enable: bw.multi_ssid_enable,
+            blc_wan_mode: bw.blc_wan_mode,
+            roamMode: bw.roamMode,
+            current_upgrade_state: bw.current_upgrade_state,
+            is_mandatory: bw.is_mandatory,
+            new_version_state: bw.new_version_state,
+            allowRoamingUpdate: bw.allowRoamingUpdate,
+            ap_station_enable: bw.ap_station_enable,
+            ap_station_mode: bw.ap_station_mode,
+            dialMode: bw.dialMode,
+            fota_package_already_download: bw.fota_package_already_download,
+            ethWanMode: bw.ethWanMode,
+            fota_user_selector: bw.fota_user_selector,
+            defaultWanName: bw.defaultWanName
         }
     }
 
-    function by() {
-        var dc = bu.limitVolumeType == "1";
-        var db = {
-            data_counter: bu.data_counter,
-            connectStatus: bu.connectStatus,
-            rj45ConnectStatus: bu.rj45ConnectStatus,
-            limitVolumeEnable: bu.limitVolumeEnable,
-            limitVolumeType: bu.limitVolumeType,
-            limitVolumePercent: bu.limitVolumePercent,
-            networkType: bu.networkType
+    function bA() {
+        var dh = bw.limitVolumeType == "1";
+        var dg = {
+            data_counter: bw.data_counter,
+            connectStatus: bw.connectStatus,
+            rj45ConnectStatus: bw.rj45ConnectStatus,
+            limitVolumeEnable: bw.limitVolumeEnable,
+            limitVolumeType: bw.limitVolumeType,
+            limitVolumePercent: bw.limitVolumePercent,
+            networkType: bw.networkType
         };
-        if (dc) {
-            db.limitDataMonth = bu.limitVolumeSize;
-            db.limitTimeMonth = 0
+        if (dh) {
+            dg.limitDataMonth = bw.limitVolumeSize;
+            dg.limitTimeMonth = 0
         } else {
-            db.limitTimeMonth = bu.limitVolumeSize;
-            db.limitDataMonth = 0
+            dg.limitTimeMonth = bw.limitVolumeSize;
+            dg.limitDataMonth = 0
         }
-        db.blc_wan_mode = bu.blc_wan_mode;
-        return db
+        dg.blc_wan_mode = bw.blc_wan_mode;
+        return dg
     }
 
     function E() {
-        bu.newSmsReceived = false
+        bw.newSmsReceived = false
     }
 
-    function b3() {
-        bu.smsReportReceived = false
+    function b6() {
+        bw.smsReportReceived = false
     }
 
     function b() {
-        return bz(arguments, {}, db, dc, null, false);
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "sms_capacity_info";
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "sms_capacity_info";
+            return dk
         }
 
-        function dc(dd) {
+        function dh(di) {
             return {
-                nvTotal: parseInt(dd.sms_nv_total, 10),
-                nvUsed: parseInt(dd.sms_nv_rev_total, 10) + parseInt(dd.sms_nv_send_total, 10) + parseInt(dd.sms_nv_draftbox_total, 10),
-                simTotal: parseInt(dd.sms_sim_total, 10),
-                simUsed: parseInt(dd.sms_sim_rev_total, 10) + parseInt(dd.sms_sim_send_total, 10) + parseInt(dd.sms_sim_draftbox_total, 10),
-                nvReceive: parseInt(dd.sms_nv_rev_total, 10),
-                nvSend: parseInt(dd.sms_nv_send_total, 10),
-                nvDraft: parseInt(dd.sms_nv_draftbox_total, 10),
-                simReceive: parseInt(dd.sms_sim_rev_total, 10),
-                simSend: parseInt(dd.sms_sim_send_total, 10),
-                simDraft: parseInt(dd.sms_sim_draftbox_total, 10)
+                nvTotal: parseInt(di.sms_nv_total, 10),
+                nvUsed: parseInt(di.sms_nv_rev_total, 10) + parseInt(di.sms_nv_send_total, 10) + parseInt(di.sms_nv_draftbox_total, 10),
+                simTotal: parseInt(di.sms_sim_total, 10),
+                simUsed: parseInt(di.sms_sim_rev_total, 10) + parseInt(di.sms_sim_send_total, 10) + parseInt(di.sms_sim_draftbox_total, 10),
+                nvReceive: parseInt(di.sms_nv_rev_total, 10),
+                nvSend: parseInt(di.sms_nv_send_total, 10),
+                nvDraft: parseInt(di.sms_nv_draftbox_total, 10),
+                simReceive: parseInt(di.sms_sim_rev_total, 10),
+                simSend: parseInt(di.sms_sim_send_total, 10),
+                simDraft: parseInt(di.sms_sim_draftbox_total, 10)
             }
         }
     }
 
-    function a7() {
-        var df = arguments[1];
-        var de = 0;
-        return bz(arguments, {}, db, dd, null, true);
+    function a9() {
+        var dk = arguments[1];
+        var dj = 0;
+        return bB(arguments, {}, dg, di, null, true);
 
-        function db(dg, dh) {
-            var di = {};
-            di.notCallback = true;
-            di.goformId = "CONNECT_NETWORK";
-            return di
+        function dg(dl, dm) {
+            var dn = {};
+            dn.notCallback = true;
+            dn.goformId = "CONNECT_NETWORK";
+            return dn
         }
 
-        function dd(dg) {
-            if (dg.result == "success") {
-                de = new Date().getTime();
-                cQ(dc)
+        function di(dl) {
+            if (dl.result == "success") {
+                dj = new Date().getTime();
+                cU(dh)
             } else {
-                df({
+                dk({
                     result: false
                 })
             }
         }
 
-        function dc(dg) {
-            if (dg.ppp_status == "ppp_connecting") {
-                bu.connectStatus = "ppp_connecting"
+        function dh(dl) {
+            if (dl.ppp_status == "ppp_connecting") {
+                bw.connectStatus = "ppp_connecting"
             } else {
-                if (dg.ppp_status == "ppp_connected") {
-                    C(dc);
-                    bu.connectStatus = "ppp_connected";
-                    df({
+                if (dl.ppp_status == "ppp_connected") {
+                    C(dh);
+                    bw.connectStatus = "ppp_connected";
+                    dk({
                         result: true,
-                        status: bu.connectStatus
+                        status: bw.connectStatus
                     })
                 } else {
-                    if (new Date().getTime() - de < 10000) {
-                        bu.connectStatus = "ppp_connecting"
+                    if (new Date().getTime() - dj < 10000) {
+                        bw.connectStatus = "ppp_connecting"
                     } else {
-                        C(dc);
-                        df({
+                        C(dh);
+                        dk({
                             result: false
                         })
                     }
@@ -443,46 +443,46 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
         }
     }
 
-    function P() {
-        var df = arguments[1];
-        var de = 0;
-        return bz(arguments, {}, dc, dd, null, true);
+    function R() {
+        var dk = arguments[1];
+        var dj = 0;
+        return bB(arguments, {}, dh, di, null, true);
 
-        function dc(dg, dh) {
-            var di = {};
-            di.notCallback = true;
-            di.goformId = "DISCONNECT_NETWORK";
-            return di
+        function dh(dl, dm) {
+            var dn = {};
+            dn.notCallback = true;
+            dn.goformId = "DISCONNECT_NETWORK";
+            return dn
         }
 
-        function dd(dg) {
-            if (dg.result == "success") {
-                de = new Date().getTime();
-                cQ(db)
+        function di(dl) {
+            if (dl.result == "success") {
+                dj = new Date().getTime();
+                cU(dg)
             } else {
-                df({
+                dk({
                     result: false
                 })
             }
         }
 
-        function db(dg) {
-            if (dg.ppp_status == "ppp_disconnecting") {
-                bu.connectStatus = "ppp_disconnecting"
+        function dg(dl) {
+            if (dl.ppp_status == "ppp_disconnecting") {
+                bw.connectStatus = "ppp_disconnecting"
             } else {
-                if (dg.ppp_status == "ppp_disconnected") {
-                    C(db);
-                    bu.connectStatus = "ppp_disconnected";
-                    df({
+                if (dl.ppp_status == "ppp_disconnected") {
+                    C(dg);
+                    bw.connectStatus = "ppp_disconnected";
+                    dk({
                         result: true,
-                        status: bu.connectStatus
+                        status: bw.connectStatus
                     })
                 } else {
-                    if (new Date().getTime() - de < 10000) {
-                        bu.connectStatus = "ppp_disconnecting"
+                    if (new Date().getTime() - dj < 10000) {
+                        bw.connectStatus = "ppp_disconnecting"
                     } else {
-                        C(db);
-                        df({
+                        C(dg);
+                        dk({
                             result: false
                         })
                     }
@@ -492,44 +492,44 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
     }
 
     function l() {
-        return bz(arguments, {}, db, dc, null, false);
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "APN_configtmp0,APN_configtmp1,APN_configtmp2,APN_configtmp3,APN_configtmp4,APN_configtmp5,APN_configtmp6,APN_configtmp7,APN_configtmp8,APN_configtmp9,APN_configtmp10,APN_configtmp11,APN_configtmp12,APN_configtmp13,APN_configtmp14,APN_configtmp15,APN_configtmp16,APN_configtmp17,APN_configtmp18,APN_configtmp19,ipv6_APN_configtmp0,ipv6_APN_configtmp1,ipv6_APN_configtmp2,ipv6_APN_configtmp3,ipv6_APN_configtmp4,ipv6_APN_configtmp5,ipv6_APN_configtmp6,ipv6_APN_configtmp7,ipv6_APN_configtmp8,ipv6_APN_configtmp9,ipv6_APN_configtmp10,ipv6_APN_configtmp11,ipv6_APN_configtmp12,ipv6_APN_configtmp13,ipv6_APN_configtmp14,ipv6_APN_configtmp15,ipv6_APN_configtmp16,ipv6_APN_configtmp17,ipv6_APN_configtmp18,ipv6_APN_configtmp19,m_profile_name,profile_name,wan_dial,pdp_type,pdp_select,index,Current_index,apn_auto_config,ipv6_apn_auto_config,apn_mode,wan_apn,ppp_auth_mode,ppp_username,ppp_passtmp,ipv6_wan_apn,ipv6_pdp_type,ipv6_ppp_auth_mode,ipv6_ppp_username,ipv6_ppp_passtmp,apn_num_preset";
-            df.multi_data = 1;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "APN_configtmp0,APN_configtmp1,APN_configtmp2,APN_configtmp3,APN_configtmp4,APN_configtmp5,APN_configtmp6,APN_configtmp7,APN_configtmp8,APN_configtmp9,APN_configtmp10,APN_configtmp11,APN_configtmp12,APN_configtmp13,APN_configtmp14,APN_configtmp15,APN_configtmp16,APN_configtmp17,APN_configtmp18,APN_configtmp19,ipv6_APN_configtmp0,ipv6_APN_configtmp1,ipv6_APN_configtmp2,ipv6_APN_configtmp3,ipv6_APN_configtmp4,ipv6_APN_configtmp5,ipv6_APN_configtmp6,ipv6_APN_configtmp7,ipv6_APN_configtmp8,ipv6_APN_configtmp9,ipv6_APN_configtmp10,ipv6_APN_configtmp11,ipv6_APN_configtmp12,ipv6_APN_configtmp13,ipv6_APN_configtmp14,ipv6_APN_configtmp15,ipv6_APN_configtmp16,ipv6_APN_configtmp17,ipv6_APN_configtmp18,ipv6_APN_configtmp19,m_profile_name,profile_name,wan_dial,pdp_type,pdp_select,index,Current_index,apn_auto_config,ipv6_apn_auto_config,apn_mode,wan_apn,ppp_auth_mode,ppp_username,ppp_passtmp,ipv6_wan_apn,ipv6_pdp_type,ipv6_ppp_auth_mode,ipv6_ppp_username,ipv6_ppp_passtmp,apn_num_preset";
+            dk.multi_data = 1;
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
+        function dh(di) {
+            if (di) {
                 return {
-                    APNs: dd.APN_configtmp0 + "||" + dd.APN_configtmp1 + "||" + dd.APN_configtmp2 + "||" + dd.APN_configtmp3 + "||" + dd.APN_configtmp4 + "||" + dd.APN_configtmp5 + "||" + dd.APN_configtmp6 + "||" + dd.APN_configtmp7 + "||" + dd.APN_configtmp8 + "||" + dd.APN_configtmp9 + "||" + dd.APN_configtmp10 + "||" + dd.APN_configtmp11 + "||" + dd.APN_configtmp12 + "||" + dd.APN_configtmp13 + "||" + dd.APN_configtmp14 + "||" + dd.APN_configtmp15 + "||" + dd.APN_configtmp16 + "||" + dd.APN_configtmp17 + "||" + dd.APN_configtmp18 + "||" + dd.APN_configtmp19,
-                    ipv6APNs: dd.ipv6_APN_configtmp0 + "||" + dd.ipv6_APN_configtmp1 + "||" + dd.ipv6_APN_configtmp2 + "||" + dd.ipv6_APN_configtmp3 + "||" + dd.ipv6_APN_configtmp4 + "||" + dd.ipv6_APN_configtmp5 + "||" + dd.ipv6_APN_configtmp6 + "||" + dd.ipv6_APN_configtmp7 + "||" + dd.ipv6_APN_configtmp8 + "||" + dd.ipv6_APN_configtmp9 + "||" + dd.ipv6_APN_configtmp10 + "||" + dd.ipv6_APN_configtmp11 + "||" + dd.ipv6_APN_configtmp12 + "||" + dd.ipv6_APN_configtmp13 + "||" + dd.ipv6_APN_configtmp14 + "||" + dd.ipv6_APN_configtmp15 + "||" + dd.ipv6_APN_configtmp16 + "||" + dd.ipv6_APN_configtmp17 + "||" + dd.ipv6_APN_configtmp18 + "||" + dd.ipv6_APN_configtmp19,
-                    apnMode: dd.apn_mode,
-                    profileName: dd.m_profile_name || dd.profile_name,
-                    wanDial: dd.wan_dial,
-                    pdpType: dd.pdp_type == "IP" ? "IP" : dd.ipv6_pdp_type,
-                    pdpSelect: dd.pdp_select,
-                    index: dd.index,
-                    currIndex: dd.Current_index,
-                    autoApns: dd.apn_auto_config,
-                    autoApnsV6: dd.ipv6_apn_auto_config,
-                    wanApn: dd.wan_apn,
-                    authMode: dd.ppp_auth_mode.toLowerCase(),
-                    username: dd.ppp_username,
-                    password: dd.ppp_passtmp,
+                    APNs: di.APN_configtmp0 + "||" + di.APN_configtmp1 + "||" + di.APN_configtmp2 + "||" + di.APN_configtmp3 + "||" + di.APN_configtmp4 + "||" + di.APN_configtmp5 + "||" + di.APN_configtmp6 + "||" + di.APN_configtmp7 + "||" + di.APN_configtmp8 + "||" + di.APN_configtmp9 + "||" + di.APN_configtmp10 + "||" + di.APN_configtmp11 + "||" + di.APN_configtmp12 + "||" + di.APN_configtmp13 + "||" + di.APN_configtmp14 + "||" + di.APN_configtmp15 + "||" + di.APN_configtmp16 + "||" + di.APN_configtmp17 + "||" + di.APN_configtmp18 + "||" + di.APN_configtmp19,
+                    ipv6APNs: di.ipv6_APN_configtmp0 + "||" + di.ipv6_APN_configtmp1 + "||" + di.ipv6_APN_configtmp2 + "||" + di.ipv6_APN_configtmp3 + "||" + di.ipv6_APN_configtmp4 + "||" + di.ipv6_APN_configtmp5 + "||" + di.ipv6_APN_configtmp6 + "||" + di.ipv6_APN_configtmp7 + "||" + di.ipv6_APN_configtmp8 + "||" + di.ipv6_APN_configtmp9 + "||" + di.ipv6_APN_configtmp10 + "||" + di.ipv6_APN_configtmp11 + "||" + di.ipv6_APN_configtmp12 + "||" + di.ipv6_APN_configtmp13 + "||" + di.ipv6_APN_configtmp14 + "||" + di.ipv6_APN_configtmp15 + "||" + di.ipv6_APN_configtmp16 + "||" + di.ipv6_APN_configtmp17 + "||" + di.ipv6_APN_configtmp18 + "||" + di.ipv6_APN_configtmp19,
+                    apnMode: di.apn_mode,
+                    profileName: di.m_profile_name || di.profile_name,
+                    wanDial: di.wan_dial,
+                    pdpType: di.pdp_type == "IP" ? "IP" : di.ipv6_pdp_type,
+                    pdpSelect: di.pdp_select,
+                    index: di.index,
+                    currIndex: di.Current_index,
+                    autoApns: di.apn_auto_config,
+                    autoApnsV6: di.ipv6_apn_auto_config,
+                    wanApn: di.wan_apn,
+                    authMode: di.ppp_auth_mode.toLowerCase(),
+                    username: di.ppp_username,
+                    password: di.ppp_passtmp,
                     dnsMode: "",
                     dns1: "",
                     dns2: "",
-                    wanApnV6: dd.ipv6_wan_apn,
-                    authModeV6: dd.ipv6_ppp_auth_mode.toLowerCase(),
-                    usernameV6: dd.ipv6_ppp_username,
-                    passwordV6: dd.ipv6_ppp_passtmp,
+                    wanApnV6: di.ipv6_wan_apn,
+                    authModeV6: di.ipv6_ppp_auth_mode.toLowerCase(),
+                    usernameV6: di.ipv6_ppp_username,
+                    passwordV6: di.ipv6_ppp_passtmp,
                     dnsModeV6: "",
                     dns1V6: "",
                     dns2V6: "",
-                    apnNumPreset: dd.apn_num_preset
+                    apnNumPreset: di.apn_num_preset
                 }
             } else {
                 return {
@@ -539,21 +539,21 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
         }
     }
 
-    function az() {
-        return bz(arguments, {}, db, dc, null, true);
+    function aB() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {
+        function dg(di, dj) {
+            var dk = {
                 apn_action: "delete",
                 apn_mode: "manual",
-                index: dd.index
+                index: di.index
             };
-            df.goformId = "APN_PROC_EX";
-            return df
+            dk.goformId = "APN_PROC_EX";
+            return dk
         }
 
-        function dc(dd) {
-            if (dd.result == "success") {
+        function dh(di) {
+            if (di.result == "success") {
                 return {
                     result: true
                 }
@@ -565,25 +565,25 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
         }
     }
 
-    function bx() {
-        return bz(arguments, {}, db, dc, null, true);
+    function bz() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, df) {
-            var de = {
+        function dg(di, dk) {
+            var dj = {
                 goformId: "APN_PROC_EX",
-                apn_mode: dd.apnMode
+                apn_mode: di.apnMode
             };
-            if (dd.apnMode == "manual") {
-                de.apn_action = "set_default";
-                de.set_default_flag = "1";
-                de.pdp_type = dd.pdpType;
-                de.index = dd.index
+            if (di.apnMode == "manual") {
+                dj.apn_action = "set_default";
+                dj.set_default_flag = "1";
+                dj.pdp_type = di.pdpType;
+                dj.index = di.index
             }
-            return de
+            return dj
         }
 
-        function dc(dd) {
-            if (dd.result == "success") {
+        function dh(di) {
+            if (di.result == "success") {
                 return {
                     result: true
                 }
@@ -595,56 +595,56 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
         }
     }
 
-    function bo() {
-        return bz(arguments, {}, db, dc, null, true);
+    function bq() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {
+        function dg(di, dj) {
+            var dk = {
                 goformId: "APN_PROC_EX",
                 apn_action: "save",
                 apn_mode: "manual",
-                profile_name: dd.profileName,
+                profile_name: di.profileName,
                 wan_dial: "*99#",
-                pdp_type: dd.pdpType,
+                pdp_type: di.pdpType,
                 pdp_select: "auto",
-                index: dd.index
+                index: di.index
             };
-            if (dd.pdpType == "IP") {
-                cP.extend(df, {
-                    wan_apn: dd.wanApn,
-                    ppp_auth_mode: dd.authMode,
-                    ppp_username: dd.username,
-                    ppp_passtmp: dd.password
+            if (di.pdpType == "IP") {
+                cT.extend(dk, {
+                    wan_apn: di.wanApn,
+                    ppp_auth_mode: di.authMode,
+                    ppp_username: di.username,
+                    ppp_passtmp: di.password
                 })
             } else {
-                if (dd.pdpType == "IPv6") {
-                    cP.extend(df, {
-                        ipv6_wan_apn: dd.wanApnV6,
-                        ipv6_ppp_auth_mode: dd.authModeV6,
-                        ipv6_ppp_username: dd.usernameV6,
-                        ipv6_ppp_passtmp: dd.passwordV6
+                if (di.pdpType == "IPv6") {
+                    cT.extend(dk, {
+                        ipv6_wan_apn: di.wanApnV6,
+                        ipv6_ppp_auth_mode: di.authModeV6,
+                        ipv6_ppp_username: di.usernameV6,
+                        ipv6_ppp_passtmp: di.passwordV6
                     })
                 } else {
-                    cP.extend(df, {
-                        wan_apn: dd.wanApn,
-                        ppp_auth_mode: dd.authMode,
-                        ppp_username: dd.username,
-                        ppp_passtmp: dd.password,
-                        dns_mode: dd.dnsMode,
-                        prefer_dns_manual: dd.dns1,
-                        standby_dns_manual: dd.dns2,
-                        ipv6_wan_apn: dd.wanApnV6,
-                        ipv6_ppp_auth_mode: dd.authModeV6,
-                        ipv6_ppp_username: dd.usernameV6,
-                        ipv6_ppp_passtmp: dd.passwordV6
+                    cT.extend(dk, {
+                        wan_apn: di.wanApn,
+                        ppp_auth_mode: di.authMode,
+                        ppp_username: di.username,
+                        ppp_passtmp: di.password,
+                        dns_mode: di.dnsMode,
+                        prefer_dns_manual: di.dns1,
+                        standby_dns_manual: di.dns2,
+                        ipv6_wan_apn: di.wanApnV6,
+                        ipv6_ppp_auth_mode: di.authModeV6,
+                        ipv6_ppp_username: di.usernameV6,
+                        ipv6_ppp_passtmp: di.passwordV6
                     })
                 }
             }
-            return df
+            return dk
         }
 
-        function dc(dd) {
-            if (dd.result == "success") {
+        function dh(di) {
+            if (di.result == "success") {
                 return {
                     result: true
                 }
@@ -655,851 +655,949 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
             }
         }
     }
-    var cX = ["modem_main_state", "pin_status", "blc_wan_mode", "blc_wan_auto_mode", "loginfo", "fota_new_version_state", "fota_current_upgrade_state", "fota_upgrade_selector", "network_provider", "is_mandatory", "sta_count", "m_sta_count"];
-    var aw = ["signalbar", "network_type", "sub_network_type", "ppp_status", "rj45_state", "EX_SSID1", "sta_ip_status", "EX_wifi_profile", "m_ssid_enable", "wifi_cur_state", "SSID1", "simcard_roam", "lan_ipaddr", "battery_charging", "battery_vol_percent", "battery_pers", "spn_name_data", "spn_b1_flag", "spn_b2_flag", "realtime_tx_bytes", "realtime_rx_bytes", "realtime_time", "realtime_tx_thrpt", "realtime_rx_thrpt", "monthly_rx_bytes", "monthly_tx_bytes", "traffic_alined_delta", "monthly_time", "date_month", "data_volume_limit_switch", "data_volume_limit_size", "data_volume_alert_percent", "data_volume_limit_unit", "roam_setting_option", "upg_roam_switch", "fota_package_already_download", "ssid", "dial_mode", "ethwan_mode", "default_wan_name"];
-    if (aH.HAS_SMS) {
-        cP.merge(aw, ["sms_received_flag", "sts_received_flag", "sms_unread_num"])
+    var c1 = ["modem_main_state", "pin_status", "blc_wan_mode", "blc_wan_auto_mode", "loginfo", "fota_new_version_state", "fota_current_upgrade_state", "fota_upgrade_selector", "network_provider", "is_mandatory", "sta_count", "m_sta_count"];
+    var ay = ["signalbar", "network_type", "sub_network_type", "ppp_status", "rj45_state", "EX_SSID1", "sta_ip_status", "EX_wifi_profile", "m_ssid_enable", "wifi_cur_state", "SSID1", "simcard_roam", "lan_ipaddr", "battery_charging", "battery_vol_percent", "battery_pers", "spn_name_data", "spn_b1_flag", "spn_b2_flag", "realtime_tx_bytes", "realtime_rx_bytes", "realtime_time", "realtime_tx_thrpt", "realtime_rx_thrpt", "monthly_rx_bytes", "monthly_tx_bytes", "traffic_alined_delta", "monthly_time", "date_month", "data_volume_limit_switch", "data_volume_limit_size", "data_volume_alert_percent", "data_volume_limit_unit", "roam_setting_option", "upg_roam_switch", "fota_package_already_download", "ssid", "dial_mode", "ethwan_mode", "default_wan_name"];
+    if (aJ.HAS_SMS) {
+        cT.merge(ay, ["sms_received_flag", "sts_received_flag", "sms_unread_num"])
     }
-    var aT = [];
-    var bM = [bn];
+    var aV = [];
+    var bO = [bp];
 
-    function aU() {
-        if (!cO) {
+    function aW() {
+        if (!cS) {
             setTimeout(function() {
-                aU()
+                aW()
             }, 1000);
             return
         }
-        var db = cv();
-        c7(db, function(dc) {
-            for (var dd = 0; dd < bM.length; dd++) {
-                if (typeof bM[dd] === "function") {
-                    bM[dd](dc)
+        var dg = cz();
+        dc(dg, function(dh) {
+            for (var di = 0; di < bO.length; di++) {
+                if (typeof bO[di] === "function") {
+                    bO[di](dh)
                 }
             }
-            cP.merge(bM, aT);
-            aT = [];
+            cT.merge(bO, aV);
+            aV = [];
             setTimeout(function() {
-                aU()
+                aW()
             }, 1000)
         }, function() {
-            cK();
+            cO();
             setTimeout(function() {
-                aU()
+                aW()
             }, 1000)
         }, false)
     }
 
-    function cv() {
-        var db = {
+    function cz() {
+        var dg = {
             multi_data: 1
         };
-        if (window.location.hash && window.location.hash != "#entry" && bu.isLoggedIn) {
-            if (aH.HAS_SMS) {
-                db.sms_received_flag_flag = 0;
-                db.sts_received_flag_flag = 0
+        if (window.location.hash && window.location.hash != "#entry" && bw.isLoggedIn) {
+            if (aJ.HAS_SMS) {
+                dg.sms_received_flag_flag = 0;
+                dg.sts_received_flag_flag = 0
             }
-            if (aw.length > 0 && cg.indexOf(cX, aw[0]) == -1) {
-                cP.each(aw, function(dc, dd) {
-                    cX.push(dd)
+            if (ay.length > 0 && cj.indexOf(c1, ay[0]) == -1) {
+                cT.each(ay, function(dh, di) {
+                    c1.push(di)
                 })
             }
         } else {
-            if (aw.length > 0 && cg.indexOf(cX, aw[0]) != -1) {
-                cX = cg.without(cX, aw)
+            if (ay.length > 0 && cj.indexOf(c1, ay[0]) != -1) {
+                c1 = cj.without(c1, ay)
             }
         }
-        db.cmd = cX.join(",");
-        return db
+        dg.cmd = c1.join(",");
+        return dg
     }
 
-    function cQ(db) {
-        if (cg.indexOf(aT, db) == -1) {
-            aT.push(db)
+    function cU(dg) {
+        if (cj.indexOf(aV, dg) == -1) {
+            aV.push(dg)
         }
     }
 
-    function C(db) {
-        bM = cg.without(bM, db);
-        if (bM.length == 0) {
-            bM.push(bn)
+    function C(dg) {
+        bO = cj.without(bO, dg);
+        if (bO.length == 0) {
+            bO.push(bp)
         }
-        return aT
+        return aV
     }
 
-    function c2(db) {
-        if (cg.indexOf(cX, db) == -1) {
-            cX.push(db)
+    function c6(dg) {
+        if (cj.indexOf(c1, dg) == -1) {
+            c1.push(dg)
         }
     }
 
-    function bp(db) {
-        cX = cg.without(cX, db);
-        return cX
+    function br(dg) {
+        c1 = cj.without(c1, dg);
+        return c1
     }
 
-    function bn(dc) {
-        bu.defaultWanName = dc.default_wan_name;
-        bu.signalImg = typeof dc.signalbar == "undefined" ? "0" : dc.signalbar;
-        bu.networkType = dc.sub_network_type ? dc.sub_network_type : (dc.network_type ? dc.network_type : "");
-        if (bu.networkType.toLowerCase().indexOf("limited_service") != -1 || bu.networkType.toLowerCase().indexOf("limited service") != -1) {
-            bu.networkType = "limited_service"
+    function bp(dh) {
+        bw.defaultWanName = dh.default_wan_name;
+        bw.signalImg = typeof dh.signalbar == "undefined" ? "0" : dh.signalbar;
+        bw.networkType = dh.sub_network_type ? dh.sub_network_type : (dh.network_type ? dh.network_type : "");
+        if (bw.networkType.toLowerCase().indexOf("limited_service") != -1 || bw.networkType.toLowerCase().indexOf("limited service") != -1) {
+            bw.networkType = "limited_service"
         } else {
-            if (bu.networkType.toLowerCase().indexOf("no_service") != -1 || bu.networkType.toLowerCase().indexOf("no service") != -1) {
-                bu.networkType = "no_service"
+            if (bw.networkType.toLowerCase().indexOf("no_service") != -1 || bw.networkType.toLowerCase().indexOf("no service") != -1) {
+                bw.networkType = "no_service"
             }
         }
-        bu.networkOperator = dc.network_provider ? dc.network_provider : "";
-        bu.spn_b1_flag = dc.spn_b1_flag;
-        bu.spn_b2_flag = dc.spn_b2_flag;
-        bu.spn_name_data = dc.spn_name_data;
-        bu.connectStatus = typeof dc.ppp_status == "undefined" ? "ppp_disconnected" : dc.ppp_status;
-        bu.rj45ConnectStatus = (typeof dc.rj45_state == "undefined" || dc.rj45_state == "") ? "dead" : dc.rj45_state;
-        bu.ethWanMode = dc.ethwan_mode;
-        bu.ssid1AttachedNum = dc.sta_count == "" ? 0 : parseInt(dc.sta_count, 10);
-        bu.ssid2AttachedNum = dc.m_sta_count == "" ? 0 : parseInt(dc.m_sta_count, 10);
-        bu.roamingStatus = aE(bu.networkType, dc.modem_main_state, dc.simcard_roam);
-        bu.wifiStatus = dc.wifi_cur_state == "1";
-        bu.simStatus = dc.modem_main_state;
-        bu.pinStatus = dc.pin_status;
-        var dd = 3 * 60 * 60;
-        var db = (dc.battery_vol_percent && dc.battery_vol_percent.length > 0) ? dc.battery_vol_percent : 100;
-        bu.batteryPers = dc.battery_pers;
-        var de = Math.round(dd * (1 - db / 100));
-        bu.batteryStatus = (typeof dc.battery_charging == "undefined") ? "0" : dc.battery_charging;
-        bu.batteryLevel = db;
-        bu.batteryTime = de.toString();
-        bu.data_counter = {
-            uploadRate: dc.realtime_tx_thrpt == "" ? 0 : dc.realtime_tx_thrpt,
-            downloadRate: dc.realtime_rx_thrpt == "" ? 0 : dc.realtime_rx_thrpt,
-            currentSent: dc.realtime_tx_bytes == "" ? 0 : dc.realtime_tx_bytes,
-            currentReceived: dc.realtime_rx_bytes == "" ? 0 : dc.realtime_rx_bytes,
-            currentConnectedTime: dc.realtime_time == "" ? 0 : dc.realtime_time,
-            monthlySent: dc.monthly_tx_bytes == "" ? 0 : dc.monthly_tx_bytes,
-            monthlyReceived: dc.monthly_rx_bytes == "" ? 0 : dc.monthly_rx_bytes,
-            traffic_alined_delta: dc.traffic_alined_delta == "" ? 0 : dc.traffic_alined_delta,
-            monthlyConnectedTime: dc.monthly_time == "" ? 0 : dc.monthly_time,
-            month: dc.date_month == "" ? 1 : dc.date_month
+        bw.networkOperator = dh.network_provider ? dh.network_provider : "";
+        bw.spn_b1_flag = dh.spn_b1_flag;
+        bw.spn_b2_flag = dh.spn_b2_flag;
+        bw.spn_name_data = dh.spn_name_data;
+        bw.connectStatus = typeof dh.ppp_status == "undefined" ? "ppp_disconnected" : dh.ppp_status;
+        bw.rj45ConnectStatus = (typeof dh.rj45_state == "undefined" || dh.rj45_state == "") ? "dead" : dh.rj45_state;
+        bw.ethWanMode = dh.ethwan_mode;
+        bw.ssid1AttachedNum = dh.sta_count == "" ? 0 : parseInt(dh.sta_count, 10);
+        bw.ssid2AttachedNum = dh.m_sta_count == "" ? 0 : parseInt(dh.m_sta_count, 10);
+        bw.roamingStatus = aG(bw.networkType, dh.modem_main_state, dh.simcard_roam);
+        bw.wifiStatus = dh.wifi_cur_state == "1";
+        bw.simStatus = dh.modem_main_state;
+        bw.pinStatus = dh.pin_status;
+        var di = 3 * 60 * 60;
+        var dg = (dh.battery_vol_percent && dh.battery_vol_percent.length > 0) ? dh.battery_vol_percent : 100;
+        bw.batteryPers = dh.battery_pers;
+        var dj = Math.round(di * (1 - dg / 100));
+        bw.batteryStatus = (typeof dh.battery_charging == "undefined") ? "0" : dh.battery_charging;
+        bw.batteryLevel = dg;
+        bw.batteryTime = dj.toString();
+        bw.data_counter = {
+            uploadRate: dh.realtime_tx_thrpt == "" ? 0 : dh.realtime_tx_thrpt,
+            downloadRate: dh.realtime_rx_thrpt == "" ? 0 : dh.realtime_rx_thrpt,
+            currentSent: dh.realtime_tx_bytes == "" ? 0 : dh.realtime_tx_bytes,
+            currentReceived: dh.realtime_rx_bytes == "" ? 0 : dh.realtime_rx_bytes,
+            currentConnectedTime: dh.realtime_time == "" ? 0 : dh.realtime_time,
+            monthlySent: dh.monthly_tx_bytes == "" ? 0 : dh.monthly_tx_bytes,
+            monthlyReceived: dh.monthly_rx_bytes == "" ? 0 : dh.monthly_rx_bytes,
+            traffic_alined_delta: dh.traffic_alined_delta == "" ? 0 : dh.traffic_alined_delta,
+            monthlyConnectedTime: dh.monthly_time == "" ? 0 : dh.monthly_time,
+            month: dh.date_month == "" ? 1 : dh.date_month
         };
-        bu.ssid = dc.SSID1;
-        bu.authMode = dc.AuthMode;
-        bu.isLoggedIn = aH.HAS_LOGIN ? dc.loginfo == "ok" : true;
-        if (aH.HAS_SMS) {
-            if (!bu.newSmsReceived) {
-                bu.newSmsReceived = dc.sms_received_flag > 0
+        bw.ssid = dh.SSID1;
+        bw.authMode = dh.AuthMode;
+        bw.isLoggedIn = aJ.HAS_LOGIN ? dh.loginfo == "ok" : true;
+        if (aJ.HAS_SMS) {
+            if (!bw.newSmsReceived) {
+                bw.newSmsReceived = dh.sms_received_flag > 0
             }
-            if (!bu.smsReportReceived) {
-                bu.smsReportReceived = dc.sts_received_flag > 0
+            if (!bw.smsReportReceived) {
+                bw.smsReportReceived = dh.sts_received_flag > 0
             }
-            if (typeof dc.sms_dev_unread_num != "undefined") {
-                bu.smsUnreadCount = aH.SMS_UNREAD_NUM_INCLUDE_SIM ? parseInt(dc.sms_dev_unread_num | 0, 10) + parseInt(dc.sms_sim_unread_num | 0, 10) : parseInt(dc.sms_dev_unread_num | 0, 10)
+            if (typeof dh.sms_dev_unread_num != "undefined") {
+                bw.smsUnreadCount = aJ.SMS_UNREAD_NUM_INCLUDE_SIM ? parseInt(dh.sms_dev_unread_num | 0, 10) + parseInt(dh.sms_sim_unread_num | 0, 10) : parseInt(dh.sms_dev_unread_num | 0, 10)
             } else {
-                bu.smsUnreadCount = parseInt(dc.sms_unread_num | 0, 10)
+                bw.smsUnreadCount = parseInt(dh.sms_unread_num | 0, 10)
             }
         }
-        if (dc.data_volume_limit_switch == "1") {
-            bu.limitVolumeEnable = true;
-            bu.limitVolumeType = dc.data_volume_limit_unit == "data" ? "1" : "0";
-            bu.limitVolumePercent = dc.data_volume_alert_percent;
-            if (dc.data_volume_limit_unit == "data") {
-                var df = dc.data_volume_limit_size.split("_");
-                bu.limitVolumeSize = df[0] * df[1] * 1024 * 1024
+        if (dh.data_volume_limit_switch == "1") {
+            bw.limitVolumeEnable = true;
+            bw.limitVolumeType = dh.data_volume_limit_unit == "data" ? "1" : "0";
+            bw.limitVolumePercent = dh.data_volume_alert_percent;
+            if (dh.data_volume_limit_unit == "data") {
+                var dk = dh.data_volume_limit_size.split("_");
+                bw.limitVolumeSize = dk[0] * dk[1] * 1024 * 1024
             } else {
-                bu.limitVolumeSize = dc.data_volume_limit_size * 60 * 60
+                bw.limitVolumeSize = dh.data_volume_limit_size * 60 * 60
             }
         } else {
-            bu.limitVolumeEnable = false;
-            bu.limitVolumeType = "1";
-            bu.limitVolumePercent = "100";
-            bu.limitVolumeSize = "0"
+            bw.limitVolumeEnable = false;
+            bw.limitVolumeType = "1";
+            bw.limitVolumePercent = "100";
+            bw.limitVolumeSize = "0"
         }
-        bu.connectWifiProfile = dc.EX_wifi_profile;
-        bu.connectWifiSSID = dc.EX_SSID1;
-        bu.connectWifiStatus = dc.sta_ip_status;
-        bu.multi_ssid_enable = dc.m_ssid_enable;
-        bu.roamMode = dc.roam_setting_option;
-        if (dc.blc_wan_mode == "AUTO") {
-            bu.blc_wan_mode = dc.blc_wan_auto_mode ? dc.blc_wan_auto_mode : "AUTO_PPP"
+        bw.connectWifiProfile = dh.EX_wifi_profile;
+        bw.connectWifiSSID = dh.EX_SSID1;
+        bw.connectWifiStatus = dh.sta_ip_status;
+        bw.multi_ssid_enable = dh.m_ssid_enable;
+        bw.roamMode = dh.roam_setting_option;
+        if (dh.blc_wan_mode == "AUTO") {
+            bw.blc_wan_mode = dh.blc_wan_auto_mode ? dh.blc_wan_auto_mode : "AUTO_PPP"
         } else {
-            bu.blc_wan_mode = dc.blc_wan_mode ? dc.blc_wan_mode : "PPP"
+            bw.blc_wan_mode = dh.blc_wan_mode ? dh.blc_wan_mode : "PPP"
         }
-        bu.new_version_state = dc.fota_new_version_state == "has_critical" || dc.fota_new_version_state == "has_optional" || dc.fota_new_version_state == "already_has_pkg";
-        bu.current_upgrade_state = dc.fota_current_upgrade_state;
-        if (bu.current_upgrade_state == "verify_failed") {
-            bu.current_upgrade_state = "upgrade_pack_error"
+        bw.new_version_state = dh.fota_new_version_state == "has_critical" || dh.fota_new_version_state == "has_optional" || dh.fota_new_version_state == "already_has_pkg";
+        bw.current_upgrade_state = dh.fota_current_upgrade_state;
+        if (bw.current_upgrade_state == "verify_failed") {
+            bw.current_upgrade_state = "upgrade_pack_error"
         }
-        bu.fota_user_selector = dc.fota_upgrade_selector;
-        bu.is_mandatory = dc.is_mandatory == "1" || dc.fota_new_version_state == "has_critical";
-        bu.allowRoamingUpdate = dc.upg_roam_switch;
-        bu.dialMode = dc.dial_mode;
-        bu.fota_package_already_download = dc.fota_package_already_download
+        bw.fota_user_selector = dh.fota_upgrade_selector;
+        bw.is_mandatory = dh.is_mandatory == "1" || dh.fota_new_version_state == "has_critical";
+        bw.allowRoamingUpdate = dh.upg_roam_switch;
+        bw.dialMode = dh.dial_mode;
+        bw.fota_package_already_download = dh.fota_package_already_download
     }
 
-    function cK() {
-        bu.batteryStatus = "0"
+    function cO() {
+        bw.batteryStatus = "0"
     }
 
-    function aE(dc, db, dd) {
-        if (("" == cP.trim(dc)) || "no_service" == dc.toLowerCase() || "limited_service" == dc.toLowerCase() || "modem_sim_undetected" == db || "modem_waitpin" == db || "modem_waitpuk" == db) {
+    function aG(dh, dg, di) {
+        if (("" == cT.trim(dh)) || "no_service" == dh.toLowerCase() || "limited_service" == dh.toLowerCase() || "modem_sim_undetected" == dg || "modem_waitpin" == dg || "modem_waitpuk" == dg) {
             return false
         }
-        if ("Internal" == dd || "International" == dd) {
+        if ("Internal" == di || "International" == di) {
             return true
         } else {
             return false
         }
     }
-    cP(document).ready(function() {
+    cT(document).ready(function() {
         setTimeout(function() {
-            aU()
+            aW()
         }, 0)
     });
 
-    function bm(dc, db, de, dg) {
-        if ((typeof(dc) !== "string") || (dc === "") || (typeof(db) !== "number") || (isNaN(db))) {
-            if (typeof(dg) === "function") {
-                dg(false);
+    function bo(dh, dg, dj, dl) {
+        if ((typeof(dh) !== "string") || (dh === "") || (typeof(dg) !== "number") || (isNaN(dg))) {
+            if (typeof(dl) === "function") {
+                dl(false);
                 return
             }
         }
-        var df = -1;
-        if (db === 0) {
-            df = 0
+        var dk = -1;
+        if (dg === 0) {
+            dk = 0
         } else {
-            if (db === 2) {
-                df = 2
+            if (dg === 2) {
+                dk = 2
             } else {
-                if (db == 7) {
-                    df = 7
+                if (dg == 7) {
+                    dk = 7
                 } else {
-                    df = -1
+                    dk = -1
                 }
             }
         }
-        if (-1 === df) {
-            if (typeof(dg) === "function") {
-                dg(false);
+        if (-1 === dk) {
+            if (typeof(dl) === "function") {
+                dl(false);
                 return
             }
         }
-        var dd;
-        if (de.toString() == "NaN") {
-            dd = ""
+        var di;
+        if (dj.toString() == "NaN") {
+            di = ""
         } else {
-            dd = de
+            di = dj
         }
-        c7({
+        dc({
             goformId: "SET_NETWORK",
-            NetworkNumber: dc,
-            Rat: db,
-            nSubrat: dd
-        }, function(dj) {
-            if (dj && dj.result == "success") {
-                var di;
-                var dh = 0;
-                var dk = setInterval(function() {
-                    var dl = cu({
+            NetworkNumber: dh,
+            Rat: dg,
+            nSubrat: di
+        }, function(dp) {
+            if (dp && dp.result == "success") {
+                var dn;
+                var dm = 0;
+                var dq = setInterval(function() {
+                    var dr = cy({
                         cmd: "m_netselect_result"
                     }, false);
-                    if (!dl) {
-                        dg(false);
+                    if (!dr) {
+                        dl(false);
                         return
                     }
-                    if (dl.m_netselect_result == "manual_success") {
-                        di = "1";
-                        window.clearInterval(dk);
-                        dg(true)
+                    if (dr.m_netselect_result == "manual_success") {
+                        dn = "1";
+                        window.clearInterval(dq);
+                        dl(true)
                     } else {
-                        if (dl.m_netselect_result == "manual_fail") {
-                            di = "0";
-                            window.clearInterval(dk);
-                            dg(false)
+                        if (dr.m_netselect_result == "manual_fail") {
+                            dn = "0";
+                            window.clearInterval(dq);
+                            dl(false)
                         } else {
-                            if (dh < 120) {
-                                dh++
+                            if (dm < 120) {
+                                dm++
                             } else {
-                                window.clearInterval(dk);
-                                dg(false)
+                                window.clearInterval(dq);
+                                dl(false)
                             }
                         }
                     }
                 }, 1000)
             } else {
-                dg(false)
+                dl(false)
             }
-        }, function(dh) {
-            dg(false)
+        }, function(dm) {
+            dl(false)
         }, true)
     }
 
-    function cH() {
-        var de = arguments[1];
-        return bz(arguments, {}, dc, dd, null, true);
+    function cL() {
+        var dj = arguments[1];
+        return bB(arguments, {}, dh, di, null, true);
 
-        function dc(df, dg) {
-            var dh = {};
-            dh.notCallback = true;
-            dh.goformId = "PBM_CONTACT_ADD";
-            dh.location = df.location;
-            dh.name = encodeMessage(df.name);
-            dh.mobilephone_num = df.mobile_phone_number;
-            if (dh.location == 1) {
-                dh.add_index_pc = df.index;
-                dh.homephone_num = df.home_phone_number;
-                dh.officephone_num = df.office_phone_number;
-                dh.email = encodeMessage(df.mail);
-                dh.groupchoose = df.group;
-                if (!dh.groupchoose) {
-                    dh.groupchoose = "common"
+        function dh(dk, dl) {
+            var dm = {};
+            dm.notCallback = true;
+            dm.goformId = "PBM_CONTACT_ADD";
+            dm.location = dk.location;
+            dm.name = encodeMessage(dk.name);
+            dm.mobilephone_num = dk.mobile_phone_number;
+            if (dm.location == 1) {
+                dm.add_index_pc = dk.index;
+                dm.homephone_num = dk.home_phone_number;
+                dm.officephone_num = dk.office_phone_number;
+                dm.email = encodeMessage(dk.mail);
+                dm.groupchoose = dk.group;
+                if (!dm.groupchoose) {
+                    dm.groupchoose = "common"
                 }
             } else {
-                dh.edit_index = df.index
+                dm.edit_index = dk.index
             }
-            if (df.delId != undefined) {
-                dh.delId = df.delId
+            if (dk.delId != undefined) {
+                dm.delId = dk.delId
             }
-            return dh
+            return dm
         }
 
-        function dd(df) {
-            if (df && df.result == "success") {
-                bb("pbm_write_flag", db)
+        function di(dk) {
+            if (dk && dk.result == "success") {
+                bd("pbm_write_flag", dg)
             } else {
-                de(df)
+                dj(dk)
             }
         }
 
-        function db(df) {
-            a0(df, de, db)
+        function dg(dk) {
+            a2(dk, dj, dg)
         }
     }
 
-    function a0(db, dd, dc) {
-        if (db.pbm_write_flag == "0") {
-            m("pbm_write_flag", dc);
-            dd({
+    function a2(dg, di, dh) {
+        if (dg.pbm_write_flag == "0") {
+            m("pbm_write_flag", dh);
+            di({
                 result: "success"
             })
         } else {
-            if (db.pbm_write_flag == "6" || db.pbm_write_flag == "7" || db.pbm_write_flag == "8" || db.pbm_write_flag == "9" || db.pbm_write_flag == "10" || db.pbm_write_flag == "11" || db.pbm_write_flag == "14") {
-                m("pbm_write_flag", dc);
-                dd({
+            if (dg.pbm_write_flag == "6" || dg.pbm_write_flag == "7" || dg.pbm_write_flag == "8" || dg.pbm_write_flag == "9" || dg.pbm_write_flag == "10" || dg.pbm_write_flag == "11" || dg.pbm_write_flag == "14") {
+                m("pbm_write_flag", dh);
+                di({
                     result: "fail"
                 })
             } else {}
         }
     }
 
-    function bl() {
-        var de = arguments[1];
-        return bz(arguments, {}, dc, dd, null, true);
+    function bn() {
+        var dj = arguments[1];
+        return bB(arguments, {}, dh, di, null, true);
 
-        function dc(df, dg) {
-            var dh = {};
-            dh.notCallback = true;
-            dh.goformId = "PBM_CONTACT_DEL";
-            dh.del_option = "delete_num";
-            dh.delete_id = df.indexs.join(",");
-            return dh
+        function dh(dk, dl) {
+            var dm = {};
+            dm.notCallback = true;
+            dm.goformId = "PBM_CONTACT_DEL";
+            dm.del_option = "delete_num";
+            dm.delete_id = dk.indexs.join(",");
+            return dm
         }
 
-        function dd(df) {
-            if (df && df.result == "success") {
-                bb("pbm_write_flag", db)
+        function di(dk) {
+            if (dk && dk.result == "success") {
+                bd("pbm_write_flag", dg)
             } else {
-                de(df)
+                dj(dk)
             }
         }
 
-        function db(df) {
-            a0(df, de, db)
+        function dg(dk) {
+            a2(dk, dj, dg)
         }
     }
 
-    function aV() {
-        var de = arguments[1];
-        return bz(arguments, {}, db, dd, null, true);
+    function aX() {
+        var dj = arguments[1];
+        return bB(arguments, {}, dg, di, null, true);
 
-        function db(df, dg) {
-            var dh = {};
-            dh.notCallback = true;
-            dh.goformId = "PBM_CONTACT_DEL";
-            dh.del_option = "delete_all";
-            dh.del_all_location = df.location;
-            return dh
+        function dg(dk, dl) {
+            var dm = {};
+            dm.notCallback = true;
+            dm.goformId = "PBM_CONTACT_DEL";
+            dm.del_option = "delete_all";
+            dm.del_all_location = dk.location;
+            return dm
         }
 
-        function dd(df) {
-            if (df && df.result == "success") {
-                bb("pbm_write_flag", dc)
+        function di(dk) {
+            if (dk && dk.result == "success") {
+                bd("pbm_write_flag", dh)
             } else {
-                de(df)
+                dj(dk)
             }
         }
 
-        function dc(df) {
-            a0(df, de, dc)
+        function dh(dk) {
+            a2(dk, dj, dh)
         }
     }
 
-    function Z() {
-        var de = arguments[1];
-        return bz(arguments, {}, dc, dd, null, true);
+    function ab() {
+        var dj = arguments[1];
+        return bB(arguments, {}, dh, di, null, true);
 
-        function dc(df, dg) {
-            var dh = {};
-            dh.notCallback = true;
-            dh.goformId = "PBM_CONTACT_DEL";
-            dh.del_option = "delete_all_by_group";
-            dh.del_all_location = 3;
-            dh.del_group = df.group;
-            return dh
+        function dh(dk, dl) {
+            var dm = {};
+            dm.notCallback = true;
+            dm.goformId = "PBM_CONTACT_DEL";
+            dm.del_option = "delete_all_by_group";
+            dm.del_all_location = 3;
+            dm.del_group = dk.group;
+            return dm
         }
 
-        function dd(df) {
-            if (df && df.result == "success") {
-                bb("pbm_write_flag", db)
+        function di(dk) {
+            if (dk && dk.result == "success") {
+                bd("pbm_write_flag", dg)
             } else {
-                de(df)
+                dj(dk)
             }
         }
 
-        function db(df) {
-            a0(df, de, db)
+        function dg(dk) {
+            a2(dk, dj, dg)
         }
     }
 
-    function af() {
-        return bz(arguments, {}, db, dc, null, true);
+    function ah() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "SET_CONNECTION_MODE";
-            df.ConnectionMode = dd.connectionMode;
-            df.roam_setting_option = dd.isAllowedRoaming;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "SET_CONNECTION_MODE";
+            dk.ConnectionMode = di.connectionMode;
+            dk.roam_setting_option = di.isAllowedRoaming;
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                callback(dd)
+                callback(di)
+            }
+        }
+    }
+
+    function b5() {
+        return bB(arguments, {}, dg, dh, null, true);
+
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "ALK_SIM_SELECT";
+            dk.sim_select = di.sim_select;
+            return dk
+        }
+
+        function dh(di) {
+            if (di) {
+                return di
+            } else {
+                callback(di)
+            }
+        }
+    }
+
+    function N() {
+        return bB(arguments, {}, dg, dh, null, true);
+
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "ALK_SIM_SELECT_WITH_PWD";
+            dk.sim_select = di.sim_select;
+            dk.admin_pwd = di.admin_pwd;
+            return dk
+        }
+
+        function dh(di) {
+            if (di) {
+                return di
+            } else {
+                callback(di)
             }
         }
     }
 
     function K() {
-        return bz(arguments, {}, db, dc, null, false);
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "ConnectionMode";
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "ConnectionMode";
+            return dk
         }
 
-        function dc(de) {
-            if (de) {
-                var dd = {};
-                dd.connectionMode = de.connectionMode;
-                dd.isAllowedRoaming = de.autoConnectWhenRoaming;
-                return dd
+        function dh(dj) {
+            if (dj) {
+                var di = {};
+                di.connectionMode = dj.connectionMode;
+                di.isAllowedRoaming = dj.autoConnectWhenRoaming;
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function a(de, db) {
-        if (de[0].data_per_page == 0) {
+    function M() {
+        return bB(arguments, {}, dg, dh, null, true);
+
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "ALK_OLAX_SET_SPEED_LIMIT";
+            dk.olax_speed_limit = di.selectedspeed_limitTypes;
+            return dk
+        }
+
+        function dh(di) {
+            if (di) {
+                return di
+            } else {
+                callback(di)
+            }
+        }
+    }
+
+    function cr() {
+        return bB(arguments, {}, dg, dh, null, false);
+
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "alk_olax_config";
+            return dk
+        }
+
+        function dh(dj) {
+            if (dj) {
+                var di = {};
+                di.alk_olax_config = dj.alk_olax_config;
+                return di
+            } else {
+                return X
+            }
+        }
+    }
+
+    function c8() {
+        return bB(arguments, {}, dg, dh, null, false);
+
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "alk_sim_select";
+            return dk
+        }
+
+        function dh(dj) {
+            if (dj) {
+                var di = {};
+                di.alk_sim_select = dj.alk_sim_select;
+                return di
+            } else {
+                return X
+            }
+        }
+    }
+
+    function a(dj, dg) {
+        if (dj[0].data_per_page == 0) {
             return {
                 pbm_data: []
             }
         }
-        return bz(de, {}, dc, dd, null, false);
+        return bB(dj, {}, dh, di, null, false);
 
-        function dc(df, dg) {
-            var dh = {};
-            dh.mem_store = db;
-            if (db == 2) {
-                dh.cmd = "pbm_data_total"
+        function dh(dk, dl) {
+            var dm = {};
+            dm.mem_store = dg;
+            if (dg == 2) {
+                dm.cmd = "pbm_data_total"
             } else {
-                dh.cmd = "pbm_data_info"
+                dm.cmd = "pbm_data_info"
             }
-            dh.page = df.page;
-            dh.data_per_page = df.data_per_page;
-            dh.orderBy = df.orderBy;
-            dh.isAsc = df.isAsc;
-            return dh
+            dm.page = dk.page;
+            dm.data_per_page = dk.data_per_page;
+            dm.orderBy = dk.orderBy;
+            dm.isAsc = dk.isAsc;
+            return dm
         }
 
-        function dd(df) {
-            if (df && df.pbm_data) {
-                var dg = [];
-                cP.each(df.pbm_data, function(dh) {
-                    dg.push({
-                        pbm_id: df.pbm_data[dh].pbm_id,
-                        pbm_location: df.pbm_data[dh].pbm_location,
-                        pbm_number: df.pbm_data[dh].pbm_number,
-                        pbm_anr: df.pbm_data[dh].pbm_anr,
-                        pbm_anr1: df.pbm_data[dh].pbm_anr1,
-                        pbm_group: df.pbm_data[dh].pbm_group,
-                        pbm_name: decodeMessage(df.pbm_data[dh].pbm_name),
-                        pbm_email: decodeMessage(df.pbm_data[dh].pbm_email)
+        function di(dk) {
+            if (dk && dk.pbm_data) {
+                var dl = [];
+                cT.each(dk.pbm_data, function(dm) {
+                    dl.push({
+                        pbm_id: dk.pbm_data[dm].pbm_id,
+                        pbm_location: dk.pbm_data[dm].pbm_location,
+                        pbm_number: dk.pbm_data[dm].pbm_number,
+                        pbm_anr: dk.pbm_data[dm].pbm_anr,
+                        pbm_anr1: dk.pbm_data[dm].pbm_anr1,
+                        pbm_group: dk.pbm_data[dm].pbm_group,
+                        pbm_name: decodeMessage(dk.pbm_data[dm].pbm_name),
+                        pbm_email: decodeMessage(dk.pbm_data[dm].pbm_email)
                     })
                 });
                 return {
-                    pbm_data: dg
+                    pbm_data: dl
                 }
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function bV() {
+    function bX() {
         if (arguments[0].data_per_page == 0) {
             return {
                 pbm_data: []
             }
         }
-        return bz(arguments, {}, db, dc, null, false);
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "pbm_data_total";
-            df.mem_store = 3;
-            df.pbm_group = dd.group;
-            df.page = dd.page;
-            df.data_per_page = dd.data_per_page;
-            df.orderBy = dd.orderBy;
-            df.isAsc = dd.isAsc;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "pbm_data_total";
+            dk.mem_store = 3;
+            dk.pbm_group = di.group;
+            dk.page = di.page;
+            dk.data_per_page = di.data_per_page;
+            dk.orderBy = di.orderBy;
+            dk.isAsc = di.isAsc;
+            return dk
         }
 
-        function dc(dd) {
-            if (dd && dd.pbm_data) {
-                var de = [];
-                cP.each(dd.pbm_data, function(df) {
-                    de.push({
-                        pbm_id: dd.pbm_data[df].pbm_id,
-                        pbm_location: dd.pbm_data[df].pbm_location,
-                        pbm_number: dd.pbm_data[df].pbm_number,
-                        pbm_anr: dd.pbm_data[df].pbm_anr,
-                        pbm_anr1: dd.pbm_data[df].pbm_anr1,
-                        pbm_group: dd.pbm_data[df].pbm_group,
-                        pbm_name: decodeMessage(dd.pbm_data[df].pbm_name),
-                        pbm_email: decodeMessage(dd.pbm_data[df].pbm_email)
+        function dh(di) {
+            if (di && di.pbm_data) {
+                var dj = [];
+                cT.each(di.pbm_data, function(dk) {
+                    dj.push({
+                        pbm_id: di.pbm_data[dk].pbm_id,
+                        pbm_location: di.pbm_data[dk].pbm_location,
+                        pbm_number: di.pbm_data[dk].pbm_number,
+                        pbm_anr: di.pbm_data[dk].pbm_anr,
+                        pbm_anr1: di.pbm_data[dk].pbm_anr1,
+                        pbm_group: di.pbm_data[dk].pbm_group,
+                        pbm_name: decodeMessage(di.pbm_data[dk].pbm_name),
+                        pbm_email: decodeMessage(di.pbm_data[dk].pbm_email)
                     })
                 });
                 return {
-                    pbm_data: de
+                    pbm_data: dj
                 }
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function c5() {
+    function da() {
         return a(arguments, 1)
     }
 
-    function cI() {
+    function cM() {
         return a(arguments, 0)
     }
 
-    function S() {
+    function U() {
         return a(arguments, 2)
     }
 
-    function ch() {
-        return bz(arguments, {}, db, dc, null, false);
+    function ck() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "pbm_init_flag";
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "pbm_init_flag";
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function ce(de, dd) {
-        return bz(de, {}, db, dc, null, false);
+    function ch(dj, di) {
+        return bB(dj, {}, dg, dh, null, false);
 
-        function db(df, dg) {
-            var dh = {};
-            dh.cmd = "pbm_capacity_info";
-            if (dd) {
-                dh.pbm_location = "pbm_sim"
+        function dg(dk, dl) {
+            var dm = {};
+            dm.cmd = "pbm_capacity_info";
+            if (di) {
+                dm.pbm_location = "pbm_sim"
             } else {
-                dh.pbm_location = "pbm_native"
+                dm.pbm_location = "pbm_native"
             }
-            return dh
+            return dm
         }
 
-        function dc(df) {
-            if (df) {
-                return df
+        function dh(dk) {
+            if (dk) {
+                return dk
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function bQ() {
-        var db = ce(arguments, true);
+    function bS() {
+        var dg = ch(arguments, true);
         return {
-            simPbmTotalCapacity: parseInt(db.pbm_sim_max_record_num),
-            simPbmUsedCapacity: parseInt(db.pbm_sim_used_record_num),
-            simType: db.pbm_sim_type,
-            maxNameLen: parseInt(db.pbm_sim_max_name_len),
-            maxNumberLen: parseInt(db.pbm_sim_max_number_len) > 40 ? 40 : parseInt(db.pbm_sim_max_number_len)
+            simPbmTotalCapacity: parseInt(dg.pbm_sim_max_record_num),
+            simPbmUsedCapacity: parseInt(dg.pbm_sim_used_record_num),
+            simType: dg.pbm_sim_type,
+            maxNameLen: parseInt(dg.pbm_sim_max_name_len),
+            maxNumberLen: parseInt(dg.pbm_sim_max_number_len) > 40 ? 40 : parseInt(dg.pbm_sim_max_number_len)
         }
     }
 
-    function ag() {
-        var db = ce(arguments, false);
+    function ai() {
+        var dg = ch(arguments, false);
         return {
-            pcPbmTotalCapacity: parseInt(db.pbm_dev_max_record_num),
-            pcPbmUsedCapacity: parseInt(db.pbm_dev_used_record_num)
+            pcPbmTotalCapacity: parseInt(dg.pbm_dev_max_record_num),
+            pcPbmUsedCapacity: parseInt(dg.pbm_dev_used_record_num)
         }
     }
 
-    function bF() {
-        return bz(arguments, {}, db, dc, null, false);
+    function bH() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {
+        function dg(di, dj) {
+            var dk = {
                 cmd: "lan_station_list"
             };
-            return df
+            return dk
         }
 
-        function dc(dd) {
-            var dg = [];
-            var dh = dd.lan_station_list || dd.station_list;
-            for (var df = 0; dh && df < dh.length; df++) {
-                var di = {};
-                di.macAddress = dh[df].mac_addr;
-                var de = dh[df].hostname;
-                di.hostName = de == "" ? cP.i18n.prop("unknown") : de;
-                di.ipAddress = dh[df].ip_addr;
-                dg.push(di)
+        function dh(di) {
+            var dl = [];
+            var dm = di.lan_station_list || di.station_list;
+            for (var dk = 0; dm && dk < dm.length; dk++) {
+                var dn = {};
+                dn.macAddress = dm[dk].mac_addr;
+                var dj = dm[dk].hostname;
+                dn.hostName = dj == "" ? cT.i18n.prop("unknown") : dj;
+                dn.ipAddress = dm[dk].ip_addr;
+                dl.push(dn)
             }
             return {
-                attachedDevices: dg
+                attachedDevices: dl
             }
         }
     }
 
-    function bq() {
-        return bz(arguments, {}, db, dc, null, false);
+    function bs() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {
+        function dg(di, dj) {
+            var dk = {
                 cmd: "station_list"
             };
-            return df
+            return dk
         }
 
-        function dc(dd) {
-            var dg = [];
-            var dh = dd.station_list;
-            for (var df = 0; dh && df < dh.length; df++) {
-                var di = {};
-                di.macAddress = dh[df].mac_addr;
-                var de = dh[df].hostname;
-                di.hostName = de == "" ? cP.i18n.prop("unknown") : de;
-                di.ipAddress = dh[df].ip_addr;
-                dg.push(di)
+        function dh(di) {
+            var dl = [];
+            var dm = di.station_list;
+            for (var dk = 0; dm && dk < dm.length; dk++) {
+                var dn = {};
+                dn.macAddress = dm[dk].mac_addr;
+                var dj = dm[dk].hostname;
+                dn.hostName = dj == "" ? cT.i18n.prop("unknown") : dj;
+                dn.ipAddress = dm[dk].ip_addr;
+                dl.push(dn)
             }
             return {
-                attachedDevices: dg
+                attachedDevices: dl
             }
         }
     }
 
     function k() {
-        return bz(arguments, {}, db, dc, null, true);
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "SET_WEB_LANGUAGE";
-            df.Language = dd.Language;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "SET_WEB_LANGUAGE";
+            dk.Language = di.Language;
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
     function A() {
-        return bz(arguments, {}, db, dc, null, false);
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "Language";
-            df.multi_data = 1;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "Language";
+            dk.multi_data = 1;
+            return dk
         }
 
-        function dc(de) {
-            if (de) {
-                var dd = {};
-                dd.Language = (de && de.Language) ? de.Language : "en";
-                return dd
+        function dh(dj) {
+            if (dj) {
+                var di = {};
+                di.Language = (dj && dj.Language) ? dj.Language : "en";
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function bJ() {
-        return bz(arguments, {}, db, dc, null, true);
+    function bL() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "SET_BEARER_PREFERENCE";
-            df.BearerPreference = dd.strBearerPreference;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "SET_BEARER_PREFERENCE";
+            dk.BearerPreference = di.strBearerPreference;
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function aF(dd) {
-        cP.post("/reqproc/proc_post", {
+    function aH(di) {
+        cT.post("/reqproc/proc_post", {
             goformId: "SCAN_NETWORK"
-        }, function(de) {
-            if (de.result == "success") {
-                db()
+        }, function(dj) {
+            if (dj.result == "success") {
+                dg()
             } else {
-                dd(false, [])
+                di(false, [])
             }
         }, "json").error(function() {
-            dd(false, [])
+            di(false, [])
         });
 
-        function db() {
-            cP.getJSON("/reqproc/proc_get", {
+        function dg() {
+            cT.getJSON("/reqproc/proc_get", {
                 cmd: "m_netselect_status",
                 _: new Date().getTime()
-            }, function(de) {
-                if (de.m_netselect_status == "manual_selecting") {
-                    setTimeout(db, 1000)
+            }, function(dj) {
+                if (dj.m_netselect_status == "manual_selecting") {
+                    setTimeout(dg, 1000)
                 } else {
-                    cP.getJSON("/reqproc/proc_get", {
+                    cT.getJSON("/reqproc/proc_get", {
                         cmd: "m_netselect_contents",
                         _: new Date().getTime()
-                    }, function(df) {
-                        if (trim(df.m_netselect_contents) != "") {
-                            dc(df.m_netselect_contents)
+                    }, function(dk) {
+                        if (trim(dk.m_netselect_contents) != "") {
+                            dh(dk.m_netselect_contents)
                         } else {
-                            dd(false, [])
+                            di(false, [])
                         }
                     }).error(function() {
-                        dd(false, [])
+                        di(false, [])
                     })
                 }
             }).error(function() {
-                dd(false, [])
+                di(false, [])
             })
         }
 
-        function dc(de) {
-            var di = /([^,;]*),([^,]*),([^,]*),([^,]*),([^,;]*)/g;
-            var dj = [];
-            var dk;
-            var dh = de.split(";");
-            var df = "";
-            for (i = 0; i < dh.length; i++) {
-                var dg = dh[i].split(",").length;
-                if (dg == 4) {
-                    df += dh[i] + ",NON;"
+        function dh(dj) {
+            var dn = /([^,;]*),([^,]*),([^,]*),([^,]*),([^,;]*)/g;
+            var dp = [];
+            var dq;
+            var dm = dj.split(";");
+            var dk = "";
+            for (i = 0; i < dm.length; i++) {
+                var dl = dm[i].split(",").length;
+                if (dl == 4) {
+                    dk += dm[i] + ",NON;"
                 } else {
-                    df += dh[i] + ";"
+                    dk += dm[i] + ";"
                 }
             }
-            while (dk = di.exec(df)) {
-                if (dk != null) {
-                    dj.push({
-                        strShortName: dk[2].replace(/\"/g, ""),
-                        strNumeric: dk[3].replace(/\D/g, ""),
-                        nRat: parseInt(dk[4], 10),
-                        nState: parseInt(dk[1], 10),
-                        SubAct: parseInt(dk[5], 10)
+            while (dq = dn.exec(dk)) {
+                if (dq != null) {
+                    dp.push({
+                        strShortName: dq[2].replace(/\"/g, ""),
+                        strNumeric: dq[3].replace(/\D/g, ""),
+                        nRat: parseInt(dq[4], 10),
+                        nState: parseInt(dq[1], 10),
+                        SubAct: parseInt(dq[5], 10)
                     })
                 }
             }
-            dd(true, dj)
+            di(true, dp)
         }
     }
 
-    function Q() {
-        return bz(arguments, {}, db, dc, null, false);
+    function S() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "current_network_mode,m_netselect_save,net_select_mode,m_netselect_contents,net_select,ppp_status,modem_main_state";
-            df.multi_data = 1;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "current_network_mode,m_netselect_save,net_select_mode,m_netselect_contents,net_select,ppp_status,modem_main_state";
+            dk.multi_data = 1;
+            return dk
         }
 
-        function dc(de) {
-            if (de) {
-                var dd = {};
-                dd.current_network_mode = de.current_network_mode;
-                dd.net_select_mode = de.net_select_mode;
-                dd.m_netselect_save = de.m_netselect_save;
-                dd.m_netselect_contents = de.m_netselect_contents;
-                dd.net_select = de.net_select;
-                dd.ppp_status = de.ppp_status;
-                dd.modem_main_state = de.modem_main_state;
-                return dd
+        function dh(dj) {
+            if (dj) {
+                var di = {};
+                di.current_network_mode = dj.current_network_mode;
+                di.net_select_mode = dj.net_select_mode;
+                di.m_netselect_save = dj.m_netselect_save;
+                di.m_netselect_contents = dj.m_netselect_contents;
+                di.net_select = dj.net_select;
+                di.ppp_status = dj.ppp_status;
+                di.modem_main_state = dj.modem_main_state;
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function aL() {
-        return bz(arguments, {}, db, dc, {}, false);
+    function aN() {
+        return bB(arguments, {}, dg, dh, {}, false);
 
-        function db(dd, de) {
-            var df = {
+        function dg(di, dj) {
+            var dk = {
                 cmd: "sms_data_total",
-                page: dd.page,
-                data_per_page: aH.SMS_DATABASE_SORT_SUPPORT ? dd.smsCount : 500,
-                mem_store: dd.nMessageStoreType,
-                tags: dd.tags,
-                order_by: dd.orderBy
+                page: di.page,
+                data_per_page: aJ.SMS_DATABASE_SORT_SUPPORT ? di.smsCount : 500,
+                mem_store: di.nMessageStoreType,
+                tags: di.tags,
+                order_by: di.orderBy
             };
-            return df
+            return dk
         }
 
-        function dc(dd) {
-            if (dd && dd.messages && dd.messages.length > 0) {
+        function dh(di) {
+            if (di && di.messages && di.messages.length > 0) {
                 return {
-                    messages: cL(dd.messages)
+                    messages: cP(di.messages)
                 }
             } else {
                 return {
@@ -1509,86 +1607,86 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
         }
     }
 
-    function cL(dd, di) {
-        var dj = [];
-        for (var de = 0; de < dd.length; de++) {
-            if (!aH.SHOW_UN_COMPLETE_CONCAT_SMS && typeof dd[de].received_all_concat_sms != "undefined" && dd[de].received_all_concat_sms == "0") {
+    function cP(di, dn) {
+        var dp = [];
+        for (var dj = 0; dj < di.length; dj++) {
+            if (!aJ.SHOW_UN_COMPLETE_CONCAT_SMS && typeof di[dj].received_all_concat_sms != "undefined" && di[dj].received_all_concat_sms == "0") {
                 continue
             }
-            var dg = {};
-            dg.id = dd[de].id;
-            dg.number = dd[de].number;
-            dg.content = di ? dd[de].content : aX(dd[de].content);
-            dg.time = transTime("20" + dd[de].date);
-            dg.isNew = dd[de].tag == "1";
-            dg.groupId = dd[de].draft_group_id;
-            dg.tag = dd[de].tag;
-            dg.receivedAll = dd[de].received_all_concat_sms == "1";
-            dj.push(dg)
+            var dl = {};
+            dl.id = di[dj].id;
+            dl.number = di[dj].number;
+            dl.content = dn ? di[dj].content : aZ(di[dj].content);
+            dl.time = transTime("20" + di[dj].date);
+            dl.isNew = di[dj].tag == "1";
+            dl.groupId = di[dj].draft_group_id;
+            dl.tag = di[dj].tag;
+            dl.receivedAll = di[dj].received_all_concat_sms == "1";
+            dp.push(dl)
         }
-        if (!aH.SMS_DATABASE_SORT_SUPPORT) {
-            var db = [];
-            var df = [];
-            for (var de = dj.length; de--;) {
-                var dc = dj[de];
-                var dh = cP.inArray(dc.id, db);
-                if (dh == -1) {
-                    db.push(dc.id);
-                    df.push(dc)
+        if (!aJ.SMS_DATABASE_SORT_SUPPORT) {
+            var dg = [];
+            var dk = [];
+            for (var dj = dp.length; dj--;) {
+                var dh = dp[dj];
+                var dm = cT.inArray(dh.id, dg);
+                if (dm == -1) {
+                    dg.push(dh.id);
+                    dk.push(dh)
                 } else {
-                    if (dc.content.length > df[dh].content.length) {
-                        df[dh] = dc
+                    if (dh.content.length > dk[dm].content.length) {
+                        dk[dm] = dh
                     }
                 }
             }
-            return cg.sortBy(df, function(dk) {
-                return 0 - dk.id
+            return cj.sortBy(dk, function(dq) {
+                return 0 - dq.id
             })
         } else {
-            return dj
+            return dp
         }
     }
 
-    function aX(db) {
-        return decodeMessage(escapeMessage(db))
+    function aZ(dg) {
+        return decodeMessage(escapeMessage(dg))
     }
 
-    function aZ() {
-        var de = arguments[1];
-        var dc = arguments[2] ? arguments[2] : de;
-        return bz(arguments, {}, db, dd, null, true);
+    function a1() {
+        var dj = arguments[1];
+        var dh = arguments[2] ? arguments[2] : dj;
+        return bB(arguments, {}, dg, di, null, true);
 
-        function db(df, dg) {
-            var dh = {
+        function dg(dk, dl) {
+            var dm = {
                 goformId: "SEND_SMS",
                 notCallback: true,
-                Number: df.number,
+                Number: dk.number,
                 sms_time: getCurrentTimeString(),
-                MessageBody: escapeMessage(encodeMessage(df.message)),
-                ID: df.id,
-                encode_type: getEncodeType(df.message).encodeType
+                MessageBody: escapeMessage(encodeMessage(dk.message)),
+                ID: dk.id,
+                encode_type: getEncodeType(dk.message).encodeType
             };
-            return dh
+            return dm
         }
 
-        function dd(df) {
-            if (!df) {
-                dc(cP.extend(V, {
+        function di(dk) {
+            if (!dk) {
+                dh(cT.extend(X, {
                     errorType: "sendFail",
                     errorText: "send_fail_try_again"
                 }));
                 return
             }
-            if (df.result == "success") {
+            if (dk.result == "success") {
                 setTimeout(function() {
-                    cM({
+                    cQ({
                         smsCmd: 4,
                         errorType: "sendFail",
                         errorText: "send_fail_try_again"
-                    }, de, dc)
+                    }, dj, dh)
                 }, 1000)
             } else {
-                dc(cP.extend(V, {
+                dh(cT.extend(X, {
                     errorType: "sendFail",
                     errorText: "send_fail_try_again"
                 }))
@@ -1596,41 +1694,41 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
         }
     }
 
-    function aI() {
-        var de = arguments[1];
-        var dc = arguments[2] ? arguments[2] : de;
-        return bz(arguments, {}, db, dd, null, true);
+    function aK() {
+        var dj = arguments[1];
+        var dh = arguments[2] ? arguments[2] : dj;
+        return bB(arguments, {}, dg, di, null, true);
 
-        function db(df, dg) {
-            var dh = {
+        function dg(dk, dl) {
+            var dm = {
                 notCallback: true,
                 goformId: "SAVE_SMS",
-                SMSMessage: escapeMessage(encodeMessage(df.message)),
-                SMSNumber: df.numbers.join(";") + ";",
-                Index: df.index,
-                encode_type: getEncodeType(df.message).encodeType,
-                sms_time: df.currentTimeString,
-                draft_group_id: df.groupId
+                SMSMessage: escapeMessage(encodeMessage(dk.message)),
+                SMSNumber: dk.numbers.join(";") + ";",
+                Index: dk.index,
+                encode_type: getEncodeType(dk.message).encodeType,
+                sms_time: dk.currentTimeString,
+                draft_group_id: dk.groupId
             };
-            return dh
+            return dm
         }
 
-        function dd(df) {
-            if (!df) {
-                dc(cP.extend(V, {
+        function di(dk) {
+            if (!dk) {
+                dh(cT.extend(X, {
                     errorType: "saveFail",
                     errorText: "save_fail"
                 }));
                 return
             }
-            if (df.result == "success") {
-                cM({
+            if (dk.result == "success") {
+                cQ({
                     smsCmd: 5,
                     errorType: "saveFail",
                     errorText: "save_fail"
-                }, de, dc)
+                }, dj, dh)
             } else {
-                dc(cP.extend(V, {
+                dh(cT.extend(X, {
                     errorType: "saveFail",
                     errorText: "save_fail"
                 }))
@@ -1638,50 +1736,50 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
         }
     }
 
-    function bU() {
-        var df = arguments[1];
-        var dd = arguments[2] ? arguments[2] : df;
-        return bz(arguments, {}, dc, de, null, true);
+    function bW() {
+        var dk = arguments[1];
+        var di = arguments[2] ? arguments[2] : dk;
+        return bB(arguments, {}, dh, dj, null, true);
 
-        function dc(dg, dh) {
-            var di = {
+        function dh(dl, dm) {
+            var dn = {
                 goformId: "ALL_DELETE_SMS",
                 notCallback: true,
-                which_cgi: dg.location
+                which_cgi: dl.location
             };
-            return di
+            return dn
         }
 
-        function de(dg) {
-            if (!dg) {
-                dd(cP.extend(V, {
+        function dj(dl) {
+            if (!dl) {
+                di(cT.extend(X, {
                     errorType: "deleteFail",
                     errorText: "delete_fail_try_again"
                 }));
                 return
             }
-            if (dg.result == "success") {
-                bb("sms_cmd_status_info", db)
+            if (dl.result == "success") {
+                bd("sms_cmd_status_info", dg)
             } else {
-                dd(cP.extend(V, {
+                di(cT.extend(X, {
                     errorType: "deleteFail",
                     errorText: "delete_fail_try_again"
                 }))
             }
         }
 
-        function db(dh) {
-            var dg = dh.sms_cmd_status_info;
-            if (dg == "2") {
-                m("sms_cmd_status_info", db);
-                dd(cP.extend(V, {
+        function dg(dm) {
+            var dl = dm.sms_cmd_status_info;
+            if (dl == "2") {
+                m("sms_cmd_status_info", dg);
+                di(cT.extend(X, {
                     errorType: "deleteFail",
                     errorText: "delete_fail_try_again"
                 }))
             } else {
-                if (dg == "3") {
-                    m("sms_cmd_status_info", db);
-                    df({
+                if (dl == "3") {
+                    m("sms_cmd_status_info", dg);
+                    dk({
                         result: true
                     })
                 }
@@ -1689,37 +1787,37 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
         }
     }
 
-    function cA() {
-        var de = arguments[1];
-        var dc = arguments[2] ? arguments[2] : de;
-        return bz(arguments, {}, db, dd, null, true);
+    function cE() {
+        var dj = arguments[1];
+        var dh = arguments[2] ? arguments[2] : dj;
+        return bB(arguments, {}, dg, di, null, true);
 
-        function db(dg, dh) {
-            var df = dg.ids.join(";") + ";";
-            var di = {
+        function dg(dl, dm) {
+            var dk = dl.ids.join(";") + ";";
+            var dn = {
                 goformId: "DELETE_SMS",
-                msg_id: df,
+                msg_id: dk,
                 notCallback: true
             };
-            return di
+            return dn
         }
 
-        function dd(df) {
-            if (!df) {
-                dc(cP.extend(V, {
+        function di(dk) {
+            if (!dk) {
+                dh(cT.extend(X, {
                     errorType: "deleteFail",
                     errorText: "delete_fail_try_again"
                 }));
                 return
             }
-            if (df.result == "success") {
-                cM({
+            if (dk.result == "success") {
+                cQ({
                     smsCmd: 6,
                     errorType: "deleteFail",
                     errorText: "delete_fail_try_again"
-                }, de, dc)
+                }, dj, dh)
             } else {
-                dc(cP.extend(V, {
+                dh(cT.extend(X, {
                     errorType: "deleteFail",
                     errorText: "delete_fail_try_again"
                 }))
@@ -1727,48 +1825,48 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
         }
     }
 
-    function cM(dc, dd, db) {
-        c7({
+    function cQ(dh, di, dg) {
+        dc({
             cmd: "sms_cmd_status_info",
-            sms_cmd: dc.smsCmd
-        }, function(df) {
-            if (df) {
-                var de = df.sms_cmd_status_result;
-                if (de == "2") {
-                    db(cP.extend(V, {
-                        errorType: dc.errorType,
-                        errorText: dc.errorText
+            sms_cmd: dh.smsCmd
+        }, function(dk) {
+            if (dk) {
+                var dj = dk.sms_cmd_status_result;
+                if (dj == "2") {
+                    dg(cT.extend(X, {
+                        errorType: dh.errorType,
+                        errorText: dh.errorText
                     }))
                 } else {
-                    if (de == "3") {
-                        dd({
+                    if (dj == "3") {
+                        di({
                             result: "success"
                         })
                     } else {
                         window.setTimeout(function() {
-                            cM(dc, dd, db)
+                            cQ(dh, di, dg)
                         }, 1000)
                     }
                 }
             } else {
-                db(cP.extend(V, {
-                    errorType: dc.errorType,
-                    errorText: dc.errorText
+                dg(cT.extend(X, {
+                    errorType: dh.errorType,
+                    errorText: dh.errorText
                 }))
             }
-        }, function(de) {
-            db(cP.extend(V, {
-                errorType: dc.errorType,
-                errorText: dc.errorText
+        }, function(dj) {
+            dg(cT.extend(X, {
+                errorType: dh.errorType,
+                errorText: dh.errorText
             }))
         }, false)
     }
 
-    function aJ() {
-        if (aH.smsIsReady) {
-            var dd = arguments[1];
-            if (dd) {
-                return dd({
+    function aL() {
+        if (aJ.smsIsReady) {
+            var di = arguments[1];
+            if (di) {
+                return di({
                     sms_cmd: "1",
                     sms_cmd_status_result: "3"
                 })
@@ -1779,46 +1877,46 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
                 }
             }
         } else {
-            return bz(arguments, {}, db, dc, null, false)
+            return bB(arguments, {}, dg, dh, null, false)
         }
 
-        function db(de, df) {
-            var dg = {};
-            dg.cmd = "sms_cmd_status_info";
-            dg.sms_cmd = 1;
-            return dg
+        function dg(dj, dk) {
+            var dl = {};
+            dl.cmd = "sms_cmd_status_info";
+            dl.sms_cmd = 1;
+            return dl
         }
 
-        function dc(de) {
-            if (de) {
-                if (de.sms_cmd_status_result == "3") {
-                    aH.smsIsReady = true
+        function dh(dj) {
+            if (dj) {
+                if (dj.sms_cmd_status_result == "3") {
+                    aJ.smsIsReady = true
                 }
-                return de
+                return dj
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function ae() {
-        return bz(arguments, {}, db, dc, null, true);
+    function ag() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(de, df) {
-            var dd = de.ids.join(";");
-            if (de.ids.length > 0) {
-                dd += ";"
+        function dg(dj, dk) {
+            var di = dj.ids.join(";");
+            if (dj.ids.length > 0) {
+                di += ";"
             }
-            var dg = {
+            var dl = {
                 goformId: "SET_MSG_READ",
-                msg_id: dd,
+                msg_id: di,
                 tag: 0
             };
-            return dg
+            return dl
         }
 
-        function dc(dd) {
-            if (dd.result == "success") {
+        function dh(di) {
+            if (di.result == "success") {
                 return {
                     result: true
                 }
@@ -1831,109 +1929,109 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
     }
 
     function L() {
-        return bz(arguments, {}, db, dc, {}, false);
+        return bB(arguments, {}, dg, dh, {}, false);
 
-        function db(dd, de) {
-            var df = {
+        function dg(di, dj) {
+            var dk = {
                 cmd: "sms_status_rpt_data",
-                page: dd.page,
-                data_per_page: dd.smsCount
+                page: di.page,
+                data_per_page: di.smsCount
             };
-            return df
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
+        function dh(di) {
+            if (di) {
                 return {
-                    messages: cL(dd.messages, true)
+                    messages: cP(di.messages, true)
                 }
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function bt() {
-        return bz(arguments, {}, db, dc, null, true);
+    function bv() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = cP.extend({}, dd);
-            df.goformId = "LOGOUT";
-            return df
+        function dg(di, dj) {
+            var dk = cT.extend({}, di);
+            dk.goformId = "LOGOUT";
+            return dk
         }
 
-        function dc(dd) {
-            if (dd && dd.result == "success") {
-                bu.isLoggedIn = false;
+        function dh(di) {
+            if (di && di.result == "success") {
+                bw.isLoggedIn = false;
                 return {
                     result: true
                 }
             } else {
-                return cP.extend(V, {
+                return cT.extend(X, {
                     errorType: "loggedOutError"
                 })
             }
         }
     }
 
-    function bX() {
-        return bz(arguments, {}, db, dc, null, true);
+    function bZ() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.newPassword = aH.PASSWORD_ENCODE ? Base64.encode(dd.newValue) : dd.newValue;
-            df.oldPassword = aH.PASSWORD_ENCODE ? Base64.encode(dd.oldValue) : dd.oldValue;
-            df.goformId = "CHANGE_PASSWORD";
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.newPassword = aJ.PASSWORD_ENCODE ? Base64.encode(di.newValue) : di.newValue;
+            dk.oldPassword = aJ.PASSWORD_ENCODE ? Base64.encode(di.oldValue) : di.oldValue;
+            dk.goformId = "CHANGE_PASSWORD";
+            return dk
         }
 
-        function dc(dd) {
-            if (dd && dd.result === "success") {
+        function dh(di) {
+            if (di && di.result === "success") {
                 return {
                     result: true
                 }
             } else {
-                return cP.extend(V, {
+                return cT.extend(X, {
                     errorType: "badPassword"
                 })
             }
         }
     }
 
-    function cF() {
-        return bz(arguments, {}, db, dc, null, false);
+    function cJ() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "imei,time_to_live";
-            df.multi_data = 1;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "imei,time_to_live";
+            dk.multi_data = 1;
+            return dk
         }
 
-        function dc(de) {
-            if (de) {
-                var dd = {};
-                dd.imei = de.imei;
-                dd.time_to_live = de.time_to_live;
-                return dd
+        function dh(dj) {
+            if (dj) {
+                var di = {};
+                di.imei = dj.imei;
+                di.time_to_live = dj.time_to_live;
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function bD() {
-        return bz(arguments, {}, db, dc, null, true);
+    function bF() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "ALK_WRITE_IMEI";
-            df.imei_string = dd.imei_string;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "ALK_WRITE_IMEI";
+            dk.imei_string = di.imei_string;
+            return dk
         }
 
-        function dc(dd) {
-            if (dd && dd.result === "success") {
+        function dh(di) {
+            if (di && di.result === "success") {
                 return {
                     result: true
                 }
@@ -1945,18 +2043,18 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
         }
     }
 
-    function br() {
-        return bz(arguments, {}, db, dc, null, true);
+    function bt() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "ALK_WRITE_TTL";
-            df.ttl_value = dd.ttl_value;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "ALK_WRITE_TTL";
+            dk.ttl_value = di.ttl_value;
+            return dk
         }
 
-        function dc(dd) {
-            if (dd && dd.result === "success") {
+        function dh(di) {
+            if (di && di.result === "success") {
                 return {
                     result: true
                 }
@@ -1968,130 +2066,130 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
         }
     }
 
-    function av() {
-        return bz(arguments, {}, db, dc, null, false);
+    function ax() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "midnight_reboot_switch";
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "midnight_reboot_switch";
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function c0() {
-        return bz(arguments, {}, db, dc, null, false);
+    function c4() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "midnight_reboot_hour";
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "midnight_reboot_hour";
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function cT() {
-        return bz(arguments, {}, db, dc, null, false);
+    function cX() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "network_detect_switch";
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "network_detect_switch";
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function b9() {
-        return bz(arguments, {}, db, dc, null, true);
+    function cc() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "ALK_NETDET_SWITCH";
-            df.network_detect_switch = dd.network_detect_switch;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "ALK_NETDET_SWITCH";
+            dk.network_detect_switch = di.network_detect_switch;
+            return dk
         }
 
-        function dc(dd) {
-            if (dd && dd.result == "success") {
-                return dd
+        function dh(di) {
+            if (di && di.result == "success") {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function cq() {
-        return bz(arguments, {}, db, dc, null, true);
+    function cu() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "ALK_REBOOT_SWITCH";
-            df.midnight_reboot_switch = dd.midnight_reboot_switch;
-            df.midnight_reboot_hour = dd.midnight_reboot_hour;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "ALK_REBOOT_SWITCH";
+            dk.midnight_reboot_switch = di.midnight_reboot_switch;
+            dk.midnight_reboot_hour = di.midnight_reboot_hour;
+            return dk
         }
 
-        function dc(dd) {
-            if (dd && dd.result == "success") {
-                return dd
+        function dh(di) {
+            if (di && di.result == "success") {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function cZ() {
-        return bz(arguments, {}, db, dc, null, false);
+    function c3() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "pinnumber,pin_status,puknumber";
-            df.multi_data = 1;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "pinnumber,pin_status,puknumber";
+            dk.multi_data = 1;
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function da() {
-        return bz(arguments, {}, db, dc, null, true);
+    function df() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "ENABLE_PIN";
-            df.OldPinNumber = dd.oldPin;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "ENABLE_PIN";
+            dk.OldPinNumber = di.oldPin;
+            return dk
         }
 
-        function dc(dd) {
-            if (dd && dd.result === "success") {
+        function dh(di) {
+            if (di && di.result === "success") {
                 return {
                     result: true
                 }
@@ -2103,18 +2201,18 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
         }
     }
 
-    function b0() {
-        return bz(arguments, {}, db, dc, null, true);
+    function b2() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "DISABLE_PIN";
-            df.OldPinNumber = dd.oldPin;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "DISABLE_PIN";
+            dk.OldPinNumber = di.oldPin;
+            return dk
         }
 
-        function dc(dd) {
-            if (dd && dd.result === "success") {
+        function dh(di) {
+            if (di && di.result === "success") {
                 return {
                     result: true
                 }
@@ -2127,18 +2225,18 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
     }
 
     function o() {
-        return bz(arguments, {}, db, dc, null, true);
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "ENABLE_PIN";
-            df.OldPinNumber = dd.oldPin;
-            df.NewPinNumber = dd.newPin;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "ENABLE_PIN";
+            dk.OldPinNumber = di.oldPin;
+            dk.NewPinNumber = di.newPin;
+            return dk
         }
 
-        function dc(dd) {
-            if (dd && dd.result === "success") {
+        function dh(di) {
+            if (di && di.result === "success") {
                 return {
                     result: true
                 }
@@ -2150,136 +2248,136 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
         }
     }
 
-    function bs() {
-        return bz(arguments, {}, db, dc, null, false);
+    function bu() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "lan_ipaddr,lan_netmask,mac_address,dhcpEnabled,dhcpStart,dhcpEnd,dhcpLease_hour,lan_dns_mode,lan_dns_ip";
-            df.multi_data = 1;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "lan_ipaddr,lan_netmask,mac_address,dhcpEnabled,dhcpStart,dhcpEnd,dhcpLease_hour,lan_dns_mode,lan_dns_ip";
+            dk.multi_data = 1;
+            return dk
         }
 
-        function dc(de) {
-            if (de) {
-                var dd = {};
-                dd.ipAddress = de.lan_ipaddr;
-                dd.subnetMask = de.lan_netmask;
-                dd.macAddress = de.mac_address;
-                dd.dhcpServer = de.dhcpEnabled;
-                dd.dhcpStart = de.dhcpStart;
-                dd.dhcpEnd = de.dhcpEnd;
-                dd.dhcpLease = parseInt(de.dhcpLease_hour, 10);
-                dd.lan_dns_mode = de.lan_dns_mode;
-                dd.lan_dns_ip = de.lan_dns_ip;
-                return dd
+        function dh(dj) {
+            if (dj) {
+                var di = {};
+                di.ipAddress = dj.lan_ipaddr;
+                di.subnetMask = dj.lan_netmask;
+                di.macAddress = dj.mac_address;
+                di.dhcpServer = dj.dhcpEnabled;
+                di.dhcpStart = dj.dhcpStart;
+                di.dhcpEnd = dj.dhcpEnd;
+                di.dhcpLease = parseInt(dj.dhcpLease_hour, 10);
+                di.lan_dns_mode = dj.lan_dns_mode;
+                di.lan_dns_ip = dj.lan_dns_ip;
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function cd() {
-        return bz(arguments, {}, db, dc, null, true);
+    function cg() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "DHCP_SETTING";
-            df.lanIp = dd.ipAddress;
-            df.lanNetmask = dd.subnetMask;
-            df.lanDhcpType = dd.dhcpServer == "1" ? "SERVER" : "DISABLE";
-            if (df.lanDhcpType == "SERVER") {
-                df.dhcpStart = dd.dhcpStart;
-                df.dhcpEnd = dd.dhcpEnd;
-                df.dhcpLease = dd.dhcpLease
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "DHCP_SETTING";
+            dk.lanIp = di.ipAddress;
+            dk.lanNetmask = di.subnetMask;
+            dk.lanDhcpType = di.dhcpServer == "1" ? "SERVER" : "DISABLE";
+            if (dk.lanDhcpType == "SERVER") {
+                dk.dhcpStart = di.dhcpStart;
+                dk.dhcpEnd = di.dhcpEnd;
+                dk.dhcpLease = di.dhcpLease
             }
-            df.dhcp_reboot_flag = 1;
-            return df
+            dk.dhcp_reboot_flag = 1;
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function b1() {
-        return bz(arguments, {}, db, dc, null, false);
+    function b3() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "sms_parameter_info";
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "sms_parameter_info";
+            return dk
         }
 
-        function dc(de) {
-            if (de) {
-                var dd = {};
-                dd.centerNumber = de.sms_para_sca;
-                dd.memStroe = de.sms_para_mem_store;
-                dd.deliveryReport = de.sms_para_status_report;
-                switch (parseInt(de.sms_para_validity_period, 10)) {
+        function dh(dj) {
+            if (dj) {
+                var di = {};
+                di.centerNumber = dj.sms_para_sca;
+                di.memStroe = dj.sms_para_mem_store;
+                di.deliveryReport = dj.sms_para_status_report;
+                switch (parseInt(dj.sms_para_validity_period, 10)) {
                     case 143:
-                        dd.validity = "twelve_hours";
+                        di.validity = "twelve_hours";
                         break;
                     case 167:
-                        dd.validity = "one_day";
+                        di.validity = "one_day";
                         break;
                     case 173:
-                        dd.validity = "one_week";
+                        di.validity = "one_week";
                         break;
                     case 244:
-                        dd.validity = "largest";
+                        di.validity = "largest";
                         break;
                     case 255:
-                        dd.validity = "largest";
+                        di.validity = "largest";
                         break;
                     default:
-                        dd.validity = "twelve_hours";
+                        di.validity = "twelve_hours";
                         break
                 }
-                return dd
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function aQ() {
-        var de = arguments[1];
-        var dc = arguments[2] ? arguments[2] : de;
-        return bz(arguments, {}, db, dd, null, true);
+    function aS() {
+        var dj = arguments[1];
+        var dh = arguments[2] ? arguments[2] : dj;
+        return bB(arguments, {}, dg, di, null, true);
 
-        function db(df, dg) {
-            var dh = {};
-            dh.goformId = "SET_MESSAGE_CENTER";
-            dh.save_time = df.validity;
-            dh.MessageCenter = df.centerNumber;
-            dh.status_save = df.deliveryReport;
-            dh.save_location = "native";
-            dh.notCallback = true;
-            return dh
+        function dg(dk, dl) {
+            var dm = {};
+            dm.goformId = "SET_MESSAGE_CENTER";
+            dm.save_time = dk.validity;
+            dm.MessageCenter = dk.centerNumber;
+            dm.status_save = dk.deliveryReport;
+            dm.save_location = "native";
+            dm.notCallback = true;
+            return dm
         }
 
-        function dd(df) {
-            if (!df) {
-                dc(cP.extend(V, {
+        function di(dk) {
+            if (!dk) {
+                dh(cT.extend(X, {
                     errorType: "smsSettingFail",
                     errorText: "error_info"
                 }));
                 return
             }
-            if (df.result == "success") {
-                cM({
+            if (dk.result == "success") {
+                cQ({
                     smsCmd: 3,
                     errorType: "smsSettingFail",
                     errorText: "error_info"
-                }, de, dc)
+                }, dj, dh)
             } else {
-                dc(cP.extend(V, {
+                dh(cT.extend(X, {
                     errorType: "deleteFail",
                     errorText: "delete_fail_try_again"
                 }))
@@ -2287,468 +2385,501 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
         }
     }
 
-    function ay() {
-        var dc = {};
-        if (aH.HAS_PARENTAL_CONTROL && aH.currentUserInChildGroup != false) {
-            dc = {
+    function aA() {
+        var dh = {};
+        if (aJ.HAS_PARENTAL_CONTROL && aJ.currentUserInChildGroup != false) {
+            dh = {
                 errorType: "no_auth"
             }
         }
-        return bz(arguments, dc, db, dd, null, true);
+        return bB(arguments, dh, dg, di, null, true);
 
-        function db(de, df) {
-            var dg = {};
-            dg.goformId = "RESTORE_FACTORY_SETTINGS";
-            return dg
+        function dg(dj, dk) {
+            var dl = {};
+            dl.goformId = "RESTORE_FACTORY_SETTINGS";
+            return dl
         }
 
-        function dd(de) {
-            if (de) {
-                return de
+        function di(dj) {
+            if (dj) {
+                return dj
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function ab(db) {
-        var dc = {};
-        dc.cmd = "restore_flag";
-        dc.multi_data = 1;
-        c7(dc, function(dd) {
-            if (dd && dd.restore_flag === "1") {
-                db()
+    function ad(dg) {
+        var dh = {};
+        dh.cmd = "restore_flag";
+        dh.multi_data = 1;
+        dc(dh, function(di) {
+            if (di && di.restore_flag === "1") {
+                dg()
             } else {
                 setTimeout(function() {
-                    ab(db)
+                    ad(dg)
                 }, 5000)
             }
         }, function() {
             setTimeout(function() {
-                ab(db)
+                ad(dg)
             }, 5000)
         }, false)
     }
 
-    function cc() {
-        return bz(arguments, {}, db, dc, null, false);
+    function cf() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "wifi_wps_index,WscModeOption,AuthMode,wifi_cur_state,EncrypType,wps_mode,WPS_SSID,m_ssid_enable,SSID1,m_SSID,m_EncrypType,m_AuthMode,wifi_sta_connection";
-            df.multi_data = 1;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            if (aJ.WIFI_HAS_5G) {
+                dk.cmd = "wifi_wps_index,WscModeOption,AuthMode,wifi_cur_state,EncrypType,wps_mode,WPS_SSID,m_ssid_enable,SSID1,m_SSID,m_EncrypType,m_AuthMode,wifi_sta_connection,AuthMode_5g,EncrypType_5g,SSID1_5g,m_SSID_5g,m_EncrypType_5g,m_AuthMode_5g,wifi_band"
+            } else {
+                dk.cmd = "wifi_wps_index,WscModeOption,AuthMode,wifi_cur_state,EncrypType,wps_mode,WPS_SSID,m_ssid_enable,SSID1,m_SSID,m_EncrypType,m_AuthMode,wifi_sta_connection"
+            }
+            dk.multi_data = 1;
+            return dk
         }
 
-        function dc(de) {
-            if (de) {
-                var dd = {};
-                dd.wpsFlag = de.WscModeOption;
-                dd.authMode = de.AuthMode;
-                dd.wpsType = de.wps_mode;
-                dd.radioFlag = de.wifi_cur_state == "1" ? "1" : "0";
-                dd.encrypType = de.EncrypType;
-                dd.wpsSSID = de.WPS_SSID;
-                dd.ssidEnable = de.m_ssid_enable;
-                dd.ssid = de.SSID1;
-                dd.multiSSID = de.m_SSID;
-                dd.m_encrypType = de.m_EncrypType;
-                dd.wifi_wps_index = de.wifi_wps_index;
-                dd.AuthMode = de.AuthMode;
-                dd.m_AuthMode = de.m_AuthMode;
-                dd.ap_station_enable = de.wifi_sta_connection;
-                return dd
+        function dh(dj) {
+            if (dj) {
+                var di = {};
+                di.wpsFlag = dj.WscModeOption;
+                di.authMode = dj.AuthMode;
+                di.wpsType = dj.wps_mode;
+                di.radioFlag = dj.wifi_cur_state == "1" ? "1" : "0";
+                di.encrypType = dj.EncrypType;
+                di.wpsSSID = dj.WPS_SSID;
+                di.ssidEnable = dj.m_ssid_enable;
+                di.ssid = dj.SSID1;
+                di.multiSSID = dj.m_SSID;
+                di.m_encrypType = dj.m_EncrypType;
+                di.wifi_wps_index = dj.wifi_wps_index;
+                di.AuthMode = dj.AuthMode;
+                di.m_AuthMode = dj.m_AuthMode;
+                di.ap_station_enable = dj.wifi_sta_connection;
+                if (aJ.WIFI_HAS_5G && dj.wifi_band == "a") {
+                    di.AuthMode = dj.AuthMode_5g;
+                    di.ssid = dj.SSID1_5g;
+                    di.encrypType = dj.EncrypType_5g;
+                    di.multiSSID = dj.m_SSID_5g;
+                    di.m_AuthMode = dj.m_AuthMode_5g;
+                    di.m_encrypType = dj.m_EncrypType_5g
+                }
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
     function r() {
-        return bz(arguments, {}, db, dc, null, true);
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "WIFI_WPS_SET";
-            df.WPS_SSID = dd.wpsSSID;
-            df.wps_mode = dd.wpsType;
-            df.wifi_wps_index = dd.wpsIndex;
-            if (df.wps_mode == "PIN") {
-                df.wps_pin = dd.wpsPin
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "WIFI_WPS_SET";
+            dk.WPS_SSID = di.wpsSSID;
+            dk.wps_mode = di.wpsType;
+            dk.wifi_wps_index = di.wpsIndex;
+            if (dk.wps_mode == "PIN") {
+                dk.wps_pin = di.wpsPin
             }
-            return df
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function ac() {
-        return bz(arguments, {}, db, dc, null, true);
+    function ae() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "WIFI_M_WPS_SET";
-            df.m_WPS_SSID = dd.wpsSSID;
-            df.m_wps_mode = dd.wpsType;
-            df.m_wifi_wps_index = dd.wpsIndex;
-            if (df.m_wps_mode == "PIN") {
-                df.m_wps_pin = dd.wpsPin
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "WIFI_M_WPS_SET";
+            dk.m_WPS_SSID = di.wpsSSID;
+            dk.m_wps_mode = di.wpsType;
+            dk.m_wifi_wps_index = di.wpsIndex;
+            if (dk.m_wps_mode == "PIN") {
+                dk.m_wps_pin = di.wpsPin
             }
-            return df
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
-            }
-        }
-    }
-
-    function ck() {
-        return bz(arguments, {}, db, dc, null, false);
-
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "Sleep_interval";
-            return df
-        }
-
-        function dc(de) {
-            if (de) {
-                var dd = {};
-                dd.sleepMode = de.Sleep_interval;
-                return dd
-            } else {
-                return V
+                return X
             }
         }
     }
 
-    function bf() {
-        return bz(arguments, {}, db, dc, null, true);
+    function cn() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "SET_WIFI_SLEEP_INFO";
-            df.sysIdleTimeToSleep = dd.sleepMode;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "Sleep_interval";
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(dj) {
+            if (dj) {
+                var di = {};
+                di.sleepMode = dj.Sleep_interval;
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function bW() {
-        return bz(arguments, {}, db, dc, null, false);
+    function bh() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "RemoteManagement,WANPingFilter";
-            df.multi_data = 1;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "SET_WIFI_SLEEP_INFO";
+            dk.sysIdleTimeToSleep = di.sleepMode;
+            return dk
         }
 
-        function dc(de) {
-            if (de) {
-                var dd = {};
-                dd.remoteFlag = de.RemoteManagement == "1" ? "1" : "0";
-                dd.pingFlag = de.WANPingFilter == "1" ? "1" : "0";
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function cE() {
-        return bz(arguments, {}, db, dc, null, true);
+    function bY() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "FW_SYS";
-            df.remoteManagementEnabled = dd.remoteFlag;
-            df.pingFrmWANFilterEnabled = dd.pingFlag;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "RemoteManagement,WANPingFilter";
+            dk.multi_data = 1;
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(dj) {
+            if (dj) {
+                var di = {};
+                di.remoteFlag = dj.RemoteManagement == "1" ? "1" : "0";
+                di.pingFlag = dj.WANPingFilter == "1" ? "1" : "0";
+                return di
             } else {
-                return V
+                return X
+            }
+        }
+    }
+
+    function cI() {
+        return bB(arguments, {}, dg, dh, null, true);
+
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "FW_SYS";
+            dk.remoteManagementEnabled = di.remoteFlag;
+            dk.pingFrmWANFilterEnabled = di.pingFlag;
+            return dk
+        }
+
+        function dh(di) {
+            if (di) {
+                return di
+            } else {
+                return X
             }
         }
     }
 
     function D() {
-        return bz(arguments, {}, db, dd, null, false);
+        return bB(arguments, {}, dg, di, null, false);
 
-        function db(de, df) {
-            var dg = {};
-            dg.cmd = "PortForwardEnable,PortForwardRules_0,PortForwardRules_1,PortForwardRules_2,PortForwardRules_3,PortForwardRules_4,PortForwardRules_5,PortForwardRules_6,PortForwardRules_7,PortForwardRules_8,PortForwardRules_9";
-            dg.multi_data = 1;
-            return dg
+        function dg(dj, dk) {
+            var dl = {};
+            dl.cmd = "PortForwardEnable,PortForwardRules_0,PortForwardRules_1,PortForwardRules_2,PortForwardRules_3,PortForwardRules_4,PortForwardRules_5,PortForwardRules_6,PortForwardRules_7,PortForwardRules_8,PortForwardRules_9";
+            dl.multi_data = 1;
+            return dl
         }
 
-        function dd(df) {
-            if (df) {
-                var de = {};
-                de.portForwardEnable = df.PortForwardEnable;
-                var dg = [];
-                if (df.PortForwardRules_0 != "") {
-                    dg.push([0, df.PortForwardRules_0])
+        function di(dk) {
+            if (dk) {
+                var dj = {};
+                dj.portForwardEnable = dk.PortForwardEnable;
+                var dl = [];
+                if (dk.PortForwardRules_0 != "") {
+                    dl.push([0, dk.PortForwardRules_0])
                 }
-                if (df.PortForwardRules_1 != "") {
-                    dg.push([1, df.PortForwardRules_1])
+                if (dk.PortForwardRules_1 != "") {
+                    dl.push([1, dk.PortForwardRules_1])
                 }
-                if (df.PortForwardRules_2 != "") {
-                    dg.push([2, df.PortForwardRules_2])
+                if (dk.PortForwardRules_2 != "") {
+                    dl.push([2, dk.PortForwardRules_2])
                 }
-                if (df.PortForwardRules_3 != "") {
-                    dg.push([3, df.PortForwardRules_3])
+                if (dk.PortForwardRules_3 != "") {
+                    dl.push([3, dk.PortForwardRules_3])
                 }
-                if (df.PortForwardRules_4 != "") {
-                    dg.push([4, df.PortForwardRules_4])
+                if (dk.PortForwardRules_4 != "") {
+                    dl.push([4, dk.PortForwardRules_4])
                 }
-                if (df.PortForwardRules_5 != "") {
-                    dg.push([5, df.PortForwardRules_5])
+                if (dk.PortForwardRules_5 != "") {
+                    dl.push([5, dk.PortForwardRules_5])
                 }
-                if (df.PortForwardRules_6 != "") {
-                    dg.push([6, df.PortForwardRules_6])
+                if (dk.PortForwardRules_6 != "") {
+                    dl.push([6, dk.PortForwardRules_6])
                 }
-                if (df.PortForwardRules_7 != "") {
-                    dg.push([7, df.PortForwardRules_7])
+                if (dk.PortForwardRules_7 != "") {
+                    dl.push([7, dk.PortForwardRules_7])
                 }
-                if (df.PortForwardRules_8 != "") {
-                    dg.push([8, df.PortForwardRules_8])
+                if (dk.PortForwardRules_8 != "") {
+                    dl.push([8, dk.PortForwardRules_8])
                 }
-                if (df.PortForwardRules_9 != "") {
-                    dg.push([9, df.PortForwardRules_9])
+                if (dk.PortForwardRules_9 != "") {
+                    dl.push([9, dk.PortForwardRules_9])
                 }
-                de.portForwardRules = dc(dg);
-                return de
+                dj.portForwardRules = dh(dl);
+                return dj
             } else {
-                return V
+                return X
             }
         }
 
-        function dc(de) {
-            var di = [];
-            if (de && de.length > 0) {
-                for (var dg = 0; dg < de.length; dg++) {
-                    var df = {};
-                    var dh = de[dg][1].split(",");
-                    df.index = de[dg][0];
-                    df.ipAddress = dh[0];
-                    df.portRange = dh[1] + " - " + dh[2];
-                    df.protocol = transProtocol(dh[3]);
-                    df.comment = dh[4];
-                    di.push(df)
+        function dh(dj) {
+            var dn = [];
+            if (dj && dj.length > 0) {
+                for (var dl = 0; dl < dj.length; dl++) {
+                    var dk = {};
+                    var dm = dj[dl][1].split(",");
+                    dk.index = dj[dl][0];
+                    dk.ipAddress = dm[0];
+                    dk.portRange = dm[1] + " - " + dm[2];
+                    dk.protocol = transProtocol(dm[3]);
+                    dk.comment = dm[4];
+                    dn.push(dk)
                 }
             }
-            return di
+            return dn
         }
     }
 
-    function ap() {
-        return bz(arguments, {}, db, dc, null, true);
+    function ar() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "FW_FORWARD_ADD";
-            df.ipAddress = dd.ipAddress;
-            df.portStart = dd.portStart;
-            df.portEnd = dd.portEnd;
-            df.protocol = dd.protocol;
-            df.comment = dd.comment;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "FW_FORWARD_ADD";
+            dk.ipAddress = di.ipAddress;
+            dk.portStart = di.portStart;
+            dk.portEnd = di.portEnd;
+            dk.protocol = di.protocol;
+            dk.comment = di.comment;
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function cD() {
-        return bz(arguments, {}, db, dc, null, true);
+    function cH() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "FW_FORWARD_DEL";
-            df.delete_id = dd.indexs.join(";") + ";";
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "FW_FORWARD_DEL";
+            dk.delete_id = di.indexs.join(";") + ";";
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function aD() {
-        return bz(arguments, {}, db, dc, null, true);
+    function aF() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "VIRTUAL_SERVER";
-            df.PortForwardEnable = dd.portForwardEnable;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "VIRTUAL_SERVER";
+            dk.PortForwardEnable = di.portForwardEnable;
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function c(dg, df, db) {
-        var de = dg + df + "FFFFFFFFFFFFFFFFFFFFFFFF";
-        var di;
-        var dh;
-        di = de.substring(0, 24);
-        dh = de.substring(0, 16);
-        var dd = bv.enc.Latin1.parse(di);
-        var dc = bv.enc.Latin1.parse(dh);
-        var dj = bv.AES.decrypt(db, dd, {
-            iv: dc,
-            mode: bv.mode.CBC,
-            padding: bv.pad.ZeroPadding
-        }).toString(bv.enc.Utf8);
-        return dj
+    function c(dl, dk, dg) {
+        var dj = dl + dk + "FFFFFFFFFFFFFFFFFFFFFFFF";
+        var dn;
+        var dm;
+        dn = dj.substring(0, 24);
+        dm = dj.substring(0, 16);
+        var di = bx.enc.Latin1.parse(dn);
+        var dh = bx.enc.Latin1.parse(dm);
+        var dp = bx.AES.decrypt(dg, di, {
+            iv: dh,
+            mode: bx.mode.CBC,
+            padding: bx.pad.ZeroPadding
+        }).toString(bx.enc.Utf8);
+        return dp
     }
 
-    function a4() {
-        return bz(arguments, {}, db, dc, null, false);
+    function a6() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(de, df) {
-            var dg = {};
-            var dd = aH.PASSWORD_ENCODE ? ",WPAPSK1_encode" : ",imei,rnum_js,WPAPSK1_enaes";
-            dg.cmd = "pdp_type,ipv6_pdp_type,wifi_cur_state,SSID1,HideSSID,AuthMode,WscModeOption,ppp_status,apn_index,ipv6_apn_index,ipv6_APN_index,m_profile_name,apn_mode,EncrypType,DefaultKeyID,Key1Str1,Key2Str1,Key3Str1,Key4Str1" + dd + ",APN_configtmp0,APN_configtmp1,APN_configtmp2,APN_configtmp3,APN_configtmp4,APN_configtmp5,APN_configtmp6,APN_configtmp7,APN_configtmp8,APN_configtmp9,APN_configtmp10,APN_configtmp11,APN_configtmp12,APN_configtmp13,APN_configtmp14,APN_configtmp15,APN_configtmp16,APN_configtmp17,APN_configtmp18,APN_configtmp19,ipv6_APN_configtmp0,ipv6_APN_configtmp1,ipv6_APN_configtmp2,ipv6_APN_configtmp3,ipv6_APN_configtmp4,ipv6_APN_configtmp5,ipv6_APN_configtmp6,ipv6_APN_configtmp7,ipv6_APN_configtmp8,ipv6_APN_configtmp9,ipv6_APN_configtmp10,ipv6_APN_configtmp11,ipv6_APN_configtmp12,ipv6_APN_configtmp13,ipv6_APN_configtmp14,ipv6_APN_configtmp15,ipv6_APN_configtmp16,ipv6_APN_configtmp17,ipv6_APN_configtmp18,ipv6_APN_configtmp19";
-            dg.multi_data = 1;
-            return dg
+        function dg(dj, dk) {
+            var dl = {};
+            if (aJ.WIFI_HAS_5G) {
+                var di = aJ.PASSWORD_ENCODE ? ",WPAPSK1_encode,WPAPSK1_encode_5g" : ",imei,rnum_js,WPAPSK1_enaes,WPAPSK1_enaes_5g";
+                dl.cmd = "pdp_type,ipv6_pdp_type,wifi_cur_state,SSID1,HideSSID,AuthMode,WscModeOption,ppp_status,apn_index,ipv6_apn_index,ipv6_APN_index,m_profile_name,apn_mode,EncrypType,DefaultKeyID,Key1Str1,Key2Str1,Key3Str1,Key4Str1" + di + ",APN_configtmp0,APN_configtmp1,APN_configtmp2,APN_configtmp3,APN_configtmp4,APN_configtmp5,APN_configtmp6,APN_configtmp7,APN_configtmp8,APN_configtmp9,APN_configtmp10,APN_configtmp11,APN_configtmp12,APN_configtmp13,APN_configtmp14,APN_configtmp15,APN_configtmp16,APN_configtmp17,APN_configtmp18,APN_configtmp19,ipv6_APN_configtmp0,ipv6_APN_configtmp1,ipv6_APN_configtmp2,ipv6_APN_configtmp3,ipv6_APN_configtmp4,ipv6_APN_configtmp5,ipv6_APN_configtmp6,ipv6_APN_configtmp7,ipv6_APN_configtmp8,ipv6_APN_configtmp9,ipv6_APN_configtmp10,ipv6_APN_configtmp11,ipv6_APN_configtmp12,ipv6_APN_configtmp13,ipv6_APN_configtmp14,ipv6_APN_configtmp15,ipv6_APN_configtmp16,ipv6_APN_configtmp17,ipv6_APN_configtmp18,ipv6_APN_configtmp19,SSID1_5g,HideSSID_5g,AuthMode_5g,EncrypType_5g,DefaultKeyID_5g,Key1Str1_5g,Key2Str1_5g,Key3Str1_5g,Key4Str1_5g,wifi_band"
+            } else {
+                var di = aJ.PASSWORD_ENCODE ? ",WPAPSK1_encode" : ",imei,rnum_js,WPAPSK1_enaes";
+                dl.cmd = "pdp_type,ipv6_pdp_type,wifi_cur_state,SSID1,HideSSID,AuthMode,WscModeOption,ppp_status,apn_index,ipv6_apn_index,ipv6_APN_index,m_profile_name,apn_mode,EncrypType,DefaultKeyID,Key1Str1,Key2Str1,Key3Str1,Key4Str1" + di + ",APN_configtmp0,APN_configtmp1,APN_configtmp2,APN_configtmp3,APN_configtmp4,APN_configtmp5,APN_configtmp6,APN_configtmp7,APN_configtmp8,APN_configtmp9,APN_configtmp10,APN_configtmp11,APN_configtmp12,APN_configtmp13,APN_configtmp14,APN_configtmp15,APN_configtmp16,APN_configtmp17,APN_configtmp18,APN_configtmp19,ipv6_APN_configtmp0,ipv6_APN_configtmp1,ipv6_APN_configtmp2,ipv6_APN_configtmp3,ipv6_APN_configtmp4,ipv6_APN_configtmp5,ipv6_APN_configtmp6,ipv6_APN_configtmp7,ipv6_APN_configtmp8,ipv6_APN_configtmp9,ipv6_APN_configtmp10,ipv6_APN_configtmp11,ipv6_APN_configtmp12,ipv6_APN_configtmp13,ipv6_APN_configtmp14,ipv6_APN_configtmp15,ipv6_APN_configtmp16,ipv6_APN_configtmp17,ipv6_APN_configtmp18,ipv6_APN_configtmp19"
+            }
+            dl.multi_data = 1;
+            return dl
         }
 
-        function dc(dd) {
-            if (dd) {
-                if (aH.PASSWORD_ENCODE) {
-                    dd.WPAPSK1 = Base64.decode(dd.WPAPSK1_encode)
+        function dh(di) {
+            if (di) {
+                if (aJ.PASSWORD_ENCODE) {
+                    di.WPAPSK1 = Base64.decode(di.WPAPSK1_encode)
                 } else {
-                    dd.WPAPSK1 = c(dd.rnum_js, dd.imei, dd.WPAPSK1_enaes)
+                    di.WPAPSK1 = c(di.rnum_js, di.imei, di.WPAPSK1_enaes)
                 }
-                return dd
-            } else {
-                return V
-            }
-        }
-    }
-
-    function c6() {
-        ax(arguments, db, dc);
-
-        function db(dd) {
-            var de = {
-                goformId: "QUICK_SETUP_EX",
-                index: dd.apn_index,
-                pdp_type: dd.pdp_type,
-                apn_mode: dd.apnMode,
-                profile_name: dd.profile_name,
-                wan_apn: dd.wan_apn,
-                ppp_auth_mode: dd.ppp_auth_mode,
-                ppp_username: dd.ppp_username,
-                ppp_passtmp: dd.ppp_passtmp,
-                ipv6_wan_apn: dd.ipv6_wan_apn,
-                ipv6_ppp_auth_mode: dd.ipv6_ppp_auth_mode,
-                ipv6_ppp_username: dd.ipv6_ppp_username,
-                ipv6_ppp_passtmp: dd.ipv6_ppp_passtmp,
-                SSID_name: dd.SSID_name,
-                SSID_Broadcast: dd.SSID_Broadcast,
-                Encryption_Mode_hid: dd.Encryption_Mode_hid,
-                security_shared_mode: dd.security_shared_mode,
-                WPA_PreShared_Key: aH.PASSWORD_ENCODE ? Base64.encode(dd.WPA_PreShared_Key) : dd.WPA_PreShared_Key,
-                wep_default_key: dd.wep_default_key,
-                WPA_ENCRYPTION_hid: dd.WPA_ENCRYPTION_hid
-            };
-            de.wep_key_1 = dd.wep_key_1;
-            de.wep_key_2 = dd.wep_key_2;
-            de.wep_key_3 = dd.wep_key_3;
-            de.wep_key_4 = dd.wep_key_4;
-            if (dd.wep_default_key == "1") {
-                de.WEP2Select = dd.WEP2Select
-            } else {
-                if (dd.wep_default_key == "2") {
-                    de.WEP3Select = dd.WEP3Select
-                } else {
-                    if (dd.wep_default_key == "3") {
-                        de.WEP4Select = dd.WEP4Select
+                if (aJ.WIFI_HAS_5G && di.wifi_band == "a") {
+                    if (aJ.PASSWORD_ENCODE) {
+                        di.WPAPSK1 = Base64.decode(di.WPAPSK1_encode_5g)
                     } else {
-                        de.WEP1Select = dd.WEP1Select
+                        di.WPAPSK1 = c(di.rnum_js, di.imei, di.WPAPSK1_enaes_5g)
+                    }
+                    di.SSID1 = di.SSID1_5g;
+                    di.HideSSID = di.HideSSID_5g;
+                    di.AuthMode = di.AuthMode_5g;
+                    di.EncrypType = di.EncrypType_5g;
+                    di.DefaultKeyID = di.DefaultKeyID_5g;
+                    di.Key1Str1 = di.Key1Str1_5g;
+                    di.Key2Str1 = di.Key2Str1_5g;
+                    di.Key3Str1 = di.Key3Str1_5g;
+                    di.Key4Str1 = di.Key4Str1_5g
+                }
+                return di
+            } else {
+                return X
+            }
+        }
+    }
+
+    function db() {
+        az(arguments, dg, dh);
+
+        function dg(di) {
+            var dj = {
+                goformId: "QUICK_SETUP_EX",
+                index: di.apn_index,
+                pdp_type: di.pdp_type,
+                apn_mode: di.apnMode,
+                profile_name: di.profile_name,
+                wan_apn: di.wan_apn,
+                ppp_auth_mode: di.ppp_auth_mode,
+                ppp_username: di.ppp_username,
+                ppp_passtmp: di.ppp_passtmp,
+                ipv6_wan_apn: di.ipv6_wan_apn,
+                ipv6_ppp_auth_mode: di.ipv6_ppp_auth_mode,
+                ipv6_ppp_username: di.ipv6_ppp_username,
+                ipv6_ppp_passtmp: di.ipv6_ppp_passtmp,
+                SSID_name: di.SSID_name,
+                SSID_Broadcast: di.SSID_Broadcast,
+                Encryption_Mode_hid: di.Encryption_Mode_hid,
+                security_shared_mode: di.security_shared_mode,
+                WPA_PreShared_Key: aJ.PASSWORD_ENCODE ? Base64.encode(di.WPA_PreShared_Key) : di.WPA_PreShared_Key,
+                wep_default_key: di.wep_default_key,
+                WPA_ENCRYPTION_hid: di.WPA_ENCRYPTION_hid
+            };
+            dj.wep_key_1 = di.wep_key_1;
+            dj.wep_key_2 = di.wep_key_2;
+            dj.wep_key_3 = di.wep_key_3;
+            dj.wep_key_4 = di.wep_key_4;
+            if (di.wep_default_key == "1") {
+                dj.WEP2Select = di.WEP2Select
+            } else {
+                if (di.wep_default_key == "2") {
+                    dj.WEP3Select = di.WEP3Select
+                } else {
+                    if (di.wep_default_key == "3") {
+                        dj.WEP4Select = di.WEP4Select
+                    } else {
+                        dj.WEP1Select = di.WEP1Select
                     }
                 }
             }
-            return de
+            return dj
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return cP.extend(V, {
+                return cT.extend(X, {
                     errorType: "SetSetUpError"
                 })
             }
         }
     }
 
-    function ax(dk, df, dd) {
-        var dj = false;
-        var db = false;
-        var dh = df(dk[0]);
-        var di = dk[1];
-        var dc = function(dl) {
-            dj = true;
-            if (!db && di) {
-                di(dd(dl))
+    function az(dq, dk, di) {
+        var dp = false;
+        var dg = false;
+        var dm = dk(dq[0]);
+        var dn = dq[1];
+        var dh = function(dr) {
+            dp = true;
+            if (!dg && dn) {
+                dn(di(dr))
             }
-            db = true
+            dg = true
         };
-        var dg = dk[2];
-        var de = function() {
-            dj = true;
-            if (dg) {
-                dg()
+        var dl = dq[2];
+        var dj = function() {
+            dp = true;
+            if (dl) {
+                dl()
             }
         };
-        c7(dh, dc, de, true);
+        dc(dm, dh, dj, true);
         addTimeout(function() {
-            if (dj == false) {
-                var dl = addInterval(function() {
-                    if (dj == false) {
-                        A({}, function(dm) {
-                            window.clearInterval(dl);
-                            dc({
+            if (dp == false) {
+                var dr = addInterval(function() {
+                    if (dp == false) {
+                        A({}, function(ds) {
+                            window.clearInterval(dr);
+                            dh({
                                 result: "success"
                             })
                         })
@@ -2758,58 +2889,58 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
         }, 5000)
     }
 
-    function bS() {
-        return bz(arguments, {}, db, dc, null, false);
+    function bU() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {
+        function dg(di, dj) {
+            var dk = {
                 cmd: "sdcard_mode_option,sd_card_state,HTTP_SHARE_STATUS,HTTP_SHARE_WR_AUTH,HTTP_SHARE_FILE",
                 multi_data: 1
             };
-            return df
+            return dk
         }
 
-        function dc(de) {
-            if (de) {
-                var df;
-                if ("mmc2" == de.HTTP_SHARE_FILE || "/mmc2" == de.HTTP_SHARE_FILE || "/mmc2/" == de.HTTP_SHARE_FILE) {
-                    df = "1"
+        function dh(dj) {
+            if (dj) {
+                var dk;
+                if ("mmc2" == dj.HTTP_SHARE_FILE || "/mmc2" == dj.HTTP_SHARE_FILE || "/mmc2/" == dj.HTTP_SHARE_FILE) {
+                    dk = "1"
                 } else {
-                    df = "0"
+                    dk = "0"
                 }
-                var dd = {
-                    sd_mode: de.sdcard_mode_option == "1" ? "0" : "1",
-                    sd_status: de.sd_card_state,
-                    share_status: de.HTTP_SHARE_STATUS == "Enabled" ? "1" : "0",
-                    share_auth: de.HTTP_SHARE_WR_AUTH == "readOnly" ? "0" : "1",
-                    file_to_share: df,
-                    share_file: de.HTTP_SHARE_FILE
+                var di = {
+                    sd_mode: dj.sdcard_mode_option == "1" ? "0" : "1",
+                    sd_status: dj.sd_card_state,
+                    share_status: dj.HTTP_SHARE_STATUS == "Enabled" ? "1" : "0",
+                    share_auth: dj.HTTP_SHARE_WR_AUTH == "readOnly" ? "0" : "1",
+                    file_to_share: dk,
+                    share_file: dj.HTTP_SHARE_FILE
                 };
-                return dd
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function cw() {
-        return bz(arguments, {}, db, dc, null, true);
+    function cA() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {
+        function dg(di, dj) {
+            var dk = {
                 goformId: "HTTPSHARE_MODE_SET",
-                mode_set: dd.mode == "0" ? "http_share_mode" : "usb_mode"
+                mode_set: di.mode == "0" ? "http_share_mode" : "usb_mode"
             };
-            return df
+            return dk
         }
 
-        function dc(dd) {
-            if (dd && dd.result == "success") {
+        function dh(di) {
+            if (di && di.result == "success") {
                 return {
                     result: "success"
                 }
             } else {
-                if (dd && dd.result == "processing") {
+                if (di && di.result == "processing") {
                     return {
                         result: "processing"
                     }
@@ -2822,30 +2953,30 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
         }
     }
 
-    function M() {
-        return bz(arguments, {}, db, dc, null, true);
+    function O() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {
+        function dg(di, dj) {
+            var dk = {
                 goformId: "GOFORM_HTTPSHARE_CHECK_FILE",
-                path_SD_CARD: dd.path
+                path_SD_CARD: di.path
             };
-            return df
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                if (dd.result == "no_sdcard") {
+        function dh(di) {
+            if (di) {
+                if (di.result == "no_sdcard") {
                     return {
                         status: "no_sdcard"
                     }
                 } else {
-                    if (dd.result == "noexist") {
+                    if (di.result == "noexist") {
                         return {
                             status: "noexist"
                         }
                     } else {
-                        if (dd.result == "processing") {
+                        if (di.result == "processing") {
                             return {
                                 status: "processing"
                             }
@@ -2857,100 +2988,100 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
                     }
                 }
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function ad() {
-        return bz(arguments, {}, db, dd, null, true);
+    function af() {
+        return bB(arguments, {}, dg, di, null, true);
 
-        function db(de, df) {
-            var dg = {
+        function dg(dj, dk) {
+            var dl = {
                 goformId: "HTTPSHARE_ENTERFOLD",
-                path_SD_CARD: de.path,
-                indexPage: de.index
+                path_SD_CARD: dj.path,
+                indexPage: dj.index
             };
-            return dg
+            return dl
         }
 
-        function dd(de) {
-            if (de) {
-                if (de.result == "failure") {
-                    return cP.extend(V, {
+        function di(dj) {
+            if (dj) {
+                if (dj.result == "failure") {
+                    return cT.extend(X, {
                         errorType: "get_file_list_failure"
                     })
                 } else {
-                    if (de.result == "no_sdcard") {
-                        return cP.extend(V, {
+                    if (dj.result == "no_sdcard") {
+                        return cT.extend(X, {
                             errorType: "no_sdcard"
                         })
                     } else {
-                        return dc(de.result)
+                        return dh(dj.result)
                     }
                 }
             } else {
-                return V
+                return X
             }
         }
 
-        function dc(de) {
-            var dh = {};
-            dh.totalRecord = de.totalRecord;
-            var dj = [];
-            var dg = de.fileInfo;
-            for (var df = 0; dg && df < dg.length; df++) {
-                if (dg[df].fileName == "") {
+        function dh(dj) {
+            var dm = {};
+            dm.totalRecord = dj.totalRecord;
+            var dp = [];
+            var dl = dj.fileInfo;
+            for (var dk = 0; dl && dk < dl.length; dk++) {
+                if (dl[dk].fileName == "") {
                     continue
                 }
-                var di = {};
-                di.fileName = dg[df].fileName;
-                di.attribute = dg[df].attribute;
-                di.size = dg[df].size;
-                di.lastUpdateTime = dg[df].lastUpdateTime;
-                dj.push(di)
+                var dn = {};
+                dn.fileName = dl[dk].fileName;
+                dn.attribute = dl[dk].attribute;
+                dn.size = dl[dk].size;
+                dn.lastUpdateTime = dl[dk].lastUpdateTime;
+                dp.push(dn)
             }
-            dh.details = dj;
-            return dh
+            dm.details = dp;
+            return dm
         }
     }
 
-    function bC() {
-        return bz(arguments, {}, db, dc, null, true);
+    function bE() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var dg = new Date();
-            var df = dg.getTime();
-            var dh = dg.getTimezoneOffset() * 60;
+        function dg(di, dj) {
+            var dl = new Date();
+            var dk = dl.getTime();
+            var dm = dl.getTimezoneOffset() * 60;
             return {
                 goformId: "HTTPSHARE_FILE_RENAME",
-                path_SD_CARD: dd.path,
-                OLD_NAME_SD_CARD: dd.oldPath,
-                NEW_NAME_SD_CARD: dd.newPath,
-                path_SD_CARD_time: transUnixTime(df),
-                path_SD_CARD_time_unix: Math.round((df - dh * 1000) / 1000)
+                path_SD_CARD: di.path,
+                OLD_NAME_SD_CARD: di.oldPath,
+                NEW_NAME_SD_CARD: di.newPath,
+                path_SD_CARD_time: transUnixTime(dk),
+                path_SD_CARD_time_unix: Math.round((dk - dm * 1000) / 1000)
             }
         }
 
-        function dc(dd) {
-            if (dd) {
-                if (dd.result == "success") {
+        function dh(di) {
+            if (di) {
+                if (di.result == "success") {
                     return {
                         result: true
                     }
                 } else {
-                    if (dd.result == "no_sdcard") {
-                        return cP.extend(V, {
+                    if (di.result == "no_sdcard") {
+                        return cT.extend(X, {
                             errorType: "no_sdcard"
                         })
                     } else {
-                        if (dd.result == "noexist") {
-                            return cP.extend(V, {
+                        if (di.result == "noexist") {
+                            return cT.extend(X, {
                                 errorType: "no_exist"
                             })
                         } else {
-                            if (dd.result == "processing") {
-                                return cP.extend(V, {
+                            if (di.result == "processing") {
+                                return cT.extend(X, {
                                     errorType: "sd_file_processing_cant_rename"
                                 })
                             } else {
@@ -2962,72 +3093,72 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
                     }
                 }
             } else {
-                return V
+                return X
             }
         }
     }
 
     function B() {
-        return bz(arguments, {}, db, dc, null, false);
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {
+        function dg(di, dj) {
+            var dk = {
                 cmd: "HTTPSHARE_GETCARD_VALUE"
             };
-            return df
+            return dk
         }
 
-        function dc(dd) {
-            if (!dd || (dd.result && dd.result == "no_sdcard")) {
-                return cP.extend(V, {
+        function dh(di) {
+            if (!di || (di.result && di.result == "no_sdcard")) {
+                return cT.extend(X, {
                     errorType: "no_sdcard"
                 })
             } else {
                 return {
-                    totalMemorySize: dd.sd_card_total_size == "" ? 0 : dd.sd_card_total_size * 32 * 1024,
-                    availableMemorySize: dd.sd_card_avi_space == "" ? 0 : dd.sd_card_avi_space * 32 * 1024
+                    totalMemorySize: di.sd_card_total_size == "" ? 0 : di.sd_card_total_size * 32 * 1024,
+                    availableMemorySize: di.sd_card_avi_space == "" ? 0 : di.sd_card_avi_space * 32 * 1024
                 }
             }
         }
     }
 
-    function aW() {
-        return bz(arguments, {}, db, dc, null, true);
+    function aY() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = new Date().getTime();
-            var dg = {
+        function dg(di, dj) {
+            var dk = new Date().getTime();
+            var dl = {
                 goformId: "HTTPSHARE_DEL",
-                path_SD_CARD: dd.path,
-                name_SD_CARD: dd.names,
-                path_SD_CARD_time: transUnixTime(df),
-                path_SD_CARD_time_unix: Math.round(df / 1000)
+                path_SD_CARD: di.path,
+                name_SD_CARD: di.names,
+                path_SD_CARD_time: transUnixTime(dk),
+                path_SD_CARD_time_unix: Math.round(dk / 1000)
             };
-            return dg
+            return dl
         }
 
-        function dc(dd) {
-            if (dd.result && dd.result == "failure") {
+        function dh(di) {
+            if (di.result && di.result == "failure") {
                 return {
                     status: "failure"
                 }
             } else {
-                if (dd.result && dd.result == "no_sdcard") {
+                if (di.result && di.result == "no_sdcard") {
                     return {
                         status: "no_sdcard"
                     }
                 } else {
-                    if (dd.result && dd.result == "processing") {
+                    if (di.result && di.result == "processing") {
                         return {
                             status: "processing"
                         }
                     } else {
-                        if (dd.result && dd.result == "success") {
+                        if (di.result && di.result == "success") {
                             return {
                                 status: "success"
                             }
                         } else {
-                            return V
+                            return X
                         }
                     }
                 }
@@ -3036,60 +3167,60 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
     }
 
     function H() {
-        return bz(arguments, {}, db, dc, null, true);
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var dg = new Date();
-            var df = dg.getTime();
-            var dh = dg.getTimezoneOffset() * 60;
+        function dg(di, dj) {
+            var dl = new Date();
+            var dk = dl.getTime();
+            var dm = dl.getTimezoneOffset() * 60;
             return {
                 goformId: "HTTPSHARE_NEW",
-                path_SD_CARD: dd.path,
-                path_SD_CARD_time: transUnixTime(df),
-                path_SD_CARD_time_unix: Math.round((df - dh * 1000) / 1000)
+                path_SD_CARD: di.path,
+                path_SD_CARD_time: transUnixTime(dk),
+                path_SD_CARD_time_unix: Math.round((dk - dm * 1000) / 1000)
             }
         }
 
-        function dc(dd) {
-            if (dd.result && dd.result == "failure") {
-                return cP.extend(V, {
+        function dh(di) {
+            if (di.result && di.result == "failure") {
+                return cT.extend(X, {
                     errorType: "create_folder_failure"
                 })
             } else {
-                if (dd.result && dd.result == "no_sdcard") {
-                    return cP.extend(V, {
+                if (di.result && di.result == "no_sdcard") {
+                    return cT.extend(X, {
                         errorType: "no_sdcard"
                     })
                 } else {
-                    if (dd.result && dd.result == "success") {
+                    if (di.result && di.result == "success") {
                         return {
                             result: true
                         }
                     } else {
-                        return V
+                        return X
                     }
                 }
             }
         }
     }
 
-    function cb() {
-        return bz(arguments, {}, db, dc, null, true);
+    function ce() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {
+        function dg(di, dj) {
+            var dk = {
                 goformId: "HTTPSHARE_AUTH_SET",
-                HTTP_SHARE_STATUS: dd.share_status == "1" ? "Enabled" : "Disabled",
-                HTTP_SHARE_WR_AUTH: dd.share_auth == "1" ? "readWrite" : "readOnly",
-                HTTP_SHARE_FILE: dd.share_file
+                HTTP_SHARE_STATUS: di.share_status == "1" ? "Enabled" : "Disabled",
+                HTTP_SHARE_WR_AUTH: di.share_auth == "1" ? "readWrite" : "readOnly",
+                HTTP_SHARE_FILE: di.share_file
             };
-            return df
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                if (dd.result == "no_sdcard") {
-                    return cP.extend(V, {
+        function dh(di) {
+            if (di) {
+                if (di.result == "no_sdcard") {
+                    return cT.extend(X, {
                         errorType: "no_sdcard"
                     })
                 } else {
@@ -3098,344 +3229,393 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
                     }
                 }
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function be() {
-        return bz(arguments, {}, dc, dd, null, false);
+    function bg() {
+        return bB(arguments, {}, dh, di, null, false);
 
-        function dc(de, df) {
-            var dg = {};
-            dg.cmd = "IPPortFilterEnable,DefaultFirewallPolicy,IPPortFilterRules_0,IPPortFilterRules_1,IPPortFilterRules_2,IPPortFilterRules_3,IPPortFilterRules_4,IPPortFilterRules_5,IPPortFilterRules_6,IPPortFilterRules_7,IPPortFilterRules_8,IPPortFilterRules_9";
-            dg.cmd += ",IPPortFilterRulesv6_0,IPPortFilterRulesv6_1,IPPortFilterRulesv6_2,IPPortFilterRulesv6_3,IPPortFilterRulesv6_4,IPPortFilterRulesv6_5,IPPortFilterRulesv6_6,IPPortFilterRulesv6_7,IPPortFilterRulesv6_8,IPPortFilterRulesv6_9";
-            dg.multi_data = 1;
-            return dg
+        function dh(dj, dk) {
+            var dl = {};
+            dl.cmd = "IPPortFilterEnable,DefaultFirewallPolicy,IPPortFilterRules_0,IPPortFilterRules_1,IPPortFilterRules_2,IPPortFilterRules_3,IPPortFilterRules_4,IPPortFilterRules_5,IPPortFilterRules_6,IPPortFilterRules_7,IPPortFilterRules_8,IPPortFilterRules_9";
+            dl.cmd += ",IPPortFilterRulesv6_0,IPPortFilterRulesv6_1,IPPortFilterRulesv6_2,IPPortFilterRulesv6_3,IPPortFilterRulesv6_4,IPPortFilterRulesv6_5,IPPortFilterRulesv6_6,IPPortFilterRulesv6_7,IPPortFilterRulesv6_8,IPPortFilterRulesv6_9";
+            dl.multi_data = 1;
+            return dl
         }
 
-        function dd(df) {
-            if (df) {
-                var de = {};
-                de.portFilterEnable = df.IPPortFilterEnable;
-                de.defaultPolicy = df.DefaultFirewallPolicy;
-                var dh = [];
-                if (df.IPPortFilterRules_0 != "") {
-                    dh.push([0, df.IPPortFilterRules_0])
+        function di(dk) {
+            if (dk) {
+                var dj = {};
+                dj.portFilterEnable = dk.IPPortFilterEnable;
+                dj.defaultPolicy = dk.DefaultFirewallPolicy;
+                var dm = [];
+                if (dk.IPPortFilterRules_0 != "") {
+                    dm.push([0, dk.IPPortFilterRules_0])
                 }
-                if (df.IPPortFilterRules_1 != "") {
-                    dh.push([1, df.IPPortFilterRules_1])
+                if (dk.IPPortFilterRules_1 != "") {
+                    dm.push([1, dk.IPPortFilterRules_1])
                 }
-                if (df.IPPortFilterRules_2 != "") {
-                    dh.push([2, df.IPPortFilterRules_2])
+                if (dk.IPPortFilterRules_2 != "") {
+                    dm.push([2, dk.IPPortFilterRules_2])
                 }
-                if (df.IPPortFilterRules_3 != "") {
-                    dh.push([3, df.IPPortFilterRules_3])
+                if (dk.IPPortFilterRules_3 != "") {
+                    dm.push([3, dk.IPPortFilterRules_3])
                 }
-                if (df.IPPortFilterRules_4 != "") {
-                    dh.push([4, df.IPPortFilterRules_4])
+                if (dk.IPPortFilterRules_4 != "") {
+                    dm.push([4, dk.IPPortFilterRules_4])
                 }
-                if (df.IPPortFilterRules_5 != "") {
-                    dh.push([5, df.IPPortFilterRules_5])
+                if (dk.IPPortFilterRules_5 != "") {
+                    dm.push([5, dk.IPPortFilterRules_5])
                 }
-                if (df.IPPortFilterRules_6 != "") {
-                    dh.push([6, df.IPPortFilterRules_6])
+                if (dk.IPPortFilterRules_6 != "") {
+                    dm.push([6, dk.IPPortFilterRules_6])
                 }
-                if (df.IPPortFilterRules_7 != "") {
-                    dh.push([7, df.IPPortFilterRules_7])
+                if (dk.IPPortFilterRules_7 != "") {
+                    dm.push([7, dk.IPPortFilterRules_7])
                 }
-                if (df.IPPortFilterRules_8 != "") {
-                    dh.push([8, df.IPPortFilterRules_8])
+                if (dk.IPPortFilterRules_8 != "") {
+                    dm.push([8, dk.IPPortFilterRules_8])
                 }
-                if (df.IPPortFilterRules_9 != "") {
-                    dh.push([9, df.IPPortFilterRules_9])
+                if (dk.IPPortFilterRules_9 != "") {
+                    dm.push([9, dk.IPPortFilterRules_9])
                 }
-                de.portFilterRules = db(dh, "IPv4");
-                var dg = [];
-                if (df.IPPortFilterRulesv6_0 != "") {
-                    dg.push([10, df.IPPortFilterRulesv6_0])
+                dj.portFilterRules = dg(dm, "IPv4");
+                var dl = [];
+                if (dk.IPPortFilterRulesv6_0 != "") {
+                    dl.push([10, dk.IPPortFilterRulesv6_0])
                 }
-                if (df.IPPortFilterRulesv6_1 != "") {
-                    dg.push([11, df.IPPortFilterRulesv6_1])
+                if (dk.IPPortFilterRulesv6_1 != "") {
+                    dl.push([11, dk.IPPortFilterRulesv6_1])
                 }
-                if (df.IPPortFilterRulesv6_2 != "") {
-                    dg.push([12, df.IPPortFilterRulesv6_2])
+                if (dk.IPPortFilterRulesv6_2 != "") {
+                    dl.push([12, dk.IPPortFilterRulesv6_2])
                 }
-                if (df.IPPortFilterRulesv6_3 != "") {
-                    dg.push([13, df.IPPortFilterRulesv6_3])
+                if (dk.IPPortFilterRulesv6_3 != "") {
+                    dl.push([13, dk.IPPortFilterRulesv6_3])
                 }
-                if (df.IPPortFilterRulesv6_4 != "") {
-                    dg.push([14, df.IPPortFilterRulesv6_4])
+                if (dk.IPPortFilterRulesv6_4 != "") {
+                    dl.push([14, dk.IPPortFilterRulesv6_4])
                 }
-                if (df.IPPortFilterRulesv6_5 != "") {
-                    dg.push([15, df.IPPortFilterRulesv6_5])
+                if (dk.IPPortFilterRulesv6_5 != "") {
+                    dl.push([15, dk.IPPortFilterRulesv6_5])
                 }
-                if (df.IPPortFilterRulesv6_6 != "") {
-                    dg.push([16, df.IPPortFilterRulesv6_6])
+                if (dk.IPPortFilterRulesv6_6 != "") {
+                    dl.push([16, dk.IPPortFilterRulesv6_6])
                 }
-                if (df.IPPortFilterRulesv6_7 != "") {
-                    dg.push([17, df.IPPortFilterRulesv6_7])
+                if (dk.IPPortFilterRulesv6_7 != "") {
+                    dl.push([17, dk.IPPortFilterRulesv6_7])
                 }
-                if (df.IPPortFilterRulesv6_8 != "") {
-                    dg.push([18, df.IPPortFilterRulesv6_8])
+                if (dk.IPPortFilterRulesv6_8 != "") {
+                    dl.push([18, dk.IPPortFilterRulesv6_8])
                 }
-                if (df.IPPortFilterRulesv6_9 != "") {
-                    dg.push([19, df.IPPortFilterRulesv6_9])
+                if (dk.IPPortFilterRulesv6_9 != "") {
+                    dl.push([19, dk.IPPortFilterRulesv6_9])
                 }
-                de.portFilterRules = cg.union(de.portFilterRules, db(dg, "IPv6"));
-                return de
+                dj.portFilterRules = cj.union(dj.portFilterRules, dg(dl, "IPv6"));
+                return dj
             } else {
-                return V
+                return X
             }
         }
 
-        function db(de, dj) {
+        function dg(dj, dp) {
+            var dn = [];
+            if (dj && dj.length > 0) {
+                for (var dl = 0; dl < dj.length; dl++) {
+                    var dk = {};
+                    var dm = dj[dl][1].split(",");
+                    dk.index = dj[dl][0];
+                    dk.macAddress = dm[11];
+                    dk.destIpAddress = dm[4] == "any/0" ? "" : dm[4];
+                    dk.sourceIpAddress = dm[0] == "any/0" ? "" : dm[0];
+                    dk.destPortRange = dm[6] == "0" ? "" : dm[6] + " - " + dm[7];
+                    dk.sourcePortRange = dm[2] == "0" ? "" : dm[2] + " - " + dm[3];
+                    dk.action = dm[9] == 1 ? "filter_accept" : "filter_drop";
+                    dk.protocol = transProtocol(dm[8]);
+                    dk.comment = dm[10];
+                    dk.ipType = dp;
+                    dn.push(dk)
+                }
+            }
+            return dn
+        }
+    }
+
+    function ak() {
+        return bB(arguments, {}, dg, dh, null, true);
+
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "BASIC_SETTING";
+            dk.portFilterEnabled = di.portFilterEnable;
+            dk.defaultFirewallPolicy = di.defaultPolicy;
+            return dk
+        }
+
+        function dh(di) {
+            if (di) {
+                return di
+            } else {
+                return X
+            }
+        }
+    }
+
+    function W() {
+        return bB(arguments, {}, dg, dh, null, true);
+
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "ADD_IP_PORT_FILETER_V4V6";
+            dk.ip_version = di.ipType;
+            dk.mac_address = di.macAddress;
+            dk.dip_address = di.destIpAddress;
+            dk.sip_address = di.sourceIpAddress;
+            dk.dFromPort = di.destPortStart;
+            dk.dToPort = di.destPortEnd;
+            dk.sFromPort = di.sourcePortStart;
+            dk.sToPort = di.sourcePortEnd;
+            dk.action = di.action;
+            dk.protocol = di.protocol;
+            dk.comment = di.comment;
+            return dk
+        }
+
+        function dh(di) {
+            if (di) {
+                return di
+            } else {
+                return X
+            }
+        }
+    }
+
+    function aD() {
+        return bB(arguments, {}, dg, dh, null, true);
+
+        function dg(dj, dk) {
+            var dl = {};
+            var dm = cj.filter(dj.indexs, function(dn) {
+                return dn.length == 1
+            });
+            dl.goformId = "DEL_IP_PORT_FILETER_V4V6";
             var di = [];
-            if (de && de.length > 0) {
-                for (var dg = 0; dg < de.length; dg++) {
-                    var df = {};
-                    var dh = de[dg][1].split(",");
-                    df.index = de[dg][0];
-                    df.macAddress = dh[11];
-                    df.destIpAddress = dh[4] == "any/0" ? "" : dh[4];
-                    df.sourceIpAddress = dh[0] == "any/0" ? "" : dh[0];
-                    df.destPortRange = dh[6] == "0" ? "" : dh[6] + " - " + dh[7];
-                    df.sourcePortRange = dh[2] == "0" ? "" : dh[2] + " - " + dh[3];
-                    df.action = dh[9] == 1 ? "filter_accept" : "filter_drop";
-                    df.protocol = transProtocol(dh[8]);
-                    df.comment = dh[10];
-                    df.ipType = dj;
-                    di.push(df)
-                }
-            }
-            return di
-        }
-    }
-
-    function ai() {
-        return bz(arguments, {}, db, dc, null, true);
-
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "BASIC_SETTING";
-            df.portFilterEnabled = dd.portFilterEnable;
-            df.defaultFirewallPolicy = dd.defaultPolicy;
-            return df
-        }
-
-        function dc(dd) {
-            if (dd) {
-                return dd
-            } else {
-                return V
-            }
-        }
-    }
-
-    function U() {
-        return bz(arguments, {}, db, dc, null, true);
-
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "ADD_IP_PORT_FILETER_V4V6";
-            df.ip_version = dd.ipType;
-            df.mac_address = dd.macAddress;
-            df.dip_address = dd.destIpAddress;
-            df.sip_address = dd.sourceIpAddress;
-            df.dFromPort = dd.destPortStart;
-            df.dToPort = dd.destPortEnd;
-            df.sFromPort = dd.sourcePortStart;
-            df.sToPort = dd.sourcePortEnd;
-            df.action = dd.action;
-            df.protocol = dd.protocol;
-            df.comment = dd.comment;
-            return df
-        }
-
-        function dc(dd) {
-            if (dd) {
-                return dd
-            } else {
-                return V
-            }
-        }
-    }
-
-    function aB() {
-        return bz(arguments, {}, db, dc, null, true);
-
-        function db(de, df) {
-            var dg = {};
-            var dh = cg.filter(de.indexs, function(di) {
-                return di.length == 1
-            });
-            dg.goformId = "DEL_IP_PORT_FILETER_V4V6";
-            var dd = [];
-            cg.each(de.indexs, function(di) {
-                if (di.length == 2) {
-                    dd.push(di.substring(1))
+            cj.each(dj.indexs, function(dn) {
+                if (dn.length == 2) {
+                    di.push(dn.substring(1))
                 }
             });
-            dg.delete_id_v6 = dd.length > 0 ? dd.join(";") + ";" : "";
-            dg.delete_id = dh.length > 0 ? dh.join(";") + ";" : "";
-            return dg
+            dl.delete_id_v6 = di.length > 0 ? di.join(";") + ";" : "";
+            dl.delete_id = dm.length > 0 ? dm.join(";") + ";" : "";
+            return dl
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function cp() {
-        return bz(arguments, {}, db, dc, null, false);
+    function ct() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "WirelessMode,CountryCode,Channel,HT_MCS,wifi_band,wifi_11n_cap,MAX_Access_num,m_MAX_Access_num,MAX_Station_num,wifi_sta_connection";
-            df.multi_data = 1;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "WirelessMode,WirelessMode_5g,CountryCode,Channel,Channel_5g,HT_MCS,wifi_band,wifi_11n_cap,wifi_11n_cap_5g,MAX_Access_num,m_MAX_Access_num,MAX_Station_num,wifi_sta_connection";
+            dk.multi_data = 1;
+            return dk
         }
 
-        function dc(de) {
-            if (de) {
-                var dd = {
-                    mode: de.WirelessMode,
-                    countryCode: de.CountryCode,
-                    channel: de.Channel,
-                    rate: de.HT_MCS,
-                    wifiBand: de.wifi_band == "a" ? "a" : "b",
-                    bandwidth: de.wifi_11n_cap,
-                    MAX_Station_num: cP.isNumeric(de.MAX_Station_num) ? de.MAX_Station_num : aH.MAX_STATION_NUMBER,
-                    MAX_Access_num: de.MAX_Access_num,
-                    m_MAX_Access_num: de.m_MAX_Access_num,
-                    ap_station_enable: de.wifi_sta_connection
+        function dh(dj) {
+            if (dj) {
+                var di = {
+                    mode: dj.wifi_band == "a" ? dj.WirelessMode_5g : dj.WirelessMode,
+                    countryCode: dj.CountryCode,
+                    channel: dj.wifi_band == "a" ? dj.Channel_5g : dj.Channel,
+                    rate: dj.HT_MCS,
+                    wifiBand: dj.wifi_band == "a" ? "a" : "b",
+                    bandwidth: dj.wifi_band == "a" ? dj.wifi_11n_cap_5g : dj.wifi_11n_cap,
+                    MAX_Station_num: cT.isNumeric(dj.MAX_Station_num) ? dj.MAX_Station_num : aJ.MAX_STATION_NUMBER,
+                    MAX_Access_num: dj.MAX_Access_num,
+                    m_MAX_Access_num: dj.m_MAX_Access_num,
+                    ap_station_enable: dj.wifi_sta_connection
                 };
-                return dd
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function c1() {
-        ax(arguments, db, dc);
+    function c5() {
+        az(arguments, dg, dh);
 
-        function db(dd) {
-            var de = {
+        function dg(di) {
+            var dj = {
                 goformId: "SET_WIFI_INFO",
-                wifiMode: dd.mode,
-                countryCode: dd.countryCode,
-                MAX_Access_num: dd.station,
-                m_MAX_Access_num: dd.m_station
+                wifiMode: di.mode,
+                countryCode: di.countryCode,
+                MAX_Access_num: di.station,
+                m_MAX_Access_num: di.m_station
             };
-            if (aH.WIFI_BAND_SUPPORT) {
-                de.wifi_band = dd.wifiBand
+            if (aJ.WIFI_BAND_SUPPORT) {
+                dj.wifi_band = di.wifiBand
             }
-            if (aH.WIFI_BAND_SUPPORT && dd.wifiBand == "a") {
-                de.selectedChannel = "auto"
-            } else {
-                de.selectedChannel = dd.channel;
-                de.abg_rate = dd.rate
+            dj.selectedChannel = di.channel;
+            if (!aJ.WIFI_BAND_SUPPORT) {
+                dj.abg_rate = di.rate
             }
-            if (aH.WIFI_BANDWIDTH_SUPPORT) {
-                de.wifi_11n_cap = dd.bandwidth
+            if (aJ.WIFI_BANDWIDTH_SUPPORT) {
+                dj.wifi_11n_cap = di.bandwidth
             }
-            return de
+            return dj
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function a9() {
-        return bz(arguments, {}, db, dc, null, false);
+    function bb() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(de, df) {
-            var dd = aH.PASSWORD_ENCODE ? "WPAPSK1_encode,m_WPAPSK1_encode," : "rnum_js,WPAPSK1_enaes,m_WPAPSK1_enaes,";
-            var dg = {
-                cmd: "wifi_coverage,m_ssid_enable,imei,network_type,sub_network_type,rssi,rscp,lte_rsrp,imsi,sim_imsi,cr_version,hw_version,MAX_Access_num," + dd + "SSID1,AuthMode,m_SSID,m_AuthMode,m_HideSSID,m_MAX_Access_num,lan_ipaddr,mac_address,msisdn,LocalDomain,wan_ipaddr,static_wan_ipaddr,ipv6_wan_ipaddr,ipv6_pdp_type,pdp_type,ppp_status,sta_ip_status,rj45_state,ethwan_mode,ziccid,lte_band,rssi,nv_sinr,nv_rsrq,nv_pci,cell_id,lte_sinr,lte_rsrp",
-                multi_data: 1
-            };
-            return dg
-        }
-
-        function dc(dd) {
-            if (dd) {
-                return {
-                    ssid: dd.SSID1,
-                    authMode: dd.AuthMode,
-                    passPhrase: aH.PASSWORD_ENCODE ? Base64.decode(dd.WPAPSK1_encode) : c(dd.rnum_js, dd.imei, dd.WPAPSK1_enaes),
-                    m_ssid: dd.m_SSID,
-                    m_AuthMode: dd.m_AuthMode,
-                    m_passPhrase: aH.PASSWORD_ENCODE ? Base64.decode(dd.m_WPAPSK1_encode) : c(dd.rnum_js, dd.imei, dd.m_WPAPSK1_enaes),
-                    m_max_access_num: dd.m_MAX_Access_num,
-                    multi_ssid_enable: dd.m_ssid_enable,
-                    ipAddress: dd.lan_ipaddr,
-                    wanIpAddress: dd.wan_ipaddr,
-                    staticWanIpAddress: dd.static_wan_ipaddr,
-                    ipv6WanIpAddress: dd.ipv6_wan_ipaddr,
-                    ipv6PdpType: dd.ipv6_pdp_type,
-                    macAddress: dd.mac_address,
-                    simSerialNumber: dd.msisdn,
-                    lanDomain: dd.LocalDomain,
-                    imei: dd.imei,
-                    iccid: dd.ziccid,
-                    signal: convertSignal(dd),
-                    imsi: dd.imsi || dd.sim_imsi,
-                    sw_version: dd.cr_version,
-                    hw_version: dd.hw_version,
-                    max_access_num: dd.MAX_Access_num,
-                    wifiRange: dd.wifi_coverage,
-                    pdpType: dd.pdp_type,
-                    rj45ConnectStatus: (typeof dd.rj45_state == "undefined" || dd.rj45_state == "") ? "dead" : dd.rj45_state,
-                    blc_wan_mode: bu.blc_wan_mode,
-                    connectStatus: dd.ppp_status,
-                    wifiConStatus: dd.sta_ip_status,
-                    CellID: dd.cell_id,
-                    pci: dd.nv_pci,
-                    arfcn: dd.lte_band,
-                    ethwan_mode: dd.ethwan_mode.toUpperCase(),
-                    rssi: dd.rssi,
-                    SINR: dd.nv_sinr,
-                    RSRP: dd.rssi,
-                    RSRQ: dd.nv_rsrq
+        function dg(dj, dk) {
+            var dl;
+            if (aJ.WIFI_HAS_5G) {
+                var di = aJ.PASSWORD_ENCODE ? "WPAPSK1_encode,m_WPAPSK1_encode,WPAPSK1_encode_5g,m_WPAPSK1_encode_5g," : "rnum_js,WPAPSK1_enaes,m_WPAPSK1_enaes,WPAPSK1_enaes_5g,m_WPAPSK1_enaes_5g,";
+                dl = {
+                    cmd: "wifi_coverage,m_ssid_enable,imei,network_type,sub_network_type,rssi,rscp,lte_rsrp,imsi,sim_imsi,cr_version,hw_version,MAX_Access_num," + di + "SSID1,AuthMode,m_SSID,m_AuthMode,m_HideSSID,m_MAX_Access_num,lan_ipaddr,mac_address,msisdn,LocalDomain,wan_ipaddr,static_wan_ipaddr,ipv6_wan_ipaddr,ipv6_pdp_type,pdp_type,ppp_status,sta_ip_status,rj45_state,ethwan_mode,MAX_Access_num_5g,SSID1_5g,AuthMode_5g,m_SSID_5g,m_AuthMode_5g,m_MAX_Access_num_5g,wifi_band,ziccid,lte_band,rssi,nv_sinr,nv_rsrq,nv_pci,cell_id,lte_sinr,lte_rsrp",
+                    multi_data: 1
                 }
             } else {
-                return V
+                var di = aJ.PASSWORD_ENCODE ? "WPAPSK1_encode,m_WPAPSK1_encode," : "rnum_js,WPAPSK1_enaes,m_WPAPSK1_enaes,";
+                dl = {
+                    cmd: "wifi_coverage,m_ssid_enable,imei,network_type,sub_network_type,rssi,rscp,lte_rsrp,imsi,sim_imsi,cr_version,hw_version,MAX_Access_num," + di + "SSID1,AuthMode,m_SSID,m_AuthMode,m_HideSSID,m_MAX_Access_num,lan_ipaddr,mac_address,msisdn,LocalDomain,wan_ipaddr,static_wan_ipaddr,ipv6_wan_ipaddr,ipv6_pdp_type,pdp_type,ppp_status,sta_ip_status,rj45_state,ethwan_mode,ziccid,lte_band,rssi,nv_sinr,nv_rsrq,nv_pci,cell_id,lte_sinr,lte_rsrp",
+                    multi_data: 1
+                }
+            }
+            return dl
+        }
+
+        function dh(di) {
+            if (di) {
+                if (aJ.WIFI_HAS_5G && di.wifi_band == "a") {
+                    return {
+                        ssid: di.SSID1_5g,
+                        authMode: di.AuthMode_5g,
+                        passPhrase: aJ.PASSWORD_ENCODE ? Base64.decode(di.WPAPSK1_encode_5g) : c(di.rnum_js, di.imei, di.WPAPSK1_enaes_5g),
+                        m_ssid: di.m_SSID_5g,
+                        m_AuthMode: di.m_AuthMode_5g,
+                        m_passPhrase: aJ.PASSWORD_ENCODE ? Base64.decode(di.m_WPAPSK1_encode_5g) : c(di.rnum_js, di.imei, di.m_WPAPSK1_enaes_5g),
+                        m_max_access_num: di.m_MAX_Access_num_5g,
+                        multi_ssid_enable: di.m_ssid_enable,
+                        ipAddress: di.lan_ipaddr,
+                        wanIpAddress: di.wan_ipaddr,
+                        staticWanIpAddress: di.static_wan_ipaddr,
+                        ipv6WanIpAddress: di.ipv6_wan_ipaddr,
+                        ipv6PdpType: di.ipv6_pdp_type,
+                        macAddress: di.mac_address,
+                        simSerialNumber: di.msisdn,
+                        lanDomain: di.LocalDomain,
+                        imei: di.imei,
+                        iccid: di.ziccid,
+                        signal: convertSignal(di),
+                        imsi: di.imsi || di.sim_imsi,
+                        sw_version: di.cr_version,
+                        hw_version: di.hw_version,
+                        max_access_num: di.MAX_Access_num_5g,
+                        wifiRange: di.wifi_coverage,
+                        pdpType: di.pdp_type,
+                        rj45ConnectStatus: (typeof di.rj45_state == "undefined" || di.rj45_state == "") ? "dead" : di.rj45_state,
+                        blc_wan_mode: bw.blc_wan_mode,
+                        connectStatus: di.ppp_status,
+                        wifiConStatus: di.sta_ip_status,
+                        CellID: di.nv_globecellid,
+                        pci: di.nv_pci,
+                        nv_arfcn: di.nv_arfcn,
+                        ethwan_mode: di.ethwan_mode.toUpperCase(),
+                        rssi: di.rssi,
+                        SINR: di.nv_sinr,
+                        RSRP: di.rssi,
+                        RSRQ: di.nv_rsrq,
+                        lte_band: di.lte_band
+                    }
+                }
+                return {
+                    ssid: di.SSID1,
+                    authMode: di.AuthMode,
+                    passPhrase: aJ.PASSWORD_ENCODE ? Base64.decode(di.WPAPSK1_encode) : c(di.rnum_js, di.imei, di.WPAPSK1_enaes),
+                    m_ssid: di.m_SSID,
+                    m_AuthMode: di.m_AuthMode,
+                    m_passPhrase: aJ.PASSWORD_ENCODE ? Base64.decode(di.m_WPAPSK1_encode) : c(di.rnum_js, di.imei, di.m_WPAPSK1_enaes),
+                    m_max_access_num: di.m_MAX_Access_num,
+                    multi_ssid_enable: di.m_ssid_enable,
+                    ipAddress: di.lan_ipaddr,
+                    wanIpAddress: di.wan_ipaddr,
+                    staticWanIpAddress: di.static_wan_ipaddr,
+                    ipv6WanIpAddress: di.ipv6_wan_ipaddr,
+                    ipv6PdpType: di.ipv6_pdp_type,
+                    macAddress: di.mac_address,
+                    simSerialNumber: di.msisdn,
+                    lanDomain: di.LocalDomain,
+                    imei: di.imei,
+                    iccid: di.ziccid,
+                    signal: convertSignal(di),
+                    imsi: di.imsi || di.sim_imsi,
+                    sw_version: di.cr_version,
+                    hw_version: di.hw_version,
+                    max_access_num: di.MAX_Access_num,
+                    wifiRange: di.wifi_coverage,
+                    pdpType: di.pdp_type,
+                    rj45ConnectStatus: (typeof di.rj45_state == "undefined" || di.rj45_state == "") ? "dead" : di.rj45_state,
+                    blc_wan_mode: bw.blc_wan_mode,
+                    connectStatus: di.ppp_status,
+                    wifiConStatus: di.sta_ip_status,
+                    CellID: di.cell_id,
+                    pci: di.nv_pci,
+                    lte_band: di.lte_band,
+                    ethwan_mode: di.ethwan_mode.toUpperCase(),
+                    rssi: di.rssi,
+                    SINR: di.nv_sinr,
+                    RSRP: di.rssi,
+                    RSRQ: di.nv_rsrq
+                }
+            } else {
+                return X
             }
         }
     }
 
-    function cW() {
-        return bz(arguments, {}, db, dc, null, false);
+    function c0() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {
+        function dg(di, dj) {
+            var dk = {
                 cmd: "imei,rnum_js",
                 multi_data: 1
             };
-            return df
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                var dg = dd.rnum_js + dd.imei + "FFFFFFFFFFFFFFFFFFFFFFFF";
-                var de;
-                var df;
-                de = dg.substring(0, 24);
-                df = dg.substring(0, 16);
+        function dh(di) {
+            if (di) {
+                var dl = di.rnum_js + di.imei + "FFFFFFFFFFFFFFFFFFFFFFFF";
+                var dj;
+                var dk;
+                dj = dl.substring(0, 24);
+                dk = dl.substring(0, 16);
                 return {
-                    skey: de,
-                    siv: df
+                    skey: dj,
+                    siv: dk
                 }
             } else {
                 return {
@@ -3446,359 +3626,359 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
         }
     }
 
-    function W() {
-        return bz(arguments, {}, db, dc, null, false);
+    function Y() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "wifi_coverage";
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "wifi_coverage";
+            return dk
         }
 
-        function dc(de) {
-            if (de) {
-                var dd = {};
-                dd.wifiRangeMode = de.wifi_coverage;
-                return dd
+        function dh(dj) {
+            if (dj) {
+                var di = {};
+                di.wifiRangeMode = dj.wifi_coverage;
+                return di
             } else {
-                return V
+                return X
+            }
+        }
+    }
+
+    function c2() {
+        return bB(arguments, {}, dg, dh, null, true);
+
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "SET_WIFI_COVERAGE";
+            dk.wifi_coverage = di.wifiRangeMode;
+            return dk
+        }
+
+        function dh(di) {
+            if (di) {
+                return di
+            } else {
+                return X
+            }
+        }
+    }
+
+    function am() {
+        return bB(arguments, {}, dg, dh, null, false);
+
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "upnpEnabled";
+            dk.multi_data = 1;
+            return dk
+        }
+
+        function dh(dj) {
+            if (dj) {
+                var di = {};
+                di.upnpSetting = dj.upnpEnabled == "1" ? "1" : "0";
+                return di
+            } else {
+                return X
+            }
+        }
+    }
+
+    function a4() {
+        return bB(arguments, {}, dg, dh, null, true);
+
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "UPNP_SETTING";
+            dk.upnp_setting_option = di.upnpSetting;
+            return dk
+        }
+
+        function dh(di) {
+            if (di) {
+                return di
+            } else {
+                return X
+            }
+        }
+    }
+
+    function aC() {
+        return bB(arguments, {}, dg, dh, null, false);
+
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "DMZEnable,DMZIPAddress";
+            dk.multi_data = 1;
+            return dk
+        }
+
+        function dh(dj) {
+            if (dj) {
+                var di = {};
+                di.dmzSetting = dj.DMZEnable == "1" ? "1" : "0";
+                di.ipAddress = dj.DMZIPAddress;
+                return di
+            } else {
+                return X
             }
         }
     }
 
     function cY() {
-        return bz(arguments, {}, db, dc, null, true);
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "SET_WIFI_COVERAGE";
-            df.wifi_coverage = dd.wifiRangeMode;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "DMZ_SETTING";
+            dk.DMZEnabled = di.dmzSetting;
+            if (dk.DMZEnabled == "1") {
+                dk.DMZIPAddress = di.ipAddress
+            }
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function ak() {
-        return bz(arguments, {}, db, dc, null, false);
+    function ba() {
+        return bB(arguments, {}, dh, di, null, false);
 
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "upnpEnabled";
-            df.multi_data = 1;
-            return df
+        function dh(dj, dk) {
+            var dl = {};
+            dl.cmd = "PortMapEnable,PortMapRules_0,PortMapRules_1,PortMapRules_2,PortMapRules_3,PortMapRules_4,PortMapRules_5,PortMapRules_6,PortMapRules_7,PortMapRules_8,PortMapRules_9", dl.multi_data = 1;
+            return dl
         }
 
-        function dc(de) {
-            if (de) {
-                var dd = {};
-                dd.upnpSetting = de.upnpEnabled == "1" ? "1" : "0";
-                return dd
+        function di(dk) {
+            if (dk) {
+                var dj = {};
+                dj.portMapEnable = dk.PortMapEnable;
+                var dl = [];
+                if (dk.PortMapRules_0 != "") {
+                    dl.push([0, dk.PortMapRules_0])
+                }
+                if (dk.PortMapRules_1 != "") {
+                    dl.push([1, dk.PortMapRules_1])
+                }
+                if (dk.PortMapRules_2 != "") {
+                    dl.push([2, dk.PortMapRules_2])
+                }
+                if (dk.PortMapRules_3 != "") {
+                    dl.push([3, dk.PortMapRules_3])
+                }
+                if (dk.PortMapRules_4 != "") {
+                    dl.push([4, dk.PortMapRules_4])
+                }
+                if (dk.PortMapRules_5 != "") {
+                    dl.push([5, dk.PortMapRules_5])
+                }
+                if (dk.PortMapRules_6 != "") {
+                    dl.push([6, dk.PortMapRules_6])
+                }
+                if (dk.PortMapRules_7 != "") {
+                    dl.push([7, dk.PortMapRules_7])
+                }
+                if (dk.PortMapRules_8 != "") {
+                    dl.push([8, dk.PortMapRules_8])
+                }
+                if (dk.PortMapRules_9 != "") {
+                    dl.push([9, dk.PortMapRules_9])
+                }
+                dj.portMapRules = dg(dl);
+                return dj
             } else {
-                return V
+                return X
+            }
+        }
+
+        function dg(dj) {
+            var dn = [];
+            if (dj && dj.length > 0) {
+                for (var dl = 0; dl < dj.length; dl++) {
+                    var dk = {};
+                    var dm = dj[dl][1].split(",");
+                    dk.index = dj[dl][0];
+                    dk.sourcePort = dm[1];
+                    dk.destIpAddress = dm[0];
+                    dk.destPort = dm[2];
+                    dk.protocol = transProtocol(dm[3]);
+                    dk.comment = dm[4];
+                    dn.push(dk)
+                }
+            }
+            return dn
+        }
+    }
+
+    function bJ() {
+        return bB(arguments, {}, dg, dh, null, true);
+
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "ADD_PORT_MAP";
+            dk.portMapEnabled = di.portMapEnable;
+            dk.fromPort = di.sourcePort;
+            dk.ip_address = di.destIpAddress;
+            dk.toPort = di.destPort;
+            dk.protocol = di.protocol;
+            dk.comment = di.comment;
+            return dk
+        }
+
+        function dh(di) {
+            if (di) {
+                return di
+            } else {
+                return X
             }
         }
     }
 
-    function a2() {
-        return bz(arguments, {}, db, dc, null, true);
+    function bG() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "UPNP_SETTING";
-            df.upnp_setting_option = dd.upnpSetting;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "ADD_PORT_MAP";
+            dk.portMapEnabled = di.portMapEnable;
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function aA() {
-        return bz(arguments, {}, db, dc, null, false);
+    function a0() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "DMZEnable,DMZIPAddress";
-            df.multi_data = 1;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "DEL_PORT_MAP";
+            dk.delete_id = di.indexs.join(";") + ";";
+            return dk
         }
 
-        function dc(de) {
-            if (de) {
-                var dd = {};
-                dd.dmzSetting = de.DMZEnable == "1" ? "1" : "0";
-                dd.ipAddress = de.DMZIPAddress;
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
-            }
-        }
-    }
-
-    function cU() {
-        return bz(arguments, {}, db, dc, null, true);
-
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "DMZ_SETTING";
-            df.DMZEnabled = dd.dmzSetting;
-            if (df.DMZEnabled == "1") {
-                df.DMZIPAddress = dd.ipAddress
-            }
-            return df
-        }
-
-        function dc(dd) {
-            if (dd) {
-                return dd
-            } else {
-                return V
-            }
-        }
-    }
-
-    function a8() {
-        return bz(arguments, {}, dc, dd, null, false);
-
-        function dc(de, df) {
-            var dg = {};
-            dg.cmd = "PortMapEnable,PortMapRules_0,PortMapRules_1,PortMapRules_2,PortMapRules_3,PortMapRules_4,PortMapRules_5,PortMapRules_6,PortMapRules_7,PortMapRules_8,PortMapRules_9", dg.multi_data = 1;
-            return dg
-        }
-
-        function dd(df) {
-            if (df) {
-                var de = {};
-                de.portMapEnable = df.PortMapEnable;
-                var dg = [];
-                if (df.PortMapRules_0 != "") {
-                    dg.push([0, df.PortMapRules_0])
-                }
-                if (df.PortMapRules_1 != "") {
-                    dg.push([1, df.PortMapRules_1])
-                }
-                if (df.PortMapRules_2 != "") {
-                    dg.push([2, df.PortMapRules_2])
-                }
-                if (df.PortMapRules_3 != "") {
-                    dg.push([3, df.PortMapRules_3])
-                }
-                if (df.PortMapRules_4 != "") {
-                    dg.push([4, df.PortMapRules_4])
-                }
-                if (df.PortMapRules_5 != "") {
-                    dg.push([5, df.PortMapRules_5])
-                }
-                if (df.PortMapRules_6 != "") {
-                    dg.push([6, df.PortMapRules_6])
-                }
-                if (df.PortMapRules_7 != "") {
-                    dg.push([7, df.PortMapRules_7])
-                }
-                if (df.PortMapRules_8 != "") {
-                    dg.push([8, df.PortMapRules_8])
-                }
-                if (df.PortMapRules_9 != "") {
-                    dg.push([9, df.PortMapRules_9])
-                }
-                de.portMapRules = db(dg);
-                return de
-            } else {
-                return V
-            }
-        }
-
-        function db(de) {
-            var di = [];
-            if (de && de.length > 0) {
-                for (var dg = 0; dg < de.length; dg++) {
-                    var df = {};
-                    var dh = de[dg][1].split(",");
-                    df.index = de[dg][0];
-                    df.sourcePort = dh[1];
-                    df.destIpAddress = dh[0];
-                    df.destPort = dh[2];
-                    df.protocol = transProtocol(dh[3]);
-                    df.comment = dh[4];
-                    di.push(df)
-                }
-            }
-            return di
-        }
-    }
-
-    function bH() {
-        return bz(arguments, {}, db, dc, null, true);
-
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "ADD_PORT_MAP";
-            df.portMapEnabled = dd.portMapEnable;
-            df.fromPort = dd.sourcePort;
-            df.ip_address = dd.destIpAddress;
-            df.toPort = dd.destPort;
-            df.protocol = dd.protocol;
-            df.comment = dd.comment;
-            return df
-        }
-
-        function dc(dd) {
-            if (dd) {
-                return dd
-            } else {
-                return V
-            }
-        }
-    }
-
-    function bE() {
-        return bz(arguments, {}, db, dc, null, true);
-
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "ADD_PORT_MAP";
-            df.portMapEnabled = dd.portMapEnable;
-            return df
-        }
-
-        function dc(dd) {
-            if (dd) {
-                return dd
-            } else {
-                return V
-            }
-        }
-    }
-
-    function aY() {
-        return bz(arguments, {}, db, dc, null, true);
-
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "DEL_PORT_MAP";
-            df.delete_id = dd.indexs.join(";") + ";";
-            return df
-        }
-
-        function dc(dd) {
-            if (dd) {
-                return dd
-            } else {
-                return V
+                return X
             }
         }
     }
 
     function I() {
-        return bz(arguments, {}, db, dc, null, false);
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
+        function dg(di, dj) {
             return {
                 cmd: "data_volume_limit_switch,data_volume_limit_unit,data_volume_limit_size,data_volume_alert_percent,monthly_tx_bytes,monthly_rx_bytes,monthly_time,traffic_alined_delta",
                 multi_data: 1
             }
         }
 
-        function dc(de) {
-            if (de) {
-                var df = de.data_volume_limit_unit == "data";
-                var dd = {
-                    dataLimitChecked: de.data_volume_limit_switch,
-                    dataLimitTypeChecked: df ? "1" : "0",
-                    limitDataMonth: df ? de.data_volume_limit_size : "0",
-                    alertDataReach: df ? de.data_volume_alert_percent : "0",
-                    limitTimeMonth: df ? "0" : de.data_volume_limit_size,
-                    alertTimeReach: df ? "0" : de.data_volume_alert_percent,
-                    monthlySent: de.monthly_tx_bytes == "" ? 0 : de.monthly_tx_bytes,
-                    monthlyReceived: de.monthly_rx_bytes == "" ? 0 : de.monthly_rx_bytes,
-                    monthlyConnectedTime: de.monthly_time == "" ? 0 : de.monthly_time,
-                    traffic_alined_delta: de.traffic_alined_delta == "" ? 0 : de.traffic_alined_delta
+        function dh(dj) {
+            if (dj) {
+                var dk = dj.data_volume_limit_unit == "data";
+                var di = {
+                    dataLimitChecked: dj.data_volume_limit_switch,
+                    dataLimitTypeChecked: dk ? "1" : "0",
+                    limitDataMonth: dk ? dj.data_volume_limit_size : "0",
+                    alertDataReach: dk ? dj.data_volume_alert_percent : "0",
+                    limitTimeMonth: dk ? "0" : dj.data_volume_limit_size,
+                    alertTimeReach: dk ? "0" : dj.data_volume_alert_percent,
+                    monthlySent: dj.monthly_tx_bytes == "" ? 0 : dj.monthly_tx_bytes,
+                    monthlyReceived: dj.monthly_rx_bytes == "" ? 0 : dj.monthly_rx_bytes,
+                    monthlyConnectedTime: dj.monthly_time == "" ? 0 : dj.monthly_time,
+                    traffic_alined_delta: dj.traffic_alined_delta == "" ? 0 : dj.traffic_alined_delta
                 };
-                return dd
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function am() {
-        return bz(arguments, {}, db, dc, null, true);
+    function ao() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var dg = dd.dataLimitTypeChecked == "1";
-            var df = {
+        function dg(di, dj) {
+            var dl = di.dataLimitTypeChecked == "1";
+            var dk = {
                 goformId: "DATA_LIMIT_SETTING",
-                data_volume_limit_switch: dd.dataLimitChecked
+                data_volume_limit_switch: di.dataLimitChecked
             };
-            if (dd.dataLimitChecked == "1") {
-                df.data_volume_limit_unit = dg ? "data" : "time";
-                df.data_volume_limit_size = dg ? dd.limitDataMonth : dd.limitTimeMonth;
-                df.data_volume_alert_percent = dg ? dd.alertDataReach : dd.alertTimeReach
+            if (di.dataLimitChecked == "1") {
+                dk.data_volume_limit_unit = dl ? "data" : "time";
+                dk.data_volume_limit_size = dl ? di.limitDataMonth : di.limitTimeMonth;
+                dk.data_volume_alert_percent = dl ? di.alertDataReach : di.alertTimeReach
             }
-            return df
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function cz() {
-        var dd = arguments[1];
-        return bz(arguments, {}, db, dc, null, true);
+    function cD() {
+        var di = arguments[1];
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(de, df) {
-            if (de.sendOrReply == "send") {
+        function dg(dj, dk) {
+            if (dj.sendOrReply == "send") {
                 return {
                     goformId: "USSD_PROCESS",
-                    USSD_operator: de.operator,
-                    USSD_send_number: de.strUSSDCommand,
+                    USSD_operator: dj.operator,
+                    USSD_send_number: dj.strUSSDCommand,
                     notCallback: true
                 }
             } else {
-                if (de.sendOrReply == "reply") {
+                if (dj.sendOrReply == "reply") {
                     return {
                         goformId: "USSD_PROCESS",
-                        USSD_operator: de.operator,
-                        USSD_reply_number: de.strUSSDCommand,
+                        USSD_operator: dj.operator,
+                        USSD_reply_number: dj.strUSSDCommand,
                         notCallback: true
                     }
                 }
             }
         }
 
-        function dc(de) {
-            if (!de) {
-                dd(false, "ussd_fail");
+        function dh(dj) {
+            if (!dj) {
+                di(false, "ussd_fail");
                 return
             }
-            if (de.result == "success") {
-                callbackTemp = dd;
-                b8()
+            if (dj.result == "success") {
+                callbackTemp = di;
+                cb()
             } else {
-                dd(false, "ussd_fail")
+                di(false, "ussd_fail")
             }
         }
     }
 
-    function b8() {
-        cP.ajax({
+    function cb() {
+        cT.ajax({
             url: "/reqproc/proc_get",
             data: {
                 cmd: "ussd_write_flag"
@@ -3806,30 +3986,30 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
             cache: false,
             async: true,
             dataType: "json",
-            success: function(db) {
-                if (db.ussd_write_flag == "1") {
+            success: function(dg) {
+                if (dg.ussd_write_flag == "1") {
                     callbackTemp(false, "ussd_no_service")
                 } else {
-                    if (db.ussd_write_flag == "4" || db.ussd_write_flag == "unknown" || db.ussd_write_flag == "3") {
+                    if (dg.ussd_write_flag == "4" || dg.ussd_write_flag == "unknown" || dg.ussd_write_flag == "3") {
                         callbackTemp(false, "ussd_timeout")
                     } else {
-                        if (db.ussd_write_flag == "15") {
-                            setTimeout(b8, 1000)
+                        if (dg.ussd_write_flag == "15") {
+                            setTimeout(cb, 1000)
                         } else {
-                            if (db.ussd_write_flag == "10") {
+                            if (dg.ussd_write_flag == "10") {
                                 callbackTemp(false, "ussd_retry")
                             } else {
-                                if (db.ussd_write_flag == "99") {
+                                if (dg.ussd_write_flag == "99") {
                                     callbackTemp(false, "ussd_unsupport")
                                 } else {
-                                    if (db.ussd_write_flag == "41") {
+                                    if (dg.ussd_write_flag == "41") {
                                         callbackTemp(false, "operation_not_supported")
                                     } else {
-                                        if (db.ussd_write_flag == "2") {
+                                        if (dg.ussd_write_flag == "2") {
                                             callbackTemp(false, "network_terminated")
                                         } else {
-                                            if (db.ussd_write_flag == "16") {
-                                                cP.ajax({
+                                            if (dg.ussd_write_flag == "16") {
+                                                cT.ajax({
                                                     url: "/reqproc/proc_get",
                                                     data: {
                                                         cmd: "ussd_data_info"
@@ -3837,12 +4017,12 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
                                                     dataType: "json",
                                                     async: true,
                                                     cache: false,
-                                                    success: function(dc) {
-                                                        var dd = {};
-                                                        dd.data = dc.ussd_data;
-                                                        dd.ussd_action = dc.ussd_action;
-                                                        dd.ussd_dcs = dc.ussd_dcs;
-                                                        callbackTemp(true, dd)
+                                                    success: function(dh) {
+                                                        var di = {};
+                                                        di.data = dh.ussd_data;
+                                                        di.ussd_action = dh.ussd_action;
+                                                        di.ussd_dcs = dh.ussd_dcs;
+                                                        callbackTemp(true, di)
                                                     },
                                                     error: function() {
                                                         callbackTemp(false, "ussd_info_error")
@@ -3865,8 +4045,8 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
         })
     }
 
-    function p(dc) {
-        cP.ajax({
+    function p(dh) {
+        cT.ajax({
             url: "/reqproc/proc_post",
             data: {
                 goformId: "USSD_PROCESS",
@@ -3874,17 +4054,17 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
             },
             cache: false,
             dataType: "json",
-            success: function(dd) {
-                if (dd.result == "success") {
-                    db()
+            success: function(di) {
+                if (di.result == "success") {
+                    dg()
                 } else {
-                    dc(false)
+                    dh(false)
                 }
             }
         });
 
-        function db() {
-            cP.ajax({
+        function dg() {
+            cT.ajax({
                 url: "/reqproc/proc_get",
                 data: {
                     cmd: "ussd_write_flag"
@@ -3892,543 +4072,543 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
                 cache: false,
                 async: true,
                 dataType: "json",
-                success: function(dd) {
-                    if (dd.ussd_write_flag == "15") {
-                        setTimeout(db, 1000)
+                success: function(di) {
+                    if (di.ussd_write_flag == "15") {
+                        setTimeout(dg, 1000)
                     } else {
-                        if (dd.ussd_write_flag == "13") {
-                            dc(true)
+                        if (di.ussd_write_flag == "13") {
+                            dh(true)
                         } else {
-                            dc(false)
+                            dh(false)
                         }
                     }
                 },
                 error: function() {
-                    dc(false)
+                    dh(false)
                 }
             })
         }
     }
 
-    function aM() {
-        var df = arguments[1];
-        var de = 0;
-        return bz(arguments, {}, db, dc, null, true);
+    function aO() {
+        var dk = arguments[1];
+        var dj = 0;
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dg) {
+        function dg(dl) {
             return {
                 goformId: "UNLOCK_NETWORK",
                 notCallback: true,
-                unlock_network_code: dg.unlock_network_code
+                unlock_network_code: dl.unlock_network_code
             }
         }
 
-        function dc(dg) {
-            if (dg && dg.result == "success") {
-                cQ(dd)
+        function dh(dl) {
+            if (dl && dl.result == "success") {
+                cU(di)
             } else {
-                df({
+                dk({
                     result: "fail"
                 })
             }
         }
 
-        function dd() {
-            if (de > 5) {
-                C(dd);
-                df({
+        function di() {
+            if (dj > 5) {
+                C(di);
+                dk({
                     result: "fail"
                 })
             } else {
-                if (bu.simStatus != "modem_imsi_waitnck") {
-                    C(dd);
-                    df({
+                if (bw.simStatus != "modem_imsi_waitnck") {
+                    C(di);
+                    dk({
                         result: "success"
                     })
                 }
             }
-            de++
+            dj++
         }
     }
 
-    function cj() {
-        return bz(arguments, {}, db, dc, null, false);
+    function cl() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
+        function dg(di, dj) {
             return {
                 cmd: "unlock_nck_time"
             }
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function c4() {
-        var dd = arguments[1];
-        return bz(arguments, {}, db, dc, null, true);
+    function c9() {
+        var di = arguments[1];
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(de) {
+        function dg(dj) {
             return {
                 goformId: "SET_UPGRADE_NOTICE",
-                upgrade_notice_flag: de.upgrade_notice_flag,
+                upgrade_notice_flag: dj.upgrade_notice_flag,
                 notCallback: true
             }
         }
 
-        function dc(de) {
-            if (de.result == "success") {
-                dd(true)
+        function dh(dj) {
+            if (dj.result == "success") {
+                di(true)
             } else {
-                dd(false)
+                di(false)
             }
         }
     }
 
-    function b2() {
-        return bz(arguments, {}, db, dc, null, false);
+    function b4() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
+        function dg(di, dj) {
             return {
                 cmd: "upgrade_notice_flag"
             }
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function au() {
-        return bz(arguments, {}, db, dc, null, false);
+    function aw() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
+        function dg(di, dj) {
             return {
                 multi_data: 1,
                 cmd: "wifi_sta_connection,pswan_priority,wifiwan_priority,ethwan_priority"
             }
         }
 
-        function dc(dd) {
-            if (dd) {
+        function dh(di) {
+            if (di) {
                 return {
-                    ap_station_enable: dd.wifi_sta_connection,
-                    ap_station_mode: parseInt(dd.wifiwan_priority, 10) > parseInt(dd.pswan_priority, 10) ? "wifi_pref" : "dial_pref"
+                    ap_station_enable: di.wifi_sta_connection,
+                    ap_station_mode: parseInt(di.wifiwan_priority, 10) > parseInt(di.pswan_priority, 10) ? "wifi_pref" : "dial_pref"
                 }
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function bc() {
-        var dc = arguments[0];
-        return bz(arguments, {}, db, dd, null, true);
+    function be() {
+        var dh = arguments[0];
+        return bB(arguments, {}, dg, di, null, true);
 
-        function db(de) {
+        function dg(dj) {
             return {
                 goformId: "WIFI_STA_CONTROL",
-                wifi_sta_connection: de.ap_station_enable
+                wifi_sta_connection: dj.ap_station_enable
             }
         }
 
-        function dd(de) {
-            if (de && de.result == "success") {
-                bu.ap_station_enable = dc.ap_station_enable == 1;
-                return de
+        function di(dj) {
+            if (dj && dj.result == "success") {
+                bw.ap_station_enable = dh.ap_station_enable == 1;
+                return dj
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function aa() {
-        return au({}, function(db) {
-            bu.ap_station_enable = db.ap_station_enable == 1;
-            bu.ap_station_mode = db.ap_station_mode
+    function ac() {
+        return aw({}, function(dg) {
+            bw.ap_station_enable = dg.ap_station_enable == 1;
+            bw.ap_station_mode = dg.ap_station_mode
         })
     }
 
-    function cl() {
-        return bz(arguments, {}, db, dc, null, false);
+    function co() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, df) {
-            var dg = "wifi_profile_num,wifi_profile";
-            for (var de = 1; de < aH.AP_STATION_LIST_LENGTH; de++) {
-                dg = dg + ",wifi_profile" + de
+        function dg(di, dk) {
+            var dl = "wifi_profile_num,wifi_profile";
+            for (var dj = 1; dj < aJ.AP_STATION_LIST_LENGTH; dj++) {
+                dl = dl + ",wifi_profile" + dj
             }
             return {
                 multi_data: 1,
-                cmd: dg
+                cmd: dl
             }
         }
 
-        function dc(dd) {
-            if (dd) {
-                var di = [];
-                for (var dh = 0; dh < aH.AP_STATION_LIST_LENGTH; dh++) {
-                    var dk = "";
-                    if (dh == 0) {
-                        dk = dd.wifi_profile
+        function dh(di) {
+            if (di) {
+                var dn = [];
+                for (var dm = 0; dm < aJ.AP_STATION_LIST_LENGTH; dm++) {
+                    var dq = "";
+                    if (dm == 0) {
+                        dq = di.wifi_profile
                     } else {
-                        dk = dd["wifi_profile" + dh]
+                        dq = di["wifi_profile" + dm]
                     }
-                    var dg = dk.split(";");
-                    for (var df = 0; df < dg.length; df++) {
-                        var dj = dg[df].split(",");
-                        if (!dj[0]) {
+                    var dl = dq.split(";");
+                    for (var dk = 0; dk < dl.length; dk++) {
+                        var dp = dl[dk].split(",");
+                        if (!dp[0]) {
                             break
                         }
-                        var de = {
-                            profileName: dj[0],
-                            fromProvider: dj[1],
-                            connectStatus: dj[2],
-                            signal: dj[3],
-                            ssid: dj[4],
-                            authMode: dj[5],
-                            encryptType: dj[6],
-                            password: dj[7] == "0" ? "" : dj[7],
-                            keyID: dj[8],
-                            mac: dj[9]
+                        var dj = {
+                            profileName: dp[0],
+                            fromProvider: dp[1],
+                            connectStatus: dp[2],
+                            signal: dp[3],
+                            ssid: dp[4],
+                            authMode: dp[5],
+                            encryptType: dp[6],
+                            password: dp[7] == "0" ? "" : dp[7],
+                            keyID: dp[8],
+                            mac: dp[9]
                         };
-                        di.push(de)
+                        dn.push(dj)
                     }
                 }
                 return {
-                    hotspotList: di
+                    hotspotList: dn
                 }
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function an() {
-        return bz(arguments, {}, db, dc, null, true);
+    function ap() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd) {
+        function dg(di) {
             return {
                 goformId: "WLAN_SET_STA_REFRESH"
             }
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function X() {
-        return bz(arguments, {}, db, dc, null, false);
+    function Z() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
+        function dg(di, dj) {
             return {
                 multi_data: 1,
                 cmd: "scan_finish,EX_APLIST,EX_APLIST1"
             }
         }
 
-        function dc(dd) {
-            if (dd) {
-                if (dd.scan_finish == "0") {
+        function dh(di) {
+            if (di) {
+                if (di.scan_finish == "0") {
                     return {
                         scan_finish: "0",
                         hotspotList: []
                     }
                 }
-                if (dd.scan_finish == "2") {
+                if (di.scan_finish == "2") {
                     return {
                         scan_finish: "2",
                         hotspotList: []
                     }
                 }
-                var di = [];
-                for (var dh = 0; dh <= 1; dh++) {
-                    var dk;
-                    if (dh == 0) {
-                        dk = dd.EX_APLIST
+                var dn = [];
+                for (var dm = 0; dm <= 1; dm++) {
+                    var dq;
+                    if (dm == 0) {
+                        dq = di.EX_APLIST
                     } else {
-                        dk = dd.EX_APLIST1
+                        dq = di.EX_APLIST1
                     }
-                    var dg = dk.split(";");
-                    for (var df = 0; df < dg.length; df++) {
-                        var dj = dg[df].split(",");
-                        if (!dj[0]) {
+                    var dl = dq.split(";");
+                    for (var dk = 0; dk < dl.length; dk++) {
+                        var dp = dl[dk].split(",");
+                        if (!dp[0]) {
                             break
                         }
-                        var de = {
-                            fromProvider: dj[0],
-                            connectStatus: dj[1],
-                            ssid: dj[2],
-                            signal: dj[3],
-                            channel: dj[4],
-                            authMode: dj[5],
-                            encryptType: dj[6],
-                            mac: dj[7]
+                        var dj = {
+                            fromProvider: dp[0],
+                            connectStatus: dp[1],
+                            ssid: dp[2],
+                            signal: dp[3],
+                            channel: dp[4],
+                            authMode: dp[5],
+                            encryptType: dp[6],
+                            mac: dp[7]
                         };
-                        di.push(de)
+                        dn.push(dj)
                     }
                 }
                 return {
                     scan_finish: "1",
-                    hotspotList: di
+                    hotspotList: dn
                 }
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function cN(dc) {
-        var db = [];
-        db.push(dc.profileName);
-        db.push(dc.fromProvider || "0");
-        db.push(dc.connectStatus || "0");
-        db.push(dc.signal);
-        db.push(dc.ssid);
-        db.push(dc.authMode);
-        db.push(dc.encryptType);
-        db.push(dc.password || "0");
-        db.push(dc.keyID);
-        db.push(dc.mac);
-        return db.join(",")
+    function cR(dh) {
+        var dg = [];
+        dg.push(dh.profileName);
+        dg.push(dh.fromProvider || "0");
+        dg.push(dh.connectStatus || "0");
+        dg.push(dh.signal);
+        dg.push(dh.ssid);
+        dg.push(dh.authMode);
+        dg.push(dh.encryptType);
+        dg.push(dh.password || "0");
+        dg.push(dh.keyID);
+        dg.push(dh.mac);
+        return dg.join(",")
     }
 
-    function aj() {
-        return bz(arguments, {}, db, dc, null, true);
+    function al() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dm) {
-            var dn = dm.apList;
-            var dd = "modify";
-            if (dm.profileName == "") {
-                dd = "add";
-                var di = (jQuery.fn.jquery + Math.random()).replace(/\D/g, "");
-                dm.profileName = di;
-                dn.push({
-                    profileName: di,
+        function dg(ds) {
+            var dt = ds.apList;
+            var di = "modify";
+            if (ds.profileName == "") {
+                di = "add";
+                var dn = (jQuery.fn.jquery + Math.random()).replace(/\D/g, "");
+                ds.profileName = dn;
+                dt.push({
+                    profileName: dn,
                     fromProvider: "0",
                     connectStatus: "0",
-                    signal: dm.signal,
-                    ssid: dm.ssid,
-                    authMode: dm.authMode,
-                    encryptType: dm.encryptType,
-                    password: dm.password || "0",
-                    keyID: dm.keyID,
-                    mac: dm.mac
+                    signal: ds.signal,
+                    ssid: ds.ssid,
+                    authMode: ds.authMode,
+                    encryptType: ds.encryptType,
+                    password: ds.password || "0",
+                    keyID: ds.keyID,
+                    mac: ds.mac
                 })
             }
-            var dk = {
+            var dq = {
                 profile0: []
             };
-            for (var de = 1; de < aH.AP_STATION_LIST_LENGTH; de++) {
-                dk["profile" + de] = []
+            for (var dj = 1; dj < aJ.AP_STATION_LIST_LENGTH; dj++) {
+                dq["profile" + dj] = []
             }
-            var df = "";
-            for (var de = 0; de < dn.length; de++) {
-                var dh = "";
-                if (dm.profileName == dn[de].profileName) {
-                    dh = cN(dm);
-                    df = dh
+            var dk = "";
+            for (var dj = 0; dj < dt.length; dj++) {
+                var dm = "";
+                if (ds.profileName == dt[dj].profileName) {
+                    dm = cR(ds);
+                    dk = dm
                 } else {
-                    dh = cN(dn[de])
+                    dm = cR(dt[dj])
                 }
-                var dg = parseInt(de % 10);
-                dk["profile" + dg].push(dh)
+                var dl = parseInt(dj % 10);
+                dq["profile" + dl].push(dm)
             }
-            var dj = {
-                wifi_profile: dk.profile0.join(";")
+            var dp = {
+                wifi_profile: dq.profile0.join(";")
             };
-            for (var de = 1; de < aH.AP_STATION_LIST_LENGTH; de++) {
-                dj["wifi_profile" + de] = dk["profile" + de].join(";")
+            for (var dj = 1; dj < aJ.AP_STATION_LIST_LENGTH; dj++) {
+                dp["wifi_profile" + dj] = dq["profile" + dj].join(";")
             }
-            var dl = cP.extend({
+            var dr = cT.extend({
                 goformId: "WIFI_SPOT_PROFILE_UPDATE",
-                wifi_profile_num: dn.length,
-                wifi_update_profile: df,
-                action: dd
-            }, dj);
-            return dl
+                wifi_profile_num: dt.length,
+                wifi_update_profile: dk,
+                action: di
+            }, dp);
+            return dr
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function cV() {
-        return bz(arguments, {}, db, dc, null, true);
+    function cZ() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dm) {
-            var dp = dm.apList;
-            var dk = {
+        function dg(ds) {
+            var du = ds.apList;
+            var dq = {
                 profile0: []
             };
-            for (var de = 1; de < aH.AP_STATION_LIST_LENGTH; de++) {
-                dk["profile" + de] = []
+            for (var dj = 1; dj < aJ.AP_STATION_LIST_LENGTH; dj++) {
+                dq["profile" + dj] = []
             }
-            var dd = false;
-            var dg = "";
-            for (var de = 0; de < dp.length; de++) {
-                var di = cN(dp[de]);
-                if (dp[de].profileName == dm.profileName) {
-                    dd = true;
-                    dg = di;
+            var di = false;
+            var dl = "";
+            for (var dj = 0; dj < du.length; dj++) {
+                var dn = cR(du[dj]);
+                if (du[dj].profileName == ds.profileName) {
+                    di = true;
+                    dl = dn;
                     continue
                 }
-                var dn = de;
-                if (dd) {
-                    dn = de - 1
+                var dt = dj;
+                if (di) {
+                    dt = dj - 1
                 }
-                var dh = parseInt(dn % 10);
-                dk["profile" + dh].push(di)
+                var dm = parseInt(dt % 10);
+                dq["profile" + dm].push(dn)
             }
-            var df = dd ? dp.length - 1 : dp.length;
-            var dj = {
-                wifi_profile: dk.profile0.join(";")
+            var dk = di ? du.length - 1 : du.length;
+            var dp = {
+                wifi_profile: dq.profile0.join(";")
             };
-            for (var de = 1; de < aH.AP_STATION_LIST_LENGTH; de++) {
-                dj["wifi_profile" + de] = dk["profile" + de].join(";")
+            for (var dj = 1; dj < aJ.AP_STATION_LIST_LENGTH; dj++) {
+                dp["wifi_profile" + dj] = dq["profile" + dj].join(";")
             }
-            var dl = cP.extend({
+            var dr = cT.extend({
                 goformId: "WIFI_SPOT_PROFILE_UPDATE",
-                wifi_profile_num: df,
-                wifi_update_profile: dg,
+                wifi_profile_num: dk,
+                wifi_update_profile: dl,
                 action: "delete"
-            }, dj);
-            return dl
+            }, dp);
+            return dr
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function bG() {
-        return bz(arguments, {}, db, dc, null, true);
+    function bI() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd) {
+        function dg(di) {
             return {
                 goformId: "WLAN_SET_STA_CON",
-                EX_SSID1: dd.EX_SSID1,
-                EX_AuthMode: dd.EX_AuthMode,
-                EX_EncrypType: dd.EX_EncrypType,
-                EX_DefaultKeyID: dd.EX_DefaultKeyID,
-                EX_WEPKEY: dd.EX_WEPKEY,
-                EX_WPAPSK1: dd.EX_WPAPSK1,
-                EX_wifi_profile: dd.EX_wifi_profile,
-                EX_mac: dd.EX_mac
+                EX_SSID1: di.EX_SSID1,
+                EX_AuthMode: di.EX_AuthMode,
+                EX_EncrypType: di.EX_EncrypType,
+                EX_DefaultKeyID: di.EX_DefaultKeyID,
+                EX_WEPKEY: di.EX_WEPKEY,
+                EX_WPAPSK1: di.EX_WPAPSK1,
+                EX_wifi_profile: di.EX_wifi_profile,
+                EX_mac: di.EX_mac
             }
         }
 
-        function dc(dd) {
-            if (dd && (dd.result == "success" || dd.result == "processing")) {
-                return dd
+        function dh(di) {
+            if (di && (di.result == "success" || di.result == "processing")) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function aK() {
-        return bz(arguments, {}, db, dc, null, true);
+    function aM() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd) {
+        function dg(di) {
             return {
                 goformId: "WLAN_SET_STA_DISCON"
             }
         }
 
-        function dc(dd) {
-            if (dd && dd.result == "success") {
-                return dd
+        function dh(di) {
+            if (di && di.result == "success") {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function cS() {
-        return bz(arguments, {}, db, dc, null, false);
+    function cW() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
+        function dg(di, dj) {
             return {
                 multi_data: 1,
                 cmd: "blc_wan_mode,blc_wan_auto_mode,loginfo,ppp_status,rj45_state,ethwan_mode"
             }
         }
 
-        function dc(de) {
-            if (de) {
-                var dd = {};
-                if (de.blc_wan_mode == "AUTO") {
-                    dd.blc_wan_mode = de.blc_wan_auto_mode ? de.blc_wan_auto_mode : "AUTO_PPP"
+        function dh(dj) {
+            if (dj) {
+                var di = {};
+                if (dj.blc_wan_mode == "AUTO") {
+                    di.blc_wan_mode = dj.blc_wan_auto_mode ? dj.blc_wan_auto_mode : "AUTO_PPP"
                 } else {
-                    dd.blc_wan_mode = de.blc_wan_mode ? de.blc_wan_mode : "PPP"
+                    di.blc_wan_mode = dj.blc_wan_mode ? dj.blc_wan_mode : "PPP"
                 }
-                dd.loginfo = de.loginfo;
-                dd.ppp_status = de.ppp_status;
-                dd.rj45_state = (typeof de.rj45_state == "undefined" || de.rj45_state == "") ? "dead" : de.rj45_state;
-                dd.ethwan_mode = de.ethwan_mode.toUpperCase();
-                return dd
+                di.loginfo = dj.loginfo;
+                di.ppp_status = dj.ppp_status;
+                di.rj45_state = (typeof dj.rj45_state == "undefined" || dj.rj45_state == "") ? "dead" : dj.rj45_state;
+                di.ethwan_mode = dj.ethwan_mode.toUpperCase();
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function a3() {
-        return bz(arguments, {}, db, dc, null, false);
+    function a5() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
+        function dg(di, dj) {
             return {
                 cmd: "rj45_plug"
             }
         }
 
-        function dc(de) {
-            if (de) {
-                var dd = {};
-                dd.rj45_plug = de.rj45_plug == "" ? "wan_lan_off" : de.rj45_plug;
-                return dd
+        function dh(dj) {
+            if (dj) {
+                var di = {};
+                di.rj45_plug = dj.rj45_plug == "" ? "wan_lan_off" : dj.rj45_plug;
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function cx(db, dc) {
-        if (aH.RJ45_SUPPORT) {
-            if (dc == "dead" || dc == "") {
+    function cB(dg, dh) {
+        if (aJ.RJ45_SUPPORT) {
+            if (dh == "dead" || dh == "") {
                 return "PPP"
             } else {
-                if (!db || db == "undefined") {
-                    if (dc == "working") {
+                if (!dg || dg == "undefined") {
+                    if (dh == "working") {
                         return "PPPOE"
                     } else {
                         return "PPP"
                     }
                 } else {
-                    return db
+                    return dg
                 }
             }
         } else {
@@ -4436,189 +4616,189 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
         }
     }
 
-    function bi(db, de) {
-        return bz(arguments, {}, dc, dd, null, true);
+    function bk(dg, dj) {
+        return bB(arguments, {}, dh, di, null, true);
 
-        function dc(df) {
-            var dg = cP.extend({
+        function dh(dk) {
+            var dl = cT.extend({
                 goformId: "OPERATION_MODE"
-            }, df);
-            return dg
+            }, dk);
+            return dl
         }
 
-        function dd(df) {
-            if (df && df.result == "success") {
-                return df
+        function di(dk) {
+            if (dk && dk.result == "success") {
+                return dk
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function a6() {
-        return bz(arguments, {}, db, dc, null, false);
+    function a8() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
+        function dg(di, dj) {
             return {
                 multi_data: 1,
                 cmd: "opms_wan_auto_mode,ethwan_mode,pppoe_username,pppoe_cc,ethwan_dialmode,ppp_status,static_wan_ipaddr,static_wan_netmask,static_wan_gateway,static_wan_primary_dns,static_wan_secondary_dns,rj45_state,lan_ipaddr,lan_netmask"
             }
         }
 
-        function dc(dd) {
-            if (dd) {
+        function dh(di) {
+            if (di) {
                 return {
-                    opms_wan_auto_mode: dd.opms_wan_auto_mode,
-                    ethwan_mode: dd.ethwan_mode.toUpperCase(),
-                    pppoe_username: dd.pppoe_username,
-                    pppoe_cc: dd.pppoe_cc,
-                    ethwan_dialmode: dd.ethwan_dialmode == "manual" ? "manual_dial" : "auto_dial",
-                    ppp_status: dd.ppp_status,
-                    static_wan_ipaddr: dd.static_wan_ipaddr,
-                    static_wan_netmask: dd.static_wan_netmask,
-                    static_wan_gateway: dd.static_wan_gateway,
-                    static_wan_primary_dns: dd.static_wan_primary_dns,
-                    static_wan_secondary_dns: dd.static_wan_secondary_dns,
-                    rj45_state: (typeof dd.rj45_state == "undefined" || dd.rj45_state == "") ? "dead" : dd.rj45_state,
-                    lan_ipaddr: dd.lan_ipaddr,
-                    lan_netmask: dd.lan_netmask
+                    opms_wan_auto_mode: di.opms_wan_auto_mode,
+                    ethwan_mode: di.ethwan_mode.toUpperCase(),
+                    pppoe_username: di.pppoe_username,
+                    pppoe_cc: di.pppoe_cc,
+                    ethwan_dialmode: di.ethwan_dialmode == "manual" ? "manual_dial" : "auto_dial",
+                    ppp_status: di.ppp_status,
+                    static_wan_ipaddr: di.static_wan_ipaddr,
+                    static_wan_netmask: di.static_wan_netmask,
+                    static_wan_gateway: di.static_wan_gateway,
+                    static_wan_primary_dns: di.static_wan_primary_dns,
+                    static_wan_secondary_dns: di.static_wan_secondary_dns,
+                    rj45_state: (typeof di.rj45_state == "undefined" || di.rj45_state == "") ? "dead" : di.rj45_state,
+                    lan_ipaddr: di.lan_ipaddr,
+                    lan_netmask: di.lan_netmask
                 }
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function cB(db, de) {
-        return bz(arguments, {}, dc, dd, null, true);
+    function cF(dg, dj) {
+        return bB(arguments, {}, dh, di, null, true);
 
-        function dc(df) {
-            var dg = cP.extend({
+        function dh(dk) {
+            var dl = cT.extend({
                 notCallback: true
-            }, df);
-            return dg
+            }, dk);
+            return dl
         }
 
-        function dd(df) {
-            if (df.result == "success") {
-                de({
+        function di(dk) {
+            if (dk.result == "success") {
+                dj({
                     result: true
                 })
             } else {
-                de({
+                dj({
                     result: false
                 })
             }
         }
     }
 
-    function aq(db, df) {
-        return bz(arguments, {}, dc, dd, null, false);
+    function at(dg, dk) {
+        return bB(arguments, {}, dh, di, null, false);
 
-        function dc(dg, dh) {
+        function dh(dl, dm) {
             return {
                 multi_data: 1,
                 cmd: "sntp_year,sntp_month,sntp_day,sntp_hour,sntp_minute,sntp_second,sntp_time_set_mode,sntp_static_server0,sntp_static_server1,sntp_static_server2,sntp_server0,sntp_server1,sntp_server2,sntp_server3,sntp_server4,sntp_server5,sntp_server6,sntp_server7,sntp_server8,sntp_server9,sntp_other_server0,sntp_other_server1,sntp_other_server2,sntp_timezone,sntp_timezone_index,sntp_dst_enable,ppp_status,sntp_process_result,rj45_state"
             }
         }
 
-        function dd(dg) {
-            if (dg) {
-                var dh = de(dg);
+        function di(dl) {
+            if (dl) {
+                var dm = dj(dl);
                 return {
-                    sntp_year: dg.sntp_year,
-                    sntp_month: dg.sntp_month,
-                    sntp_day: dg.sntp_day,
-                    sntp_hour: dg.sntp_hour,
-                    sntp_minute: dg.sntp_minute,
-                    sntp_second: dg.sntp_second,
-                    sntp_time_set_mode: dg.sntp_time_set_mode,
-                    sntp_servers: dh,
-                    sntp_server0: dg.sntp_server0,
-                    sntp_server1: dg.sntp_server1,
-                    sntp_server2: dg.sntp_server2,
-                    sntp_static_server0: dg.sntp_static_server0,
-                    sntp_static_server1: dg.sntp_static_server1,
-                    sntp_static_server2: dg.sntp_static_server2,
-                    sntp_other_server0: dg.sntp_other_server0,
-                    sntp_other_server1: dg.sntp_other_server1,
-                    sntp_other_server2: dg.sntp_other_server2,
-                    sntp_timezone: dg.sntp_timezone,
-                    sntp_timezone_index: dg.sntp_timezone_index ? dg.sntp_timezone_index : "0",
-                    sntp_dst_enable: dg.sntp_dst_enable,
-                    ppp_status: dg.ppp_status,
-                    blc_wan_mode: bu.blc_wan_mode,
-                    sntp_process_result: dg.sntp_process_result,
-                    rj45_state: (typeof dg.rj45_state == "undefined" || dg.rj45_state == "") ? "dead" : dg.rj45_state
+                    sntp_year: dl.sntp_year,
+                    sntp_month: dl.sntp_month,
+                    sntp_day: dl.sntp_day,
+                    sntp_hour: dl.sntp_hour,
+                    sntp_minute: dl.sntp_minute,
+                    sntp_second: dl.sntp_second,
+                    sntp_time_set_mode: dl.sntp_time_set_mode,
+                    sntp_servers: dm,
+                    sntp_server0: dl.sntp_server0,
+                    sntp_server1: dl.sntp_server1,
+                    sntp_server2: dl.sntp_server2,
+                    sntp_static_server0: dl.sntp_static_server0,
+                    sntp_static_server1: dl.sntp_static_server1,
+                    sntp_static_server2: dl.sntp_static_server2,
+                    sntp_other_server0: dl.sntp_other_server0,
+                    sntp_other_server1: dl.sntp_other_server1,
+                    sntp_other_server2: dl.sntp_other_server2,
+                    sntp_timezone: dl.sntp_timezone,
+                    sntp_timezone_index: dl.sntp_timezone_index ? dl.sntp_timezone_index : "0",
+                    sntp_dst_enable: dl.sntp_dst_enable,
+                    ppp_status: dl.ppp_status,
+                    blc_wan_mode: bw.blc_wan_mode,
+                    sntp_process_result: dl.sntp_process_result,
+                    rj45_state: (typeof dl.rj45_state == "undefined" || dl.rj45_state == "") ? "dead" : dl.rj45_state
                 }
             } else {
-                return V
+                return X
             }
         }
 
-        function de(dg) {
-            var dk = [];
-            for (var dj = 0; dj < 3; dj++) {
-                var di = "sntp_static_server" + (dj).toString();
-                if (dg[di] != "") {
-                    var dm = {};
-                    dm.name = dg[di];
-                    dm.value = dg[di];
-                    dk.push(dm)
+        function dj(dl) {
+            var dq = [];
+            for (var dp = 0; dp < 3; dp++) {
+                var dn = "sntp_static_server" + (dp).toString();
+                if (dl[dn] != "") {
+                    var ds = {};
+                    ds.name = dl[dn];
+                    ds.value = dl[dn];
+                    dq.push(ds)
                 }
             }
-            var dl = [{
+            var dr = [{
                 name: "Other",
                 value: "Other"
             }, {
                 name: "NONE",
                 value: ""
             }];
-            for (var dh = 0; dh < 2; dh++) {
-                dk.push(dl[dh])
+            for (var dm = 0; dm < 2; dm++) {
+                dq.push(dr[dm])
             }
-            return dk
+            return dq
         }
     }
 
-    function b7(db, de) {
-        return bz(arguments, {}, dc, dd, null, true);
+    function ca(dg, dj) {
+        return bB(arguments, {}, dh, di, null, true);
 
-        function dc(df) {
-            var dg = cP.extend({}, df);
-            return dg
+        function dh(dk) {
+            var dl = cT.extend({}, dk);
+            return dl
         }
 
-        function dd(df) {
-            if (df && df.result == "success") {
-                return df
+        function di(dk) {
+            if (dk && dk.result == "success") {
+                return dk
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function g(db, de) {
-        var dd = cP.extend({}, db);
-        cP.post("reqproc/proc_post", dd, function(df) {
-            if (df && df.result == "success") {
-                if (db.manualsettime == "auto") {
-                    setTimeout(dc, 2000);
-                    de(df)
+    function g(dg, dj) {
+        var di = cT.extend({}, dg);
+        cT.post("reqproc/proc_post", di, function(dk) {
+            if (dk && dk.result == "success") {
+                if (dg.manualsettime == "auto") {
+                    setTimeout(dh, 2000);
+                    dj(dk)
                 } else {
-                    de(true)
+                    dj(true)
                 }
             } else {
-                if (df && df.result == "processing") {
-                    de(df)
+                if (dk && dk.result == "processing") {
+                    dj(dk)
                 } else {
-                    de(false)
+                    dj(false)
                 }
             }
         }, "json");
 
-        function dc() {
-            cP.ajax({
+        function dh() {
+            cT.ajax({
                 url: "reqproc/proc_get",
                 dataType: "json",
                 data: {
@@ -4626,603 +4806,510 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
                 },
                 cache: false,
                 async: false,
-                success: function(df) {
-                    if (df.sntp_process_result == "failure") {
-                        de(false)
+                success: function(dk) {
+                    if (dk.sntp_process_result == "failure") {
+                        dj(false)
                     } else {
-                        if (df.sntp_process_result == "success") {
-                            de(true)
+                        if (dk.sntp_process_result == "success") {
+                            dj(true)
                         } else {
-                            setTimeout(dc, 2000)
+                            setTimeout(dh, 2000)
                         }
                     }
                 },
                 error: function() {
-                    de(false)
+                    dj(false)
                 }
             })
         }
     }
 
-    function ca(db, de) {
-        return bz(arguments, {}, dc, dd, null, true);
+    function cd(dg, dj) {
+        return bB(arguments, {}, dh, di, null, true);
 
-        function dc(df) {
-            var dg = cP.extend({}, df);
-            return dg
+        function dh(dk) {
+            var dl = cT.extend({}, dk);
+            return dl
         }
 
-        function dd(df) {
-            if (df && df.result == "success") {
-                return df
+        function di(dk) {
+            if (dk && dk.result == "success") {
+                return dk
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function bR() {
-        return bz(arguments, {}, db, dc, null, false);
+    function bT() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
+        function dg(di, dj) {
             return {
                 cmd: "websURLFilters"
             }
         }
 
-        function dc(dd) {
-            var dg = [];
-            if (dd) {
-                if (dd.websURLFilters.length == 0) {
+        function dh(di) {
+            var dl = [];
+            if (di) {
+                if (di.websURLFilters.length == 0) {
                     return {
                         urlFilterRules: []
                     }
                 } else {
-                    var dh = dd.websURLFilters.split(";");
-                    for (var df = 0; df < dh.length; df++) {
-                        var de = {};
-                        de.index = df;
-                        de.url = dh[df];
-                        dg.push(de)
+                    var dm = di.websURLFilters.split(";");
+                    for (var dk = 0; dk < dm.length; dk++) {
+                        var dj = {};
+                        dj.index = dk;
+                        dj.url = dm[dk];
+                        dl.push(dj)
                     }
                     return {
-                        urlFilterRules: dg
+                        urlFilterRules: dl
                     }
                 }
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function cn(db, de) {
-        return bz(arguments, {}, dc, dd, null, true);
+    function cq(dg, dj) {
+        return bB(arguments, {}, dh, di, null, true);
 
-        function dc(df) {
-            var dg = cP.extend({}, df);
-            return dg
+        function dh(dk) {
+            var dl = cT.extend({}, dk);
+            return dl
         }
 
-        function dd(df) {
-            if (df && df.result == "success") {
-                return df
+        function di(dk) {
+            if (dk && dk.result == "success") {
+                return dk
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function bI() {
-        return bz(arguments, {}, db, dc, null, false);
+    function bK() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
+        function dg(di, dj) {
             return {
                 multi_data: "1",
                 cmd: "wifi_wds_mode,wifi_wds_ssid,wifi_wds_AuthMode,wifi_wds_EncrypType,wifi_wds_WPAPSK1,wifi_cur_state "
             }
         }
 
-        function dc(dd) {
-            if (dd) {
+        function dh(di) {
+            if (di) {
                 return {
-                    currentMode: dd.wifi_wds_mode,
-                    wdsSSID: dd.wifi_wds_ssid,
-                    wdsAuthMode: dd.wifi_wds_AuthMode,
-                    wdsEncrypType: dd.wifi_wds_EncrypType,
-                    wdsWPAPSK1: dd.wifi_wds_WPAPSK1,
-                    RadioOff: dd.wifi_cur_state == "1" ? "1" : "0"
+                    currentMode: di.wifi_wds_mode,
+                    wdsSSID: di.wifi_wds_ssid,
+                    wdsAuthMode: di.wifi_wds_AuthMode,
+                    wdsEncrypType: di.wifi_wds_EncrypType,
+                    wdsWPAPSK1: di.wifi_wds_WPAPSK1,
+                    RadioOff: di.wifi_cur_state == "1" ? "1" : "0"
                 }
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function ao(db, de) {
-        return bz(arguments, {}, dc, dd, null, true);
+    function aq(dg, dj) {
+        return bB(arguments, {}, dh, di, null, true);
 
-        function dc(df) {
-            var dg = cP.extend({}, df);
-            return dg
+        function dh(dk) {
+            var dl = cT.extend({}, dk);
+            return dl
         }
 
-        function dd(df) {
-            if (df && df.result == "success") {
-                return df
+        function di(dk) {
+            if (dk && dk.result == "success") {
+                return dk
             } else {
-                return V
+                return X
             }
         }
     }
 
     function x() {
-        return bz(arguments, {}, db, dc, null, false);
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
+        function dg(di, dj) {
             return {
                 multi_data: "1",
                 cmd: "syslog_mode,debug_level"
             }
         }
 
-        function dc(dd) {
-            if (dd) {
+        function dh(di) {
+            if (di) {
                 return {
-                    currentMode: dd.syslog_mode,
-                    debugLevel: dd.debug_level
+                    currentMode: di.syslog_mode,
+                    debugLevel: di.debug_level
                 }
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function ba(db, de) {
-        return bz(arguments, {}, dc, dd, null, true);
+    function bc(dg, dj) {
+        return bB(arguments, {}, dh, di, null, true);
 
-        function dc(df) {
-            var dg = cP.extend({}, df);
-            return dg
+        function dh(dk) {
+            var dl = cT.extend({}, dk);
+            return dl
         }
 
-        function dd(df) {
-            if (df && df.result == "success") {
-                return df
+        function di(dk) {
+            if (dk && dk.result == "success") {
+                return dk
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function b6() {
-        return bz(arguments, {}, db, dc, null, false);
+    function b9() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
+        function dg(di, dj) {
             return {
                 multi_data: "1",
                 cmd: "ACL_mode,wifi_mac_black_list,wifi_hostname_black_list,wifi_cur_state,user_ip_addr,client_mac_address,wifi_mac_white_list"
             }
         }
 
-        function dc(dd) {
-            if (dd) {
+        function dh(di) {
+            if (di) {
                 return {
-                    ACL_mode: dd.ACL_mode,
-                    wifi_mac_black_list: dd.wifi_mac_black_list,
-                    wifi_hostname_black_list: dd.wifi_hostname_black_list,
-                    RadioOff: dd.wifi_cur_state == "1" ? "1" : "0",
-                    user_ip_addr: dd.user_ip_addr,
-                    client_mac_address: dd.client_mac_address,
-                    wifi_mac_white_list: dd.wifi_mac_white_list
+                    ACL_mode: di.ACL_mode,
+                    wifi_mac_black_list: di.wifi_mac_black_list,
+                    wifi_hostname_black_list: di.wifi_hostname_black_list,
+                    RadioOff: di.wifi_cur_state == "1" ? "1" : "0",
+                    user_ip_addr: di.user_ip_addr,
+                    client_mac_address: di.client_mac_address,
+                    wifi_mac_white_list: di.wifi_mac_white_list
                 }
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function aC() {
-        return bz(arguments, {}, db, dc, null, true);
+    function aE() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd) {
-            var de = cP.extend({
+        function dg(di) {
+            var dj = cT.extend({
                 goformId: "WIFI_MAC_FILTER"
-            }, dd);
-            return de
+            }, di);
+            return dj
         }
 
-        function dc(dd) {
-            if (dd && dd.result == "success") {
-                return dd
+        function dh(di) {
+            if (di && di.result == "success") {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function at() {
-        return bz(arguments, {}, db, dc, null, false);
+    function av() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd) {
+        function dg(di) {
             return {
                 cmd: "mgmt_quicken_power_on,need_hard_reboot,need_sim_pin",
                 multi_data: 1
             }
         }
 
-        function dc(dd) {
+        function dh(di) {
             return {
-                fastbootEnabled: dd.mgmt_quicken_power_on == "1" ? "1" : "0",
-                need_hard_reboot: dd.need_hard_reboot,
-                need_sim_pin: dd.need_sim_pin == "yes" ? "yes" : "no"
+                fastbootEnabled: di.mgmt_quicken_power_on == "1" ? "1" : "0",
+                need_hard_reboot: di.need_hard_reboot,
+                need_sim_pin: di.need_sim_pin == "yes" ? "yes" : "no"
             }
         }
     }
 
-    function bO() {
-        return bz(arguments, {}, db, dc, null, true);
+    function bQ() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd) {
+        function dg(di) {
             return {
                 goformId: "MGMT_CONTROL_POWER_ON_SPEED",
-                mgmt_quicken_power_on: dd.fastbootEnabled
+                mgmt_quicken_power_on: di.fastbootEnabled
             }
         }
 
-        function dc(dd) {
-            if (dd && dd.result == "success") {
-                return dd
+        function dh(di) {
+            if (di && di.result == "success") {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function a5() {
-        return bz(arguments, {}, db, dc, null, true);
+    function a7() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "TURN_OFF_DEVICE";
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "TURN_OFF_DEVICE";
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function ah() {
-        return bz(arguments, {}, db, dc, null, true);
+    function aj() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "REBOOT_DEVICE";
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "REBOOT_DEVICE";
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function Y() {
-        return bz(arguments, {}, db, dc, null, false);
+    function aa() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "fota_new_version_state,fota_current_upgrade_state,fota_package_already_download";
-            df.multi_data = 1;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "fota_new_version_state,fota_current_upgrade_state,fota_package_already_download";
+            dk.multi_data = 1;
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                var de = (dd.fota_new_version_state == "has_critical" || dd.fota_new_version_state == "has_optional" || dd.fota_new_version_state == "already_has_pkg");
-                dd.hasNewVersion = de;
-                return dd
+        function dh(di) {
+            if (di) {
+                var dj = (di.fota_new_version_state == "has_critical" || di.fota_new_version_state == "has_optional" || di.fota_new_version_state == "already_has_pkg");
+                di.hasNewVersion = dj;
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function bk() {
-        return bz(arguments, {}, db, dc, null, false);
+    function bm() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {};
-            if (aH.UPGRADE_TYPE == "OTA") {
-                df.cmd = "is_mandatory"
+        function dg(di, dj) {
+            var dk = {};
+            if (aJ.UPGRADE_TYPE == "OTA") {
+                dk.cmd = "is_mandatory"
             } else {
-                df.cmd = "fota_new_version_state"
+                dk.cmd = "fota_new_version_state"
             }
-            return df
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                if (aH.UPGRADE_TYPE == "OTA") {
+        function dh(di) {
+            if (di) {
+                if (aJ.UPGRADE_TYPE == "OTA") {
                     return {
-                        is_mandatory: dd.is_mandatory == "1"
+                        is_mandatory: di.is_mandatory == "1"
                     }
                 } else {
                     return {
-                        is_mandatory: dd.fota_new_version_state == "has_critical"
+                        is_mandatory: di.fota_new_version_state == "has_critical"
                     }
                 }
             } else {
-                return V
-            }
-        }
-    }
-
-    function cC() {
-        return bz(arguments, {}, db, dc, null, false);
-
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "upgrade_result";
-            return df
-        }
-
-        function dc(dd) {
-            if (dd) {
-                return dd
-            } else {
-                return V
-            }
-        }
-    }
-
-    function bh() {
-        return bz(arguments, {}, db, dc, null, false);
-
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "fota_current_upgrade_state";
-            return df
-        }
-
-        function dc(dd) {
-            if (dd) {
-                dd.current_upgrade_state = dd.fota_current_upgrade_state;
-                return dd
-            } else {
-                return V
-            }
-        }
-    }
-
-    function O() {
-        return bz(arguments, {}, db, dc, null, false);
-
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "fota_pkg_total_size,fota_dl_pkg_size";
-            df.multi_data = 1;
-            return df
-        }
-
-        function dc(dd) {
-            if (dd) {
-                return dd
-            } else {
-                return V
-            }
-        }
-    }
-
-    function N() {
-        return bz(arguments, {}, db, dc, null, true);
-
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "IF_UPGRADE";
-            df.select_op = dd.selectOp;
-            if (df.select_op == "check") {
-                df.ota_manual_check_roam_state = 1
-            }
-            return df
-        }
-
-        function dc(dd) {
-            if (dd) {
-                return dd
-            } else {
-                return V
-            }
-        }
-    }
-
-    function G() {
-        return bz(arguments, {}, db, dc, null, false);
-
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "fota_updateMode,fota_updateIntervalDay,fota_allowRoamingUpdate";
-            df.multi_data = 1;
-            return df
-        }
-
-        function dc(dd) {
-            if (dd) {
-                return {
-                    updateMode: dd.fota_updateMode,
-                    updateIntervalDay: dd.fota_updateIntervalDay,
-                    allowRoamingUpdate: dd.fota_allowRoamingUpdate
-                }
-            } else {
-                return V
-            }
-        }
-    }
-
-    function al() {
-        return bz(arguments, {}, db, dc, null, true);
-
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "SetUpgAutoSetting";
-            df.UpgMode = dd.updateMode;
-            df.UpgIntervalDay = dd.updateIntervalDay;
-            df.UpgRoamPermission = dd.allowRoamingUpdate;
-            return df
-        }
-
-        function dc(dd) {
-            if (dd && dd.result == "success") {
-                return dd
-            } else {
-                return V
-            }
-        }
-    }
-
-    function c8() {
-        return cm({
-            nv: ["dm_last_check_time"]
-        }, arguments[1], arguments[2])
-    }
-
-    function h() {
-        return cm({
-            nv: ["network_type", "sub_network_type", "rssi", "lte_rscp", "lte_rsrp", "nv_rsrq", "nv_sinr", "lte_band", "cell_id"]
-        }, arguments[1], arguments[2])
-    }
-
-    function j() {
-        return bz(arguments, {}, db, dc, null, true);
-
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "RESULT_RESTORE";
-            return df
-        }
-
-        function dc(dd) {
-            if (dd && dd.result == "success") {
-                return dd
-            } else {
-                return V
-            }
-        }
-    }
-
-    function v() {
-        return bz(arguments, {}, db, dc, null, false);
-
-        function db(dd, de) {
-            var df = {
-                cmd: "childGroupList"
-            };
-            return df
-        }
-
-        function dc(dd) {
-            if (dd && (dd.childGroupList || dd.devices)) {
-                return dd
-            } else {
-                return {
-                    devices: []
-                }
-            }
-        }
-    }
-
-    function cs() {
-        return bz(arguments, aH.currentUserInChildGroup == false ? {} : {
-            errorType: "no_auth"
-        }, db, dc, null, true);
-
-        function db(dd, de) {
-            var df = {
-                goformId: "ADD_DEVICE",
-                mac: dd.macAddress
-            };
-            return df
-        }
-
-        function dc(dd) {
-            if (dd && dd.result == "success") {
-                return dd
-            } else {
-                return V
+                return X
             }
         }
     }
 
     function cG() {
-        return bz(arguments, aH.currentUserInChildGroup == false ? {} : {
-            errorType: "no_auth"
-        }, db, dc, null, true);
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {
-                goformId: "DEL_DEVICE",
-                mac: dd.mac
-            };
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "upgrade_result";
+            return dk
         }
 
-        function dc(dd) {
-            if (dd && dd.result == "success") {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function s(db) {
-        if (typeof aH.currentUserInChildGroup == "undefined") {
-            var de = [];
-            if (typeof db != "undefined") {
-                de = db
-            } else {
-                de = v({}).devices
-            }
-            var dc = a1({}).get_user_mac_addr;
-            var dd = cg.find(de, function(df) {
-                return df.mac == dc
-            });
-            aH.currentUserInChildGroup = typeof dd != "undefined";
-            return {
-                result: typeof dd != "undefined"
-            }
+    function bj() {
+        return bB(arguments, {}, dg, dh, null, false);
+
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "fota_current_upgrade_state";
+            return dk
         }
-        return {
-            result: aH.currentUserInChildGroup
+
+        function dh(di) {
+            if (di) {
+                di.current_upgrade_state = di.fota_current_upgrade_state;
+                return di
+            } else {
+                return X
+            }
         }
     }
 
-    function a1() {
-        return cm({
-            nv: "get_user_mac_addr"
+    function Q() {
+        return bB(arguments, {}, dg, dh, null, false);
+
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "fota_pkg_total_size,fota_dl_pkg_size";
+            dk.multi_data = 1;
+            return dk
+        }
+
+        function dh(di) {
+            if (di) {
+                return di
+            } else {
+                return X
+            }
+        }
+    }
+
+    function P() {
+        return bB(arguments, {}, dg, dh, null, true);
+
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "IF_UPGRADE";
+            dk.select_op = di.selectOp;
+            if (dk.select_op == "check") {
+                dk.ota_manual_check_roam_state = 1
+            }
+            return dk
+        }
+
+        function dh(di) {
+            if (di) {
+                return di
+            } else {
+                return X
+            }
+        }
+    }
+
+    function G() {
+        return bB(arguments, {}, dg, dh, null, false);
+
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "fota_updateMode,fota_updateIntervalDay,fota_allowRoamingUpdate";
+            dk.multi_data = 1;
+            return dk
+        }
+
+        function dh(di) {
+            if (di) {
+                return {
+                    updateMode: di.fota_updateMode,
+                    updateIntervalDay: di.fota_updateIntervalDay,
+                    allowRoamingUpdate: di.fota_allowRoamingUpdate
+                }
+            } else {
+                return X
+            }
+        }
+    }
+
+    function an() {
+        return bB(arguments, {}, dg, dh, null, true);
+
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "SetUpgAutoSetting";
+            dk.UpgMode = di.updateMode;
+            dk.UpgIntervalDay = di.updateIntervalDay;
+            dk.UpgRoamPermission = di.allowRoamingUpdate;
+            return dk
+        }
+
+        function dh(di) {
+            if (di && di.result == "success") {
+                return di
+            } else {
+                return X
+            }
+        }
+    }
+
+    function dd() {
+        return cp({
+            nv: ["dm_last_check_time"]
         }, arguments[1], arguments[2])
     }
 
-    function u() {
-        return bz(arguments, {}, db, dc, null, false);
+    function h() {
+        return cp({
+            nv: ["network_type", "sub_network_type", "rssi", "lte_rscp", "lte_rsrp", "nv_rsrq", "nv_sinr", "lte_band", "cell_id"]
+        }, arguments[1], arguments[2])
+    }
 
-        function db(dd, de) {
-            var df = {
-                cmd: "hostNameList"
-            };
-            return df
+    function j() {
+        return bB(arguments, {}, dg, dh, null, true);
+
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "RESULT_RESTORE";
+            return dk
         }
 
-        function dc(dd) {
-            if (dd && (dd.hostNameList || dd.devices)) {
-                return dd
+        function dh(di) {
+            if (di && di.result == "success") {
+                return di
+            } else {
+                return X
+            }
+        }
+    }
+
+    function v() {
+        return bB(arguments, {}, dg, dh, null, false);
+
+        function dg(di, dj) {
+            var dk = {
+                cmd: "childGroupList"
+            };
+            return dk
+        }
+
+        function dh(di) {
+            if (di && (di.childGroupList || di.devices)) {
+                return di
             } else {
                 return {
                     devices: []
@@ -5231,40 +5318,133 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
         }
     }
 
-    function bg() {
-        return bz(arguments, {}, db, dc, null, true);
+    function cw() {
+        return bB(arguments, aJ.currentUserInChildGroup == false ? {} : {
+            errorType: "no_auth"
+        }, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {
-                goformId: "EDIT_HOSTNAME",
-                mac: dd.mac,
-                hostname: dd.hostname
+        function dg(di, dj) {
+            var dk = {
+                goformId: "ADD_DEVICE",
+                mac: di.macAddress
             };
-            return df
+            return dk
         }
 
-        function dc(dd) {
-            if (dd && dd.result == "success") {
-                return dd
+        function dh(di) {
+            if (di && di.result == "success") {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function c3() {
-        return bz(arguments, {}, db, dc, null, false);
+    function cK() {
+        return bB(arguments, aJ.currentUserInChildGroup == false ? {} : {
+            errorType: "no_auth"
+        }, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {
-                cmd: "site_white_list"
+        function dg(di, dj) {
+            var dk = {
+                goformId: "DEL_DEVICE",
+                mac: di.mac
             };
-            return df
+            return dk
         }
 
-        function dc(dd) {
-            if (dd && (dd.site_white_list || dd.siteList)) {
-                return dd
+        function dh(di) {
+            if (di && di.result == "success") {
+                return di
+            } else {
+                return X
+            }
+        }
+    }
+
+    function s(dg) {
+        if (typeof aJ.currentUserInChildGroup == "undefined") {
+            var dj = [];
+            if (typeof dg != "undefined") {
+                dj = dg
+            } else {
+                dj = v({}).devices
+            }
+            var dh = a3({}).get_user_mac_addr;
+            var di = cj.find(dj, function(dk) {
+                return dk.mac == dh
+            });
+            aJ.currentUserInChildGroup = typeof di != "undefined";
+            return {
+                result: typeof di != "undefined"
+            }
+        }
+        return {
+            result: aJ.currentUserInChildGroup
+        }
+    }
+
+    function a3() {
+        return cp({
+            nv: "get_user_mac_addr"
+        }, arguments[1], arguments[2])
+    }
+
+    function u() {
+        return bB(arguments, {}, dg, dh, null, false);
+
+        function dg(di, dj) {
+            var dk = {
+                cmd: "hostNameList"
+            };
+            return dk
+        }
+
+        function dh(di) {
+            if (di && (di.hostNameList || di.devices)) {
+                return di
+            } else {
+                return {
+                    devices: []
+                }
+            }
+        }
+    }
+
+    function bi() {
+        return bB(arguments, {}, dg, dh, null, true);
+
+        function dg(di, dj) {
+            var dk = {
+                goformId: "EDIT_HOSTNAME",
+                mac: di.mac,
+                hostname: di.hostname
+            };
+            return dk
+        }
+
+        function dh(di) {
+            if (di && di.result == "success") {
+                return di
+            } else {
+                return X
+            }
+        }
+    }
+
+    function c7() {
+        return bB(arguments, {}, dg, dh, null, false);
+
+        function dg(di, dj) {
+            var dk = {
+                cmd: "site_white_list"
+            };
+            return dk
+        }
+
+        function dh(di) {
+            if (di && (di.site_white_list || di.siteList)) {
+                return di
             } else {
                 return {
                     siteList: []
@@ -5274,52 +5454,52 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
     }
 
     function F() {
-        return bz(arguments, aH.currentUserInChildGroup == false ? {} : {
+        return bB(arguments, aJ.currentUserInChildGroup == false ? {} : {
             errorType: "no_auth"
-        }, db, dc, null, true);
+        }, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {
+        function dg(di, dj) {
+            var dk = {
                 goformId: "REMOVE_WHITE_SITE",
-                ids: dd.ids.join(",")
+                ids: di.ids.join(",")
             };
-            return df
+            return dk
         }
 
-        function dc(dd) {
-            if (dd && dd.result == "success") {
-                return dd
+        function dh(di) {
+            if (di && di.result == "success") {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function bB() {
-        return bz(arguments, aH.currentUserInChildGroup == false ? {} : {
+    function bD() {
+        return bB(arguments, aJ.currentUserInChildGroup == false ? {} : {
             errorType: "no_auth"
-        }, db, dc, null, true);
+        }, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {
+        function dg(di, dj) {
+            var dk = {
                 goformId: "ADD_WHITE_SITE",
-                name: dd.name,
-                site: dd.site
+                name: di.name,
+                site: di.site
             };
-            return df
+            return dk
         }
 
-        function dc(dd) {
-            if (dd && dd.result == "success") {
-                return dd
+        function dh(di) {
+            if (di && di.result == "success") {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function b5() {
-        var de = {
+    function b8() {
+        var dj = {
             "0": [],
             "1": [],
             "2": [],
@@ -5328,514 +5508,514 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
             "5": [],
             "6": []
         };
-        return bz(arguments, {}, db, dd, null, false);
+        return bB(arguments, {}, dg, di, null, false);
 
-        function db(df, dg) {
-            var dh = {
+        function dg(dk, dl) {
+            var dm = {
                 cmd: "time_limited"
             };
-            return dh
+            return dm
         }
 
-        function dd(df) {
-            if (df) {
-                return dc(df)
+        function di(dk) {
+            if (dk) {
+                return dh(dk)
             } else {
-                return de
+                return dj
             }
         }
 
-        function dc(df) {
-            if (df.time_limited == "") {
+        function dh(dk) {
+            if (dk.time_limited == "") {
                 return {
                     time_limited: []
                 }
             }
-            var dg = df.time_limited.split(";");
-            cg.each(dg, function(dh) {
-                var di = dh.split("+");
-                if (di.length == 2) {
-                    de[di[0]] = di[1].split(",")
+            var dl = dk.time_limited.split(";");
+            cj.each(dl, function(dm) {
+                var dn = dm.split("+");
+                if (dn.length == 2) {
+                    dj[dn[0]] = dn[1].split(",")
                 }
             });
-            return de
+            return dj
         }
     }
 
     function n() {
-        return bz(arguments, aH.currentUserInChildGroup == false ? {} : {
+        return bB(arguments, aJ.currentUserInChildGroup == false ? {} : {
             errorType: "no_auth"
-        }, db, dc, null, true);
+        }, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {
+        function dg(di, dj) {
+            var dk = {
                 goformId: "SAVE_TIME_LIMITED",
-                time_limited: dd.time
+                time_limited: di.time
             };
-            return df
+            return dk
         }
 
-        function dc(dd) {
-            if (dd && dd.result == "success") {
-                return dd
+        function dh(di) {
+            if (di && di.result == "success") {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function ct() {
-        return bz(arguments, {}, db, dc, null, false);
+    function cx() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {
+        function dg(di, dj) {
+            var dk = {
                 cmd: "openEnable,closeEnable,openTime,closeTime",
                 multi_data: "1"
             };
-            return df
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                if (dd.openTime.indexOf(":") != -1) {
-                    var de = dd.openTime.split(":");
-                    dd.openH = leftInsert(de[0], 2, "0");
-                    dd.openM = leftInsert(de[1], 2, "0")
+        function dh(di) {
+            if (di) {
+                if (di.openTime.indexOf(":") != -1) {
+                    var dj = di.openTime.split(":");
+                    di.openH = leftInsert(dj[0], 2, "0");
+                    di.openM = leftInsert(dj[1], 2, "0")
                 } else {
-                    dd.openH = "06";
-                    dd.openM = "00"
+                    di.openH = "06";
+                    di.openM = "00"
                 }
-                if (dd.closeTime.indexOf(":") != -1) {
-                    var df = dd.closeTime.split(":");
-                    dd.closeH = leftInsert(df[0], 2, "0");
-                    dd.closeM = leftInsert(df[1], 2, "0")
+                if (di.closeTime.indexOf(":") != -1) {
+                    var dk = di.closeTime.split(":");
+                    di.closeH = leftInsert(dk[0], 2, "0");
+                    di.closeM = leftInsert(dk[1], 2, "0")
                 } else {
-                    dd.closeH = "22";
-                    dd.closeM = "00"
+                    di.closeH = "22";
+                    di.closeM = "00"
                 }
-                return dd
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function bN() {
-        return bz(arguments, {}, db, dc, null, true);
+    function bP() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {
+        function dg(di, dj) {
+            var dk = {
                 goformId: "SAVE_TSW",
-                openEnable: dd.openEnable,
-                closeEnable: dd.closeEnable
+                openEnable: di.openEnable,
+                closeEnable: di.closeEnable
             };
-            if (dd.openEnable == "1") {
-                df.openTime = dd.openTime;
-                df.closeTime = dd.closeTime
+            if (di.openEnable == "1") {
+                dk.openTime = di.openTime;
+                dk.closeTime = di.closeTime
             }
-            return df
+            return dk
         }
 
-        function dc(dd) {
-            if (dd && dd.result == "success") {
-                return dd
+        function dh(di) {
+            if (di && di.result == "success") {
+                return di
             } else {
-                if (dd && dd.result == "failure") {
-                    return dd
+                if (di && di.result == "failure") {
+                    return di
                 } else {
-                    return V
+                    return X
                 }
-            }
-        }
-    }
-
-    function aN() {
-        return bz(arguments, {}, db, dc, null, true);
-
-        function db(dd, de) {
-            var df = {
-                goformId: "FLOW_CALIBRATION_MANUAL",
-                calibration_way: dd.way,
-                time: dd.way == "time" ? dd.value : 0,
-                data: dd.way == "data" ? dd.value : 0
-            };
-            return df
-        }
-
-        function dc(dd) {
-            if (dd && dd.result == "success") {
-                return dd
-            } else {
-                return V
-            }
-        }
-    }
-
-    function cm() {
-        return bz(arguments, {}, db, dc, null, false);
-
-        function db(dd, de) {
-            var df = {};
-            if (cg.isArray(dd.nv)) {
-                df.cmd = dd.nv.join(",");
-                df.multi_data = 1
-            } else {
-                df.cmd = dd.nv
-            }
-            return df
-        }
-
-        function dc(dd) {
-            if (dd) {
-                return dd
-            } else {
-                return V
             }
         }
     }
 
     function aP() {
-        return bz(arguments, {}, db, dc, null, false);
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "vwim_mc_state,traffic_overrun,detect_new_version";
-            df.multi_data = 1;
-            return df
+        function dg(di, dj) {
+            var dk = {
+                goformId: "FLOW_CALIBRATION_MANUAL",
+                calibration_way: di.way,
+                time: di.way == "time" ? di.value : 0,
+                data: di.way == "data" ? di.value : 0
+            };
+            return dk
         }
 
-        function dc(de) {
-            if (de) {
-                var dd = {};
-                dd.vwim_mc_state = de.vwim_mc_state;
-                dd.traffic_overrun = de.traffic_overrun;
-                dd.detect_new_version = de.detect_new_version;
-                dd.blc_wan_mode = bu.blc_wan_mode;
-                return dd
+        function dh(di) {
+            if (di && di.result == "success") {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function cJ() {
-        return bz(arguments, {}, db, dc, null, true);
+    function cp() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "CLEAR_REDIRECT_FLAG";
-            df.flag_id = dd.redirectFlags;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            if (cj.isArray(di.nv)) {
+                dk.cmd = di.nv.join(",");
+                dk.multi_data = 1
+            } else {
+                dk.cmd = di.nv
+            }
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function b4() {
-        return bz(arguments, {}, db, dc, null, false);
+    function aR() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "lock_zone_enable,pin_interlock_and_V4_lock";
-            df.multi_data = 1;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "vwim_mc_state,traffic_overrun,detect_new_version";
+            dk.multi_data = 1;
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(dj) {
+            if (dj) {
+                var di = {};
+                di.vwim_mc_state = dj.vwim_mc_state;
+                di.traffic_overrun = dj.traffic_overrun;
+                di.detect_new_version = dj.detect_new_version;
+                di.blc_wan_mode = bw.blc_wan_mode;
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function bL() {
-        return bz(arguments, {}, db, dc, null, true);
+    function cN() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "PIN_LOCK_V4_ENCODE";
-            df.pin_interlock_and_V4_lock = dd.pin_interlock_and_V4_lock;
-            df.TspLock_key_data = dd.TspLock_key_data;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "CLEAR_REDIRECT_FLAG";
+            dk.flag_id = di.redirectFlags;
+            return dk
         }
 
-        function dc(dd) {
-            if (dd && dd.result == "success") {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function aG() {
-        return bz(arguments, {}, db, dc, null, false);
+    function b7() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "cell_id_list,global_cell_id,network_type,sub_network_type,cell_not_correct";
-            df.multi_data = 1;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "lock_zone_enable,pin_interlock_and_V4_lock";
+            dk.multi_data = 1;
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function bZ() {
-        return bz(arguments, {}, db, dc, null, true);
+    function bN() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "LOCK_ZONE";
-            df.lock_zone_enable = dd.lock_zone_enable;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "PIN_LOCK_V4_ENCODE";
+            dk.pin_interlock_and_V4_lock = di.pin_interlock_and_V4_lock;
+            dk.TspLock_key_data = di.TspLock_key_data;
+            return dk
         }
 
-        function dc(dd) {
-            if (dd && dd.result == "success") {
-                return dd
+        function dh(di) {
+            if (di && di.result == "success") {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function cR() {
-        return bz(arguments, {}, db, dc, null, false);
+    function aI() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "cell_id_list,global_cell_id,network_type,sub_network_type,cell_not_correct";
+            dk.multi_data = 1;
+            return dk
+        }
+
+        function dh(di) {
+            if (di) {
+                return di
+            } else {
+                return X
+            }
+        }
+    }
+
+    function b1() {
+        return bB(arguments, {}, dg, dh, null, true);
+
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "LOCK_ZONE";
+            dk.lock_zone_enable = di.lock_zone_enable;
+            return dk
+        }
+
+        function dh(di) {
+            if (di && di.result == "success") {
+                return di
+            } else {
+                return X
+            }
+        }
+    }
+
+    function cV() {
+        return bB(arguments, {}, dg, dh, null, false);
+
+        function dg(di, dj) {
+            var dk = {
                 cmd: "update_type"
             };
-            return df
+            return dk
         }
 
-        function dc(dd) {
+        function dh(di) {
             return {
-                update_type: dd.update_type ? dd.update_type : "mifi_fota"
+                update_type: di.update_type ? di.update_type : "mifi_fota"
             }
         }
     }
 
-    function cr() {
-        return bz(arguments, {}, db, dc, null, true);
+    function cv() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(df, dd) {
-            var de = {};
-            de.goformId = "alk_set_lan_dns_config";
-            de.lan_dns_ip = df.lan_dns_ip;
-            de.lan_dns_mode = df.lan_dns_mode;
-            return de
+        function dg(dk, di) {
+            var dj = {};
+            dj.goformId = "alk_set_lan_dns_config";
+            dj.lan_dns_ip = dk.lan_dns_ip;
+            dj.lan_dns_mode = dk.lan_dns_mode;
+            return dj
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
     function f() {
-        return bz(arguments, {}, db, dc, null, false);
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, de) {
-            var df = {};
-            df.cmd = "AuthMode,passPhrase";
-            df.multi_data = 1;
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.cmd = "AuthMode,passPhrase";
+            dk.multi_data = 1;
+            return dk
         }
 
-        function dc(de) {
-            if (de) {
-                var dd = {};
-                dd.AuthMode = de.AuthMode;
-                dd.passPhrase = aH.PASSWORD_ENCODE ? Base64.decode(de.passPhrase) : de.passPhrase;
-                return dd
+        function dh(dj) {
+            if (dj) {
+                var di = {};
+                di.AuthMode = dj.AuthMode;
+                di.passPhrase = aJ.PASSWORD_ENCODE ? Base64.decode(dj.passPhrase) : dj.passPhrase;
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
     function z() {
-        return bz(arguments, {}, db, dc, null, true);
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "SET_WIFI_SECURITY_INFO";
-            df.AuthMode = dd.AuthMode;
-            if (df.AuthMode == "WPAPSKWPA2PSK") {
-                df.passPhrase = aH.PASSWORD_ENCODE ? Base64.encode(dd.passPhrase) : dd.passPhrase
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "SET_WIFI_SECURITY_INFO";
+            dk.AuthMode = di.AuthMode;
+            if (dk.AuthMode == "WPAPSKWPA2PSK") {
+                dk.passPhrase = aJ.PASSWORD_ENCODE ? Base64.encode(di.passPhrase) : di.passPhrase
             }
-            return df
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function cf() {
-        ax(arguments, db, dc);
+    function ci() {
+        az(arguments, dg, dh);
 
-        function db(dd) {
-            var de = {
+        function dg(di) {
+            var dj = {
                 goformId: "SET_WIFI_SSID1_SETTINGS",
-                ssid: dd.SSID,
-                broadcastSsidEnabled: dd.broadcast,
-                MAX_Access_num: dd.station,
-                security_mode: dd.AuthMode,
-                cipher: dd.cipher,
-                NoForwarding: dd.NoForwarding,
-                show_qrcode_flag: dd.show_qrcode_flag
+                ssid: di.SSID,
+                broadcastSsidEnabled: di.broadcast,
+                MAX_Access_num: di.station,
+                security_mode: di.AuthMode,
+                cipher: di.cipher,
+                NoForwarding: di.NoForwarding,
+                show_qrcode_flag: di.show_qrcode_flag
             };
-            if (aH.WIFI_WEP_SUPPORT) {
-                de.wep_default_key = dd.wep_default_key;
-                de.wep_key_1 = dd.wep_key_1;
-                de.wep_key_2 = dd.wep_key_2;
-                de.wep_key_3 = dd.wep_key_3;
-                de.wep_key_4 = dd.wep_key_4;
-                if (dd.wep_default_key == "1") {
-                    de.WEP2Select = dd.WEP2Select
+            if (aJ.WIFI_WEP_SUPPORT) {
+                dj.wep_default_key = di.wep_default_key;
+                dj.wep_key_1 = di.wep_key_1;
+                dj.wep_key_2 = di.wep_key_2;
+                dj.wep_key_3 = di.wep_key_3;
+                dj.wep_key_4 = di.wep_key_4;
+                if (di.wep_default_key == "1") {
+                    dj.WEP2Select = di.WEP2Select
                 } else {
-                    if (dd.wep_default_key == "2") {
-                        de.WEP3Select = dd.WEP3Select
+                    if (di.wep_default_key == "2") {
+                        dj.WEP3Select = di.WEP3Select
                     } else {
-                        if (dd.wep_default_key == "3") {
-                            de.WEP4Select = dd.WEP4Select
+                        if (di.wep_default_key == "3") {
+                            dj.WEP4Select = di.WEP4Select
                         } else {
-                            de.WEP1Select = dd.WEP1Select
+                            dj.WEP1Select = di.WEP1Select
                         }
                     }
                 }
             }
-            if (dd.AuthMode == "WPAPSK" || dd.AuthMode == "WPA2PSK" || dd.AuthMode == "WPAPSKWPA2PSK" || dd.AuthMode == "WPA3Personal" || dd.AuthMode == "WPA2WPA3") {
-                de.security_shared_mode = dd.cipher;
-                de.passphrase = aH.PASSWORD_ENCODE ? Base64.encode(dd.passPhrase) : dd.passPhrase
+            if (di.AuthMode == "WPAPSK" || di.AuthMode == "WPA2PSK" || di.AuthMode == "WPAPSKWPA2PSK" || di.AuthMode == "WPA3Personal" || di.AuthMode == "WPA2WPA3") {
+                dj.security_shared_mode = di.cipher;
+                dj.passphrase = aJ.PASSWORD_ENCODE ? Base64.encode(di.passPhrase) : di.passPhrase
             } else {
-                if (dd.AuthMode == "SHARED") {
-                    de.security_shared_mode = "WEP";
-                    de.security_mode = "SHARED"
+                if (di.AuthMode == "SHARED") {
+                    dj.security_shared_mode = "WEP";
+                    dj.security_mode = "SHARED"
                 } else {
-                    if (dd.encryptType == "WEP") {
-                        de.security_shared_mode = "WEP";
-                        de.security_mode = "OPEN"
+                    if (di.encryptType == "WEP") {
+                        dj.security_shared_mode = "WEP";
+                        dj.security_mode = "OPEN"
                     } else {
-                        de.security_shared_mode = "NONE"
+                        dj.security_shared_mode = "NONE"
                     }
                 }
             }
-            return de
+            return dj
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function bK() {
-        ax(arguments, db, dc);
+    function bM() {
+        az(arguments, dg, dh);
 
-        function db(dd) {
-            var de = {
+        function dg(di) {
+            var dj = {
                 goformId: "SET_WIFI_SSID2_SETTINGS",
-                m_SSID: dd.m_SSID,
-                m_HideSSID: dd.m_broadcast,
-                m_MAX_Access_num: dd.m_station,
-                m_AuthMode: dd.m_AuthMode,
-                cipher: dd.m_cipher,
-                m_NoForwarding: dd.m_NoForwarding,
-                m_show_qrcode_flag: dd.m_show_qrcode_flag
+                m_SSID: di.m_SSID,
+                m_HideSSID: di.m_broadcast,
+                m_MAX_Access_num: di.m_station,
+                m_AuthMode: di.m_AuthMode,
+                cipher: di.m_cipher,
+                m_NoForwarding: di.m_NoForwarding,
+                m_show_qrcode_flag: di.m_show_qrcode_flag
             };
-            if (aH.WIFI_WEP_SUPPORT) {
-                de.m_DefaultKeyID = dd.m_wep_default_key;
-                de.m_Key1Str1 = dd.m_wep_key_1;
-                de.m_Key2Str1 = dd.m_wep_key_2;
-                de.m_Key3Str1 = dd.m_wep_key_3;
-                de.m_Key4Str1 = dd.m_wep_key_4;
-                if (dd.m_wep_default_key == "1") {
-                    de.m_Key2Type = dd.m_WEP2Select
+            if (aJ.WIFI_WEP_SUPPORT) {
+                dj.m_DefaultKeyID = di.m_wep_default_key;
+                dj.m_Key1Str1 = di.m_wep_key_1;
+                dj.m_Key2Str1 = di.m_wep_key_2;
+                dj.m_Key3Str1 = di.m_wep_key_3;
+                dj.m_Key4Str1 = di.m_wep_key_4;
+                if (di.m_wep_default_key == "1") {
+                    dj.m_Key2Type = di.m_WEP2Select
                 } else {
-                    if (dd.m_wep_default_key == "2") {
-                        de.m_Key3Type = dd.m_WEP3Select
+                    if (di.m_wep_default_key == "2") {
+                        dj.m_Key3Type = di.m_WEP3Select
                     } else {
-                        if (dd.m_wep_default_key == "3") {
-                            de.m_Key4Type = dd.m_WEP4Select
+                        if (di.m_wep_default_key == "3") {
+                            dj.m_Key4Type = di.m_WEP4Select
                         } else {
-                            de.m_Key1Type = dd.m_WEP1Select
+                            dj.m_Key1Type = di.m_WEP1Select
                         }
                     }
                 }
             }
-            if (dd.m_AuthMode == "WPAPSK" || dd.m_AuthMode == "WPA2PSK" || dd.m_AuthMode == "WPAPSKWPA2PSK" || dd.m_AuthMode == "WPA3Personal" || dd.m_AuthMode == "WPA2WPA3") {
-                de.m_EncrypType = dd.m_cipher;
-                de.m_WPAPSK1 = aH.PASSWORD_ENCODE ? Base64.encode(dd.m_passPhrase) : dd.m_passPhrase
+            if (di.m_AuthMode == "WPAPSK" || di.m_AuthMode == "WPA2PSK" || di.m_AuthMode == "WPAPSKWPA2PSK" || di.m_AuthMode == "WPA3Personal" || di.m_AuthMode == "WPA2WPA3") {
+                dj.m_EncrypType = di.m_cipher;
+                dj.m_WPAPSK1 = aJ.PASSWORD_ENCODE ? Base64.encode(di.m_passPhrase) : di.m_passPhrase
             } else {
-                if (dd.m_AuthMode == "SHARED") {
-                    de.m_EncrypType = "WEP";
-                    de.m_security_mode = "SHARED"
+                if (di.m_AuthMode == "SHARED") {
+                    dj.m_EncrypType = "WEP";
+                    dj.m_security_mode = "SHARED"
                 } else {
-                    if (dd.m_encryptType == "WEP") {
-                        de.m_EncrypType = "WEP";
-                        de.m_security_mode = "OPEN"
+                    if (di.m_encryptType == "WEP") {
+                        dj.m_EncrypType = "WEP";
+                        dj.m_security_mode = "OPEN"
                     } else {
-                        de.m_EncrypType = "NONE"
+                        dj.m_EncrypType = "NONE"
                     }
                 }
             }
-            return de
+            return dj
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function cy() {
-        return bz(arguments, {}, db, dc, null, false);
+    function cC() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(df, dd) {
-            var de = {};
-            de.cmd = "lte_band,cell_id,ping_google";
-            de.multi_data = 1;
-            return de
+        function dg(dk, di) {
+            var dj = {};
+            dj.cmd = "lte_band,cell_id,ping_google";
+            dj.multi_data = 1;
+            return dj
         }
 
-        function dc(de) {
-            if (de) {
-                var dd = {};
-                dd.lte_band = de.lte_band;
-                dd.cell_id = de.cell_id;
-                dd.ping_google = de.ping_google;
-                return dd
+        function dh(dj) {
+            if (dj) {
+                var di = {};
+                di.lte_band = dj.lte_band;
+                di.cell_id = dj.cell_id;
+                di.ping_google = dj.ping_google;
+                return di
             } else {
                 return unknownErrorObject
             }
@@ -5843,40 +6023,40 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
     }
 
     function q() {
-        return bz(arguments, {}, db, dc, null, false);
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(df, dd) {
-            var de = {};
-            de.cmd = "work_lte_band";
-            de.multi_data = 1;
-            return de
+        function dg(dk, di) {
+            var dj = {};
+            dj.cmd = "work_lte_band";
+            dj.multi_data = 1;
+            return dj
         }
 
-        function dc(de) {
-            if (de) {
-                var dd = {};
-                dd.work_lte_band = de.work_lte_band;
-                return dd
+        function dh(dj) {
+            if (dj) {
+                var di = {};
+                di.work_lte_band = dj.work_lte_band;
+                return di
             } else {
                 return unknownErrorObject
             }
         }
     }
 
-    function R() {
-        return bz(arguments, {}, db, dc, null, false);
+    function T() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(df, dd) {
-            var de = {};
-            de.goformId = "SET_FREQ_BAND";
-            de.work_lte_band = df.work_lte_band;
-            de.ping_google = df.ping_google;
-            return de
+        function dg(dk, di) {
+            var dj = {};
+            dj.goformId = "SET_FREQ_BAND";
+            dj.work_lte_band = dk.work_lte_band;
+            dj.ping_google = dk.ping_google;
+            return dj
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
                 return unknownErrorObject
             }
@@ -5884,243 +6064,285 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
     }
 
     function d() {
-        return bz(arguments, {}, db, dc, null, false);
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(dd, df) {
-            var dg = {};
-            var de = aH.PASSWORD_ENCODE ? "WPAPSK1_encode,m_WPAPSK1_encode," : "imei,rnum_js,WPAPSK1_enaes,m_WPAPSK1_enaes,";
-            dg.cmd = "m_ssid_enable,wifi_cur_state,NoForwarding,m_NoForwarding," + de + "MAX_Station_num,SSID1,AuthMode,HideSSID,MAX_Access_num,show_qrcode_flag,EncrypType,Key1Str1,Key2Str1,Key3Str1,Key4Str1,DefaultKeyID,m_SSID,m_AuthMode,m_HideSSID,m_MAX_Access_num,m_EncrypType,m_show_qrcode_flag,m_DefaultKeyID,m_Key1Str1,m_Key2Str1,m_Key3Str1,m_Key4Str1,rotationFlag,wifi_sta_connection";
-            dg.multi_data = 1;
-            return dg
+        function dg(di, dk) {
+            var dl = {};
+            if (aJ.WIFI_HAS_5G) {
+                var dj = aJ.PASSWORD_ENCODE ? "WPAPSK1_encode,m_WPAPSK1_encode,WPAPSK1_encode_5g,m_WPAPSK1_encode_5g," : "imei,rnum_js,WPAPSK1_enaes,m_WPAPSK1_enaes,WPAPSK1_enaes_5g,m_WPAPSK1_enaes_5g,";
+                dl.cmd = "m_ssid_enable,wifi_cur_state,NoForwarding,m_NoForwarding,NoForwarding_5g,m_NoForwarding_5g," + dj + "MAX_Station_num,SSID1,AuthMode,HideSSID,MAX_Access_num,show_qrcode_flag,EncrypType,Key1Str1,Key2Str1,Key3Str1,Key4Str1,DefaultKeyID,m_SSID,m_AuthMode,m_HideSSID,m_MAX_Access_num,m_EncrypType,m_show_qrcode_flag,m_DefaultKeyID,m_Key1Str1,m_Key2Str1,m_Key3Str1,m_Key4Str1,rotationFlag,wifi_sta_connection,SSID1_5g,AuthMode_5g,HideSSID_5g,MAX_Access_num_5g,show_qrcode_flag_5g,EncrypType_5g,Key1Str1_5g,Key2Str1_5g,Key3Str1_5g,Key4Str1_5g,DefaultKeyID_5g,m_SSID_5g,m_AuthMode_5g,m_HideSSID_5g,m_MAX_Access_num_5g,m_EncrypType_5g,m_show_qrcode_flag_5g,m_DefaultKeyID_5g,m_Key1Str1_5g,m_Key2Str1_5g,m_Key3Str1_5g,m_Key4Str1_5g,wifi_band"
+            } else {
+                var dj = aJ.PASSWORD_ENCODE ? "WPAPSK1_encode,m_WPAPSK1_encode," : "imei,rnum_js,WPAPSK1_enaes,m_WPAPSK1_enaes,";
+                dl.cmd = "m_ssid_enable,wifi_cur_state,NoForwarding,m_NoForwarding," + dj + "MAX_Station_num,SSID1,AuthMode,HideSSID,MAX_Access_num,show_qrcode_flag,EncrypType,Key1Str1,Key2Str1,Key3Str1,Key4Str1,DefaultKeyID,m_SSID,m_AuthMode,m_HideSSID,m_MAX_Access_num,m_EncrypType,m_show_qrcode_flag,m_DefaultKeyID,m_Key1Str1,m_Key2Str1,m_Key3Str1,m_Key4Str1,rotationFlag,wifi_sta_connection"
+            }
+            dl.multi_data = 1;
+            return dl
         }
 
-        function dc(de) {
-            if (de) {
-                var dd = {
-                    wifi_enable: de.wifi_cur_state == "1" ? "1" : "0",
-                    multi_ssid_enable: de.m_ssid_enable,
-                    MAX_Station_num: cP.isNumeric(de.MAX_Station_num) ? de.MAX_Station_num : aH.MAX_STATION_NUMBER,
-                    AuthMode: de.AuthMode,
-                    SSID: de.SSID1,
-                    broadcast: de.HideSSID,
-                    apIsolation: de.NoForwarding,
-                    passPhrase: aH.PASSWORD_ENCODE ? Base64.decode(de.WPAPSK1_encode) : c(de.rnum_js, de.imei, de.WPAPSK1_enaes),
-                    MAX_Access_num: de.MAX_Access_num,
-                    cipher: de.EncrypType == "TKIP" ? "0" : de.EncrypType == "AES" ? 1 : 2,
-                    encryptType: de.EncrypType,
-                    show_qrcode_flag: de.show_qrcode_flag == "1" ? true : false,
-                    keyID: de.DefaultKeyID,
-                    Key1Str1: de.Key1Str1,
-                    Key2Str1: de.Key2Str1,
-                    Key3Str1: de.Key3Str1,
-                    Key4Str1: de.Key4Str1,
-                    m_SSID: de.m_SSID,
-                    m_broadcast: de.m_HideSSID,
-                    m_apIsolation: de.m_NoForwarding,
-                    m_MAX_Access_num: de.m_MAX_Access_num,
-                    m_AuthMode: de.m_AuthMode,
-                    m_passPhrase: aH.PASSWORD_ENCODE ? Base64.decode(de.m_WPAPSK1_encode) : c(de.rnum_js, de.imei, de.m_WPAPSK1_enaes),
-                    m_cipher: de.m_EncrypType == "TKIP" ? "0" : de.m_EncrypType == "AES" ? 1 : 2,
-                    m_show_qrcode_flag: de.m_show_qrcode_flag == "1" ? true : false,
-                    m_encryptType: de.m_EncrypType,
-                    m_keyID: de.m_DefaultKeyID,
-                    m_Key1Str1: de.m_Key1Str1,
-                    m_Key2Str1: de.m_Key2Str1,
-                    m_Key3Str1: de.m_Key3Str1,
-                    m_Key4Str1: de.m_Key4Str1,
-                    rotationFlag: de.rotationFlag,
-                    ap_station_enable: de.wifi_sta_connection
+        function dh(dj) {
+            if (dj) {
+                var di = {
+                    wifi_enable: dj.wifi_cur_state == "1" ? "1" : "0",
+                    multi_ssid_enable: dj.m_ssid_enable,
+                    MAX_Station_num: cT.isNumeric(dj.MAX_Station_num) ? dj.MAX_Station_num : aJ.MAX_STATION_NUMBER,
+                    AuthMode: dj.AuthMode,
+                    SSID: dj.SSID1,
+                    broadcast: dj.HideSSID,
+                    apIsolation: dj.NoForwarding,
+                    passPhrase: aJ.PASSWORD_ENCODE ? Base64.decode(dj.WPAPSK1_encode) : c(dj.rnum_js, dj.imei, dj.WPAPSK1_enaes),
+                    MAX_Access_num: dj.MAX_Access_num,
+                    cipher: dj.EncrypType == "TKIP" ? "0" : dj.EncrypType == "AES" ? 1 : 2,
+                    encryptType: dj.EncrypType,
+                    show_qrcode_flag: dj.show_qrcode_flag == "1" ? true : false,
+                    keyID: dj.DefaultKeyID,
+                    Key1Str1: dj.Key1Str1,
+                    Key2Str1: dj.Key2Str1,
+                    Key3Str1: dj.Key3Str1,
+                    Key4Str1: dj.Key4Str1,
+                    m_SSID: dj.m_SSID,
+                    m_broadcast: dj.m_HideSSID,
+                    m_apIsolation: dj.m_NoForwarding,
+                    m_MAX_Access_num: dj.m_MAX_Access_num,
+                    m_AuthMode: dj.m_AuthMode,
+                    m_passPhrase: aJ.PASSWORD_ENCODE ? Base64.decode(dj.m_WPAPSK1_encode) : c(dj.rnum_js, dj.imei, dj.m_WPAPSK1_enaes),
+                    m_cipher: dj.m_EncrypType == "TKIP" ? "0" : dj.m_EncrypType == "AES" ? 1 : 2,
+                    m_show_qrcode_flag: dj.m_show_qrcode_flag == "1" ? true : false,
+                    m_encryptType: dj.m_EncrypType,
+                    m_keyID: dj.m_DefaultKeyID,
+                    m_Key1Str1: dj.m_Key1Str1,
+                    m_Key2Str1: dj.m_Key2Str1,
+                    m_Key3Str1: dj.m_Key3Str1,
+                    m_Key4Str1: dj.m_Key4Str1,
+                    rotationFlag: dj.rotationFlag,
+                    ap_station_enable: dj.wifi_sta_connection
                 };
-                return dd
+                if (aJ.WIFI_HAS_5G && dj.wifi_band == "a") {
+                    di = {
+                        wifi_enable: dj.wifi_cur_state == "1" ? "1" : "0",
+                        multi_ssid_enable: dj.m_ssid_enable,
+                        MAX_Station_num: cT.isNumeric(dj.MAX_Station_num) ? dj.MAX_Station_num : aJ.MAX_STATION_NUMBER,
+                        AuthMode: dj.AuthMode_5g,
+                        SSID: dj.SSID1_5g,
+                        broadcast: dj.HideSSID_5g,
+                        apIsolation: dj.NoForwarding_5g,
+                        passPhrase: aJ.PASSWORD_ENCODE ? Base64.decode(dj.WPAPSK1_encode_5g) : c(dj.rnum_js, dj.imei, dj.WPAPSK1_enaes_5g),
+                        MAX_Access_num: dj.MAX_Access_num_5g,
+                        cipher: dj.EncrypType_5g == "TKIP" ? "0" : dj.EncrypType_5g == "AES" ? 1 : 2,
+                        encryptType: dj.EncrypType_5g,
+                        show_qrcode_flag: dj.show_qrcode_flag_5g == "1" ? true : false,
+                        keyID: dj.DefaultKeyID_5g,
+                        Key1Str1: dj.Key1Str1_5g,
+                        Key2Str1: dj.Key2Str1_5g,
+                        Key3Str1: dj.Key3Str1_5g,
+                        Key4Str1: dj.Key4Str1_5g,
+                        m_SSID: dj.m_SSID_5g,
+                        m_broadcast: dj.m_HideSSID_5g,
+                        m_apIsolation: dj.m_NoForwarding_5g,
+                        m_MAX_Access_num: dj.m_MAX_Access_num_5g,
+                        m_AuthMode: dj.m_AuthMode_5g,
+                        m_passPhrase: aJ.PASSWORD_ENCODE ? Base64.decode(dj.m_WPAPSK1_encode_5g) : c(dj.rnum_js, dj.imei, dj.m_WPAPSK1_enaes_5g),
+                        m_cipher: dj.m_EncrypType_5g == "TKIP" ? "0" : dj.m_EncrypType_5g == "AES" ? 1 : 2,
+                        m_show_qrcode_flag: dj.m_show_qrcode_flag_5g == "1" ? true : false,
+                        m_encryptType: dj.m_EncrypType_5g,
+                        m_keyID: dj.m_DefaultKeyID_5g,
+                        m_Key1Str1: dj.m_Key1Str1_5g,
+                        m_Key2Str1: dj.m_Key2Str1_5g,
+                        m_Key3Str1: dj.m_Key3Str1_5g,
+                        m_Key4Str1: dj.m_Key4Str1_5g,
+                        rotationFlag: dj.rotationFlag,
+                        ap_station_enable: dj.wifi_sta_connection
+                    }
+                }
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
     function t() {
-        ax(arguments, db, dc);
+        az(arguments, dg, dh);
 
-        function db(dd) {
-            var df = dd;
-            if (dd.wifiEnabled == "0") {
-                df = {
-                    wifiEnabled: dd.wifiEnabled
+        function dg(di) {
+            var dk = di;
+            if (di.wifiEnabled == "0") {
+                dk = {
+                    wifiEnabled: di.wifiEnabled
                 }
             }
-            var de = cP.extend({
+            var dj = cT.extend({
                 goformId: "SET_WIFI_INFO"
-            }, df);
-            return de
+            }, dk);
+            return dj
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function bY() {
-        return bz(arguments, {}, db, dc, null, false);
+    function b0() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(de, dd) {
+        function dg(dj, di) {
             return {
                 multi_data: 1,
                 cmd: "alk_vpn_server,alk_vpn_type,alk_vpn_user,alk_vpn_passwd,alk_vpn_encrypt,alk_vpn_status,vpn_channel,alk_vpn_l2tp_server,alk_vpn_l2tp_channel,alk_vpn_l2tp_user,alk_vpn_l2tp_passwd"
             }
         }
 
-        function dc(de) {
-            if (de) {
-                if (de.alk_vpn_type == "pptp") {
-                    var dd = {
-                        alk_vpn_type: de.alk_vpn_type,
-                        alk_vpn_server: de.alk_vpn_server,
-                        vpn_channel: de.vpn_channel,
-                        alk_vpn_user: de.alk_vpn_user,
-                        alk_vpn_passwd: de.alk_vpn_passwd,
-                        alk_vpn_encrypt: de.alk_vpn_encrypt,
-                        alk_vpn_status: de.alk_vpn_status
+        function dh(dj) {
+            if (dj) {
+                if (dj.alk_vpn_type == "pptp") {
+                    var di = {
+                        alk_vpn_type: dj.alk_vpn_type,
+                        alk_vpn_server: dj.alk_vpn_server,
+                        vpn_channel: dj.vpn_channel,
+                        alk_vpn_user: dj.alk_vpn_user,
+                        alk_vpn_passwd: dj.alk_vpn_passwd,
+                        alk_vpn_encrypt: dj.alk_vpn_encrypt,
+                        alk_vpn_status: dj.alk_vpn_status
                     }
                 } else {
-                    var dd = {
-                        alk_vpn_type: de.alk_vpn_type,
-                        alk_vpn_server: de.alk_vpn_l2tp_server,
-                        vpn_channel: de.alk_vpn_l2tp_channel,
-                        alk_vpn_user: de.alk_vpn_l2tp_user,
-                        alk_vpn_passwd: de.alk_vpn_l2tp_passwd,
-                        alk_vpn_encrypt: de.alk_vpn_encrypt,
-                        alk_vpn_status: de.alk_vpn_status
+                    var di = {
+                        alk_vpn_type: dj.alk_vpn_type,
+                        alk_vpn_server: dj.alk_vpn_l2tp_server,
+                        vpn_channel: dj.alk_vpn_l2tp_channel,
+                        alk_vpn_user: dj.alk_vpn_l2tp_user,
+                        alk_vpn_passwd: dj.alk_vpn_l2tp_passwd,
+                        alk_vpn_encrypt: dj.alk_vpn_encrypt,
+                        alk_vpn_status: dj.alk_vpn_status
                     }
                 }
-                return dd
+                return di
             } else {
                 return unknownErrorObject
             }
         }
     }
 
-    function ar() {
-        return bz(arguments, {}, db, dc, null, false);
+    function au() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(de, dd) {
+        function dg(dj, di) {
             return {
                 multi_data: 1,
                 cmd: "alk_vpn_server,alk_vpn_type,alk_vpn_user,alk_vpn_passwd,alk_vpn_encrypt,alk_vpn_status,vpn_channel"
             }
         }
 
-        function dc(de) {
-            if (de) {
-                var dd = {
-                    alk_vpn_server: de.alk_vpn_server,
-                    vpn_channel: de.vpn_channel,
-                    alk_vpn_user: de.alk_vpn_user,
-                    alk_vpn_passwd: de.alk_vpn_passwd,
-                    alk_vpn_encrypt: de.alk_vpn_encrypt,
-                    alk_vpn_status: de.alk_vpn_status
+        function dh(dj) {
+            if (dj) {
+                var di = {
+                    alk_vpn_server: dj.alk_vpn_server,
+                    vpn_channel: dj.vpn_channel,
+                    alk_vpn_user: dj.alk_vpn_user,
+                    alk_vpn_passwd: dj.alk_vpn_passwd,
+                    alk_vpn_encrypt: dj.alk_vpn_encrypt,
+                    alk_vpn_status: dj.alk_vpn_status
                 };
-                return dd
+                return di
             } else {
                 return unknownErrorObject
             }
         }
     }
 
-    function c9() {
-        return bz(arguments, {}, db, dc, null, false);
+    function de() {
+        return bB(arguments, {}, dg, dh, null, false);
 
-        function db(de, dd) {
+        function dg(dj, di) {
             return {
                 multi_data: 1,
                 cmd: "alk_vpn_status,alk_vpn_l2tp_server,alk_vpn_l2tp_channel,alk_vpn_l2tp_user,alk_vpn_l2tp_passwd"
             }
         }
 
-        function dc(de) {
-            if (de) {
-                var dd = {
-                    alk_vpn_server: de.alk_vpn_l2tp_server,
-                    vpn_channel: de.alk_vpn_l2tp_channel,
-                    alk_vpn_user: de.alk_vpn_l2tp_user,
-                    alk_vpn_passwd: de.alk_vpn_l2tp_passwd,
-                    alk_vpn_status: de.alk_vpn_status
+        function dh(dj) {
+            if (dj) {
+                var di = {
+                    alk_vpn_server: dj.alk_vpn_l2tp_server,
+                    vpn_channel: dj.alk_vpn_l2tp_channel,
+                    alk_vpn_user: dj.alk_vpn_l2tp_user,
+                    alk_vpn_passwd: dj.alk_vpn_l2tp_passwd,
+                    alk_vpn_status: dj.alk_vpn_status
                 };
-                return dd
+                return di
             } else {
                 return unknownErrorObject
             }
         }
     }
 
-    function co() {
-        return bz(arguments, {}, db, dc, null, true);
+    function cs() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(df, dd) {
-            var de = {};
-            de.goformId = "ALK_VPN_SET";
-            de.vpn_server = df.alk_vpn_server;
-            de.vpn_type = df.alk_vpn_type;
-            de.vpn_user = df.alk_vpn_user;
-            de.vpn_passwd = df.alk_vpn_passwd;
-            de.vpn_channel = df.vpn_channel;
-            de.vpn_encrypt = df.alk_vpn_encrypt;
-            return de
+        function dg(dk, di) {
+            var dj = {};
+            dj.goformId = "ALK_VPN_SET";
+            dj.vpn_server = dk.alk_vpn_server;
+            dj.vpn_type = dk.alk_vpn_type;
+            dj.vpn_user = dk.alk_vpn_user;
+            dj.vpn_passwd = dk.alk_vpn_passwd;
+            dj.vpn_channel = dk.vpn_channel;
+            dj.vpn_encrypt = dk.alk_vpn_encrypt;
+            return dj
         }
 
-        function dc(dd) {
-            if (dd && dd.result == "success") {
-                return dd
+        function dh(di) {
+            if (di && di.result == "success") {
+                return di
             } else {
                 return unknownErrorObject
             }
         }
     }
 
-    function bw() {
-        return bz(arguments, {}, db, dc, null, true);
+    function by() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(dd, de) {
-            var df = {};
-            df.goformId = "ALK_VPN_CONNECT";
-            return df
+        function dg(di, dj) {
+            var dk = {};
+            dk.goformId = "ALK_VPN_CONNECT";
+            return dk
         }
 
-        function dc(dd) {
-            if (dd) {
-                return dd
+        function dh(di) {
+            if (di) {
+                return di
             } else {
-                return V
+                return X
             }
         }
     }
 
     function y() {
-        return bz(arguments, {}, dc, dd, null, true);
+        return bB(arguments, {}, dh, di, null, true);
 
-        function dc(de, df) {
-            var dg = {};
-            dg.goformId = "ALK_VPN_DISCONNECT";
-            return dg
+        function dh(dj, dk) {
+            var dl = {};
+            dl.goformId = "ALK_VPN_DISCONNECT";
+            return dl
         }
 
-        function dd(de) {
-            if (de) {
-                return de
+        function di(dj) {
+            if (dj) {
+                return dj
             } else {
-                return V
+                return X
             }
         }
 
-        function db(de) {
-            if (de.ppp_status == "ppp_disconnecting") {
+        function dg(dj) {
+            if (dj.ppp_status == "ppp_disconnecting") {
                 timerInfo.connectStatus = "ppp_disconnecting"
             } else {
-                if (de.ppp_status == "ppp_disconnected") {
-                    C(db);
+                if (dj.ppp_status == "ppp_disconnected") {
+                    C(dg);
                     timerInfo.connectStatus = "ppp_disconnected";
                     callback({
                         result: true,
@@ -6130,7 +6352,7 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
                     if (new Date().getTime() - checkPoint < 10000) {
                         timerInfo.connectStatus = "ppp_disconnecting"
                     } else {
-                        C(db);
+                        C(dg);
                         callback({
                             result: false
                         })
@@ -6140,169 +6362,169 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
         }
     }
 
-    function bP(db, de) {
-        return bz(arguments, {}, dc, dd, null, false);
+    function bR(dg, dj) {
+        return bB(arguments, {}, dh, di, null, false);
 
-        function dc(df, dg) {
+        function dh(dk, dl) {
             return {
                 multi_data: 1,
                 cmd: "alk_eth_mode"
             }
         }
 
-        function dd(df) {
-            if (df) {
+        function di(dk) {
+            if (dk) {
                 return {
-                    alk_eth_mode: df.alk_eth_mode
+                    alk_eth_mode: dk.alk_eth_mode
                 }
             } else {
-                return V
+                return X
             }
         }
     }
 
-    function bA() {
-        return bz(arguments, {}, db, dc, null, true);
+    function bC() {
+        return bB(arguments, {}, dg, dh, null, true);
 
-        function db(df, dd) {
-            var de = {};
-            de.goformId = "ALK_SET_NET_MODE";
-            de.alk_eth_mode = df.alk_eth_mode;
-            return de
+        function dg(dk, di) {
+            var dj = {};
+            dj.goformId = "ALK_SET_NET_MODE";
+            dj.alk_eth_mode = dk.alk_eth_mode;
+            return dj
         }
 
-        function dc(dd) {
-            if (dd && dd.result == "success") {
-                return dd
+        function dh(di) {
+            if (di && di.result == "success") {
+                return di
             } else {
                 return unknownErrorObject
             }
         }
     }
 
-    function bz(dg, dn, dh, dd, dc, de) {
-        var dk = dg[0],
-            dm = dg[1],
-            df = dg[2];
-        var di;
-        if (dn && typeof dn.errorType === "string") {
-            di = cP.extend(V, dn);
-            if (!dm) {
-                return di
+    function bB(dl, dt, dm, di, dh, dj) {
+        var dq = dl[0],
+            ds = dl[1],
+            dk = dl[2];
+        var dn;
+        if (dt && typeof dt.errorType === "string") {
+            dn = cT.extend(X, dt);
+            if (!ds) {
+                return dn
             }
-            dl(di, dm, df)
+            dr(dn, ds, dk)
         } else {
-            di = cP.extend({}, dn);
-            var dj;
-            if (dh) {
-                dj = dh(dk, de)
+            dn = cT.extend({}, dt);
+            var dp;
+            if (dm) {
+                dp = dm(dq, dj)
             } else {
-                dj = dk
+                dp = dq
             }
-            if (!dm) {
-                if (dj && (dj.cmd || dj.goformId)) {
-                    var db = cu(dj, de);
-                    if (dd) {
-                        di = cP.extend({}, dd(db))
+            if (!ds) {
+                if (dp && (dp.cmd || dp.goformId)) {
+                    var dg = cy(dp, dj);
+                    if (di) {
+                        dn = cT.extend({}, di(dg))
                     } else {
-                        di = db
+                        dn = dg
                     }
                 }
-                return di
+                return dn
             } else {
-                if (dj && (dj.cmd || dj.goformId)) {
-                    c7(dj, function(dp) {
-                        if (dd) {
-                            di = cP.extend({}, dd(dp))
+                if (dp && (dp.cmd || dp.goformId)) {
+                    dc(dp, function(du) {
+                        if (di) {
+                            dn = cT.extend({}, di(du))
                         } else {
-                            di = cP.extend({}, dp)
+                            dn = cT.extend({}, du)
                         }
-                        if (!dj.notCallback) {
-                            dl(di, dm, df)
+                        if (!dp.notCallback) {
+                            dr(dn, ds, dk)
                         }
                     }, function() {
-                        if (dc) {
-                            di = cP.extend(V, dc)
+                        if (dh) {
+                            dn = cT.extend(X, dh)
                         } else {
-                            di = cP.extend(V, {
+                            dn = cT.extend(X, {
                                 errorType: "Unknown"
                             })
                         }
-                        dl(di, dm, df)
-                    }, de)
+                        dr(dn, ds, dk)
+                    }, dj)
                 } else {
-                    dl(di, dm, df)
+                    dr(dn, ds, dk)
                 }
             }
         }
 
-        function dl(dp, dr, dq) {
-            dq = dq ? dq : dr;
-            if (isErrorObject(dp)) {
-                switch (dp.errorType) {
+        function dr(du, dw, dv) {
+            dv = dv ? dv : dw;
+            if (isErrorObject(du)) {
+                switch (du.errorType) {
                     case "cellularNetworkError":
                     case "deviceError":
                     case "wifiConnectionError":
-                        window.receivedNonSpecificError(dp);
+                        window.receivedNonSpecificError(du);
                         break;
                     default:
-                        dq(dp)
+                        dv(du)
                 }
             } else {
-                dr(dp)
+                dw(du)
             }
         }
     }
 
-    function cu(db, dc) {
-        return bj(db, null, null, false, dc)
+    function cy(dg, dh) {
+        return bl(dg, null, null, false, dh)
     }
 
-    function c7(dd, db, dc, de) {
-        bj(dd, db, dc, true, de)
+    function dc(di, dg, dh, dj) {
+        bl(di, dg, dh, true, dj)
     }
 
-    function w(db) {
-        var dd = /^[A-z0-9]+$/;
-        var dc = db.match(dd);
-        if (dc == null) {
+    function w(dg) {
+        var di = /^[A-z0-9]+$/;
+        var dh = dg.match(di);
+        if (dh == null) {
             return "error"
         } else {
-            return db
+            return dg
         }
     }
 
-    function bj(de, dc, dd, dg, df) {
-        var db = null;
-        cP.ajax({
-            type: !!df ? "POST" : "GET",
-            url: df ? "/reqproc/proc_post" : de.cmd ? "/reqproc/proc_get" : "/reqproc/proc_post",
-            data: de,
+    function bl(dj, dh, di, dl, dk) {
+        var dg = null;
+        cT.ajax({
+            type: !!dk ? "POST" : "GET",
+            url: dk ? "/reqproc/proc_post" : dj.cmd ? "/reqproc/proc_get" : "/reqproc/proc_post",
+            data: dj,
             dataType: "json",
-            async: !!dg,
+            async: !!dl,
             cache: false,
-            error: function(dh) {
-                if (dg) {
-                    dd(dh)
+            error: function(dm) {
+                if (dl) {
+                    di(dm)
                 } else {
-                    if (dh.status == 200) {
-                        db = jQuery.parseJSON("(" + w(dh.responseText) + ")")
+                    if (dm.status == 200) {
+                        dg = jQuery.parseJSON("(" + w(dm.responseText) + ")")
                     }
                 }
             },
-            success: function(dh) {
-                if (dg) {
-                    dc(dh)
+            success: function(dm) {
+                if (dl) {
+                    dh(dm)
                 } else {
-                    db = dh
+                    dg = dm
                 }
             }
         });
-        if (!dg) {
-            return db
+        if (!dl) {
+            return dg
         }
     }
-    var bu = {
+    var bw = {
         networkType: "",
         signalImg: "0",
         spn_b1_flag: "1",
@@ -6345,213 +6567,218 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
         fota_user_selector: "",
         defaultWanName: ""
     };
-    var V = {
+    var X = {
         errorType: "UnknownError",
         errorId: "123",
         errorText: "UnknownError"
     };
-    var cO = true;
+    var cS = true;
     return {
-        clearRedirectFlag: cJ,
-        connect: a7,
-        disconnect: P,
-        getSIMPhoneBookCapacity: bQ,
-        getDevicePhoneBookCapacity: ag,
-        getDevicePhoneBooks: c5,
-        getSIMPhoneBooks: cI,
-        getPhoneBooks: S,
-        getPhoneBookReady: ch,
-        getPhoneBooksByGroup: bV,
-        deletePhoneBooks: bl,
-        deleteAllPhoneBooks: aV,
-        deleteAllPhoneBooksByGroup: Z,
-        savePhoneBook: cH,
-        deleteAllMessages: bU,
-        deleteMessage: cA,
-        setSmsRead: ae,
-        sendSMS: aZ,
-        saveSMS: aI,
-        getSMSReady: aJ,
-        getSMSMessages: aL,
+        clearRedirectFlag: cN,
+        connect: a9,
+        disconnect: R,
+        getSIMPhoneBookCapacity: bS,
+        getDevicePhoneBookCapacity: ai,
+        getDevicePhoneBooks: da,
+        getSIMPhoneBooks: cM,
+        getPhoneBooks: U,
+        getPhoneBookReady: ck,
+        getPhoneBooksByGroup: bX,
+        deletePhoneBooks: bn,
+        deleteAllPhoneBooks: aX,
+        deleteAllPhoneBooksByGroup: ab,
+        savePhoneBook: cL,
+        deleteAllMessages: bW,
+        deleteMessage: cE,
+        setSmsRead: ag,
+        sendSMS: a1,
+        saveSMS: aK,
+        getSMSReady: aL,
+        getSMSMessages: aN,
         getSMSDeliveryReport: L,
         getSmsCapability: b,
         resetNewSmsReceivedVar: E,
-        resetSmsReportReceivedVar: b3,
-        getSmsSetting: b1,
-        setSmsSetting: aQ,
-        getAttachedCableDevices: bF,
-        getCurrentlyAttachedDevicesInfo: bq,
-        getConnectionInfo: by,
-        getRedirectData: aP,
+        resetSmsReportReceivedVar: b6,
+        getSmsSetting: b3,
+        setSmsSetting: aS,
+        getAttachedCableDevices: bH,
+        getCurrentlyAttachedDevicesInfo: bs,
+        getConnectionInfo: bA,
+        getRedirectData: aR,
         getLanguage: A,
         setLanguage: k,
-        getNetSelectInfo: Q,
+        getNetSelectInfo: S,
         getSecurityInfo: f,
         setSecurityInfo: z,
         getStatusInfo: e,
         getConnectionMode: K,
-        setConnectionMode: af,
+        setConnectionMode: ah,
+        getSeepdLimitTypes: cr,
+        setSeepdLimitTypes: M,
         getWifiBasic: d,
-        setWifiBasic: cf,
-        setWifiBasic4SSID2: bK,
+        setWifiBasic: ci,
+        setWifiBasic4SSID2: bM,
         setWifiBasicMultiSSIDSwitch: t,
-        getWpsInfo: cc,
+        getWpsInfo: cf,
         openWps: r,
-        getSleepMode: ck,
-        setSleepMode: bf,
-        getWifiAdvance: cp,
-        setWifiAdvance: c1,
-        getWifiRange: W,
-        setWifiRange: cY,
-        getLoginStatus: bd,
-        getLoginData: ci,
-        login: aO,
-        logout: bt,
-        changeManageInfo: bX,
-        getPinData: cZ,
-        enablePin: da,
-        disablePin: b0,
+        getSleepMode: cn,
+        setSleepMode: bh,
+        getWifiAdvance: ct,
+        setWifiAdvance: c5,
+        getWifiRange: Y,
+        setWifiRange: c2,
+        getSimSelect: c8,
+        setSimSelect: b5,
+        getLoginStatus: bf,
+        getLoginData: cm,
+        login: aQ,
+        logout: bv,
+        changeManageInfo: bZ,
+        getPinData: c3,
+        enablePin: df,
+        disablePin: b2,
         changePin: o,
         enterPIN: J,
-        enterPUK: T,
-        getLanInfo: bs,
-        setLanInfo: cd,
+        enterPUK: V,
+        getLanInfo: bu,
+        setLanInfo: cg,
         getApnSettings: l,
-        deleteApn: az,
-        setDefaultApn: bx,
-        addOrEditApn: bo,
-        getQuickSettingInfo: a4,
-        setQuickSetting4IPv6: c6,
-        scanForNetwork: aF,
-        setBearerPreference: bJ,
-        editHostName: bg,
-        getSiteWhiteList: c3,
+        deleteApn: aB,
+        setDefaultApn: bz,
+        addOrEditApn: bq,
+        getQuickSettingInfo: a6,
+        setQuickSetting4IPv6: db,
+        scanForNetwork: aH,
+        setBearerPreference: bL,
+        editHostName: bi,
+        getSiteWhiteList: c7,
         removeSiteWhite: F,
-        saveSiteWhite: bB,
-        setNetwork: bm,
-        getUpnpSetting: ak,
-        setUpnpSetting: a2,
-        getDmzSetting: aA,
-        setDmzSetting: cU,
-        getDeviceInfo: a9,
-        getDeviceInfoLow: cW,
+        saveSiteWhite: bD,
+        setNetwork: bo,
+        getUpnpSetting: am,
+        setUpnpSetting: a4,
+        getDmzSetting: aC,
+        setDmzSetting: cY,
+        getDeviceInfo: bb,
+        getDeviceInfoLow: c0,
         getPortForward: D,
-        setPortForward: ap,
-        getPortFilter: be,
-        setPortFilterBasic: ai,
-        setPortFilter: U,
-        deleteFilterRules: aB,
-        getPortMap: a8,
-        setPortMap: bH,
-        enablePortMap: bE,
-        deleteMapRules: aY,
+        setPortForward: ar,
+        getPortFilter: bg,
+        setPortFilterBasic: ak,
+        setPortFilter: W,
+        deleteFilterRules: aD,
+        getPortMap: ba,
+        setPortMap: bJ,
+        enablePortMap: bG,
+        deleteMapRules: a0,
         getTrafficAlertInfo: I,
-        setTrafficAlertInfo: am,
-        getCurrentUpgradeState: bh,
-        setUpgradeSelectOp: N,
-        addTimerThings: bb,
+        setTrafficAlertInfo: ao,
+        getCurrentUpgradeState: bj,
+        setUpgradeSelectOp: P,
+        addTimerThings: bd,
         removeTimerThings: m,
-        getPackSizeInfo: O,
-        getMandatory: bk,
+        getPackSizeInfo: Q,
+        getMandatory: bm,
         getOTAUpdateSetting: G,
-        setOTAUpdateSetting: al,
+        setOTAUpdateSetting: an,
         getSignalStrength: h,
-        getOTAlastCheckTime: c8,
+        getOTAlastCheckTime: dd,
         clearUpdateResult: j,
-        refreshAPStationStatus: aa,
-        getSntpParams: aq,
+        refreshAPStationStatus: ac,
+        getSntpParams: at,
         setSntpSetting: g,
-        setSNTPDate: b7,
-        restoreFactorySettings: ay,
-        checkRestoreStatus: ab,
-        getSysSecurity: bW,
-        setSysSecurity: cE,
-        deleteForwardRules: cD,
-        enableVirtualServer: aD,
-        getSDConfiguration: bS,
-        setSdCardMode: cw,
-        checkFileExists: M,
-        getFileList: ad,
-        fileRename: bC,
+        setSNTPDate: ca,
+        restoreFactorySettings: aA,
+        checkRestoreStatus: ad,
+        getSysSecurity: bY,
+        setSysSecurity: cI,
+        deleteForwardRules: cH,
+        enableVirtualServer: aF,
+        getSDConfiguration: bU,
+        setSdCardMode: cA,
+        checkFileExists: O,
+        getFileList: af,
+        fileRename: bE,
         getSdMemorySizes: B,
-        deleteFilesAndFolders: aW,
+        deleteFilesAndFolders: aY,
         createFolder: H,
-        setSdCardSharing: cb,
-        setUpdateInfoWarning: c4,
-        getUpdateInfoWarning: b2,
-        getAPStationBasic: au,
-        setAPStationBasic: bc,
-        getWdsInfo: bI,
-        setWDS: ao,
-        addUrlFilterRule: ca,
-        getUrlFilterList: bR,
-        deleteSelectedRules: cn,
-        getMacFilterInfo: b6,
-        setMacFilter: aC,
-        getFastbootSetting: at,
-        setFastbootSetting: bO,
-        turnOffDevice: a5,
-        restart: ah,
-        updateTimerFlag: cO,
+        setSdCardSharing: ce,
+        setUpdateInfoWarning: c9,
+        getUpdateInfoWarning: b4,
+        getAPStationBasic: aw,
+        setAPStationBasic: be,
+        getWdsInfo: bK,
+        setWDS: aq,
+        addUrlFilterRule: cd,
+        getUrlFilterList: bT,
+        deleteSelectedRules: cq,
+        getMacFilterInfo: b9,
+        setMacFilter: aE,
+        getFastbootSetting: av,
+        setFastbootSetting: bQ,
+        turnOffDevice: a7,
+        restart: aj,
+        updateTimerFlag: cS,
         childGroupList: v,
-        addChildGroup: cs,
-        removeChildGroup: cG,
+        addChildGroup: cw,
+        removeChildGroup: cK,
         checkCurrentUserInChildGroup: s,
-        getTimeLimited: b5,
+        getTimeLimited: b8,
         saveTimeLimited: n,
         getHostNameList: u,
-        getHotspotList: cl,
-        searchHotspot: an,
-        getSearchHotspotList: X,
-        saveHotspot: aj,
-        deleteHotspot: cV,
-        connectHotspot: bG,
-        disconnectHotspot: aK,
-        getOpMode: cS,
-        getRj45PlugState: a3,
-        SetOperationMode: bi,
-        getPppoeParams: a6,
-        setPppoeDialMode: cB,
-        getTsw: ct,
-        saveTsw: bN,
-        trafficCalibration: aN,
-        getParams: cm,
-        getNewVersionState: Y,
-        getUpgradeResult: cC,
-        getV4Switch: b4,
-        setV4Switch: bL,
-        getCellId: aG,
-        setCellIdSwitch: bZ,
-        getDdnsParams: bT,
-        setDDNSForward: aS,
-        getUpdateType: cR,
-        getCurretnMAC: aR,
-        getUSSDResponse: cz,
+        getHotspotList: co,
+        searchHotspot: ap,
+        getSearchHotspotList: Z,
+        saveHotspot: al,
+        deleteHotspot: cZ,
+        connectHotspot: bI,
+        disconnectHotspot: aM,
+        getOpMode: cW,
+        getRj45PlugState: a5,
+        SetOperationMode: bk,
+        getPppoeParams: a8,
+        setPppoeDialMode: cF,
+        getTsw: cx,
+        saveTsw: bP,
+        trafficCalibration: aP,
+        getParams: cp,
+        getNewVersionState: aa,
+        getUpgradeResult: cG,
+        getV4Switch: b7,
+        setV4Switch: bN,
+        getCellId: aI,
+        setCellIdSwitch: b1,
+        getDdnsParams: bV,
+        setDDNSForward: aU,
+        getUpdateType: cV,
+        getCurretnMAC: aT,
+        getUSSDResponse: cD,
         USSDReplyCancel: p,
-        getNetworkUnlockTimes: cj,
-        unlockNetwork: aM,
+        getNetworkUnlockTimes: cl,
+        unlockNetwork: aO,
         getSyslogInfo: x,
-        setSysLog: ba,
-        getNetInfo: cy,
+        setSysLog: bc,
+        getNetInfo: cC,
         getNetBandInfo: q,
-        setselectedband: R,
-        getVpnSettings: bY,
-        setVpnSettings: co,
-        getVpnSettings_l2tp: c9,
-        getVpnSettings_pptp: ar,
-        Vpnconnect: bw,
+        setselectedband: T,
+        getVpnSettings: b0,
+        setVpnSettings: cs,
+        getVpnSettings_l2tp: de,
+        getVpnSettings_pptp: au,
+        Vpnconnect: by,
         VPNdisconnect: y,
-        setEth_mode: bA,
-        getEth_mode: bP,
-        setIMEI: bD,
-        setTTL: br,
-        setDnsLan: cr,
-        getIMEITTL: cF,
-        getRebootTimeEnable: av,
-        SetRebootTimeEnable: cq,
-        getRebootTime: c0,
-        getDisconnetReboot: cT,
-        SetDisconnetReboot: b9
+        setEth_mode: bC,
+        getEth_mode: bR,
+        setIMEI: bF,
+        setTTL: bt,
+        setDnsLan: cv,
+        getIMEITTL: cJ,
+        getRebootTimeEnable: ax,
+        SetRebootTimeEnable: cu,
+        getRebootTime: c4,
+        getDisconnetReboot: cX,
+        SetDisconnetReboot: cc,
+        setSimSelect_with_pwd: N
     }
 });
 define("adm_lan", "jquery knockout set service".split(" "), function(h, o, d, j) {
@@ -6864,134 +7091,160 @@ define("adm_lan", "jquery knockout set service".split(" "), function(h, o, d, j)
         init: n
     }
 });
-define("adm_others", "jquery knockout set service underscore".split(" "), function(c, a, r, t, s) {
-    var o = s.map(r.diconntReboot, function(u) {
-        return new Option(u.name, u.value)
+define("adm_others", "jquery knockout set service underscore".split(" "), function(c, a, s, u, t) {
+    var p = t.map(s.diconntReboot, function(v) {
+        return new Option(v.name, v.value)
     });
-    var d = s.map(r.sntpTimeSetMode, function(u) {
-        return new Option(u.name, u.value)
+    var d = t.map(s.sntpTimeSetMode, function(v) {
+        return new Option(v.name, v.value)
     });
-    var e = s.map(r.timeZone, function(u) {
-        return new Option(u.name, u.value)
+    var e = t.map(s.timeZone, function(v) {
+        return new Option(v.name, v.value)
     });
-    var g = s.map(r.daylightSave, function(u) {
-        return new Option(u.name, u.value)
+    var g = t.map(s.daylightSave, function(v) {
+        return new Option(v.name, v.value)
     });
-    var j = [];
+    var h = t.map(s.SIM_SELECTS, function(v) {
+        return new Option(v.name, v.value)
+    });
+    var k = [];
     var f = [];
     var b = [];
-    var l = [];
-    var h = [];
-    var q = [1, 3, 5, 7, 8, 10, 12];
-    var k = [4, 6, 9, 11];
+    var m = [];
+    var j = [];
+    var r = [1, 3, 5, 7, 8, 10, 12];
+    var l = [4, 6, 9, 11];
 
-    function p(y, u, x) {
-        var w = {};
-        for (var v = y; v <= u; v++) {
-            w.name = v;
-            w.value = v;
-            x.push(new Option(w.name, w.value))
+    function q(z, v, y) {
+        var x = {};
+        for (var w = z; w <= v; w++) {
+            x.name = w;
+            x.value = w;
+            y.push(new Option(x.name, x.value))
         }
     }
-    p(2000, 2030, j);
-    p(1, 12, f);
-    p(0, 23, l);
-    p(0, 59, h);
+    q(2000, 2030, k);
+    q(1, 12, f);
+    q(0, 23, m);
+    q(0, 59, j);
 
-    function n() {
-        var B = this;
-        var D = false;
-        B.fastbootSupport = r.FAST_BOOT_SUPPORT;
-        B.turnOffSupport = r.TURN_OFF_SUPPORT;
-        B.SNTPSupport = r.HAS_SNTP;
-        B.hasUssd = r.HAS_USSD;
-        B.hasDdns = r.DDNS_SUPPORT;
-        B.hasUpdateCheck = r.HAS_UPDATE_CHECK;
-        B.hasUssd = r.HAS_USSD;
-        B.hasDdns = r.DDNS_SUPPORT;
-        B.selectedType = a.observable(t.getDisconnetReboot().network_detect_switch);
-        B.types = a.observableArray(o);
-        var v = t.getLanInfo();
-        B.dnsIpAddress = a.observable(v.lan_dns_ip);
-        B.dnsServer = a.observable(v.lan_dns_mode);
-        if (r.HAS_PARENTAL_CONTROL) {
-            D = t.checkCurrentUserInChildGroup().result
+    function o() {
+        var D = this;
+        var F = false;
+        D.fastbootSupport = s.FAST_BOOT_SUPPORT;
+        D.turnOffSupport = s.TURN_OFF_SUPPORT;
+        D.SNTPSupport = s.HAS_SNTP;
+        D.hasUssd = s.HAS_USSD;
+        D.hasDdns = s.DDNS_SUPPORT;
+        D.hasUpdateCheck = s.HAS_UPDATE_CHECK;
+        D.hasUssd = s.HAS_USSD;
+        D.hasDdns = s.DDNS_SUPPORT;
+        D.selectedType = a.observable(u.getDisconnetReboot().network_detect_switch);
+        D.types = a.observableArray(p);
+        var x = u.getLanInfo();
+        D.dnsIpAddress = a.observable(x.lan_dns_ip);
+        D.dnsServer = a.observable(x.lan_dns_mode);
+        D.selectMode = a.observable();
+        D.password = a.observable();
+        var I = u.getSimSelect();
+        D.modes = a.observableArray(h);
+        D.selectMode = a.observable(I.alk_sim_select);
+        if (s.HAS_PARENTAL_CONTROL) {
+            F = u.checkCurrentUserInChildGroup().result
         }
-        B.currentUserInChildGroup = a.observable(D);
-        var E = t.getFastbootSetting();
-        B.fastbootEnableFlag = a.observable(r.RJ45_SUPPORT ? (E.need_sim_pin != "yes" && t.getRj45PlugState().rj45_plug == "wan_lan_off") : E.need_sim_pin != "yes");
-        B.fastbootSetting = a.observable(E.fastbootEnabled);
-        var A = t.getRebootTime();
-        B.reboottime = a.observable(A.midnight_reboot_hour);
-        var F = t.getRebootTimeEnable();
-        B.select_reboottime = a.observable(F.midnight_reboot_switch);
-        B.saveReboottime = w;
+        D.currentUserInChildGroup = a.observable(F);
+        var G = u.getFastbootSetting();
+        D.fastbootEnableFlag = a.observable(s.RJ45_SUPPORT ? (G.need_sim_pin != "yes" && u.getRj45PlugState().rj45_plug == "wan_lan_off") : G.need_sim_pin != "yes");
+        D.fastbootSetting = a.observable(G.fastbootEnabled);
+        var C = u.getRebootTime();
+        D.reboottime = a.observable(C.midnight_reboot_hour);
+        var H = u.getRebootTimeEnable();
+        D.select_reboottime = a.observable(H.midnight_reboot_switch);
+        D.saveReboottime = y;
         addInterval(function() {
-            B.fastbootEnableFlag(r.RJ45_SUPPORT ? (E.need_sim_pin != "yes" && t.getRj45PlugState().rj45_plug == "wan_lan_off") : E.need_sim_pin != "yes")
+            D.fastbootEnableFlag(s.RJ45_SUPPORT ? (G.need_sim_pin != "yes" && u.getRj45PlugState().rj45_plug == "wan_lan_off") : G.need_sim_pin != "yes")
         }, 1000);
-        B.dnsSave = function() {
+        D.dnsSave = function() {
             showLoading("waiting");
-            var G = {
-                lan_dns_ip: B.dnsIpAddress(),
-                lan_dns_mode: B.dnsServer()
+            var J = {
+                lan_dns_ip: D.dnsIpAddress(),
+                lan_dns_mode: D.dnsServer()
             };
-            t.setDnsLan(G, function(H) {
-                if ("success" == H.result) {
+            u.setDnsLan(J, function(K) {
+                if ("success" == K.result) {
                     showConfirm("restart_confirm", function() {
-                        restartDevice(t)
+                        restartDevice(u)
                     })
                 } else {
                     errorOverlay()
                 }
             })
         };
-        B.restore = function() {
+        D.save = v;
+
+        function v() {
+            showLoading();
+            var J = D.selectMode();
+            u.setSimSelect_with_pwd({
+                sim_select: J,
+                admin_pwd: D.password()
+            }, function(K) {
+                if (K.result == "success") {
+                    showConfirm("restart_confirm", function() {
+                        restartDevice(u)
+                    })
+                } else {
+                    errorOverlay()
+                }
+            })
+        }
+        D.restore = function() {
             showConfirm("restore_confirm", function() {
                 showLoading("restoring");
-                t.restoreFactorySettings({}, function(G) {
-                    if (G && G.result == "success") {
+                u.restoreFactorySettings({}, function(J) {
+                    if (J && J.result == "success") {
                         successOverlay()
                     } else {
                         errorOverlay()
                     }
-                }, function(G) {
-                    if (isErrorObject(G) && G.errorType == "no_auth") {
+                }, function(J) {
+                    if (isErrorObject(J) && J.errorType == "no_auth") {
                         errorOverlay()
                     }
                 })
             })
         };
-        B.saveRebootDisconnet = function() {
-            var G = {
-                network_detect_switch: B.selectedType()
+        D.saveRebootDisconnet = function() {
+            var J = {
+                network_detect_switch: D.selectedType()
             };
             showLoading();
-            t.SetDisconnetReboot(G, function(H) {
-                if (H && H.result == "success") {
+            u.SetDisconnetReboot(J, function(K) {
+                if (K && K.result == "success") {
                     successOverlay();
                     showConfirm("restart_confirm2", function() {
-                        restartDevice(t)
+                        restartDevice(u)
                     })
                 } else {
                     errorOverlay()
                 }
-            }, function(H) {
+            }, function(K) {
                 errorOverlay()
             })
         };
-        B.restart = function() {
+        D.restart = function() {
             showConfirm("restart_confirm", function() {
-                restartDevice(t)
+                restartDevice(u)
             })
         };
-        B.saveFastBoot = function() {
+        D.saveFastBoot = function() {
             showLoading();
-            var G = {
-                fastbootEnabled: B.fastbootSetting(),
-                need_hard_reboot: E.need_hard_reboot
+            var J = {
+                fastbootEnabled: D.fastbootSetting(),
+                need_hard_reboot: G.need_hard_reboot
             };
-            t.setFastbootSetting(G, function(H) {
-                if (H.result == "success") {
+            u.setFastbootSetting(J, function(K) {
+                if (K.result == "success") {
                     successOverlay()
                 } else {
                     errorOverlay()
@@ -6999,25 +7252,25 @@ define("adm_others", "jquery knockout set service underscore".split(" "), functi
             })
         };
 
-        function w() {
+        function y() {
             showLoading();
-            var G = {
-                midnight_reboot_switch: B.select_reboottime(),
-                midnight_reboot_hour: parseInt(B.reboottime())
+            var J = {
+                midnight_reboot_switch: D.select_reboottime(),
+                midnight_reboot_hour: parseInt(D.reboottime())
             };
-            t.SetRebootTimeEnable(G, function(H) {
-                if (H.result == "success") {
+            u.SetRebootTimeEnable(J, function(K) {
+                if (K.result == "success") {
                     successOverlay()
                 } else {
                     errorOverlay()
                 }
             })
         }
-        B.turnoff = function() {
+        D.turnoff = function() {
             showConfirm("turnoff_confirm", function() {
                 showLoading("turnoff");
-                t.turnOffDevice({}, function(G) {
-                    if (G && G.result == "success") {
+                u.turnOffDevice({}, function(J) {
+                    if (J && J.result == "success") {
                         successOverlay()
                     } else {
                         errorOverlay()
@@ -7025,131 +7278,131 @@ define("adm_others", "jquery knockout set service underscore".split(" "), functi
                 }, c.noop)
             })
         };
-        t.setSNTPDate({
+        u.setSNTPDate({
             goformId: "SNTP_Getdatastatic"
         });
-        var B = this;
-        var y = t.getSntpParams();
-        globalTime = new Date(parseInt(y.sntp_year, 10), parseInt(y.sntp_month, 10) - 1, parseInt(y.sntp_day, 10), parseInt(y.sntp_hour, 10), parseInt(y.sntp_minute, 10), parseInt(y.sntp_second, 10));
-        B.day = a.observable();
-        B.localTime = a.observable();
-        B.timeSetModes = a.observableArray(d);
-        B.isManualSetTime = a.observable(false);
-        B.isAutoSntpTime = a.observable(false);
-        B.currentMode = a.observable(y.sntp_time_set_mode);
-        x();
-        B.changeSetTimeMode = function() {
-            x()
-        };
-        B.currentYear = a.observable(parseInt(y.sntp_year, 10));
-        B.currentMonth = a.observable(parseInt(y.sntp_month, 10));
-        B.currentDate = a.observable(parseInt(y.sntp_day, 10));
-        B.currentHour = a.observable(parseInt(y.sntp_hour, 10));
-        B.currentMinute = a.observable(parseInt(y.sntp_minute, 10));
-        B.years = a.observableArray(j);
-        B.months = a.observableArray(f);
-        B.initDateList = function() {
-            z();
-            B.dates(b)
-        };
+        var D = this;
+        var A = u.getSntpParams();
+        globalTime = new Date(parseInt(A.sntp_year, 10), parseInt(A.sntp_month, 10) - 1, parseInt(A.sntp_day, 10), parseInt(A.sntp_hour, 10), parseInt(A.sntp_minute, 10), parseInt(A.sntp_second, 10));
+        D.day = a.observable();
+        D.localTime = a.observable();
+        D.timeSetModes = a.observableArray(d);
+        D.isManualSetTime = a.observable(false);
+        D.isAutoSntpTime = a.observable(false);
+        D.currentMode = a.observable(A.sntp_time_set_mode);
         z();
-        B.dates = a.observableArray(b);
-        B.hours = a.observableArray(l);
-        B.minutes = a.observableArray(h);
-        var C = s.map(y.sntp_servers, function(G) {
-            return new Option(G.name, G.value)
-        });
-        B.serverList = a.observableArray(C);
-        B.currentServer0 = a.observable(y.sntp_server0);
-        B.currentServer1 = a.observable(y.sntp_server1);
-        B.currentServer2 = a.observable(y.sntp_server2);
-        B.customServer0 = a.observable(y.sntp_other_server0);
-        B.customServer1 = a.observable(y.sntp_other_server1);
-        B.customServer2 = a.observable(y.sntp_other_server2);
-        B.isOther0 = a.observable(false);
-        B.isOther1 = a.observable(false);
-        B.isOther2 = a.observable(false);
-        u();
-        B.changeServerSelect = function() {
-            u()
+        D.changeSetTimeMode = function() {
+            z()
         };
-        B.timeZones = a.observableArray(e);
-        B.currentTimeZone = a.observable(y.sntp_timezone + "_" + y.sntp_timezone_index);
-        B.daylightSaves = a.observableArray(g);
-        B.currentDaylightSave = a.observable(y.sntp_dst_enable);
-        B.updateCurrentTime = function() {
-            var G = globalTime.getDay();
-            switch (G) {
+        D.currentYear = a.observable(parseInt(A.sntp_year, 10));
+        D.currentMonth = a.observable(parseInt(A.sntp_month, 10));
+        D.currentDate = a.observable(parseInt(A.sntp_day, 10));
+        D.currentHour = a.observable(parseInt(A.sntp_hour, 10));
+        D.currentMinute = a.observable(parseInt(A.sntp_minute, 10));
+        D.years = a.observableArray(k);
+        D.months = a.observableArray(f);
+        D.initDateList = function() {
+            B();
+            D.dates(b)
+        };
+        B();
+        D.dates = a.observableArray(b);
+        D.hours = a.observableArray(m);
+        D.minutes = a.observableArray(j);
+        var E = t.map(A.sntp_servers, function(J) {
+            return new Option(J.name, J.value)
+        });
+        D.serverList = a.observableArray(E);
+        D.currentServer0 = a.observable(A.sntp_server0);
+        D.currentServer1 = a.observable(A.sntp_server1);
+        D.currentServer2 = a.observable(A.sntp_server2);
+        D.customServer0 = a.observable(A.sntp_other_server0);
+        D.customServer1 = a.observable(A.sntp_other_server1);
+        D.customServer2 = a.observable(A.sntp_other_server2);
+        D.isOther0 = a.observable(false);
+        D.isOther1 = a.observable(false);
+        D.isOther2 = a.observable(false);
+        w();
+        D.changeServerSelect = function() {
+            w()
+        };
+        D.timeZones = a.observableArray(e);
+        D.currentTimeZone = a.observable(A.sntp_timezone + "_" + A.sntp_timezone_index);
+        D.daylightSaves = a.observableArray(g);
+        D.currentDaylightSave = a.observable(A.sntp_dst_enable);
+        D.updateCurrentTime = function() {
+            var J = globalTime.getDay();
+            switch (J) {
                 case 6:
-                    B.day(c.i18n.prop("saturday"));
+                    D.day(c.i18n.prop("saturday"));
                     break;
                 case 5:
-                    B.day(c.i18n.prop("friday"));
+                    D.day(c.i18n.prop("friday"));
                     break;
                 case 4:
-                    B.day(c.i18n.prop("thursday"));
+                    D.day(c.i18n.prop("thursday"));
                     break;
                 case 3:
-                    B.day(c.i18n.prop("wednesday"));
+                    D.day(c.i18n.prop("wednesday"));
                     break;
                 case 2:
-                    B.day(c.i18n.prop("tuesday"));
+                    D.day(c.i18n.prop("tuesday"));
                     break;
                 case 1:
-                    B.day(c.i18n.prop("monday"));
+                    D.day(c.i18n.prop("monday"));
                     break;
                 case 0:
-                    B.day(c.i18n.prop("sunday"));
+                    D.day(c.i18n.prop("sunday"));
                     break;
                 default:
                     break
             }
-            var H = globalTime.getFullYear() + "-" + getTwoDigit(globalTime.getMonth() + 1) + "-" + getTwoDigit(globalTime.getDate()) + " " + getTwoDigit(globalTime.getHours()) + ":" + getTwoDigit(globalTime.getMinutes()) + ":" + getTwoDigit(globalTime.getSeconds());
-            B.localTime(H);
+            var K = globalTime.getFullYear() + "-" + getTwoDigit(globalTime.getMonth() + 1) + "-" + getTwoDigit(globalTime.getDate()) + " " + getTwoDigit(globalTime.getHours()) + ":" + getTwoDigit(globalTime.getMinutes()) + ":" + getTwoDigit(globalTime.getSeconds());
+            D.localTime(K);
             globalTime.setTime(globalTime.getTime() + 1000)
         };
-        B.apply = function() {
-            var H = [];
-            for (var G = 0; G < y.sntp_servers.length; G++) {
-                H.push(y.sntp_servers[G].value)
+        D.apply = function() {
+            var K = [];
+            for (var J = 0; J < A.sntp_servers.length; J++) {
+                K.push(A.sntp_servers[J].value)
             }
-            var J = t.getStatusInfo();
-            if (!checkConnectedStatus(J.connectStatus, J.rj45ConnectStatus, J.connectWifiStatus) && B.currentMode() == "auto") {
+            var M = u.getStatusInfo();
+            if (!checkConnectedStatus(M.connectStatus, M.rj45ConnectStatus, M.connectWifiStatus) && D.currentMode() == "auto") {
                 showAlert("sntp_syn_time_wan_connected");
                 return
             }
             showLoading("");
-            var I = {
+            var L = {
                 goformId: "SNTP",
-                manualsettime: B.currentMode(),
-                sntp_server1_ip: B.currentServer0(),
-                sntp_server2_ip: B.currentServer1(),
-                sntp_server3_ip: B.currentServer2(),
-                sntp_other_server0: B.customServer0(),
-                sntp_other_server1: B.customServer1(),
-                sntp_other_server2: B.customServer2(),
-                timezone: B.currentTimeZone().split("_")[0],
-                sntp_timezone_index: B.currentTimeZone().split("_")[1],
-                DaylightEnabled: B.currentDaylightSave(),
-                time_year: B.currentYear(),
-                time_month: B.currentMonth(),
-                time_day: B.currentDate(),
-                time_hour: B.currentHour(),
-                time_minute: B.currentMinute()
+                manualsettime: D.currentMode(),
+                sntp_server1_ip: D.currentServer0(),
+                sntp_server2_ip: D.currentServer1(),
+                sntp_server3_ip: D.currentServer2(),
+                sntp_other_server0: D.customServer0(),
+                sntp_other_server1: D.customServer1(),
+                sntp_other_server2: D.customServer2(),
+                timezone: D.currentTimeZone().split("_")[0],
+                sntp_timezone_index: D.currentTimeZone().split("_")[1],
+                DaylightEnabled: D.currentDaylightSave(),
+                time_year: D.currentYear(),
+                time_month: D.currentMonth(),
+                time_day: D.currentDate(),
+                time_hour: D.currentHour(),
+                time_minute: D.currentMinute()
             };
-            t.setSntpSetting(I, function(K) {
-                if (K) {
-                    if (K.result == "success" && B.currentMode() == "auto") {
+            u.setSntpSetting(L, function(N) {
+                if (N) {
+                    if (N.result == "success" && D.currentMode() == "auto") {
                         successOverlay("sntp_req_success")
                     } else {
-                        if (K.result == "processing" && B.currentMode() == "auto") {
+                        if (N.result == "processing" && D.currentMode() == "auto") {
                             successOverlay("sntp_processing")
                         } else {
-                            t.setSNTPDate({
+                            u.setSNTPDate({
                                 goformId: "SNTP_Getdatastatic"
-                            }, function(L) {
-                                var M = t.getSntpParams();
-                                globalTime = new Date(parseInt(M.sntp_year, 10), parseInt(M.sntp_month, 10) - 1, parseInt(M.sntp_day, 10), parseInt(M.sntp_hour, 10), parseInt(M.sntp_minute, 10), parseInt(M.sntp_second, 10));
+                            }, function(O) {
+                                var P = u.getSntpParams();
+                                globalTime = new Date(parseInt(P.sntp_year, 10), parseInt(P.sntp_month, 10) - 1, parseInt(P.sntp_day, 10), parseInt(P.sntp_hour, 10), parseInt(P.sntp_minute, 10), parseInt(P.sntp_second, 10));
                                 successOverlay()
                             })
                         }
@@ -7160,56 +7413,56 @@ define("adm_others", "jquery knockout set service underscore".split(" "), functi
             })
         };
 
-        function x() {
-            if (B.currentMode() == "manual") {
-                B.isManualSetTime(true);
-                B.isAutoSntpTime(false)
+        function z() {
+            if (D.currentMode() == "manual") {
+                D.isManualSetTime(true);
+                D.isAutoSntpTime(false)
             } else {
-                B.isManualSetTime(false);
-                B.isAutoSntpTime(true)
+                D.isManualSetTime(false);
+                D.isAutoSntpTime(true)
             }
             return true
         }
 
-        function z() {
+        function B() {
             b = [];
-            if (c.inArray(parseInt(B.currentMonth(), 10), k) != -1) {
-                p(1, 30, b)
+            if (c.inArray(parseInt(D.currentMonth(), 10), l) != -1) {
+                q(1, 30, b)
             } else {
-                if (c.inArray(parseInt(B.currentMonth(), 10), q) != -1) {
-                    p(1, 31, b)
+                if (c.inArray(parseInt(D.currentMonth(), 10), r) != -1) {
+                    q(1, 31, b)
                 } else {
-                    if (parseInt(B.currentYear(), 10) % 4 == 0) {
-                        p(1, 29, b)
+                    if (parseInt(D.currentYear(), 10) % 4 == 0) {
+                        q(1, 29, b)
                     } else {
-                        p(1, 28, b)
+                        q(1, 28, b)
                     }
                 }
             }
         }
 
-        function u() {
-            B.isOther0(B.currentServer0() == "Other");
-            B.isOther1(B.currentServer1() == "Other");
-            B.isOther2(B.currentServer2() == "Other");
-            !B.isOther0() && c("#sntp_server0").find(".error").hide();
-            !B.isOther1() && c("#sntp_server1").find(".error").hide();
-            !B.isOther2() && c("#sntp_server2").find(".error").hide()
+        function w() {
+            D.isOther0(D.currentServer0() == "Other");
+            D.isOther1(D.currentServer1() == "Other");
+            D.isOther2(D.currentServer2() == "Other");
+            !D.isOther0() && c("#sntp_server0").find(".error").hide();
+            !D.isOther1() && c("#sntp_server1").find(".error").hide();
+            !D.isOther2() && c("#sntp_server2").find(".error").hide()
         }
     }
 
-    function m() {
-        var v = new n();
-        var u = c("#container")[0];
-        a.cleanNode(u);
-        a.applyBindings(v, u);
-        v.updateCurrentTime();
+    function n() {
+        var w = new o();
+        var v = c("#container")[0];
+        a.cleanNode(v);
+        a.applyBindings(w, v);
+        w.updateCurrentTime();
         addInterval(function() {
-            v.updateCurrentTime()
+            w.updateCurrentTime()
         }, 1000);
         c("#sntpForm").validate({
             submitHandler: function() {
-                v.apply()
+                w.apply()
             },
             rules: {
                 sntp_other_server0: "sntp_invalid_server_name",
@@ -7219,7 +7472,7 @@ define("adm_others", "jquery knockout set service underscore".split(" "), functi
         });
         c("#frmrebootime").validate({
             submitHandler: function() {
-                v.saveReboottime()
+                w.saveReboottime()
             },
             rules: {
                 reboottimevalue: "rebootNew_check"
@@ -7227,7 +7480,7 @@ define("adm_others", "jquery knockout set service underscore".split(" "), functi
         });
         c("#dnsLan").validate({
             submitHandler: function() {
-                v.dnsSave()
+                w.dnsSave()
             },
             rules: {
                 dnsIpAddress: {
@@ -7237,7 +7490,7 @@ define("adm_others", "jquery knockout set service underscore".split(" "), functi
         })
     }
     return {
-        init: m
+        init: n
     }
 });
 define("imeistl", "jquery knockout set service underscore".split(" "), function(f, d, c, a, b) {
@@ -8617,6 +8870,7 @@ define("main", "set service knockout underscore jquery statusBar echarts".split(
         var u = this;
         u.hasSms = k.HAS_SMS;
         u.hasPhonebook = k.HAS_PHONEBOOK;
+        u.hasUssd = k.HAS_USSD;
         u.isSupportSD = k.SD_CARD_SUPPORT;
         u.isCPE = k.PRODUCT_TYPE == "CPE";
         u.hasRj45 = k.RJ45_SUPPORT;
@@ -8718,7 +8972,7 @@ define("main", "set service knockout underscore jquery statusBar echarts".split(
             u.imsi(verifyDeviceInfo(x.imsi));
             u.ssid(verifyDeviceInfo(x.ssid));
             u.iccid(verifyDeviceInfo(x.iccid));
-            u.CurrentBand(verifyDeviceInfo(x.arfcn));
+            u.CurrentBand(verifyDeviceInfo(x.lte_band));
             u.showMultiSsid(k.HAS_MULTI_SSID && x.multi_ssid_enable == "1");
             return x
         }

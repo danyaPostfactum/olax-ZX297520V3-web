@@ -174,6 +174,13 @@ define(function() {
         requireLogin: a,
         checkSIMStatus: true
     }, {
+        hash: "#speedlimit_set",
+        path: "network_speedlimit_set",
+        level: "3",
+        parent: "#network_set",
+        requireLogin: a,
+        checkSIMStatus: true
+    }, {
         hash: "#wlan_station",
         path: "wifi_ap_station",
         level: "2",

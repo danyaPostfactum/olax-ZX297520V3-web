@@ -5,6 +5,7 @@
             <li><a href="#msg_main" data-bind="visible: hasSms" data-trans="sms" class="cF53A58"></a></li>
             <li><a href="#pb_main" data-bind="visible: hasPhonebook" data-trans="phonebook" class="c00AEFF"></a></li>
             <li><a href="#sdcard" data-bind="visible: isSupportSD" data-trans="sd" class="c2175FF"></a></li>
+            <li data-bind="visible:hasUssd"><a href="#usat" data-trans="USSD"></a></li>
             <li><a data-bind="attr: {href: notDataCard? '#wlan_sleep' : '#demilitarized_zone'}" data-trans="advanced_settings" class="cFFCE2B"></a></li>
             <li><a href="#fast_set" data-bind="visible: isSupportQuicksetting()" data-trans="quick_setting" class="cFFCE2B"></a></li>
         </ul>

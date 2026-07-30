@@ -14,7 +14,7 @@
             <div class="nav_right">
                 <ul data-bind="visible: isShowSSIDInfoDiv">
                     <li><a data-trans="multi_ssid_1" data-bind="attr:{'data-trans': hasMultiSSID ? 'multi_ssid_1':'ssid_title'}" href="#wlan_main"></a></li>
-                    <li data-bind="visible: hasMultiSSID"><a data-trans="multi_ssid_2" href="#wlan_guset"></a></li><!--<li><a data-trans="wps" href="#wlan_wps"></a></li>-->
+                    <li data-bind="visible: hasMultiSSID"><a data-trans="multi_ssid_2" href="#wlan_guset"></a></li><!-- <li><a data-trans="wps" href="#wlan_wps"></a></li> -->
                     <li data-bind="visible: hasAPStation"><a data-trans="ap_station" href="#wlan_station"></a></li>
                     <li class="active"><a data-trans="wifi_advance" href="#wlan_adv"></a></li>
                     <li data-bind="visible: hasWlanMacfilter"><a data-trans="mac_filter" href="#filter_mac"></a></li>
@@ -51,7 +51,7 @@
                             <div class="col-xs-6"><label data-bind="visible: bands().length == 1, attr:{'data-trans': oneBandTrans}"></label><select id="band_select" data-bind="options: bands, value: selectedBand, optionsText: 'text', optionsValue: 'value', visible: bands().length > 1,event:{ change: bandChangeHandler}" name="band_select" required="true" class="form-control"></select></div>
                         </div>
                         <div class="row form-group"><label id="modeLabel" data-trans="network_mode" for="mode" class="col-xs-4 side-right"></label>
-                            <div class="col-xs-6"><select id="mode" data-transid="network_mode_select" data-bind="options: modes, value: selectedMode, optionsText: transOption('network_mode_select'), optionsValue: 'value', event:{ change: modeChangeHandler}" name="mode" required="true" style="display:none" class="form-control"></select><label data-bind="visible: modes().length == 1, attr:{'data-trans': oneModeTrans}"></label><select id="modeFor5HZ" data-transid="network_modes_band_select" data-bind="options: modes, value: selectedMode, optionsText: transOption('network_modes_band_select'), optionsValue: 'value', event:{ change: modeChangeHandler}" name="mode" required="true" style="display:none" class="form-control"></select></div>
+                            <div class="col-xs-6"><select id="mode" data-transid="network_mode_select" data-bind="options: modes, value: selectedMode, optionsText: transOption('network_mode_select'), optionsValue: 'value', event:{ change: modeChangeHandler}" name="mode" required="true" style="display:none" class="form-control"></select><label data-bind="visible: modes().length == 1, text: oneModeText, attr:{'data-trans': oneModeTrans}"></label><select id="modeFor5HZ" data-transid="network_modes_band_select" data-bind="options: modes, value: selectedMode, optionsText: transOption('network_modes_band_select'), optionsValue: 'value', event:{ change: modeChangeHandler}" name="mode" required="true" style="display:none" class="form-control"></select></div>
                         </div>
                         <div data-bind="visible: hasBandwidth()" class="row form-group"><label data-trans="wifi_channel_bandwidth" for="wifi_channel_bandwidth" class="col-xs-4 side-right"></label>
                             <div class="col-xs-6"><select id="wifi_channel_bandwidth" data-bind="options: channelBandwidths, value: selectedChannelBandwidth, optionsText: 'text', optionsValue: 'value'" name="channelBandwidth" required="true" class="form-control"></select></div>
@@ -60,7 +60,7 @@
                             <div class="col-xs-6"><select id="country" data-bind="options: countries, value: selectedCountry, optionsText: 'text', optionsValue: 'value', event:{ change: countryChangeHandler}" name="country" class="form-control"></select></div>
                         </div>
                         <div class="row form-group"><label data-trans="frequency_channel" class="col-xs-4 side-right" for="channel"></label>
-                            <div class="col-xs-6"><select id="channel" data-transid="frequency_channel" data-bind="options: channels, value: selectedChannel, optionsText: transOption('frequency_channel', true), optionsValue: 'value', visible: selectedBand() == 'b' || !hasWifiBand()" name="channel" class="form-control"></select><label data-trans='auto' data-bind="visible: selectedBand() == 'a' && hasWifiBand()"></label></div>
+                            <div class="col-xs-6"><select id="channel" data-transid="frequency_channel" data-bind="options: channels, value: selectedChannel, optionsText: transOption('frequency_channel', true), optionsValue: 'value', visible: selectedBand() == 'a' || selectedBand() == 'b' || !hasWifiBand()" name="channel" class="form-control"></select><!-- <label data-trans='auto' data-bind="visible: selectedBand() == 'a' && hasWifiBand()"></label> --></div>
                         </div>
                         <div data-bind="visible: hasWifiBand() == false" class="row form-group"><label data-trans="rate" for="rate" class="col-xs-4 side-right"></label>
                             <div class="col-xs-6"><select id="rate" data-transid="rate" data-bind="options: rates, value: selectedRate, optionsText: transOption('rate'), optionsValue: 'value'" name="rate" class="form-control"></select></div>

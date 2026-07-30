@@ -2,27 +2,31 @@ define(function() {
     var a = {
         WEBUI_TITLE: "4G Mobile Hotspot",
         PRODUCT_TYPE: "UFI",
+        WIFI_SLEEP_SUPPORT: true,
+        HAS_BATTERY: true,
         FAST_BOOT_SUPPORT: false,
         HAS_BLACK_AND_WHITE_FILTER: true,
         AP_STATION_SUPPORT: false,
         MAX_STATION_NUMBER: 10,
         STATION_BLOCK_SUPPORT: true,
         HAS_MULTI_SSID: false,
+        WIFI_HAS_5G: true,
+        WIFI_BANDWIDTH_SUPPORT_80MHZ: false,
         WIFI_BANDWIDTH_SUPPORT_40MHZ: true,
         WIFI_BANDWIDTH_SUPPORT: true,
         WIFI_BAND_SUPPORT: true,
-        WIFI_SUPPORT_QR_CODE: false,
         SD_CARD_SUPPORT: false,
-        HAS_UPDATE_CHECK: true,
         HAS_UPNP: false,
         DDNS_SUPPORT: false,
         NETWORK_UNLOCK_SUPPORT: true,
-        HAS_VPN_SETTING: true,
         NETWORK_MODES: [{
             name: "802.11 b/g/n/ax",
             value: "6"
         }],
-        HAS_SMS: true,
+        NETWORK_MODES_BAND: [{
+            name: "802.11 a/n/ac/ax",
+            value: "6"
+        }],
         HAS_PHONEBOOK: true,
         AUTH_MODES_ALL: [{
             name: "NO ENCRYPTION",

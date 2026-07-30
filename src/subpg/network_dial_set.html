@@ -15,7 +15,7 @@
                     <li><a data-trans="net_select" href="#network_choose"></a></li>
                     <li><a data-trans="apn_setting" href="#cgdcont_set"></a></li>
                     <li><a data-trans="vpn_setting" href="#vpn_set" data-bind="visible:isSupportVpnsetting"></a></li>
-                    <li><a href="#network_info" data-trans="net_info"></a></li>
+                    <li><a href="#network_info" data-trans="net_info"></a></li><!-- <li><a data-trans="speed_limit_setting" href="#speedlimit_set"></a></li> -->
                 </ul>
             </div>
         </div>
@@ -25,8 +25,8 @@
                     <h3 data-trans="dial_mode" class="form-title"></h3>
                     <div class="content">
                         <div class="row form-group"><label data-trans='dial_mode' class="col-xs-3 side-right"></label>
-                            <div class="col-xs-3"><input id='auto_mode' type="radio" name="modeGroup" value="auto_dial" data-bind="checked: selectMode, enable: enableFlag" /><label for='auto_mode' data-trans='auto_select'></label></div>
-                            <div class="col-xs-3"><input id='manual_mode' type="radio" name="modeGroup" value="manual_dial" data-bind="checked: selectMode, enable: enableFlag" /><label for='manual_mode' data-trans='manual_select'></label></div>
+                            <div class="col-xs-2"><input id='auto_mode' type="radio" name="modeGroup" value="auto_dial" data-bind="checked: selectMode, enable: enableFlag" /><label for='auto_mode' data-trans='auto_select'></label></div>
+                            <div class="col-xs-2"><input id='manual_mode' type="radio" name="modeGroup" value="manual_dial" data-bind="checked: selectMode, enable: enableFlag" /><label for='manual_mode' data-trans='manual_select'></label></div>
                         </div>
                         <div data-bind="visible: selectMode() == 'auto_dial'" class="row form-group">
                             <div class="col-xs-3"></div>

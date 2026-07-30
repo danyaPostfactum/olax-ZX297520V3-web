@@ -54,6 +54,7 @@ require.config({
         network_apn_set: "net",
         network_dial_set: "net",
         network_dial_set_cpe: "net",
+        network_speedlimit_set: "net",
         locknet: "net",
         network_net_select: "net",
         network_vpn_set: "net",

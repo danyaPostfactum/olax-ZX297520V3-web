@@ -3075,6 +3075,49 @@ define("network_dial_set", "underscore jquery knockout set service".split(" "), 
         init: a
     }
 });
+define("network_speedlimit_set", "underscore jquery knockout set service".split(" "), function(g, b, i, a, e) {
+    function d() {
+        return g.map(a.SPEED_LIMIT_TYPES, function(j) {
+            return new Option(j.name, j.value)
+        })
+    }
+
+    function f() {
+        var j = e.getSeepdLimitTypes();
+        var l = this;
+        l.speed_limitTypes = i.observableArray(d());
+        l.selectedspeed_limitTypes = i.observable(j.alk_olax_config);
+        l.isSupportVpnsetting = i.observable(a.HAS_VPN_SETTING);
+        l.saveSpeedLimit = k;
+
+        function k() {
+            showLoading();
+            e.setSeepdLimitTypes({
+                selectedspeed_limitTypes: l.selectedspeed_limitTypes()
+            }, function(m) {
+                if (m.result == "success") {
+                    successOverlay()
+                } else {
+                    errorOverlay()
+                }
+            })
+        }
+    }
+
+    function c() {
+        var j = new f();
+        h(j)
+    }
+
+    function h(k) {
+        var j = b("#container");
+        i.cleanNode(j[0]);
+        i.applyBindings(k, j[0])
+    }
+    return {
+        init: c
+    }
+});
 define("network_apn_set", "underscore jquery knockout set service".split(" "), function(t, h, d, s, u) {
     function j() {
         return t.map(s.APN_AUTH_MODES, function(v) {

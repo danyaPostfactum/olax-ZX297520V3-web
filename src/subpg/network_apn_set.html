@@ -15,7 +15,7 @@
                     <li><a data-trans="net_select" href="#network_choose"></a></li>
                     <li class="active"><a data-trans="apn_setting" href="#cgdcont_set"></a></li>
                     <li><a data-trans="vpn_setting" href="#vpn_set" data-bind="visible:isSupportVpnsetting"></a></li>
-                    <li><a href="#network_info" data-trans="net_info"></a></li>
+                    <li><a href="#network_info" data-trans="net_info"></a></li><!-- <li><a data-trans="speed_limit_setting" href="#speedlimit_set"></a></li> -->
                 </ul>
             </div>
         </div>
@@ -29,7 +29,7 @@
                             <div class="col-xs-6">
                                 <div class="row">
                                     <div class="col-xs-4"><input id="apnMode_auto" type="radio" name="apnMode" data-bind="checked: apnMode, event: {click: apnModeChangeHandler}, disable: autoApnChecked() == false && disableProfile() == true" value="auto" /><label for="apnMode_auto" data-trans="apn_auto_apn"></label></div>
-                                    <div class="col-xs-5"><input id="apnMode_manual" type="radio" name="apnMode" data-bind="checked: apnMode, event: {click: apnModeChangeHandler}, disable: autoApnChecked() == false && disableProfile() == true" value="manual" /><label for="apnMode_manual" data-trans="apn_manual_apn"></label></div>
+                                    <div class="col-xs-4"><input id="apnMode_manual" type="radio" name="apnMode" data-bind="checked: apnMode, event: {click: apnModeChangeHandler}, disable: autoApnChecked() == false && disableProfile() == true" value="manual" /><label for="apnMode_manual" data-trans="apn_manual_apn"></label></div>
                                 </div>
                             </div>
                         </div>

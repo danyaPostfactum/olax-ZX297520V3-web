@@ -14,8 +14,7 @@
                     <li><a href="#wlan_sleep" data-trans="sleep_mode"></a></li>
                     <li><a href="#route_set" data-trans="router_setting"></a></li>
                     <li><a href="#filter_main" data-trans="firewall"></a></li>
-                    <li data-bind="visible:hasUpdateCheck"><a href="#fota" data-trans="update_settings"></a></li>
-                    <li data-bind="visible:hasUssd"><a href="#usat" data-trans="USSD"></a></li>
+                    <li data-bind="visible:hasUpdateCheck"><a href="#fota" data-trans="update_settings"></a></li><!--	<li data-bind="visible:hasUssd"><a href="#usat" data-trans="USSD"></a></li>-->
                     <li data-bind="visible:hasDdns"><a href="#dynamic_dns" data-trans="DDNS"></a></li>
                     <li><a href="#imeistl" data-trans="imeistl"></a></li>
                     <li class="active"><a href="#more" data-trans="others"></a></li><!--	<li><a href="#network_mode" data-trans="netmode"></a></li>-->
@@ -115,7 +114,7 @@
                     </div>
                     <div class="form-buttons"><input type="submit" class="btn btn-primary" data-trans="apply" /></div>
                 </div>
-            </form><!--   <div class="form-body"><div class="content margin-top-20 line-height-30"><div class="row"><a href="#pin_mode"><div data-trans="pin_management" class="col-xs-3 arrow-right"></div></a></div></div></div> -->
+            </form><!-- <form id="SimForm"><div class="form-body"><h3 class="form-title" data-trans='sim_select'></h3><div class="content"><div class="row form-group" ><div class="col-xs-4"><select id="mode" data-bind="options: modes, value: selectMode, optionsText: transOption('CARD'), optionsValue: 'value'" data-transid='CARD' class="form-control"></select></div> </div></div><div class="form-buttons"><input data-bind='click: save' data-trans="apply" type="submit" class="btn btn-primary margin-right-20"/></div></div></form> --><!--   <div class="form-body"><div class="content margin-top-20 line-height-30"><div class="row"><a href="#pin_mode"><div data-trans="pin_management" class="col-xs-3 arrow-right"></div></a></div></div></div> -->
         </div>
     </div>
 </div>
