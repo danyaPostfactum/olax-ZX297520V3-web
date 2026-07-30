@@ -8768,6 +8768,7 @@ define("main", "set service knockout underscore jquery statusBar echarts".split(
                 RSRP: rssi_format(z.network_type, z.rssi),
                 pci: z.pci,
                 arfcn: z.arfcn,
+                band: z.lte_band,
                 rssi: rssi_format(z.rssi)
             });
             return h(y).translate()
@@ -8837,6 +8838,7 @@ define("main", "set service knockout underscore jquery statusBar echarts".split(
                     h("#popoverRSRP").text(x);
                     h("#popoverRSRQ").text(B);
                     h("#popoverArfcn").text(A.nv_arfcn);
+                    h("#popoverBand").text(A.lte_band);
                     h("#popoverCellID").text(verifyDeviceInfo(A.cell_id))
                 }
             });
