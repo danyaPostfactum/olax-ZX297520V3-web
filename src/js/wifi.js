@@ -155,23 +155,31 @@ define("wifi_advance", "underscore jquery knockout set service jqui".split(" "),
 
     function t(J) {
         var I = [];
-        if (J) {
-            I.push(new Option("20MHz", "0"));
+        I.push(new Option("20MHz", "0"));
+        if (F.WIFI_BANDWIDTH_SUPPORT_40MHZ) {
             I.push(new Option("20MHz/40MHz", "1"))
-        } else {
-            I.push(new Option("20MHz", "0"))
+        }
+        if (F.WIFI_HAS_5G && J == "a") {
+            if (F.WIFI_BANDWIDTH_SUPPORT_80MHZ) {
+                I.push(new Option("20MHz/40MHz/80MHz", "4"))
+            }
         }
         return I
     }
 
-    function D(K) {
-        var I = K ? F.countries_5g : F.countries;
+    function D() {
+        var I;
+        if (F.WIFI_HAS_5G) {
+            I = F.countries_5g
+        } else {
+            I = F.countries
+        }
         var J = [];
         for (key in I) {
             J.push(new Option(I[key], key))
         }
-        J = G.sortBy(J, function(L) {
-            return L.text
+        J = G.sortBy(J, function(K) {
+            return K.text
         });
         return J
     }
@@ -186,18 +194,22 @@ define("wifi_advance", "underscore jquery knockout set service jqui".split(" "),
 
     function h(L) {
         var K = L == "a" ? F.NETWORK_MODES_BAND : F.NETWORK_MODES;
-        if (L == "a") {
+        if (K.length == 1) {
             l("#mode").hide();
-            l("#modeFor5HZ").show();
-            l("#modeLabel").attr("for", "modeFor5HZ")
+            l("#modeFor5HZ").hide()
         } else {
-            if (K.length == 1) {
+            if (L == "a") {
                 l("#mode").hide();
-                l("#modeFor5HZ").hide()
+                l("#modeFor5HZ").show()
             } else {
                 l("#mode").show();
                 l("#modeFor5HZ").hide()
             }
+        }
+        if (L == "a") {
+            l("#modeLabel").attr("for", "modeFor5HZ")
+        } else {
+            l("#modeLabel").attr("for", "mode")
         }
         var J = [];
         for (var I = 0; I < K.length; I++) {
@@ -232,7 +244,7 @@ define("wifi_advance", "underscore jquery knockout set service jqui".split(" "),
         K.origin_ap_station_enable = J.ap_station_enable;
         K.modes = e.observableArray(h(J.wifiBand));
         K.bands = e.observableArray(A());
-        var I = D(J.wifiBand == "a");
+        var I = D();
         K.countries = e.observableArray(I);
         K.channels = e.observableArray(J.wifiBand == "a" ? E(J.countryCode) : a(J.countryCode));
         K.rates = e.observableArray(j(J.mode));
@@ -276,22 +288,25 @@ define("wifi_advance", "underscore jquery knockout set service jqui".split(" "),
         K.selectedStationM = e.observable(J.m_MAX_Access_num);
         K.oneBandTrans = e.observable(J.wifiBand == "a" ? "5G" : "2.4G");
         K.oneModeTrans = e.observable((J.wifiBand == "a" ? "network_modes_band_select_" : "network_mode_select_") + J.mode);
+        K.oneModeText = e.observable("");
+        K.oneModeText(l.i18n.prop(K.oneModeTrans()));
         K.channelBandwidths = e.computed(function() {
-            if (F.WIFI_BANDWIDTH_SUPPORT_40MHZ) {
-                return t(true)
-            } else {
-                return t(false)
-            }
+            return t(K.selectedBand())
         });
         J = l.extend(J, K);
         K.bandChangeHandler = function() {
             if (K.selectedBand() == "a") {
                 K.modes(h(K.selectedBand()));
-                K.countries(D(true))
+                K.countries(D());
+                K.oneModeTrans("network_modes_band_select_" + K.selectedMode())
             } else {
                 K.modes(h(K.selectedBand()));
-                K.countries(D(false))
+                K.countries(D());
+                K.oneModeTrans("network_mode_select_" + K.selectedMode())
             }
+            K.oneModeText(l.i18n.prop(K.oneModeTrans()));
+            var M = K.channelBandwidths();
+            K.selectedChannelBandwidth(M[M.length - 1].value);
             K.selectedCountry("0");
             K.channels(K.generateChannelOption());
             K.selectedChannel("0")

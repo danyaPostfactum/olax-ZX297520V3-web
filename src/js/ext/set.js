@@ -8,6 +8,8 @@ define(function() {
         MAX_STATION_NUMBER: 10,
         STATION_BLOCK_SUPPORT: true,
         HAS_MULTI_SSID: false,
+        WIFI_HAS_5G: true,
+        WIFI_BANDWIDTH_SUPPORT_80MHZ: false,
         WIFI_BANDWIDTH_SUPPORT_40MHZ: true,
         WIFI_BANDWIDTH_SUPPORT: true,
         WIFI_BAND_SUPPORT: true,
@@ -20,6 +22,10 @@ define(function() {
         HAS_VPN_SETTING: true,
         NETWORK_MODES: [{
             name: "802.11 b/g/n/ax",
+            value: "6"
+        }],
+        NETWORK_MODES_BAND: [{
+            name: "802.11 a/n/ac/ax",
             value: "6"
         }],
         HAS_SMS: true,

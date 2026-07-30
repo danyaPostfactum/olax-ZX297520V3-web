@@ -16,16 +16,16 @@
                         <div class="row form-group"><label data-trans="port_filter_enabled" class="col-xs-3 side-right"></label>
                             <div class="col-xs-6">
                                 <div class="row">
-                                    <div class="col-xs-4"><input id="filterEnable" type="radio" name="filterGrp" data-bind="checked: portFilterEnable" value="1" /><label for="filterEnable" data-trans="enable"></label></div>
-                                    <div class="col-xs-4"><input id="filterDisable" type="radio" name="filterGrp" data-bind="checked: portFilterEnable" value="0" /><label for="filterDisable" data-trans="disable"></label></div>
+                                    <div class="col-xs-5"><input id="filterEnable" type="radio" name="filterGrp" data-bind="checked: portFilterEnable" value="1" /><label for="filterEnable" data-trans="enable"></label></div>
+                                    <div class="col-xs-5"><input id="filterDisable" type="radio" name="filterGrp" data-bind="checked: portFilterEnable" value="0" /><label for="filterDisable" data-trans="disable"></label></div>
                                 </div>
                             </div>
                         </div>
                         <div data-bind="visible: portFilterEnable() == '1' " class="row form-group"><label data-trans="default_policy" class="col-xs-3 side-right"></label>
                             <div class="col-xs-6">
                                 <div class="row">
-                                    <div class="col-xs-4"><input id="defaultPolicyAccept" type="radio" name="defaultPolicyGrp" data-bind="checked: defaultPolicy, event: {click: policyChangeHandler}" value="0" /><label for="defaultPolicyAccept" data-trans="accepted"></label></div>
-                                    <div class="col-xs-4"><input id="defaultPolicyDrop" type="radio" name="defaultPolicyGrp" data-bind="checked: defaultPolicy, event: {click: policyChangeHandler}" value="1" /><label for="defaultPolicyDrop" data-trans="dropped"></label></div>
+                                    <div class="col-xs-5"><input id="defaultPolicyAccept" type="radio" name="defaultPolicyGrp" data-bind="checked: defaultPolicy, event: {click: policyChangeHandler}" value="0" /><label for="defaultPolicyAccept" data-trans="accepted"></label></div>
+                                    <div class="col-xs-5"><input id="defaultPolicyDrop" type="radio" name="defaultPolicyGrp" data-bind="checked: defaultPolicy, event: {click: policyChangeHandler}" value="1" /><label for="defaultPolicyDrop" data-trans="dropped"></label></div>
                                 </div>
                             </div>
                         </div>
