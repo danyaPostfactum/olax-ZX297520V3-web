@@ -1,0 +1,61 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1"><a href="#main"><img alt="" src="pic/direct-back.png"></a></div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans='net_setting'></h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2">
+            <div class="nav_right">
+                <ul>
+                    <li><a data-trans="dial_mode" href="#conn_set"></a></li>
+                    <li><a data-trans="net_select" href="#network_choose"></a></li>
+                    <li><a data-trans="apn_setting" href="#cgdcont_set"></a></li>
+                    <li class="active"><a data-trans="vpn_setting" href="#vpn_set" data-bind="visible:isSupportVpnsetting"></a></li>
+                    <li><a href="#network_info" data-trans="net_info"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-xs-10">
+            <form id="vpn_setting_form">
+                <div class="form-body">
+                    <h3 class="form-title" data-trans="vpn_setting"></h3>
+                    <div class="content">
+                        <div id="vpn_form_container" data-bind="visible:true">
+                            <div>
+                                <div class="row form-group"><label class="col-xs-3 side-right" for="vpn_TYPES" data-trans="vpn_types"></label>
+                                    <div class="col-xs-6"><select name="vpn_TYPES" id="vpn_TYPES" class="form-control" data-bind="options: vpnTypes, disable: false, value: selectedVpnTypes, optionsText: 'text', optionsValue: 'value',event:{ change: changeType}"></select></div>
+                                </div>
+                                <div id="user_container" class="row form-group"><label class="col-xs-3 side-right" for="vpn_user_name" data-trans="vpn_user"></label>
+                                    <div class="col-xs-6"><input type="text" name="vpn_user_name" class="required form-control" data-bind="value: vpnusername" id="vpn_user_name" maxlength="64" /></div>
+                                </div>
+                                <div id="password_container" class="row form-group"><label class="col-xs-3 side-right " for="vpn_password" data-trans="vpn_password"></label>
+                                    <div class="col-xs-6"><input type="password" name="pwd_vpn_password" class="required form-control" data-bind="value: vpnpassword,visible:!showPassword()" id="pwd_vpn_password" maxlength="64" /><input type="text" name="txt_vpn_password" class="required form-control" data-bind="value: vpnpassword,visible:showPassword()" id="txt_vpn_password" maxlength="64" />
+                                        <div class="margin-top-10">
+                                            <p class="checkbox" data-bind="css:{'checkbox_selected': showPassword()}, click: showPasswordHandler" manualControl="true"><input id="showPassword" type="checkbox" data-bind="checked:showPassword" /></p><label class="floatleft lineheight25 margintop5" data-trans="display_password"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="server_container" class="row form-group"><label class="col-xs-3 side-right" for="server_ip" data-trans="vpn_server"></label>
+                                    <div class="col-xs-6"><input type="text" name="server_ip" data-bind="value: vpn_server" id="server_ip" class="required form-control" maxlength='64' /></div>
+                                </div><!--                   <div class="row form-group"><label class="col-xs-3 side-right" for='server_ip' data-trans='vpn_server'></label><div class="col-xs-6"><input id='Text1' name="server_ip" type="text" data-bind="value: vpn_server,visible:true"class="required form-control" minlength='7' maxlength='15' /></div></div>-->
+                                <div class="row form-group" id="isVPN_encryption_row" data-bind="visible:isEnablePPP">
+                                    <div class="col-xs-3"></div>
+                                    <div class="col-xs-8 label-absolute">
+                                        <p id="isVPN_encryption" class="checkbox floatleft margintop5 checkboxToggle" data-bind="css:{'checkbox_selected':vpn_encrypt()=='true'},click:setEncrytion" ,manualControl="true"><input type="checkbox" id="isVPN_encryption" value="true" data-bind="checked:vpn_encrypt()=='true'" /></p><label for="isVPN_encryption" data-trans="VPN_encryption" class="update_inline floatleft lineheight25"></label>
+                                    </div>
+                                </div>
+                                <div id="tunelPIn" class="row form-group" data-bind="visible:isEnabletunnel"><label class="col-xs-3 side-right" for="Tunnel_Pwd" data-trans="Tunnel_Password"></label>
+                                    <div class="col-xs-6"><input type="text" name="Tunnel_Pwd" data-bind="value: Tunnel_Passw" id="Tunnel_Pwd" class="form-control" maxlength='64' /></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-buttons"><input id="vpnSet" type="submit" class="btn btn-primary" data-trans="apply" /><input id="vpnConnect" type="button" data-bind="click: connectAct,visible:setDefaultVisible() ==false" class="btn btn-primary" data-trans="connect" /><input id="vpnDisconnect" type="button" data-bind="click: disconnectAct, visible: setDefaultVisible() ==true" class="btn btn-primary" data-trans="disconnect" /><!--		<div class="form-note"><div class="notes-title">&nbsp;</div><ul class="notes-content"><li data-trans="apn_note_whole_page"></li><li data-trans="apn_note_mode"></li><li data-trans="apn_note_profile"></li><li data-trans="apn_note_pdp_type" data-bind="visible: supportIPv6()"></li><li data-trans="apn_note_profile_name"></li><li data-trans="apn_note_apn"></li><li data-trans="apn_note_dns_mode" data-bind="visible: showApnDns()"></li><li data-trans="apn_note_authentication"></li><li data-trans="apn_note_username"></li><li data-trans="apn_note_password"></li><li data-trans="apn_note_set_default"></li></ul></div>--></div>
+            </form>
+        </div>
+    </div>
+</div>
