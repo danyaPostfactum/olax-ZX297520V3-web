@@ -4,7 +4,7 @@ define(function() {
         PRODUCT_TYPE: "UFI",
         FAST_BOOT_SUPPORT: false,
         HAS_BLACK_AND_WHITE_FILTER: true,
-        AP_STATION_SUPPORT: false,
+        AP_STATION_SUPPORT: true,
         MAX_STATION_NUMBER: 10,
         STATION_BLOCK_SUPPORT: true,
         HAS_MULTI_SSID: false,
