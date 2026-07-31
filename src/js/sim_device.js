@@ -1423,6 +1423,7 @@ define("ussd", "set service knockout jquery".split(" "), function(j, e, c, i) {
         n.USSDLocation = c.observable(f.SEND);
         n.USSDReply = c.observable("");
         n.USSDSend = c.observable("");
+        n.hasUssd = j.HAS_USSD;
         n.hasDdns = j.DDNS_SUPPORT;
 
         function m() {
