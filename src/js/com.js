@@ -5652,6 +5652,25 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
         }
     }
 
+    function setDeviceMode() {
+        return bz(arguments, {}, db, dc, null, true);
+
+        function db(df, dd) {
+            var de = {};
+            de.goformId = "SET_DEVICE_MODE";
+            de.debug_enable = df.debug_enable;
+            return de
+        }
+
+        function dc(dd) {
+            if (dd) {
+                return dd
+            } else {
+                return V
+            }
+        }
+    }
+
     function f() {
         return bz(arguments, {}, db, dc, null, false);
 
@@ -6553,6 +6572,7 @@ define("service", "underscore jquery set CryptoJS".split(" "), function(cg, cP, 
         setIMEI: bD,
         setTTL: br,
         setDnsLan: cr,
+        setDeviceMode: setDeviceMode,
         getIMEITTL: cF,
         getRebootTimeEnable: av,
         SetRebootTimeEnable: cq,
@@ -6884,6 +6904,9 @@ define("adm_others", "jquery knockout set service underscore".split(" "), functi
     var g = s.map(r.daylightSave, function(u) {
         return new Option(u.name, u.value)
     });
+    var debugOptions = s.map(r.debugOptions, function(u) {
+        return new Option(u.name, u.value)
+    });
     var j = [];
     var f = [];
     var b = [];
@@ -6921,6 +6944,8 @@ define("adm_others", "jquery knockout set service underscore".split(" "), functi
         var v = t.getLanInfo();
         B.dnsIpAddress = a.observable(v.lan_dns_ip);
         B.dnsServer = a.observable(v.lan_dns_mode);
+        B.debugOptions = a.observableArray(debugOptions);
+        B.currentDebugOption = a.observable();
         if (r.HAS_PARENTAL_CONTROL) {
             D = t.checkCurrentUserInChildGroup().result
         }
@@ -6944,6 +6969,21 @@ define("adm_others", "jquery knockout set service underscore".split(" "), functi
             };
             t.setDnsLan(G, function(H) {
                 if ("success" == H.result) {
+                    showConfirm("restart_confirm", function() {
+                        restartDevice(t)
+                    })
+                } else {
+                    errorOverlay()
+                }
+            })
+        };
+        B.saveDeveloperOptions = function() {
+            showLoading("waiting");
+            var G = {
+                debug_enable: B.currentDebugOption()
+            };
+            t.setDeviceMode(G, function(H) {
+                if ("set_devicemode successfully!" == H.result) {
                     showConfirm("restart_confirm", function() {
                         restartDevice(t)
                     })
@@ -7230,6 +7270,11 @@ define("adm_others", "jquery knockout set service underscore".split(" "), functi
             },
             rules: {
                 reboottimevalue: "rebootNew_check"
+            }
+        });
+        c("#developerOptions").validate({
+            submitHandler: function() {
+                v.saveDeveloperOptions()
             }
         });
         c("#dnsLan").validate({

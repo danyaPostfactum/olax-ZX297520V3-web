@@ -407,6 +407,22 @@ define(function() {
             name: "(GMT+13:00) Nukualofa",
             value: "<+13>-13_0"
         }],
+        debugOptions: [{
+            name: "user",
+            value: "0"
+        }, {
+            name: "debug",
+            value: "1"
+        }, {
+            name: "factory",
+            value: "2"
+        }, {
+            name: "amt",
+            value: "3"
+        }, {
+            name: "debug_dl",
+            value: "4"
+        }],
         SMS_VALIDITY: [{
             name: "12 hours",
             value: "twelve_hours"
