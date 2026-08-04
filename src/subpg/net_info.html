@@ -49,6 +49,46 @@
                     </div>
                 </div>
             </form>
+            <div class="content">
+                <form id="pciLockForm" role="form" novalidate="novalidate" autocomplete="off">
+                    <div class="row form-group">
+                        <label class="col-xs-4 side-right" data-trans='pci_lock'></label>
+                        <div class="col-xs-8">
+                            <div class="row">
+                                <div class="col-xs-4"><input type="radio" name="action" id="action_1" data-bind="checked: action" value="1" /><label for="action_1" data-trans="enable"></label></div>
+                                <div class="col-xs-4"><input type="radio" name="action" id="action_0" data-bind="checked: action" value="0" /><label for="action_0" data-trans="disable"></label></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bind="visible: action() == 1">
+                        <div class="col-xs-8 col-xs-offset-4">
+                            <div class="row form-group">
+                                <div class="col-xs-4">EARFCN <i class="colorRed">&nbsp;*</i></div>
+                                <div class="col-xs-4">PCI <i class="colorRed">&nbsp;*</i></div>
+                            </div>
+                            <div data-bind="foreach: lteCells">
+                                <div class="row form-group">
+                                    <div class="col-xs-4"><input data-bind="attr: {name: 'earfcn-' + $index()}, value: earfcn, enable: $parent.action() == 1" type="text" class="earfcn-input required form-control" maxlength="5"></div>
+                                    <div class="col-xs-4"><input data-bind="attr: {name: 'pci-' + $index()}, value: pci, enable: $parent.action() == 1" type="text" class="pci-input required form-control" maxlength="3"></div>
+                                    <div class="col-xs-4">
+                                        <button type="button" data-bind="click: $parent.removeCell, enable: $parent.lteCells().length > 1" class="btn btn-danger">-</button>
+                                        <button type="button" data-bind="click: $parent.addCell, enable: $parent.lteCells().length < 10" class="btn btn-primary">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="row form-group"><label class="col-xs-4 side-right" for="uarfcnlte" data-trans="lock_earfcn"><i class="colorRed">&nbsp;*</i></label>
+                        <div class="col-xs-6"><input id="uarfcnlte" name="uarfcnlte" data-bind="value: uarfcnlte, enable: actionlte() == 1" type="text"  class="required form-control" maxlength="6"></div>
+                    </div>
+                    <div class="row form-group"><label class="col-xs-4 side-right" for="cellParaIdlte" data-trans="lock_pci"><i class="colorRed">&nbsp;*</i></label>
+                        <div class="col-xs-6"><input id="cellParaIdlte" name="cellParaIdlte" data-bind="value: cellParaIdlte, enable: actionlte() == 1" type="text"  class="required form-control" maxlength="3"></div>
+                    </div>-->
+                    <div class="form-buttons">
+                        <input type="submit" data-trans='apply' class="btn btn-primary"/>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
