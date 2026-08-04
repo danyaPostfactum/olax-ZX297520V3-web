@@ -46,7 +46,7 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: 'src/i18n',
-            src: ['*.properties'],
+            src: ['Messages_en.properties', 'Messages_rus.properties'],
             dest: 'dist/i18n/'
           }
         ]
