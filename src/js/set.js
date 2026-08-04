@@ -897,23 +897,8 @@ define(function() {
             name: "English",
             value: "en"
         }, {
-            name: "Tiếng Việt",
-            value: "vie"
-        }, {
-            name: "Français",
-            value: "fr"
-        }, {
             name: "Русский",
             value: "rus"
-        }, {
-            name: "Español",
-            value: "sp"
-        }, {
-            name: "بالعربية",
-            value: "arab"
-        }, {
-            name: "Українсьска",
-            value: "ua"
         }],
         AUTH_MODES: [{
             name: "NO ENCRYPTION",
